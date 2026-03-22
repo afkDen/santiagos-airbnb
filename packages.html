@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Packages & Rates · Santiagos Resort</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.pkg-note{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:var(--r-lg);padding:1.2rem 1.6rem;display:flex;align-items:flex-start;gap:.8rem;margin-bottom:2.5rem;font-size:.82rem;color:var(--ink-soft);line-height:1.6}
+.pkg-note::before{content:'💡';font-size:1.1rem;flex-shrink:0}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pkg{background:var(--cream);border:1.5px solid var(--sand);border-radius:var(--r-lg);overflow:hidden;transition:all .3s}
+.pkg:hover{transform:translateY(-6px);box-shadow:var(--sh-xl)}
+.pkg.feat{border-color:var(--terra);border-width:2px;transform:scale(1.03)}
+.pkg.feat:hover{transform:scale(1.03) translateY(-6px)}
+.pkg-head{padding:2rem;border-bottom:1px solid var(--sand-lt)}
+.pkg-badge{display:inline-block;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.25rem .8rem;border-radius:var(--r-pill);margin-bottom:.9rem}
+.pb-wd{background:rgba(192,115,74,.15);color:var(--terra-dk)}
+.pb-we{background:var(--gold);color:var(--ink)}
+.pb-hol{background:var(--forest);color:#fff}
+.pkg-name{font-family:var(--ff-display);font-size:1.4rem;color:var(--ink);margin-bottom:.25rem}
+.pkg-when{font-size:.75rem;color:var(--ink-soft);font-weight:300}
+.pkg-price{display:flex;align-items:baseline;gap:.25rem;margin-top:1rem}
+.pp-ph{font-size:1rem;color:var(--terra);font-weight:700}
+.pp-amt{font-family:var(--ff-display);font-size:2.6rem;color:var(--terra);font-weight:600;line-height:1}
+.pp-per{font-size:.72rem;color:var(--ink-soft)}
+.pkg-body{padding:2rem}
+.pkg-ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.pkg-ul li{display:flex;align-items:flex-start;gap:.6rem;font-size:.83rem;color:var(--ink-soft);font-weight:300;line-height:1.4}
+.pkg-ul li::before{content:'✓';color:var(--forest);font-weight:700;flex-shrink:0}
+.pkg-ul li.dim{opacity:.4}
+.pkg-ul li.dim::before{content:'–';color:var(--ink-soft)}
+.pkg-cta{display:block;margin:0 2rem 2rem;padding:.82rem;text-align:center;border-radius:var(--r);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border:2px solid var(--terra);color:var(--terra);background:transparent;transition:all .2s}
+.pkg-cta:hover,.pkg.feat .pkg-cta{background:var(--terra);color:#fff}
+
+/* Photo between packages and calculator */
+.section-photo-divider{position:relative;height:300px;overflow:hidden;margin:4rem 0}
+.section-photo-divider img{width:100%;height:100%;object-fit:cover}
+.section-photo-divider .divider-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,15,7,.7) 0%,rgba(26,15,7,.1) 100%);display:flex;align-items:center;padding:3.5rem}
+.divider-overlay .do-body h3{font-family:var(--ff-display);font-size:2rem;color:#fff;font-weight:400;line-height:1.2}
+.divider-overlay .do-body p{font-size:.88rem;color:rgba(255,255,255,.6);margin-top:.5rem;font-weight:300}
+
+/* CALC */
+.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.calc-box{background:var(--cream);border-radius:var(--r-lg);padding:2.4rem;border:1.5px solid var(--sand);box-shadow:var(--sh-sm)}
+.calc-box h3{font-family:var(--ff-display);font-size:1.35rem;color:var(--ink);margin-bottom:1.6rem;font-weight:600}
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.addon-section h4{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:.7rem}
+.addon{display:flex;align-items:center;justify-content:space-between;padding:.62rem 1rem;background:var(--bg-alt);border:1.5px solid var(--sand);border-radius:var(--r);cursor:pointer;transition:all .2s;margin-bottom:.45rem}
+.addon:hover{border-color:var(--terra)}
+.addon.on{border-color:var(--terra);background:rgba(192,115,74,.07)}
+.addon-l{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-soft)}
+.addon-cb{width:16px;height:16px;border-radius:3px;border:2px solid var(--sand);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:all .2s}
+.addon.on .addon-cb{background:var(--terra);border-color:var(--terra);color:#fff}
+.addon-p{font-size:.74rem;color:var(--terra);font-weight:700}
+.divider{height:1px;background:var(--sand);margin:1.4rem 0}
+.result-box{background:var(--ink);border-radius:var(--r-lg);padding:1.8rem}
+.r-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
+.r-lbl{font-size:.75rem;color:rgba(255,255,255,.4)}
+.r-val{font-size:.85rem;color:rgba(255,255,255,.75);font-weight:500}
+.r-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.1);padding-top:.9rem;margin-top:.9rem}
+.r-tlbl{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.r-tamt{font-family:var(--ff-display);font-size:2.2rem;color:var(--gold);font-weight:600}
+.calc-submit{width:100%;margin-top:1.3rem;padding:.95rem;background:var(--terra);color:#fff;border:none;border-radius:var(--r);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:all .2s}
+.calc-submit:hover{background:var(--terra-dk)}
+.calc-info-box{background:var(--bg-alt);border-left:3px solid var(--terra);padding:1rem 1.2rem;border-radius:0 var(--r) var(--r) 0;font-size:.8rem;color:var(--ink-soft);line-height:1.65;margin-top:1.5rem}
+
+@media(max-width:1100px){.pkg-grid{grid-template-columns:1fr;max-width:440px;margin-inline:auto}.pkg.feat{transform:none}.calc-layout{grid-template-columns:1fr}}
+@media(max-width:680px){.c2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pg-hero">
+  <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ffd5ba89-7c68-48ed-bca7-529add0f6b8e.jpeg?im_w=1920')"></div>
+  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-body">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Packages &amp; Rates</div>
+    <h1>Packages &amp; <em>Rates</em></h1>
+    <p>All packages include full resort access. Base rate is for 30 guests.</p>
+  </div>
+</div>
+
+<section style="background:var(--bg)">
+  <p class="tag">Pricing</p>
+  <h2 class="h2">Choose Your <em>Package</em></h2>
+  <p class="lead" style="margin-bottom:2rem">Every package gives full access to all amenities — pool, karaoke, arcade, gym, basketball, bonfire, kitchen, Wi-Fi &amp; parking. Base rate covers up to 30 guests.</p>
+  <div class="pkg-note rv">Rates below are estimates. Confirm exact pricing on our <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" style="color:var(--terra);font-weight:600">Airbnb listing</a> or by contacting us directly.</div>
+  <div class="pkg-grid">
+    <div class="pkg rv">
+      <div class="pkg-head"><div class="pkg-badge pb-wd">Weekday</div><div class="pkg-name">Midweek Escape</div><div class="pkg-when">Monday – Thursday · Non-holidays</div><div class="pkg-price"><span class="pp-ph">₱</span><span class="pp-amt">15K</span><span class="pp-per">/night · up to 30 guests</span></div></div>
+      <div class="pkg-body"><ul class="pkg-ul"><li>Up to 30 guests in base rate</li><li>₱1,000 per extra guest (max 40)</li><li>Check-in 3PM · Checkout 12PM</li><li>All amenities fully included</li><li>Free parking on premises</li><li class="dim">Weekend surcharge not applicable</li></ul></div>
+      <a href="contact.html" class="pkg-cta">Inquire Now</a>
+    </div>
+    <div class="pkg feat rv">
+      <div class="pkg-head"><div class="pkg-badge pb-we">⭐ Most Popular</div><div class="pkg-name">Weekend Getaway</div><div class="pkg-when">Friday – Sunday · Eve of holidays</div><div class="pkg-price"><span class="pp-ph">₱</span><span class="pp-amt">20K</span><span class="pp-per">/night · up to 30 guests</span></div></div>
+      <div class="pkg-body"><ul class="pkg-ul"><li>Up to 30 guests in base rate</li><li>₱1,000 per extra guest (max 40)</li><li>Check-in 3PM · Checkout 12PM</li><li>All amenities fully included</li><li>Free parking on premises</li><li>Priority booking support</li></ul></div>
+      <a href="contact.html" class="pkg-cta">Inquire Now</a>
+    </div>
+    <div class="pkg rv">
+      <div class="pkg-head"><div class="pkg-badge pb-hol">Holiday / Peak</div><div class="pkg-name">Holiday Package</div><div class="pkg-when">Public holidays · Peak season</div><div class="pkg-price"><span class="pp-ph">₱</span><span class="pp-amt">25K</span><span class="pp-per">/night · up to 30 guests</span></div></div>
+      <div class="pkg-body"><ul class="pkg-ul"><li>Up to 30 guests in base rate</li><li>₱1,000 per extra guest (max 40)</li><li>Check-in 3PM · Checkout 12PM</li><li>All amenities fully included</li><li>Free parking on premises</li><li>Applies to holidays &amp; peak dates</li></ul></div>
+      <a href="contact.html" class="pkg-cta">Inquire Now</a>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.75rem;color:var(--ink-soft);font-style:italic;margin-top:1.5rem">* Estimated rates. Always confirm on <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" style="color:var(--terra)">Airbnb</a>.</p>
+</section>
+
+<!-- PHOTO DIVIDER -->
+<div class="section-photo-divider">
+  <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920" alt="Resort"/>
+  <div class="divider-overlay"><div class="do-body"><h3>All amenities included,<br/>every night.</h3><p>Pool · Karaoke · Arcade · Gym · Basketball · Bonfire · Kitchen · Wi-Fi · Parking</p></div></div>
+</div>
+
+<!-- CALCULATOR -->
+<section style="background:var(--bg-alt)">
+  <div class="calc-layout">
+    <div class="rv-l">
+      <div class="calc-box">
+        <h3>💰 Rate Estimator</h3>
+        <div class="c2">
+          <div class="fg"><label>Check-in</label><input type="date" id="ci" oninput="calc()"/></div>
+          <div class="fg"><label>Check-out</label><input type="date" id="co" oninput="calc()"/></div>
+        </div>
+        <div class="c2">
+          <div class="fg"><label>Guests</label>
+            <select id="cg" onchange="calc()">
+              <option value="30">Up to 30 guests</option>
+              <option value="35">31–35 guests</option>
+              <option value="40">36–40 guests</option>
+            </select>
+          </div>
+          <div class="fg"><label>Occasion</label>
+            <select><option>Barkada Trip</option><option>Birthday Party</option><option>Family Reunion</option><option>Team Building</option><option>Company Outing</option><option>Other</option></select>
+          </div>
+        </div>
+        <div class="addon-section">
+          <h4>Optional Add-ons (on request)</h4>
+          <div class="addon" onclick="toggleAddon(this,2000)"><div class="addon-l"><div class="addon-cb">✓</div><span>🍖 Catering / Lechon Package</span></div><span class="addon-p">+₱2,000</span></div>
+          <div class="addon" onclick="toggleAddon(this,1500)"><div class="addon-l"><div class="addon-cb">✓</div><span>🎈 Event Decoration Setup</span></div><span class="addon-p">+₱1,500</span></div>
+          <div class="addon" onclick="toggleAddon(this,1000)"><div class="addon-l"><div class="addon-cb">✓</div><span>📸 Photo &amp; Video Coverage</span></div><span class="addon-p">+₱1,000</span></div>
+          <div class="addon" onclick="toggleAddon(this,500)"><div class="addon-l"><div class="addon-cb">✓</div><span>🎂 Birthday Cake</span></div><span class="addon-p">+₱500</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="result-box">
+          <div class="r-row"><span class="r-lbl">Base Nightly Rate</span><span class="r-val" id="rBase">Select dates</span></div>
+          <div class="r-row"><span class="r-lbl">Extra Guests</span><span class="r-val" id="rExtra">—</span></div>
+          <div class="r-row"><span class="r-lbl">Nights</span><span class="r-val" id="rNights">—</span></div>
+          <div class="r-row"><span class="r-lbl">Add-ons</span><span class="r-val" id="rAddons">₱0</span></div>
+          <div class="r-total"><span class="r-tlbl">Estimated Total</span><span class="r-tamt" id="rTotal">₱ —</span></div>
+        </div>
+        <button class="calc-submit" onclick="location.href='contact.html'">Book This Date →</button>
+      </div>
+    </div>
+    <div class="rv-r">
+      <p class="tag">Rate Calculator</p>
+      <h2 class="h2">Plan Your <em>Budget</em><br/>Instantly</h2>
+      <p class="lead" style="margin-bottom:1.2rem">Pick your dates and group size for an instant cost estimate. All packages include full resort access.</p>
+      <div class="calc-info-box">
+        <strong>💡 How pricing works:</strong><br/><br/>
+        · Base rate covers up to 30 guests<br/>
+        · Extra guests: ₱1,000/head (31–40 max)<br/>
+        · Mon–Thu (non-holiday): ~₱15,000/night<br/>
+        · Fri–Sun &amp; eve of holidays: ~₱20,000/night<br/>
+        · Public holidays &amp; peak: ~₱25,000/night<br/><br/>
+        Confirm exact rates for your dates on Airbnb or contact us.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+<script>
+let addonAmt=0;
+function toggleAddon(el,p){el.classList.toggle('on');addonAmt+=el.classList.contains('on')?p:-p;document.getElementById('rAddons').textContent='₱'+addonAmt.toLocaleString();calc()}
+function calc(){
+  const ci=document.getElementById('ci').value,co=document.getElementById('co').value;
+  if(!ci||!co)return;
+  const d1=new Date(ci),d2=new Date(co);
+  if(d2<=d1)return;
+  const nights=Math.round((d2-d1)/86400000);
+  const dow=d1.getDay();
+  const base=dow===0||dow===6?20000:15000;
+  const gVal=parseInt(document.getElementById('cg').value);
+  const extra=gVal>30?(gVal-30)*1000:0;
+  const total=(base+extra)*nights+addonAmt;
+  document.getElementById('rBase').textContent='₱'+base.toLocaleString()+'/night';
+  document.getElementById('rExtra').textContent=extra?'+₱'+extra.toLocaleString()+'/night':'None';
+  document.getElementById('rNights').textContent=nights+' night'+(nights!==1?'s':'');
+  document.getElementById('rTotal').textContent='₱'+total.toLocaleString();
+}
+const today=new Date().toISOString().split('T')[0];
+document.getElementById('ci').min=today;document.getElementById('co').min=today;
+document.getElementById('ci').addEventListener('change',e=>document.getElementById('co').min=e.target.value);
+</script>
+</body>
+</html>

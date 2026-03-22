@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Book Now · Santiagos Resort</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start;margin-top:3rem}
+.ci-list{display:flex;flex-direction:column;gap:.75rem;margin:1.4rem 0}
+.ci-row{display:flex;align-items:flex-start;gap:.9rem;padding:.85rem 1.1rem;background:var(--bg-alt);border-radius:var(--r);border:1px solid var(--sand)}
+.ci-ic{font-size:1.05rem;flex-shrink:0;margin-top:.05rem}
+.ci-text{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+.ci-text strong{color:var(--ink);font-weight:600}
+.cta-links{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.btn-full{width:100%;justify-content:center}
+
+/* Photo accent beside info */
+.contact-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-top:1.5rem}
+
+/* Form */
+.form-card{background:var(--bg-alt);border-radius:var(--r-lg);padding:2.5rem;border:1.5px solid var(--sand);box-shadow:var(--sh-sm)}
+.form-card h3{font-family:var(--ff-display);font-size:1.5rem;color:var(--ink);margin-bottom:.3rem;font-weight:600}
+.form-card .form-sub{font-size:.78rem;color:var(--ink-soft);margin-bottom:2rem}
+.f-submit{width:100%;padding:1.05rem;background:var(--terra);color:#fff;border:none;border-radius:var(--r);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;transition:all .2s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.f-submit:hover{background:var(--terra-dk);transform:translateY(-2px);box-shadow:0 6px 18px rgba(192,115,74,.4)}
+.success-box{display:none;text-align:center;padding:3rem 1.5rem}
+.success-box .ck{font-size:3.5rem;margin-bottom:1rem}
+.success-box h4{font-family:var(--ff-display);font-size:1.6rem;color:var(--ink);margin-bottom:.5rem}
+.success-box p{font-size:.85rem;color:var(--ink-soft);margin-bottom:1.5rem;line-height:1.7}
+
+/* FAQ */
+.faq-layout{display:grid;grid-template-columns:1fr 1.7fr;gap:6rem;align-items:start;margin-top:3rem}
+.faq-list{display:flex;flex-direction:column;gap:.7rem}
+.faq-item{background:var(--cream);border:1.5px solid var(--sand);border-radius:var(--r-lg);overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:var(--terra)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.4rem;cursor:pointer;user-select:none;gap:1rem}
+.faq-qt{font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4}
+.faq-ic{width:24px;height:24px;border-radius:50%;background:var(--sand);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--terra);transition:all .3s;font-weight:300}
+.faq-item.open .faq-ic{background:var(--terra);color:#fff;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-ai{padding:0 1.4rem 1.2rem;font-size:.84rem;color:var(--ink-soft);line-height:1.75;font-weight:300}
+
+/* Reviews section at bottom */
+.contact-reviews{background:var(--ink)}
+.contact-reviews .tag{color:var(--terra-lt)}
+.contact-reviews .tag::before{background:var(--terra-lt)}
+.contact-reviews .h2{color:var(--cream)}
+.rev-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.5rem}
+.rev-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:1.8rem;transition:all .3s}
+.rev-card:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.rev-stars{color:var(--gold);font-size:.85rem;margin-bottom:.85rem;letter-spacing:2px}
+.rev-text{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;font-weight:300;font-style:italic;margin-bottom:1.4rem}
+.rev-author{display:flex;align-items:center;gap:.75rem}
+.rev-avatar{width:38px;height:38px;border-radius:50%;background:var(--terra);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:.95rem;color:#fff;flex-shrink:0;font-weight:600}
+.rev-name{font-size:.85rem;color:var(--cream);font-weight:600}
+.rev-loc{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1px}
+
+@media(max-width:1100px){.contact-grid{grid-template-columns:1fr;gap:3rem}.faq-layout{grid-template-columns:1fr;gap:2rem}.rev-row{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.rev-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pg-hero">
+  <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920')"></div>
+  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-body">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Book Now</div>
+    <h1>Book Your <em>Stay</em></h1>
+    <p>New on Airbnb — we respond quickly. Lock in your dates today.</p>
+  </div>
+</div>
+
+<!-- CONTACT / FORM -->
+<section style="background:var(--bg)">
+  <p class="tag">Reservations</p>
+  <h2 class="h2">Let's Make It <em>Happen</em></h2>
+  <div class="contact-grid">
+
+    <!-- LEFT: Info + photo -->
+    <div class="rv-l">
+      <p style="font-size:.93rem;color:var(--ink-soft);line-height:1.8;font-weight:300;margin-bottom:1.2rem">Fill out the inquiry form and we'll confirm your booking details and lock in your dates. Or book instantly through our Airbnb listing for payment-protected confirmation.</p>
+      <div class="ci-list">
+        <div class="ci-row"><span class="ci-ic">📍</span><span class="ci-text"><strong>Location:</strong> Alfonso, Calabarzon, Philippines — near Tagaytay City</span></div>
+        <div class="ci-row"><span class="ci-ic">⏰</span><span class="ci-text"><strong>Check-in:</strong> After 3:00 PM &nbsp;·&nbsp; <strong>Checkout:</strong> Before 12:00 PM noon</span></div>
+        <div class="ci-row"><span class="ci-ic">👥</span><span class="ci-text"><strong>Capacity:</strong> Up to 40 guests — base rate covers 30, ₱1,000/head for extras</span></div>
+        <div class="ci-row"><span class="ci-ic">🛏️</span><span class="ci-text"><strong>Rooms:</strong> 4 bedrooms · 20 beds · 8 bathrooms</span></div>
+        <div class="ci-row"><span class="ci-ic">🐾</span><span class="ci-text"><strong>No pets</strong> on the property</span></div>
+        <div class="ci-row"><span class="ci-ic">🏠</span><span class="ci-text">Listed on <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" style="color:var(--terra);font-weight:600">Airbnb</a> — secure booking with payment protection</span></div>
+      </div>
+      <div class="cta-links">
+        <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-airbnb btn-full">🏠 Book Instantly on Airbnb</a>
+        <a href="https://wa.me/639XXXXXXXXX?text=Hi!+Im+interested+in+booking+Santiagos+Resort." target="_blank" class="btn btn-wa btn-full">💬 Message on WhatsApp</a>
+      </div>
+      <img class="contact-photo" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Santiagos Resort dining area" loading="lazy"/>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="rv-r">
+      <div class="form-card">
+        <div id="bookForm">
+          <h3>Send an Inquiry</h3>
+          <p class="form-sub">We respond within 1–2 hours. Fields marked * are required.</p>
+          <div class="f2">
+            <div class="fg" id="g-fn"><label>First Name *</label><input id="fn" type="text" placeholder="Maria" data-req/><div class="fg-err">Required.</div></div>
+            <div class="fg" id="g-ln"><label>Last Name *</label><input id="ln" type="text" placeholder="Santos" data-req/><div class="fg-err">Required.</div></div>
+          </div>
+          <div class="fg" id="g-em"><label>Email Address *</label><input id="em" type="email" placeholder="hello@email.com" data-req/><div class="fg-err">Enter a valid email.</div></div>
+          <div class="fg"><label>Phone / Viber / WhatsApp</label><input type="tel" placeholder="+63 9XX XXX XXXX"/></div>
+          <div class="f2">
+            <div class="fg" id="g-ci"><label>Check-in Date *</label><input id="fci" type="date" data-req/><div class="fg-err">Required.</div></div>
+            <div class="fg" id="g-co"><label>Check-out Date *</label><input id="fco" type="date" data-req/><div class="fg-err">Required.</div></div>
+          </div>
+          <div class="f2">
+            <div class="fg" id="g-ng">
+              <label>Number of Guests *</label>
+              <select id="ng" data-req>
+                <option value="">Select...</option>
+                <option>1–10 guests</option>
+                <option>11–20 guests</option>
+                <option>21–30 guests</option>
+                <option>31–40 guests (+₱1,000/extra head)</option>
+              </select>
+              <div class="fg-err">Required.</div>
+            </div>
+            <div class="fg">
+              <label>Occasion</label>
+              <select>
+                <option>Barkada Trip</option><option>Birthday Party</option>
+                <option>Family Reunion</option><option>Team Building</option>
+                <option>Company Outing</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Message / Special Requests</label>
+            <textarea placeholder="Tell us about your event, any special arrangements, or questions you have…"></textarea>
+          </div>
+          <button class="f-submit" onclick="validateForm('bookForm','bookSuccess')">Send Inquiry →</button>
+        </div>
+        <div class="success-box" id="bookSuccess">
+          <div class="ck">✅</div>
+          <h4>Inquiry Sent!</h4>
+          <p>Thanks for reaching out! We'll get back to you within 1–2 hours. You can also book directly on Airbnb for instant confirmation.</p>
+          <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-airbnb btn-full">Book on Airbnb →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg-alt)">
+  <div class="faq-layout">
+    <div class="rv-l">
+      <p class="tag">FAQ</p>
+      <h2 class="h2">Got <em>Questions?</em></h2>
+      <p class="lead" style="margin-bottom:2rem">Everything you need to know before booking your group getaway at Santiagos Resort.</p>
+      <a href="contact.html" class="btn btn-primary">Still Have Questions? →</a>
+    </div>
+    <div class="faq-list rv-r">
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">How many guests can Santiagos Resort accommodate?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">The resort accommodates up to <strong>40 guests total</strong>. The base rate covers up to 30 guests. For 31–40 guests, an additional <strong>₱1,000 per extra head</strong> applies. Please declare your full headcount when booking.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">What are check-in and check-out times?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Check-in is after <strong>3:00 PM</strong> and checkout is before <strong>12:00 PM (noon)</strong>. Early check-in or late checkout may be arranged subject to availability — message us in advance to confirm.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Are all amenities included in the rate?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Yes — pool, karaoke, billiards, arcade, gym, basketball court, bonfire area, full kitchen, TV, Wi-Fi, and free parking are all included in your nightly rate. The listing has 22+ amenities — no extra charges to use any of them.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Are pets allowed at the resort?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">No — Santiagos Resort is a <strong>pet-free property</strong> to ensure a comfortable experience for all guests. Thank you for your understanding.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Should I book through Airbnb or directly?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Booking through <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" style="color:var(--terra)">Airbnb</a> gives you payment protection and a formal booking confirmation. You can also send an inquiry here or on WhatsApp to ask questions or check availability before booking.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Is Santiagos good for corporate team buildings?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Absolutely! The resort is ideal for <strong>team buildings, company outings, birthday parties, family reunions, and barkada trips</strong>. The variety of amenities — pool, sports, karaoke, games — ensures every person in your group stays engaged.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">What is the cancellation policy?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Cancellation terms are managed through the Airbnb platform. Please check the listing for the current policy before booking. For direct inquiries, contact us to discuss arrangements.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">How far is Santiagos from Manila?</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ai">Santiagos Resort is in Alfonso, Cavite — approximately <strong>1.5–2 hours from Metro Manila</strong> via SLEX and STAR Tollway, and about 15–20 minutes from Tagaytay City. Free parking is available on premises for the whole group.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS AT BOTTOM OF CONTACT PAGE -->
+<section class="contact-reviews">
+  <p class="tag">What Guests Say</p>
+  <h2 class="h2">Don't Just Take <em>Our Word</em> For It</h2>
+  <div class="rev-row">
+    <div class="rev-card rv">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"We had 28 people and everyone had the best time. The karaoke room was a total highlight — we were there until 2AM. The billiards and arcade kept the whole crew busy the entire day."</p>
+      <div class="rev-author"><div class="rev-avatar">R</div><div><div class="rev-name">Rica Santos</div><div class="rev-loc">Makati · Birthday Celebration</div></div></div>
+    </div>
+    <div class="rev-card rv">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Perfect team building venue. The variety of activities meant our whole company was engaged from morning to night. The bonfire wrapped up the day perfectly. Already planning our next visit."</p>
+      <div class="rev-author"><div class="rev-avatar">J</div><div><div class="rev-name">JM Reyes</div><div class="rev-loc">BGC · Team Building</div></div></div>
+    </div>
+    <div class="rev-card rv">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"The dining area with the Santiago's sign is absolutely stunning — everyone wanted a photo there. The design is so much better in person. A true hidden gem in Alfonso."</p>
+      <div class="rev-author"><div class="rev-avatar">L</div><div><div class="rev-name">Liza Mendoza</div><div class="rev-loc">Las Piñas · Birthday Party</div></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-primary">Book on Airbnb →</a>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+<script>
+const today=new Date().toISOString().split('T')[0];
+document.getElementById('fci').min=today;
+document.getElementById('fco').min=today;
+document.getElementById('fci').addEventListener('change',e=>document.getElementById('fco').min=e.target.value);
+</script>
+</body>
+</html>

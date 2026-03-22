@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Location & Nearby · Santiagos Resort</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.dir-bar{display:flex;gap:.9rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
+.dir-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:.75rem 1.2rem;display:flex;align-items:center;gap:.7rem}
+.dir-ic{font-size:1.1rem}
+.dir-info .lbl{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase}
+.dir-info .val{font-size:.85rem;color:var(--cream);font-weight:600}
+.map-wrap{border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden;height:460px;border-top:1px solid rgba(255,255,255,.08);margin-top:1rem}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.5rem}
+.tip{padding:1.7rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand)}
+.tip-ic{font-size:1.8rem;margin-bottom:.8rem;display:block}
+.tip h4{font-family:var(--ff-display);font-size:1rem;color:var(--ink);margin-bottom:.4rem;font-weight:600}
+.tip p{font-size:.8rem;color:var(--ink-soft);line-height:1.6;font-weight:300}
+@media(max-width:1100px){.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
+@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="pg-hero">
+  <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/e9fae679-5f90-4c28-9675-71c03be31de0.jpeg?im_w=1920')"></div>
+  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-body">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Location &amp; Nearby</div>
+    <h1>Location &amp; <em>Nearby</em></h1>
+    <p>Alfonso, Calabarzon — cool highlands, minutes from Tagaytay City.</p>
+  </div>
+</div>
+
+<!-- MAP -->
+<section class="dark-sec" style="padding-bottom:0">
+  <p class="tag">Find Us</p>
+  <h2 class="h2">Our <em>Location</em></h2>
+  <p class="lead">Alfonso, Cavite — a scenic highland town at ~600m elevation, 15 minutes from Tagaytay and about 1.5–2 hours from Metro Manila.</p>
+  <div class="dir-bar">
+    <div class="dir-card"><span class="dir-ic">🚗</span><div class="dir-info"><div class="lbl">From EDSA / Manila</div><div class="val">~1.5–2 hours</div></div></div>
+    <div class="dir-card"><span class="dir-ic">🏙️</span><div class="dir-info"><div class="lbl">From Tagaytay City</div><div class="val">~15–20 min</div></div></div>
+    <div class="dir-card"><span class="dir-ic">🌊</span><div class="dir-info"><div class="lbl">From Cavite City</div><div class="val">~45 min</div></div></div>
+    <div class="dir-card"><span class="dir-ic">🛣️</span><div class="dir-info"><div class="lbl">Best Route</div><div class="val">Via STAR Tollway</div></div></div>
+    <div class="dir-card"><span class="dir-ic">🚌</span><div class="dir-info"><div class="lbl">Public Transport</div><div class="val">Bus → tricycle</div></div></div>
+  </div>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31600.0!2d120.851!3d14.132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5a5e3fdea531%3A0x9b5b5fe74a7c3e4!2sAlfonso%2C%20Cavite%2C%20Philippines!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- NEARBY - pure CSS cards -->
+<section style="background:var(--bg)">
+  <p class="tag">Explore the Area</p>
+  <h2 class="h2">What's <em>Nearby</em></h2>
+  <p class="lead">Santiagos Resort puts you right in the heart of Cavite's most scenic destinations. All within easy reach during your stay.</p>
+
+  <div class="nb-grid">
+    <div class="nb-card nb-taal rv">
+      <div class="nb-visual">
+        <div class="nb-emoji">🌋</div>
+        <div class="nb-dist-tag">🌋 ~30 min away</div>
+      </div>
+      <div class="nb-body">
+        <div class="nb-name">Taal Volcano &amp; Lake</div>
+        <p class="nb-desc">One of the world's most unique geological wonders — a volcano island within a lake, within a larger island. Take a boat across Taal Lake for breathtaking close-up views. One of the Philippines' most iconic landmarks, right in your backyard.</p>
+        <div class="nb-tags"><span class="nb-tag">Nature</span><span class="nb-tag">Scenic View</span><span class="nb-tag">Day Trip</span><span class="nb-tag">Photography</span></div>
+      </div>
+    </div>
+    <div class="nb-card nb-tagaytay rv">
+      <div class="nb-visual">
+        <div class="nb-emoji">🌄</div>
+        <div class="nb-dist-tag">🌄 ~15–20 min away</div>
+      </div>
+      <div class="nb-body">
+        <div class="nb-name">Tagaytay City Ridge</div>
+        <p class="nb-desc">Famous for its cool climate (18–24°C), panoramic views of Taal Lake and Volcano, and vibrant dining scene. Walk along the ridge, dine at cliff-side restaurants, and enjoy Tagaytay's legendary <em>bulalo</em> and fresh strawberry taho.</p>
+        <div class="nb-tags"><span class="nb-tag">Dining</span><span class="nb-tag">Scenic View</span><span class="nb-tag">Shopping</span><span class="nb-tag">Cool Climate</span></div>
+      </div>
+    </div>
+    <div class="nb-card nb-sky rv">
+      <div class="nb-visual">
+        <div class="nb-emoji">🎡</div>
+        <div class="nb-dist-tag">🎡 ~20 min away</div>
+      </div>
+      <div class="nb-body">
+        <div class="nb-name">Sky Ranch Tagaytay</div>
+        <p class="nb-desc">A family-favorite amusement park perched above the Taal Ridge. Ride the iconic Sky Eye Ferris wheel for 360° views of the lake and volcano. Fun rides, games, and attractions for kids and adults alike — great for large groups.</p>
+        <div class="nb-tags"><span class="nb-tag">Family</span><span class="nb-tag">Amusement Park</span><span class="nb-tag">Views</span><span class="nb-tag">All Ages</span></div>
+      </div>
+    </div>
+    <div class="nb-card nb-alfonso rv">
+      <div class="nb-visual">
+        <div class="nb-emoji">☕</div>
+        <div class="nb-dist-tag">☕ ~5 min away</div>
+      </div>
+      <div class="nb-body">
+        <div class="nb-name">Alfonso Town Proper</div>
+        <p class="nb-desc">Known as the <strong>"Coffee Capital of Cavite"</strong> — a charming highland town with local coffee farms, farm-to-table restaurants, fresh produce markets, and quaint cafes. Perfect for a relaxed morning stroll before or after your stay.</p>
+        <div class="nb-tags"><span class="nb-tag">Coffee</span><span class="nb-tag">Local Food</span><span class="nb-tag">Farm Visits</span><span class="nb-tag">Chill Vibes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVEL TIPS -->
+<section style="background:var(--bg-alt)">
+  <p class="tag">Travel Tips</p>
+  <h2 class="h2">Getting Here &amp; <em>Around</em></h2>
+  <div class="tips-grid">
+    <div class="tip rv"><span class="tip-ic">🚗</span><h4>Best Way to Get Here</h4><p>Driving is most convenient. Take SLEX or CAVITEX then STAR Tollway to Alfonso. Use Waze for exact directions. Free parking on premises for multiple vehicles.</p></div>
+    <div class="tip rv"><span class="tip-ic">🌡️</span><h4>Weather &amp; Climate</h4><p>Alfonso sits at ~600m elevation — expect refreshing 18–24°C year-round. Perfect for pool days without the Metro Manila heat. Bring a light jacket for evenings.</p></div>
+    <div class="tip rv"><span class="tip-ic">🛒</span><h4>Stocking Up</h4><p>Groceries and wet market are 5 minutes away in Alfonso town. Larger supermarkets are 20 minutes away in Tagaytay City. Stock up before checking in.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:3rem">
+    <a href="contact.html" class="btn btn-primary">Book Your Stay →</a>
+    <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-outline" style="margin-left:1rem">View on Airbnb</a>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Amenities · Santiagos Resort</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* Photo amenity grid */
+.am-sec{background:var(--bg)}
+/* Highlights with real photos */
+.hl-2col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.hl-photo{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xl)}
+.hl-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s}
+.hl-photo:hover img{transform:scale(1.03)}
+.hl-text p{font-size:.93rem;color:var(--ink-soft);line-height:1.85;font-weight:300;margin-bottom:1rem}
+.hl-list{display:flex;flex-direction:column;gap:.8rem;margin-top:1.2rem}
+.hl-row{display:flex;align-items:flex-start;gap:.8rem;padding:.9rem 1rem;background:var(--bg-alt);border-radius:var(--r);border:1px solid var(--sand);transition:all .2s}
+.hl-row:hover{border-color:var(--terra);box-shadow:var(--sh-sm)}
+.hl-row-ic{font-size:1.2rem;flex-shrink:0}
+.hl-row-body h4{font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.15rem}
+.hl-row-body p{font-size:.78rem;color:var(--ink-soft);font-weight:300}
+
+/* Full amenity list */
+.am-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem}
+.am-item{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand);transition:all .2s}
+.am-item:hover{border-color:var(--terra);transform:translateX(4px);box-shadow:var(--sh-sm)}
+.am-item-ic{font-size:1.5rem;flex-shrink:0}
+.am-item-name{font-size:.85rem;font-weight:600;color:var(--ink)}
+.am-item-desc{font-size:.75rem;color:var(--ink-soft);margin-top:.1rem;font-weight:300}
+
+/* Things to know */
+.ttk-sec{background:var(--bg-alt)}
+.ttk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.ttk-card{padding:1.8rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand)}
+.ttk-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.ttk-head-ic{width:40px;height:40px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ttk-head h4{font-family:var(--ff-display);font-size:1rem;color:var(--ink);font-weight:600}
+.ttk-items{display:flex;flex-direction:column;gap:.6rem}
+.ttk-item{font-size:.82rem;color:var(--ink-soft);display:flex;align-items:flex-start;gap:.5rem;font-weight:300}
+.ttk-item::before{content:'→';color:var(--terra);font-weight:700;flex-shrink:0}
+
+/* House rules */
+.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.5rem}
+.rule-card{display:flex;gap:1rem;padding:1.7rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand)}
+.r-ic{width:44px;height:44px;border-radius:50%;background:var(--sand);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.r-body h4{font-family:var(--ff-display);font-size:1rem;color:var(--ink);margin-bottom:.4rem;font-weight:600}
+.r-body p{font-size:.8rem;color:var(--ink-soft);line-height:1.55;font-weight:300}
+
+@media(max-width:1100px){.hl-2col{grid-template-columns:1fr}.am-full-grid{grid-template-columns:1fr 1fr}.ttk-grid{grid-template-columns:1fr}.rules-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.am-full-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pg-hero">
+  <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/efa63c44-7255-4a55-a1b6-cebe5482b50f.jpeg?im_w=1920')"></div>
+  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-body">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Amenities</div>
+    <h1>Our <em>Amenities</em></h1>
+    <p>22+ amenities — all included in your rate. Pool, karaoke, arcade, gym &amp; more.</p>
+  </div>
+</div>
+
+<!-- BILLIARDS & ARCADE HIGHLIGHT -->
+<section class="am-sec">
+  <p class="tag">Game Room</p>
+  <h2 class="h2">Billiards &amp; <em>Arcade</em></h2>
+  <div class="hl-2col">
+    <div class="hl-photo rv-l">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/efa63c44-7255-4a55-a1b6-cebe5482b50f.jpeg?im_w=1920" alt="Billiards and arcade room"/>
+    </div>
+    <div class="rv-r">
+      <p>The game room is one of the standout spaces at Santiagos Resort — a full-size Kangaroo billiards table sits center stage, flanked by classic arcade cabinets including <strong>Street Fighter and NBA Jam</strong>. The exposed brick walls and industrial lighting set the perfect mood.</p>
+      <div class="hl-list">
+        <div class="hl-row"><div class="hl-row-ic">🎱</div><div class="hl-row-body"><h4>Full-Size Billiards Table</h4><p>Professional Kangaroo pool table — equipment included</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">🕹️</div><div class="hl-row-body"><h4>Arcade Machines</h4><p>Street Fighter, NBA Jam &amp; more — retro classics for all ages</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">❄️</div><div class="hl-row-body"><h4>Air-Conditioned</h4><p>Stay cool while you play — dedicated A/C unit in the game room</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KARAOKE HIGHLIGHT -->
+<section style="background:var(--bg-alt)">
+  <p class="tag">Entertainment</p>
+  <h2 class="h2">Karaoke <em>Lounge</em></h2>
+  <div class="hl-2col" style="direction:rtl">
+    <div class="hl-photo rv-r" style="direction:ltr">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/34cbfa30-4591-469a-8bb0-e9e1ea6e3d38.jpeg?im_w=1920" alt="Karaoke lounge"/>
+    </div>
+    <div class="rv-l" style="direction:ltr">
+      <p>The karaoke lounge is a Filipino group trip essential — and Santiagos delivers. A large-screen TV, Bluetooth speaker setup, full sofa seating, and a wall-to-wall gallery of iconic music posters (Queen, Rolling Stones, Stevie Wonder, Bob Marley) set the ultimate mood for a night of singing.</p>
+      <div class="hl-list">
+        <div class="hl-row"><div class="hl-row-ic">🎤</div><div class="hl-row-body"><h4>Dedicated Karaoke Room</h4><p>Full screen TV with karaoke setup &amp; speakers</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">🛋️</div><div class="hl-row-body"><h4>Sectional Sofa Seating</h4><p>Large L-shaped sofa fits your whole group comfortably</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">🎵</div><div class="hl-row-body"><h4>Music Poster Gallery Wall</h4><p>Iconic artwork from rock &amp; pop legends — pure atmosphere</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DINING HIGHLIGHT -->
+<section class="am-sec">
+  <p class="tag">Dining &amp; Kitchen</p>
+  <h2 class="h2">Dining Area &amp; <em>Kitchen</em></h2>
+  <div class="hl-2col">
+    <div class="hl-photo rv-l">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Dining area with Santiago's sign"/>
+    </div>
+    <div class="rv-r">
+      <p>The outdoor-covered dining area is a showpiece — a long glass dining table with premium rattan chairs, statement pendant lights, and the iconic <strong>Santiago's gold signature sign</strong> on the wall. The full kitchen behind is equipped for cooking meals for the whole group.</p>
+      <div class="hl-list">
+        <div class="hl-row"><div class="hl-row-ic">🍽️</div><div class="hl-row-body"><h4>Large Dining Table</h4><p>Seats your whole group — glass top with rattan chairs</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">🍳</div><div class="hl-row-body"><h4>Full Kitchen</h4><p>Fully equipped — cook meals and snacks for everyone</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">✨</div><div class="hl-row-body"><h4>The Santiago's Sign</h4><p>Iconic gold signature — the most photographed spot at the resort</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POOL HIGHLIGHT -->
+<section style="background:var(--bg-alt)">
+  <p class="tag">Pool</p>
+  <h2 class="h2">Swimming <em>Pool</em></h2>
+  <div class="hl-2col" style="direction:rtl">
+    <div class="hl-photo rv-r" style="direction:ltr">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/51364ca8-54b3-4f0b-9840-3f92171707eb.jpeg?im_w=1920" alt="Swimming pool"/>
+    </div>
+    <div class="rv-l" style="direction:ltr">
+      <p>One of the few private pools in the Alfonso area — perfect for group swims, floating, and cooling off in the Tagaytay highland air. The industrial container aesthetic surrounds the pool, making every shot look like a magazine spread.</p>
+      <div class="hl-list">
+        <div class="hl-row"><div class="hl-row-ic">🏊</div><div class="hl-row-body"><h4>Private Swimming Pool</h4><p>One of the few in Alfonso — all yours for your entire stay</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">📸</div><div class="hl-row-body"><h4>Instagram-Worthy Setting</h4><p>Industrial container architecture frames every shot beautifully</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic">🌡️</div><div class="hl-row-body"><h4>Cool Highland Climate</h4><p>18–24°C pool experience — refreshing without being freezing</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL AMENITIES -->
+<section class="dark-sec">
+  <p class="tag">Complete List</p>
+  <h2 class="h2">All <em>22+</em> Amenities</h2>
+  <p class="lead">Every amenity below is included in your nightly rate — no hidden extras.</p>
+  <div class="am-full-grid">
+    <div class="am-item rv"><div class="am-item-ic">🏊</div><div><div class="am-item-name">Swimming Pool</div><div class="am-item-desc">Private · one of few in Alfonso</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🎤</div><div><div class="am-item-name">Karaoke Lounge</div><div class="am-item-desc">Dedicated room with full setup</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🎱</div><div><div class="am-item-name">Billiards Table</div><div class="am-item-desc">Full-size Kangaroo pool table</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🕹️</div><div><div class="am-item-name">Arcade Games</div><div class="am-item-desc">Street Fighter, NBA Jam &amp; more</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">💪</div><div><div class="am-item-name">Gym &amp; Fitness</div><div class="am-item-desc">Basic equipment for the crew</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🏀</div><div><div class="am-item-name">Basketball Court</div><div class="am-item-desc">Half-court for team games</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🔥</div><div><div class="am-item-name">Bonfire Area</div><div class="am-item-desc">Stories under the stars</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🍳</div><div><div class="am-item-name">Full Kitchen</div><div class="am-item-desc">Fully equipped for group cooking</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">📶</div><div><div class="am-item-name">Free Wi-Fi</div><div class="am-item-desc">High-speed internet throughout</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🚗</div><div><div class="am-item-name">Free Parking</div><div class="am-item-desc">On-premises for multiple vehicles</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">📺</div><div><div class="am-item-name">TV</div><div class="am-item-desc">Smart TV for streaming &amp; movies</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🛏️</div><div><div class="am-item-name">4 Bedrooms · 20 Beds</div><div class="am-item-desc">Comfortable sleep for the whole group</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🚿</div><div><div class="am-item-name">8 Bathrooms</div><div class="am-item-desc">No queuing for big groups</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">❄️</div><div><div class="am-item-name">Air Conditioning</div><div class="am-item-desc">In game room &amp; sleeping areas</div></div></div>
+    <div class="am-item rv"><div class="am-item-ic">🌿</div><div><div class="am-item-name">Outdoor Spaces</div><div class="am-item-desc">Grounds for relaxing &amp; socializing</div></div></div>
+  </div>
+</section>
+
+<!-- THINGS TO KNOW -->
+<section class="ttk-sec">
+  <p class="tag">Good to Know</p>
+  <h2 class="h2">Things to <em>Know</em></h2>
+  <div class="ttk-grid">
+    <div class="ttk-card rv">
+      <div class="ttk-head"><div class="ttk-head-ic">⏰</div><h4>Check-in &amp; Checkout</h4></div>
+      <div class="ttk-items">
+        <div class="ttk-item">Check-in is available after 3:00 PM</div>
+        <div class="ttk-item">Checkout is before 12:00 PM (noon)</div>
+        <div class="ttk-item">Early check-in or late checkout may be available on request</div>
+      </div>
+    </div>
+    <div class="ttk-card rv">
+      <div class="ttk-head"><div class="ttk-head-ic">👥</div><h4>Guest Policy</h4></div>
+      <div class="ttk-items">
+        <div class="ttk-item">Base rate covers up to 30 guests</div>
+        <div class="ttk-item">Up to 40 guests accepted at ₱1,000 per extra head</div>
+        <div class="ttk-item">Please declare your full headcount when booking</div>
+      </div>
+    </div>
+    <div class="ttk-card rv">
+      <div class="ttk-head"><div class="ttk-head-ic">🏠</div><h4>House Rules</h4></div>
+      <div class="ttk-items">
+        <div class="ttk-item">No pets on the property</div>
+        <div class="ttk-item">Please keep the space clean and respectful</div>
+        <div class="ttk-item">All amenities are for registered guests only</div>
+      </div>
+    </div>
+    <div class="ttk-card rv">
+      <div class="ttk-head"><div class="ttk-head-ic">💡</div><h4>Safety Notes</h4></div>
+      <div class="ttk-items">
+        <div class="ttk-item">Smoke alarm not present — please note for your planning</div>
+        <div class="ttk-item">Carbon monoxide alarm not reported on the property</div>
+        <div class="ttk-item">Guests may bring portable safety devices if preferred</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem">
+    <a href="contact.html" class="btn btn-primary">Check Availability →</a>
+    <a href="packages.html" class="btn btn-outline" style="margin-left:1rem">View Rates</a>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+</body>
+</html>

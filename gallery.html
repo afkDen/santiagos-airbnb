@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gallery · Santiagos Resort</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.gfilters{display:flex;gap:.6rem;flex-wrap:wrap;margin:2.2rem 0 1.5rem}
+.gf{padding:.4rem 1.1rem;border:1.5px solid var(--sand);background:transparent;border-radius:var(--r-pill);font-size:.68rem;color:var(--ink-soft);letter-spacing:.06em;font-weight:600;transition:all .2s}
+.gf:hover,.gf.on{background:var(--terra);border-color:var(--terra);color:#fff}
+.masonry{columns:3;column-gap:10px}
+.m-item{break-inside:avoid;margin-bottom:10px;overflow:hidden;border-radius:var(--r);cursor:zoom-in;position:relative;background:var(--sand)}
+.m-item img{width:100%;display:block;transition:transform .55s}
+.m-item:hover img{transform:scale(1.04)}
+.m-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,15,7,.6) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem}
+.m-item:hover .m-overlay{opacity:1}
+.m-cat{display:inline-block;font-size:.58rem;background:var(--terra);color:#fff;padding:.16rem .5rem;border-radius:10px;margin-bottom:.3rem;letter-spacing:.08em;text-transform:uppercase}
+.m-lbl{font-size:.72rem;color:rgba(255,255,255,.88);display:block}
+.feat-strip{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;margin-bottom:10px}
+.feat-strip .m-item img{height:400px;width:100%;object-fit:cover}
+@media(max-width:1024px){.masonry{columns:2}.feat-strip{grid-template-columns:1fr}}
+@media(max-width:640px){.masonry{columns:1}}
+</style>
+</head>
+<body>
+<div class="pg-hero">
+  <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920')"></div>
+  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-body">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Gallery</div>
+    <h1>Photo <em>Gallery</em></h1>
+    <p>Every corner of Santiagos Resort, captured in detail.</p>
+  </div>
+</div>
+
+<section>
+  <p class="tag">Browse Photos</p>
+  <h2 class="h2">See What <em>Awaits</em> You</h2>
+  <div class="gfilters">
+    <button class="gf on" data-f="all">All Photos</button>
+    <button class="gf" data-f="exterior">Exterior</button>
+    <button class="gf" data-f="interior">Interior</button>
+    <button class="gf" data-f="amenities">Amenities</button>
+    <button class="gf" data-f="pool">Pool</button>
+  </div>
+
+  <div class="feat-strip">
+    <div class="m-item" data-c="exterior" onclick="lbOpen(0,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920" alt="Resort exterior"/>
+      <div class="m-overlay"><div><span class="m-cat">Exterior</span><span class="m-lbl">Resort Exterior · Industrial Chic Container Design</span></div></div>
+    </div>
+    <div class="m-item" data-c="interior" onclick="lbOpen(8,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Dining area"/>
+      <div class="m-overlay"><div><span class="m-cat">Dining</span><span class="m-lbl">Dining Area with Santiago's Signature</span></div></div>
+    </div>
+  </div>
+
+  <div class="masonry" id="masonry">
+    <div class="m-item" data-c="amenities" onclick="lbOpen(5,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/efa63c44-7255-4a55-a1b6-cebe5482b50f.jpeg?im_w=1920" alt="Billiards"/>
+      <div class="m-overlay"><div><span class="m-cat">Game Room</span><span class="m-lbl">Billiards Table &amp; Arcade Machines</span></div></div>
+    </div>
+    <div class="m-item" data-c="pool" onclick="lbOpen(2,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/51364ca8-54b3-4f0b-9840-3f92171707eb.jpeg?im_w=1920" alt="Pool"/>
+      <div class="m-overlay"><div><span class="m-cat">Pool</span><span class="m-lbl">Swimming Pool · One of Few in Alfonso</span></div></div>
+    </div>
+    <div class="m-item" data-c="amenities" onclick="lbOpen(7,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/34cbfa30-4591-469a-8bb0-e9e1ea6e3d38.jpeg?im_w=1920" alt="Karaoke"/>
+      <div class="m-overlay"><div><span class="m-cat">Karaoke</span><span class="m-lbl">Karaoke Lounge with Music Poster Gallery</span></div></div>
+    </div>
+    <div class="m-item" data-c="interior" onclick="lbOpen(9,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/cd39776f-1169-40fd-9f97-acc3c480ec90.jpeg?im_w=1920" alt="Lounge"/>
+      <div class="m-overlay"><div><span class="m-cat">Lounge</span><span class="m-lbl">Living &amp; Lounge Area</span></div></div>
+    </div>
+    <div class="m-item" data-c="exterior" onclick="lbOpen(11,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/5f3c7ae0-83d1-4d7e-80ee-8882caeafb41.jpeg?im_w=1920" alt="Resort views"/>
+      <div class="m-overlay"><div><span class="m-cat">Exterior</span><span class="m-lbl">Resort Views</span></div></div>
+    </div>
+    <div class="m-item" data-c="interior" onclick="lbOpen(1,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6043831d-e9d1-4e7d-a501-1876e1e88edf.jpeg?im_w=1920" alt="Main area"/>
+      <div class="m-overlay"><div><span class="m-cat">Interior</span><span class="m-lbl">Main Living Area</span></div></div>
+    </div>
+    <div class="m-item" data-c="pool" onclick="lbOpen(12,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/269a1081-43b6-4179-b104-e446e4878e29.jpeg?im_w=1920" alt="Pool 2"/>
+      <div class="m-overlay"><div><span class="m-cat">Pool</span><span class="m-lbl">Pool Area</span></div></div>
+    </div>
+    <div class="m-item" data-c="amenities" onclick="lbOpen(6,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/422ade24-d533-4620-94ef-2f2311c99066.jpeg?im_w=1920" alt="Arcade"/>
+      <div class="m-overlay"><div><span class="m-cat">Arcade</span><span class="m-lbl">Arcade &amp; Games Room</span></div></div>
+    </div>
+    <div class="m-item" data-c="exterior" onclick="lbOpen(4,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/e9fae679-5f90-4c28-9675-71c03be31de0.jpeg?im_w=1920" alt="Outdoor grounds"/>
+      <div class="m-overlay"><div><span class="m-cat">Grounds</span><span class="m-lbl">Outdoor Grounds &amp; Open Spaces</span></div></div>
+    </div>
+    <div class="m-item" data-c="interior" onclick="lbOpen(3,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ffd5ba89-7c68-48ed-bca7-529add0f6b8e.jpeg?im_w=1920" alt="Indoor"/>
+      <div class="m-overlay"><div><span class="m-cat">Interior</span><span class="m-lbl">Indoor Chill Spaces</span></div></div>
+    </div>
+    <div class="m-item" data-c="amenities" onclick="lbOpen(13,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/0b3fcbdd-4ad1-459b-8dd3-786a774c8521.jpeg?im_w=1920" alt="Kitchen"/>
+      <div class="m-overlay"><div><span class="m-cat">Kitchen</span><span class="m-lbl">Full Equipped Kitchen</span></div></div>
+    </div>
+    <div class="m-item" data-c="exterior" onclick="lbOpen(0,GALLERY_IMGS)">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/8d5c0226-0717-4fe1-9a76-88c002944ec1.jpeg?im_w=1920" alt="Exterior 3"/>
+      <div class="m-overlay"><div><span class="m-cat">Exterior</span><span class="m-lbl">Resort Architecture</span></div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--cream);border-radius:var(--r-lg);border:1px dashed var(--sand)">
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:1rem">📸 More photos on our Airbnb listing — check back as we keep updating the gallery!</p>
+    <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-primary">View on Airbnb →</a>
+  </div>
+</section>
+
+<div id="lb"><button class="lb-x" onclick="lbClose()">✕</button><button class="lb-arr lb-prev" onclick="lbShift(-1);event.stopPropagation()">&#8592;</button><img id="lb-img" src="" alt=""/><button class="lb-arr lb-next" onclick="lbShift(1);event.stopPropagation()">&#8594;</button><div class="lb-info" id="lb-info"></div></div>
+
+<script src="js/app.js"></script>
+<script>
+document.querySelectorAll('.gf').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.gf').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.m-item,.feat-strip .m-item').forEach(el=>{
+    const show=f==='all'||el.dataset.c===f;
+    el.style.opacity=show?'1':'0.12';
+    el.style.pointerEvents=show?'all':'none';
+    el.style.transition='opacity .3s';
+  });
+}));
+</script>
+</body>
+</html>
