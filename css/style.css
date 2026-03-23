@@ -287,6 +287,64 @@ section{padding:5.5rem 3.5rem}
 .ft-legal a{font-size:.7rem;color:rgba(255,255,255,.2);transition:color .2s}
 .ft-legal a:hover{color:var(--terra-lt)}
 
+/* ── BACK TO TOP ── */
+#back-top{position:fixed;bottom:6.5rem;right:2rem;z-index:700;width:44px;height:44px;border-radius:50%;background:var(--ink);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transform:translateY(80px);opacity:0;transition:all .4s var(--ease-bounce)}
+#back-top.show{transform:translateY(0);opacity:1}
+#back-top:hover{background:var(--terra);border-color:var(--terra);color:#fff}
+
+/* ── PAGE TRANSITION ── */
+.page-out{animation:pageOut .25s ease forwards}
+@keyframes pageOut{to{opacity:0;transform:translateY(12px)}}
+body{animation:pageIn .4s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── IMAGE SKELETON LOADER ── */
+.img-wrap{position:relative;background:var(--sand);overflow:hidden;border-radius:inherit}
+.img-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,rgba(255,255,255,.4) 50%,transparent 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;z-index:1;opacity:0;transition:opacity .2s}
+.img-wrap.loading::before{opacity:1}
+.img-wrap img{transition:opacity .4s;position:relative;z-index:2}
+.img-wrap.loading img{opacity:0}
+.img-wrap.loaded img{opacity:1}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ── PRINT STYLES ── */
+@media print{
+  #nav,#footer,#float-pill,#wa,#back-top,#splash,.marquee-bar,.cta-band,.hero-dots,.hero-ctr,#announce{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  section{padding:1.5rem 0;page-break-inside:avoid}
+  .pkg-grid{grid-template-columns:repeat(3,1fr)}
+  .pkg{border:1px solid #ccc;page-break-inside:avoid}
+  h1,h2,h3{color:#000}
+  a{color:#000;text-decoration:none}
+  .btn{display:none}
+  .pg-hero{display:none}
+  .stats-bar{background:#f5f5f5;break-inside:avoid}
+  .st-num{color:#c07a4f}
+}
+
+/* ── SHARE BUTTON (global) ── */
+.share-fab{position:fixed;bottom:10rem;right:2rem;z-index:700;width:44px;height:44px;border-radius:50%;background:var(--forest);border:none;color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(61,82,41,.4);transition:all .3s}
+.share-fab:hover{background:var(--forest-lt);transform:scale(1.1)}
+.share-dropdown{position:fixed;bottom:14.8rem;right:1.5rem;z-index:700;background:var(--ink);border-radius:var(--r-lg);padding:.8rem;box-shadow:var(--sh-xl);display:none;flex-direction:column;gap:.4rem;min-width:160px;border:1px solid rgba(255,255,255,.1)}
+.share-dropdown.open{display:flex}
+.sd-item{display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:var(--r);font-size:.75rem;color:rgba(255,255,255,.8);cursor:pointer;transition:background .2s;border:none;background:transparent;text-align:left;width:100%}
+.sd-item:hover{background:rgba(255,255,255,.08)}
+
+/* ── STICKY BOTTOM CTA (amenities page) ── */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--ink);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.08);transform:translateY(100%);transition:transform .4s var(--ease-bounce)}
+.sticky-cta.show{transform:translateY(0)}
+.sc-text{font-size:.78rem;color:rgba(255,255,255,.55)}
+.sc-text strong{color:#fff;display:block;font-size:.88rem}
+.sc-btns{display:flex;gap:.7rem;flex-shrink:0}
+
+/* ── CHECKLIST / BRING LIST ── */
+.bring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.5rem 0}
+.bring-item{display:flex;align-items:center;gap:.5rem;padding:.65rem .9rem;background:var(--cream);border:1.5px solid var(--sand);border-radius:var(--r);font-size:.8rem;color:var(--ink-soft);cursor:pointer;transition:all .2s;user-select:none}
+.bring-item:hover{border-color:var(--terra)}
+.bring-item.checked{border-color:var(--forest);background:rgba(61,82,41,.06)}
+.bring-check{width:16px;height:16px;border-radius:3px;border:2px solid var(--sand);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.62rem;transition:all .2s}
+.bring-item.checked .bring-check{background:var(--forest);border-color:var(--forest);color:#fff}
+
 /* RESPONSIVE */
 @media(max-width:1100px){
   section{padding:4.5rem 2.5rem}

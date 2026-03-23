@@ -145,6 +145,9 @@ const WA_URL = 'https://wa.me/639XXXXXXXXX?text=Hi!+Im+interested+in+booking+San
 /* ── NAV HTML ── */
 const NAV_HTML = `
 <div id="progress-bar"></div>
+<div id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<div class="share-dropdown" id="shareDropdown"><button class="sd-item" onclick="doShare('copy')">🔗 Copy Link</button><button class="sd-item" onclick="doShare('whatsapp')">💬 WhatsApp</button><button class="sd-item" onclick="doShare('viber')">📲 Viber</button></div>
+<button class="share-fab" id="shareFab" onclick="toggleShareMenu()">⤴</button>
 <div id="splash">
   <div class="sp-logo">Santiagos <em>Resort</em></div>
   <div class="sp-tagline">Alfonso · Tagaytay · Philippines</div>
@@ -156,6 +159,7 @@ const NAV_HTML = `
   <a href="amenities.html" onclick="closeMob()">Amenities</a>
   <a href="packages.html" onclick="closeMob()">Packages</a>
   <a href="location.html" onclick="closeMob()">Location</a>
+  <a href="events.html" onclick="closeMob()">Events</a>
   <a href="contact.html" class="mob-book" onclick="closeMob()">Book Now</a>
 </div>
 <nav id="nav">
@@ -166,6 +170,7 @@ const NAV_HTML = `
     <li><a href="amenities.html" data-p="amenities.html">Amenities</a></li>
     <li><a href="packages.html" data-p="packages.html">Packages</a></li>
     <li><a href="location.html" data-p="location.html">Location</a></li>
+    <li><a href="events.html" data-p="events.html">Events</a></li>
     <li><a href="contact.html" class="nav-book">Book Now</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMob()">
@@ -206,6 +211,7 @@ const FOOTER_HTML = `
         <li><a href="amenities.html">Amenities</a></li>
         <li><a href="packages.html">Packages &amp; Rates</a></li>
         <li><a href="location.html">Location &amp; Nearby</a></li>
+        <li><a href="events.html">Events &amp; Occasions</a></li>
         <li><a href="contact.html">Book Now</a></li>
       </ul>
     </div>
@@ -346,3 +352,94 @@ function validateForm(fId,sId){
   const s=document.getElementById(sId);
   if(s)s.style.display='block';
 }
+
+/* ── BACK TO TOP ── */
+function initBackTop() {
+  const bt = document.getElementById('back-top');
+  if (!bt) return;
+  window.addEventListener('scroll', () => bt.classList.toggle('show', window.scrollY > 400), {passive:true});
+}
+
+/* ── SHARE FAB ── */
+function toggleShareMenu() {
+  const d = document.getElementById('shareDropdown');
+  if (d) d.classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  const d = document.getElementById('shareDropdown');
+  const f = document.getElementById('shareFab');
+  if (d && !d.contains(e.target) && !f?.contains(e.target)) d.classList.remove('open');
+});
+function doShare(platform) {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay! 🏊🎤');
+  const d = document.getElementById('shareDropdown');
+  if (d) d.classList.remove('open');
+  if (platform === 'copy') {
+    navigator.clipboard?.writeText(window.location.href).then(() => {
+      const f = document.getElementById('shareFab');
+      if(f){const old=f.textContent;f.textContent='✓';setTimeout(()=>f.textContent=old,2000);}
+    });
+  } else if (platform === 'whatsapp') window.open('https://wa.me/?text='+text+'%20'+url,'_blank');
+  else if (platform === 'messenger') window.open('https://www.facebook.com/dialog/send?link='+url+'&app_id=123456','_blank');
+  else if (platform === 'viber') window.open('viber://forward?text='+text+'%20'+url);
+}
+
+/* ── IMAGE SKELETON LOADERS ── */
+function initSkeletons() {
+  document.querySelectorAll('img[src]').forEach(img => {
+    const wrap = img.closest('.img-wrap');
+    if (!wrap) return;
+    wrap.classList.add('loading');
+    img.addEventListener('load', () => { wrap.classList.remove('loading'); wrap.classList.add('loaded'); });
+    img.addEventListener('error', () => { wrap.classList.remove('loading'); });
+  });
+}
+
+/* ── STICKY CTA (amenities page) ── */
+function initStickyCTA() {
+  const sc = document.getElementById('sticky-cta');
+  if (!sc) return;
+  const trigger = document.querySelector('[data-sticky-trigger]');
+  if (!trigger) return;
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => sc.classList.toggle('show', !e.isIntersecting));
+  }, { threshold: 0 });
+  obs.observe(trigger);
+}
+
+/* ── OCCASION PARAM PRE-FILL ── */
+function initOccasionParam() {
+  const params = new URLSearchParams(window.location.search);
+  const occ = params.get('occasion');
+  if (!occ) return;
+  const sel = document.getElementById('foccasion') || document.querySelector('select[name="occasion"]');
+  if (!sel) return;
+  const map = {birthday:'Birthday Party',barkada:'Barkada Trip',family:'Family Reunion',teambuilding:'Team Building',corporate:'Company Outing'};
+  const val = map[occ];
+  if (!val) return;
+  Array.from(sel.options).forEach(o => { if (o.text === val) o.selected = true; });
+}
+
+/* ── PAGE TRANSITION LINKS ── */
+function initPageTransitions() {
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.classList.add('page-out');
+      setTimeout(() => window.location.href = href, 220);
+    });
+  });
+}
+
+// Add to DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  initBackTop();
+  initSkeletons();
+  initStickyCTA();
+  initOccasionParam();
+  // Page transitions — slight delay to not block normal loads
+  setTimeout(initPageTransitions, 100);
+}, {once: false}); // runs alongside existing listener
