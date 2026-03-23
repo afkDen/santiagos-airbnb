@@ -326,79 +326,61 @@
 const B = 'https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/';
 const Q = '.jpeg?im_w=1920';
 
-// Dedicated bedroom lightbox array (8 unique bedroom photos)
 const BED_IMGS = [
-  {src: B+'1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c'+Q, label:'Bedroom'},
-  {src: B+'7fdad08c-cd56-4bd8-9913-df31206d2a71'+Q, label:'Bedroom'},
-  {src: B+'412ac041-c128-4dcb-be95-9613525155ac'+Q, label:'Bedroom'},
-  {src: B+'a7a5da0a-0cca-4155-a690-85d8a35d5073'+Q, label:'Bedroom'},
-  {src: B+'a416db78-e791-485f-99cd-681dfc37c943'+Q, label:'Bedroom'},
-  {src: B+'c7314967-2138-4874-bf9c-036713e1e84f'+Q, label:'Bedroom'},
-  {src: B+'1eea7c15-e6bc-480f-9049-7a7ca831306a'+Q, label:'Bedroom'},
-  {src: B+'231f8e62-c8af-4ab9-ab7b-749426418278'+Q, label:'Bedroom'},
+  {src:B+'1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c'+Q,label:'Bedroom'},
+  {src:B+'7fdad08c-cd56-4bd8-9913-df31206d2a71'+Q,label:'Bedroom'},
+  {src:B+'412ac041-c128-4dcb-be95-9613525155ac'+Q,label:'Bedroom'},
+  {src:B+'a7a5da0a-0cca-4155-a690-85d8a35d5073'+Q,label:'Bedroom'},
+  {src:B+'a416db78-e791-485f-99cd-681dfc37c943'+Q,label:'Bedroom'},
+  {src:B+'c7314967-2138-4874-bf9c-036713e1e84f'+Q,label:'Bedroom'},
+  {src:B+'1eea7c15-e6bc-480f-9049-7a7ca831306a'+Q,label:'Bedroom'},
+  {src:B+'231f8e62-c8af-4ab9-ab7b-749426418278'+Q,label:'Bedroom'},
 ];
 
-// Dedicated bathroom lightbox array (7 unique bathroom photos)
 const BATH_IMGS = [
-  {src: B+'6a64f515-0249-440e-937b-73fe1cc63898'+Q, label:'Bathroom'},
-  {src: B+'7bd29da9-1398-456e-81ab-7f3f06a8b10f'+Q, label:'Bathroom'},
-  {src: B+'380a4b0e-bc04-4540-8ab5-3446055037b4'+Q, label:'Bathroom'},
-  {src: B+'01672d22-f62b-4081-9372-e090179020ca'+Q, label:'Bathroom'},
-  {src: B+'73e7dd06-2f9b-479e-8925-0a24bf769a9c'+Q, label:'Bathroom'},
-  {src: B+'5444278e-4394-474a-aa9f-e233672be193'+Q, label:'Bathroom'},
-  {src: B+'edf6c0b7-2c0d-416a-895b-ae85e5455368'+Q, label:'Outdoor Bathroom'},
+  {src:B+'6a64f515-0249-440e-937b-73fe1cc63898'+Q,label:'Bathroom 1'},
+  {src:B+'7bd29da9-1398-456e-81ab-7f3f06a8b10f'+Q,label:'Bathroom 2'},
+  {src:B+'380a4b0e-bc04-4540-8ab5-3446055037b4'+Q,label:'Bathroom 3'},
+  {src:B+'01672d22-f62b-4081-9372-e090179020ca'+Q,label:'Bathroom 4'},
+  {src:B+'73e7dd06-2f9b-479e-8925-0a24bf769a9c'+Q,label:'Bathroom 5'},
+  {src:B+'5444278e-4394-474a-aa9f-e233672be193'+Q,label:'Bathroom 6'},
+  {src:B+'edf6c0b7-2c0d-416a-895b-ae85e5455368'+Q,label:'Outdoor Bathroom'},
 ];
 
-// Gym images
 const GYM_IMGS = [
-  {src: B+'7b8c51d9-24b2-4846-b173-6d2459c53981'+Q, label:'Gym & Fitness'},
-  {src: B+'23fa05de-4f88-4694-9357-74ae76635ab2'+Q, label:'Gym & Fitness'},
-  {src: B+'d6337543-a580-4b38-aa27-35657a04ec03'+Q, label:'Gym & Fitness'},
+  {src:B+'7b8c51d9-24b2-4846-b173-6d2459c53981'+Q,label:'Gym'},
+  {src:B+'23fa05de-4f88-4694-9357-74ae76635ab2'+Q,label:'Gym'},
+  {src:B+'d6337543-a580-4b38-aa27-35657a04ec03'+Q,label:'Gym'},
 ];
 
-// Bonfire images
 const FIRE_IMGS = [
-  {src: B+'15fd6a0c-36f4-4c79-a187-279fc9e1d45c'+Q, label:'Bonfire Area'},
-  {src: B+'cbbf4bee-4ba1-41ec-8d0c-922684e7a936'+Q, label:'Bonfire Area'},
+  {src:B+'15fd6a0c-36f4-4c79-a187-279fc9e1d45c'+Q,label:'Bonfire Area'},
+  {src:B+'cbbf4bee-4ba1-41ec-8d0c-922684e7a936'+Q,label:'Bonfire Area'},
 ];
 
-// Basketball images
 const BBALL_IMGS = [
-  {src: B+'7932f6a1-879d-4276-ab69-433d47ad8ca0'+Q, label:'Basketball Court'},
-  {src: B+'ff9e2cfe-96b7-4992-8cd8-81499c84335f'+Q, label:'Basketball Court'},
+  {src:B+'7932f6a1-879d-4276-ab69-433d47ad8ca0'+Q,label:'Basketball Court'},
+  {src:B+'ff9e2cfe-96b7-4992-8cd8-81499c84335f'+Q,label:'Basketball Court'},
 ];
 
-// Outdoor images
 const OUT_IMGS = [
-  {src: B+'58004ff1-df45-4949-ad63-6316ab7abe96'+Q, label:'Outdoor Dining'},
-  {src: B+'77973507-5528-471c-b8ac-e6d0c1968e2b'+Q, label:'Outdoor Area'},
-  {src: B+'aacade7c-b80f-4262-bf7a-465fd693b8a1'+Q, label:'Outdoor Dining'},
-  {src: B+'c71e1998-1707-4dac-96aa-ecdef112ada0'+Q, label:'Outdoor Area'},
-  {src: B+'e5bd4dfa-98c5-4931-baf0-cebb6ed2d048'+Q, label:'Outdoor'},
-  {src: B+'e7b07cde-5fc2-4104-bc75-d55b0feeefbd'+Q, label:'Outdoor'},
-  {src: B+'ee1d6f90-bc3c-486b-a8ad-cbdfa2484e5a'+Q, label:'Outdoor'},
-  {src: B+'f267480b-660d-406e-b3ba-da1a4ab75272'+Q, label:'Outdoor'},
+  {src:B+'58004ff1-df45-4949-ad63-6316ab7abe96'+Q,label:'Outdoor Dining'},
+  {src:B+'77973507-5528-471c-b8ac-e6d0c1968e2b'+Q,label:'Outdoor'},
+  {src:B+'aacade7c-b80f-4262-bf7a-465fd693b8a1'+Q,label:'Outdoor Dining'},
+  {src:B+'c71e1998-1707-4dac-96aa-ecdef112ada0'+Q,label:'Outdoor'},
+  {src:B+'e5bd4dfa-98c5-4931-baf0-cebb6ed2d048'+Q,label:'Outdoor'},
+  {src:B+'e7b07cde-5fc2-4104-bc75-d55b0feeefbd'+Q,label:'Outdoor'},
+  {src:B+'ee1d6f90-bc3c-486b-a8ad-cbdfa2484e5a'+Q,label:'Outdoor'},
+  {src:B+'f267480b-660d-406e-b3ba-da1a4ab75272'+Q,label:'Outdoor'},
 ];
-</script>
 
-<script src="js/app.js"></script>
-</body>
-</html>
-
-<!-- STICKY BOTTOM CTA -->
-<div class="sticky-cta" id="sticky-cta">
-  <div class="sc-text"><strong>Santiagos Resort · Alfonso, Tagaytay</strong>Up to 40 guests · All amenities included</div>
-  <div class="sc-btns">
-    <a href="packages.html" class="btn btn-outline" style="padding:.55rem 1.2rem;font-size:.7rem">See Rates</a>
-    <a href="contact.html" class="btn btn-primary" style="padding:.55rem 1.2rem;font-size:.7rem">Book Now →</a>
-  </div>
-</div>
-<div id="lb"><button class="lb-x" onclick="lbClose()">✕</button><button class="lb-arr lb-prev" onclick="lbShift(-1);event.stopPropagation()">&#8592;</button><img id="lb-img" src="" alt=""/><button class="lb-arr lb-next" onclick="lbShift(1);event.stopPropagation()">&#8594;</button><div class="lb-info" id="lb-info"></div></div>
-<script src="js/app.js"></script>
-<script>
 // Sticky CTA on scroll
-const sc = document.getElementById('sticky-cta');
-window.addEventListener('scroll', () => sc.classList.toggle('show', window.scrollY > 600), {passive:true});
+window.addEventListener('scroll', () => {
+  const sc = document.getElementById('sticky-cta');
+  if(sc) sc.classList.toggle('show', window.scrollY > 600);
+}, {passive:true});
 </script>
+
+<script src="js/app.js"></script>
 </body>
 </html>
