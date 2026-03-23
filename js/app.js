@@ -258,6 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
   else { sessionStorage.setItem('sr_splash','1'); setTimeout(()=>document.getElementById('splash').classList.add('gone'),2100); }
 
   if (CURR !== 'index.html') document.getElementById('nav').classList.add('solid');
+  // Enable CSS animations only after JS is ready (prevents invisible content if JS fails)
+  document.body.classList.add('js-ready');
 
   document.getElementById('announce-close')?.addEventListener('click',()=>document.getElementById('announce').style.display='none');
 
@@ -267,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ro = new IntersectionObserver(es=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
   },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.rv,.rv-l,.rv-r').forEach((el,i)=>{
+  document.querySelectorAll('.rv,.rv-l,.rv-r,.anim,.anim-l,.anim-r').forEach((el,i)=>{
     el.style.transitionDelay = (i % 6) * .06 + 's';
     ro.observe(el);
   });
@@ -428,18 +430,10 @@ function initPageTransitions() {
     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
     a.addEventListener('click', e => {
       e.preventDefault();
-      document.body.classList.add('page-out');
-      setTimeout(() => window.location.href = href, 220);
+      // page transition removed
+      window.location.href = href;
     });
   });
 }
 
-// Add to DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-  initBackTop();
-  initSkeletons();
-  initStickyCTA();
-  initOccasionParam();
-  // Page transitions — slight delay to not block normal loads
-  setTimeout(initPageTransitions, 100);
-}, {once: false}); // runs alongside existing listener
+once: false}); // runs alongside existing listener

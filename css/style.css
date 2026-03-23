@@ -123,11 +123,12 @@ section{padding:5.5rem 3.5rem}
 .dark-sec .h2{color:var(--cream)}
 .dark-sec .lead{color:rgba(255,255,255,.45)}
 
-/* REVEAL */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-.rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s,transform .7s}
-.rv-r{opacity:0;transform:translateX(24px);transition:opacity .7s,transform .7s}
-.rv.in,.rv-l.in,.rv-r.in{opacity:1;transform:none}
+/* REVEAL — only animate when JS has confirmed it's running */
+.rv,.rv-l,.rv-r{opacity:1;transform:none}
+.js-ready .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js-ready .rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s,transform .7s}
+.js-ready .rv-r{opacity:0;transform:translateX(24px);transition:opacity .7s,transform .7s}
+.js-ready .rv.in,.js-ready .rv-l.in,.js-ready .rv-r.in{opacity:1;transform:none}
 
 /* MARQUEE */
 .marquee-bar{background:var(--terra);padding:.7rem 0;overflow:hidden;white-space:nowrap}
@@ -292,11 +293,7 @@ section{padding:5.5rem 3.5rem}
 #back-top.show{transform:translateY(0);opacity:1}
 #back-top:hover{background:var(--terra);border-color:var(--terra);color:#fff}
 
-/* ── PAGE TRANSITION ── */
-.page-out{animation:pageOut .25s ease forwards}
-@keyframes pageOut{to{opacity:0;transform:translateY(12px)}}
-body{animation:pageIn .4s ease both}
-@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* page transitions removed — caused blank page flash */
 
 /* ── IMAGE SKELETON LOADER ── */
 .img-wrap{position:relative;background:var(--sand);overflow:hidden;border-radius:inherit}
