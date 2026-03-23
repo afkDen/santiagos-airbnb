@@ -27,7 +27,7 @@
 .occ-panel-body{position:absolute;inset:0;display:flex;align-items:center;padding:4rem 3.5rem;max-width:700px}
 .occ-panel-content{}
 .occ-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);padding:.28rem .85rem;border-radius:var(--r-pill);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:.9rem}
-.occ-panel-content h2{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;font-weight:400;line-height:1.1;margin-bottom:.8rem}
+.occ-panel-content h2{font-family:var(--ff-d);font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;font-weight:400;line-height:1.1;margin-bottom:.8rem}
 .occ-panel-content h2 em{font-style:italic;color:var(--terra-lt)}
 .occ-panel-content p{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8;font-weight:300;margin-bottom:1.5rem;max-width:440px}
 .occ-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
@@ -44,16 +44,16 @@
 .occ-photo:hover img{transform:scale(1.04)}
 .occ-photo.main{grid-column:span 2}
 .occ-photo.main img{height:260px}
-.occ-text p{font-size:.93rem;color:var(--ink-soft);line-height:1.85;font-weight:300;margin-bottom:1rem}
+.occ-text p{font-size:.93rem;color:var(--ink-s);line-height:1.85;font-weight:300;margin-bottom:1rem}
 .occ-checklist{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:1.2rem 0}
-.occ-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;color:var(--ink-soft);font-weight:300}
+.occ-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;color:var(--ink-s);font-weight:300}
 .occ-checklist li::before{content:'✓';color:var(--forest);font-weight:700;flex-shrink:0;margin-top:.05rem}
 .occ-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
 
 /* PRICING CALLOUT */
 .price-callout{background:linear-gradient(135deg,rgba(192,115,74,.08) 0%,rgba(201,168,76,.06) 100%);border:1px solid rgba(192,115,74,.2);border-radius:var(--r-lg);padding:1.5rem 2rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.pc-text{font-size:.82rem;color:var(--ink-soft)}
-.pc-rate{font-family:var(--ff-display);font-size:1.8rem;color:var(--terra);font-weight:600}
+.pc-text{font-size:.82rem;color:var(--ink-s)}
+.pc-rate{font-family:var(--ff-d);font-size:1.8rem;color:var(--terra);font-weight:600}
 
 /* CAPACITY VISUAL */
 .capacity-vis{background:var(--ink);padding:4rem 3.5rem;text-align:center}
@@ -69,12 +69,12 @@
 
 /* AMENITIES QUICK LIST */
 .quick-am{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.5rem 0}
-.qam{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--ink-soft);font-weight:300}
+.qam{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--ink-s);font-weight:300}
 .qam::before{content:'●';color:var(--terra);font-size:.5rem;flex-shrink:0}
 
 /* SHARE STRIP */
 .share-strip{background:var(--terra);padding:3rem 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.share-strip h3{font-family:var(--ff-display);font-size:1.8rem;color:#fff;font-weight:400}
+.share-strip h3{font-family:var(--ff-d);font-size:1.8rem;color:#fff;font-weight:400}
 .share-strip h3 em{font-style:italic;color:rgba(255,255,255,.65)}
 .share-btns{display:flex;gap:.7rem;flex-wrap:wrap}
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.2rem;border-radius:var(--r);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1.5px solid rgba(255,255,255,.4);color:#fff;background:transparent;cursor:pointer;transition:all .2s}
@@ -98,7 +98,7 @@
 <body>
 <div class="pg-hero" style="min-height:200px">
   <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920')"></div>
-  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-vig"></div>
   <div class="pg-hero-body">
     <div class="breadcrumb"><a href="index.html">Home</a> / Events &amp; Occasions</div>
     <h1>Events &amp; <em>Occasions</em></h1>
@@ -256,7 +256,7 @@
         <li>Full kitchen — bring your own food &amp; cake</li>
       </ul>
       <div class="price-callout">
-        <div><div class="pc-text">Starts from (up to 30 guests)</div><div class="pc-rate">₱15,000 <span style="font-size:.9rem;color:var(--ink-soft);font-family:var(--ff-body);font-weight:300">/night</span></div></div>
+        <div><div class="pc-text">Starts from (up to 30 guests)</div><div class="pc-rate">₱15,000 <span style="font-size:.9rem;color:var(--ink-s);font-family:var(--ff-body);font-weight:300">/night</span></div></div>
         <a href="contact.html?occasion=birthday" class="btn btn-primary">Inquire Now →</a>
       </div>
     </div>
@@ -292,7 +292,7 @@
         <li>Sleeps 20 people across 4 bedrooms</li>
       </ul>
       <div class="price-callout">
-        <div><div class="pc-text">Starting from (up to 30 pax)</div><div class="pc-rate">₱15,000 <span style="font-size:.9rem;color:var(--ink-soft);font-family:var(--ff-body);font-weight:300">/night</span></div></div>
+        <div><div class="pc-text">Starting from (up to 30 pax)</div><div class="pc-rate">₱15,000 <span style="font-size:.9rem;color:var(--ink-s);font-family:var(--ff-body);font-weight:300">/night</span></div></div>
         <a href="contact.html?occasion=teambuilding" class="btn btn-primary">Book Now →</a>
       </div>
     </div>

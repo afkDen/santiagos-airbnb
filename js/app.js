@@ -236,7 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* reveal on scroll */
+  /* reveal on scroll — add rv-ready so CSS can safely hide elements */
+  document.body.classList.add('rv-ready');
   var ro = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {

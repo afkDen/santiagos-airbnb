@@ -30,13 +30,13 @@
 .spot-img:hover img { transform:scale(1.05) }
 .spot-img.tall { grid-row:span 2 }
 .spot-img.tall img { height:408px }
-.spot-text p { font-size:.93rem; color:var(--ink-soft); line-height:1.85; font-weight:300; margin-bottom:1rem }
+.spot-text p { font-size:.93rem; color:var(--ink-s); line-height:1.85; font-weight:300; margin-bottom:1rem }
 .hl-list { display:flex; flex-direction:column; gap:.75rem; margin-top:1.2rem }
 .hl-row { display:flex; align-items:flex-start; gap:.8rem; padding:.9rem 1rem; background:var(--bg); border-radius:var(--r); border:1px solid var(--sand); transition:all .2s }
 .hl-row:hover { border-color:var(--terra); box-shadow:var(--sh-sm) }
 .hl-row-ic { font-size:1.2rem; flex-shrink:0; margin-top:.05rem }
 .hl-row-body h4 { font-size:.88rem; font-weight:600; color:var(--ink); margin-bottom:.15rem }
-.hl-row-body p { font-size:.78rem; color:var(--ink-soft); font-weight:300 }
+.hl-row-body p { font-size:.78rem; color:var(--ink-s); font-weight:300 }
 .spot-grid.flip { direction:rtl }
 .spot-grid.flip > * { direction:ltr }
 
@@ -54,7 +54,7 @@
 .more-pair .spot-img img { height:160px }
 .more-title { font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--terra); font-weight:700; margin-bottom:.6rem; display:flex; align-items:center; gap:.4rem }
 .more-title::before { content:''; width:16px; height:1.5px; background:var(--terra) }
-.more-desc { font-size:.85rem; color:var(--ink-soft); font-weight:300; line-height:1.7 }
+.more-desc { font-size:.85rem; color:var(--ink-s); font-weight:300; line-height:1.7 }
 
 /* ── BEDROOMS / BATHROOMS ── */
 .sleep-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; align-items:start }
@@ -64,7 +64,7 @@
 .photo-thumb img { width:100%; height:130px; object-fit:cover; display:block; transition:transform .5s }
 .photo-thumb:hover img { transform:scale(1.05) }
 .sleep-label { font-size:.72rem; color:var(--terra); font-weight:700; margin-top:.8rem; text-align:center; letter-spacing:.06em; text-transform:uppercase }
-.sleep-intro { font-size:.93rem; color:var(--ink-soft); line-height:1.8; font-weight:300; margin-bottom:1.5rem }
+.sleep-intro { font-size:.93rem; color:var(--ink-s); line-height:1.8; font-weight:300; margin-bottom:1.5rem }
 
 /* ── THINGS TO KNOW ── */
 .ttk-sec { background:var(--bg-alt) }
@@ -72,17 +72,17 @@
 .ttk-card { padding:1.8rem; background:var(--cream); border-radius:var(--r-lg); border:1px solid var(--sand) }
 .ttk-head { display:flex; align-items:center; gap:.75rem; margin-bottom:1rem }
 .ttk-ic { width:40px; height:40px; border-radius:50%; background:var(--sand); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0 }
-.ttk-head h4 { font-family:var(--ff-display); font-size:1rem; color:var(--ink); font-weight:600 }
+.ttk-head h4 { font-family:var(--ff-d); font-size:1rem; color:var(--ink); font-weight:600 }
 .ttk-items { display:flex; flex-direction:column; gap:.6rem }
-.ttk-item { font-size:.82rem; color:var(--ink-soft); display:flex; align-items:flex-start; gap:.5rem; font-weight:300 }
+.ttk-item { font-size:.82rem; color:var(--ink-s); display:flex; align-items:flex-start; gap:.5rem; font-weight:300 }
 .ttk-item::before { content:"→"; color:var(--terra); font-weight:700; flex-shrink:0; margin-top:.05rem }
 
 /* ── RULES ── */
 .rules-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; margin-top:2.5rem }
 .rule-card { display:flex; gap:1rem; padding:1.7rem; background:var(--cream); border-radius:var(--r-lg); border:1px solid var(--sand) }
 .r-ic { width:44px; height:44px; border-radius:50%; background:var(--sand); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.2rem }
-.r-body h4 { font-family:var(--ff-display); font-size:1rem; color:var(--ink); margin-bottom:.4rem; font-weight:600 }
-.r-body p { font-size:.8rem; color:var(--ink-soft); line-height:1.55; font-weight:300 }
+.r-body h4 { font-family:var(--ff-d); font-size:1rem; color:var(--ink); margin-bottom:.4rem; font-weight:600 }
+.r-body p { font-size:.8rem; color:var(--ink-s); line-height:1.55; font-weight:300 }
 
 /* ── STICKY CTA ── */
 .sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:600; background:var(--ink); padding:.9rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-top:1px solid rgba(255,255,255,.08); transform:translateY(100%); transition:transform .4s cubic-bezier(.34,1.56,.64,1) }
@@ -112,7 +112,7 @@
 
 <div class="pg-hero">
   <div class="pg-hero-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/0602e46f-d78c-4a27-87fb-4a7247813d55.jpeg?im_w=1920')"></div>
-  <div class="pg-hero-vignette"></div>
+  <div class="pg-hero-vig"></div>
   <div class="pg-hero-body">
     <div class="breadcrumb"><a href="index.html">Home</a> / Amenities</div>
     <h1>Our <em>Amenities</em></h1>
@@ -246,7 +246,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/23fa05de-4f88-4694-9357-74ae76635ab2.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Gym 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.7">No skipping leg day on vacation. The gym has basic fitness equipment to keep your crew active between pool sessions.</p>
+      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">No skipping leg day on vacation. The gym has basic fitness equipment to keep your crew active between pool sessions.</p>
     </div>
     <!-- BONFIRE -->
     <div class="anim">
@@ -259,7 +259,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/cbbf4bee-4ba1-41ec-8d0c-922684e7a936.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.7">As the Tagaytay highlands cool at night, gather around the bonfire for stories, s'mores, and unforgettable moments under the stars.</p>
+      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">As the Tagaytay highlands cool at night, gather around the bonfire for stories, s'mores, and unforgettable moments under the stars.</p>
     </div>
     <!-- BASKETBALL -->
     <div class="anim">
@@ -272,7 +272,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ff9e2cfe-96b7-4992-8cd8-81499c84335f.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Basketball 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.7">Half-court basketball — perfect for team competitions, shooting drills, and burning off that post-lunch energy.</p>
+      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">Half-court basketball — perfect for team competitions, shooting drills, and burning off that post-lunch energy.</p>
     </div>
     <!-- OUTDOOR -->
     <div class="anim">
@@ -285,7 +285,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.7">Covered outdoor dining and lounge areas with fresh highland air. Perfect for morning coffee, afternoon naps, or late-night hangouts.</p>
+      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">Covered outdoor dining and lounge areas with fresh highland air. Perfect for morning coffee, afternoon naps, or late-night hangouts.</p>
     </div>
   </div>
 </section>
@@ -296,7 +296,7 @@
   <h2 class="h2">Bedrooms &amp; <em>Bathrooms</em></h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start">
     <div class="anim-l">
-      <p style="font-size:.93rem;color:var(--ink-soft);line-height:1.8;font-weight:300;margin-bottom:1.5rem">4 bedrooms with 20 beds total — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a group of 40.</p>
+      <p style="font-size:.93rem;color:var(--ink-s);line-height:1.8;font-weight:300;margin-bottom:1.5rem">4 bedrooms with 20 beds total — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a group of 40.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
         <div class="spot-img" onclick="lbOpen(0,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bedroom 1"/></div>
         <div class="spot-img" onclick="lbOpen(1,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7fdad08c-cd56-4bd8-9913-df31206d2a71.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bedroom 2"/></div>
@@ -308,7 +308,7 @@
       <p style="font-size:.75rem;color:var(--terra);font-weight:600;margin-top:.8rem;text-align:center;letter-spacing:.05em">4 BEDROOMS · 20 BEDS TOTAL</p>
     </div>
     <div class="anim-r">
-      <p style="font-size:.93rem;color:var(--ink-soft);line-height:1.8;font-weight:300;margin-bottom:1.5rem">7 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush with ease.</p>
+      <p style="font-size:.93rem;color:var(--ink-s);line-height:1.8;font-weight:300;margin-bottom:1.5rem">7 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush with ease.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
         <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 1"/></div>
         <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 2"/></div>

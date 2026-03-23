@@ -187,13 +187,13 @@ section { padding: 5.5rem 3.5rem; }
 .dark-sec .h2 { color: var(--cream); }
 .dark-sec .lead { color: rgba(255,255,255,.45); }
 
-/* ── REVEAL ANIMATIONS — safe by default ── */
-/* Content visible always. Animations only when .in class is added by JS. */
-.rv, .rv-l, .rv-r { transition: opacity .65s var(--ease), transform .65s var(--ease); }
-.rv   { opacity: 0; transform: translateY(24px); }
-.rv-l { opacity: 0; transform: translateX(-24px); }
-.rv-r { opacity: 0; transform: translateX(24px); }
-.rv.in, .rv-l.in, .rv-r.in { opacity: 1; transform: none; }
+/* ── REVEAL ANIMATIONS ── */
+/* Default: visible. JS adds 'rv-ready' to body before observing, then adds '.in' on scroll */
+.rv, .rv-l, .rv-r { transition: opacity .7s var(--ease), transform .7s var(--ease); }
+body.rv-ready .rv   { opacity: 0; transform: translateY(24px); }
+body.rv-ready .rv-l { opacity: 0; transform: translateX(-22px); }
+body.rv-ready .rv-r { opacity: 0; transform: translateX(22px); }
+body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 1; transform: none; }
 
 /* ── MARQUEE ── */
 .marquee-bar { background: var(--terra); padding: .7rem 0; overflow: hidden; white-space: nowrap; }
