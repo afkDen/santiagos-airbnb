@@ -5,7 +5,7 @@
 
 /* ── SITE CONFIG ── */
 const AIRBNB = 'https://www.airbnb.com/rooms/1643466979772957530';
-const WA_MSG = 'https://wa.me/639XXXXXXXXX?text=Hi!+Im+interested+in+booking+Santiagos+Resort.';
+const WA_MSG = 'https://wa.me/639178005320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay.';
 
 /* ── VERIFIED PHOTO MAP ── */
 const PH = 'https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/';
@@ -96,9 +96,10 @@ const CURR_PAGE = (function() {
 
 /* ── NAV HTML ── */
 var NAV_HTML = [
+  '<div id="svg-sprite-wrap" style="display:none" id="svg-sprites"></div>',
   '<div id="progress-bar"></div>',
   '<div id="splash">',
-  '  <div class="sp-logo">Santiagos <em>Resort</em></div>',
+  '  <div class="sp-logo">Santiagos Resort</div>',
   '  <div class="sp-tagline">Alfonso \u00b7 Tagaytay \u00b7 Philippines</div>',
   '  <div class="sp-track"><div class="sp-fill"></div></div>',
   '</div>',
@@ -112,7 +113,7 @@ var NAV_HTML = [
   '  <a href="contact.html" class="mob-book" onclick="closeMob()">Book Now</a>',
   '</div>',
   '<nav id="nav">',
-  '  <a class="nav-brand" href="index.html">Santiagos <em>Resort</em></a>',
+  '  <a class="nav-brand" href="index.html">Santiagos Resort</a>',
   '  <ul class="nav-links">',
   '    <li><a href="index.html" data-p="index.html">Home</a></li>',
   '    <li><a href="gallery.html" data-p="gallery.html">Gallery</a></li>',
@@ -132,7 +133,7 @@ var NAV_HTML = [
 var FOOTER_HTML = [
   '<div id="float-pill">',
   '  <div class="fp-info"><div class="fp-label">Alfonso, Tagaytay</div><div class="fp-val">Up to 40 Guests</div></div>',
-  '  <div class="fp-info" style="border:none"><div class="fp-label">4 Bedrooms \u00b7 8 Baths</div><div class="fp-val">New on Airbnb</div></div>',
+  '  <div class="fp-info" style="border:none"><div class="fp-label">8 Baths \u00b7 2 VIP Rooms</div><div class="fp-val">Direct Bookings</div></div>',
   '  <button class="fp-btn" onclick="location.href=\'contact.html\'">Book Now</button>',
   '  <button class="fp-x" onclick="document.getElementById(\'float-pill\').style.display=\'none\'">&#10005;</button>',
   '</div>',
@@ -143,13 +144,13 @@ var FOOTER_HTML = [
   '<footer id="footer">',
   '  <div class="ft-top">',
   '    <div class="ft-brand">',
-  '      <div class="ft-logo">Santiagos <em>Resort</em></div>',
+  '      <div class="ft-logo">Santiagos Resort</div>',
   '      <div class="ft-loc">Alfonso, Calabarzon \u00b7 Philippines</div>',
-  '      <p>Industrial chic group resort near Tagaytay \u2014 pool, karaoke, arcade, gym, basketball, bonfire &amp; more. Up to 40 guests. Listed on Airbnb.</p>',
+  '      <p>Group resort in Alfonso, Tagaytay \u2014 pool, videoke, game room, gym, basketball, bonfire &amp; more. Up to 40 guests.<br/>Direct: 0917 800 5320 / 0922 830 5320 &nbsp;&middot;&nbsp; Prices may vary for Airbnb vs direct bookings.</p>',
   '      <div class="ft-socials">',
-  '        <a href="#" class="ft-soc">f</a>',
-  '        <a href="#" class="ft-soc">ig</a>',
-  '        <a href="#" class="ft-soc">tt</a>',
+  '        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="ft-soc">f</a>',
+  '        <a href="https://www.instagram.com/santiagos.to" target="_blank" class="ft-soc">ig</a>',
+  '        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="ft-soc">fb</a>',
   '        <a href="' + AIRBNB + '" target="_blank" class="ft-soc">\u2708</a>',
   '      </div>',
   '    </div>',
@@ -168,9 +169,9 @@ var FOOTER_HTML = [
   '    <div class="ft-col">',
   '      <h5>Quick Info</h5>',
   '      <ul>',
-  '        <li><a>4 Bedrooms \u00b7 20 Beds</a></li>',
+  '        <li><a>2 VIP Rooms \u00b7 9 Double Deck Beds</a></li>',
   '        <li><a>8 Bathrooms</a></li>',
-  '        <li><a>Up to 40 Guests</a></li>',
+  '        <li><a>Up to 40 Guests (max)</a></li>',
   '        <li><a>Check-in: 3:00 PM</a></li>',
   '        <li><a>Checkout: 12:00 PM</a></li>',
   '        <li><a href="' + AIRBNB + '" target="_blank">View on Airbnb \u2197</a></li>',

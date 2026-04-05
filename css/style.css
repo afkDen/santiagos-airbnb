@@ -1,7 +1,7 @@
 /* =====================================================
    SANTIAGOS RESORT — style.css v7 (clean)
 ===================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
 
 :root {
   --ink:       #1a0f07; --ink-s:    #3d2410;
@@ -12,6 +12,7 @@
   --forest:    #3d5229; --charcoal: #0f0804;
   --bg:        #faf5ee; --bg-alt:   #f2e8d9;
   --ff-d: 'Cormorant Garamond', Georgia, serif;
+  --ff-brand: 'Great Vibes', cursive;
   --ff-b: 'Outfit', system-ui, sans-serif;
   --r: 6px; --r-lg: 14px; --r-pill: 999px;
   --sh-sm: 0 2px 10px rgba(26,15,7,.08);
@@ -81,9 +82,20 @@ input, select, textarea { font-family: inherit; }
 }
 #nav.up   { background: rgba(250,245,238,.97); backdrop-filter: blur(14px); box-shadow: var(--sh-sm); padding: .9rem 3.5rem; }
 #nav.solid { background: var(--cream); box-shadow: var(--sh-sm); padding: .9rem 3.5rem; }
-.nav-brand { font-family: var(--ff-d); font-size: 1.5rem; font-weight: 600; color: #fff; transition: color .3s; letter-spacing: .01em; }
-.nav-brand em { color: var(--terra-lt); font-style: italic; }
-#nav.up .nav-brand, #nav.solid .nav-brand { color: var(--ink); }
+.nav-brand {
+  font-family: var(--ff-brand);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--gold-lt);
+  transition: color .3s;
+  letter-spacing: .02em;
+  text-shadow: 0 0 20px rgba(201,168,76,.3);
+}
+.nav-brand em { color: var(--gold-lt); font-style: normal; }
+#nav.up .nav-brand, #nav.solid .nav-brand {
+  color: var(--terra-dk);
+  text-shadow: none;
+}
 #nav.solid .nav-brand em, #nav.up .nav-brand em { color: var(--terra); }
 .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
 .nav-links a {
@@ -371,3 +383,15 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
   .pg-hero { min-height: 240px; }
   .bring-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── SCRIPT BRAND LOGO ── */
+.sp-logo { font-family: var(--ff-brand) !important; font-size: 3.5rem !important; font-weight: 400 !important; color: var(--gold-lt) !important; text-shadow: 0 0 30px rgba(201,168,76,.4); }
+.sp-logo em { color: var(--gold-lt) !important; font-style: normal !important; }
+.ft-logo { font-family: var(--ff-brand) !important; font-size: 2.2rem !important; font-weight: 400 !important; }
+.ft-logo em { color: var(--terra-lt) !important; font-style: normal !important; }
+
+/* ── SVG ICONS ── */
+.icon { display:inline-block; width:1em; height:1em; vertical-align:-.15em; fill:currentColor; flex-shrink:0; }
+.icon-lg { width:1.6rem; height:1.6rem; }
+.icon-xl { width:2.2rem; height:2.2rem; }
+.icon-sm { width:.9em; height:.9em; }
