@@ -4,6 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="description" content="Santiagos Resort is in Alfonso, Cavite near Tagaytay. Close to Taal Volcano, Sky Ranch, Tagaytay City Ridge and more."/>
 <meta property="og:title" content="Location & Nearby · Santiagos Resort"/>
@@ -25,7 +27,7 @@
 .nb-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--sand);background:var(--cream);transition:transform .3s,box-shadow .3s}
 .nb-card:hover{transform:translateY(-5px);box-shadow:var(--sh-xl)}
 /* Visual */
-.nb-visual{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.nb-visual{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
 .nb-taal    .nb-visual{background:radial-gradient(ellipse at 30% 65%,#2a6e12 0%,#0f3506 50%,#030d01 100%)}
 .nb-tagaytay .nb-visual{background:radial-gradient(ellipse at 65% 35%,#1a5a80 0%,#092840 50%,#020d18 100%)}
 .nb-sky     .nb-visual{background:radial-gradient(ellipse at 50% 70%,#5e1f96 0%,#2a0850 55%,#08020f 100%)}
@@ -245,8 +247,12 @@
   <div class="nb-grid">
 
     <div class="nb-card nb-taal rv">
-      <div class="nb-visual">
-        <div class="nb-emoji">🌋</div>
+      <div class="nb-visual" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/3af6b26c-4a6b-427f-a28a-c767df166b86.jpeg?im_w=1920');background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,50,5,.78) 0%,rgba(20,80,10,.55) 100%)"></div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div style="font-size:3rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))">🌋</div>
+          <div style="font-family:var(--ff-d);font-size:1.1rem;color:#fff;margin-top:.5rem;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.7)">Taal Volcano</div>
+        </div>
         <div class="nb-dist">~30 min away</div>
       </div>
       <div class="nb-body">
@@ -257,8 +263,12 @@
     </div>
 
     <div class="nb-card nb-tagaytay rv">
-      <div class="nb-visual">
-        <div class="nb-emoji">🌄</div>
+      <div class="nb-visual" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/e9fae679-5f90-4c28-9675-71c03be31de0.jpeg?im_w=1920');background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,30,60,.78) 0%,rgba(10,60,100,.55) 100%)"></div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div style="font-size:3rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))">🌄</div>
+          <div style="font-family:var(--ff-d);font-size:1.1rem;color:#fff;margin-top:.5rem;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.7)">Tagaytay Ridge</div>
+        </div>
         <div class="nb-dist">~15–20 min away</div>
       </div>
       <div class="nb-body">
@@ -269,8 +279,12 @@
     </div>
 
     <div class="nb-card nb-sky rv">
-      <div class="nb-visual">
-        <div class="nb-emoji">🎡</div>
+      <div class="nb-visual" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/37fb90b8-9556-4c2a-a22f-6c3936a6aebc.jpeg?im_w=1920');background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(40,5,80,.78) 0%,rgba(80,20,120,.55) 100%)"></div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div style="font-size:3rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))">🎡</div>
+          <div style="font-family:var(--ff-d);font-size:1.1rem;color:#fff;margin-top:.5rem;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.7)">Sky Ranch</div>
+        </div>
         <div class="nb-dist">~20 min away</div>
       </div>
       <div class="nb-body">
@@ -281,8 +295,12 @@
     </div>
 
     <div class="nb-card nb-alfonso rv">
-      <div class="nb-visual">
-        <div class="nb-emoji">☕</div>
+      <div class="nb-visual" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920');background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(60,30,5,.78) 0%,rgba(100,55,10,.55) 100%)"></div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div style="font-size:3rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))">☕</div>
+          <div style="font-family:var(--ff-d);font-size:1.1rem;color:#fff;margin-top:.5rem;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.7)">Alfonso Town</div>
+        </div>
         <div class="nb-dist">~5 min away</div>
       </div>
       <div class="nb-body">

@@ -4,6 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="description" content="Santiagos Resort rates and packages. Mon-Thu from ₱20,000. Fri-Sun from ₱30,000. Up to 40 guests."/>
 <meta property="og:title" content="Rates & Packages · Santiagos Resort"/>
@@ -13,7 +15,7 @@
 <style>
 /* RATE CARDS */
 .rates-intro{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:var(--r-lg);padding:1.4rem 1.8rem;font-size:.84rem;color:var(--ink-s);line-height:1.7;margin-bottom:3rem;display:flex;align-items:flex-start;gap:.8rem}
-.rates-intro::before{content:'<svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>';font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+.rates-intro .ri-icon{flex-shrink:0;margin-top:.1rem;color:var(--gold);width:1.3rem;height:1.3rem}
 /* BASE RATE GRID */
 .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
 .base-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--sand);background:var(--cream);transition:all .3s}
@@ -259,7 +261,7 @@
 <section style="background:var(--bg)">
   <p class="tag">Pricing</p>
   <h2 class="h2">Base <em>Rates</em></h2>
-  <div class="rates-intro">Base rates cover up to <strong>20 guests</strong>. Group rates apply for larger bookings. Base rates for direct bookings. Pricing may vary for Airbnb bookings. Not applicable on public holidays. Check-in 3:00 PM · Checkout 12:00 PM.</div>
+  <div class="rates-intro"><svg class="icon ri-icon" aria-hidden="true"><use href="#i-info"/></svg><span>Base rates cover up to <strong>20 guests</strong>. Group rates apply for larger bookings. Base rates for direct bookings. Pricing may vary for Airbnb bookings. Not applicable on public holidays. Check-in 3:00 PM · Checkout 12:00 PM.</span></div>
 
   <div class="base-grid">
     <div class="base-card rv">
@@ -285,7 +287,7 @@
 
     <div class="base-card featured rv">
       <div class="base-head">
-        <div class="base-badge bb-we">⭐ Most Popular</div>
+        <div class="base-badge bb-we">Most Popular</div>
         <div class="base-name">Friday – Sunday</div>
         <div class="base-when">Weekends · Eve of holidays</div>
         <div class="base-price"><span class="bp-ph">₱</span><span class="bp-amt">30,000</span><span class="bp-per">/night · up to 20 guests</span></div>
@@ -384,7 +386,7 @@
   <div class="calc-layout">
     <div class="rv-l">
       <div class="calc-box">
-        <h3>💰 Rate Estimator</h3>
+        <h3>Rate Estimator</h3>
         <div class="c2">
           <div class="fg"><label>Check-in Date</label><input type="date" id="ci" oninput="calc()"/></div>
           <div class="fg"><label>Check-out Date</label><input type="date" id="co" oninput="calc()"/></div>
