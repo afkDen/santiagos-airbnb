@@ -6,6 +6,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="description" content="Photo gallery of Santiagos Resort — pool, videoke, billiards, arcade, gym, bedrooms, bathrooms and outdoor spaces. Industrial chic container resort in Alfonso, Tagaytay."/>
+<meta property="og:title" content="Photo Gallery · Santiagos Resort"/>
+<meta property="og:description" content="See every corner of Santiagos Resort — pool, game room, bedrooms, dining and more. Alfonso, Tagaytay."/>
 <meta property="og:image" content="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -251,7 +254,7 @@
     <!-- OUTDOOR 2 -->
     <div class="m-item" data-c="outdoor" onclick="lbOpen(25,GALLERY_IMGS)"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920" alt="Outdoor 2"/><div class="m-overlay"><div><span class="m-cat">Outdoor</span><span class="m-lbl">Outdoor Area</span></div></div></div>
     <!-- BATHROOM 2 -->
-    <div class="m-item" data-c="bathroom" onclick="lbOpen(20,GALLERY_IMGS)"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/380a4b0e-bc04-4540-8ab5-3446055037b4.jpeg?im_w=1920" alt="Bathroom 2"/><div class="m-overlay"><div><span class="m-cat">Bathroom</span><span class="m-lbl">Bathroom</span></div></div></div>
+    <div class="m-item" data-c="bathroom" onclick="lbOpen(21,GALLERY_IMGS)"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/380a4b0e-bc04-4540-8ab5-3446055037b4.jpeg?im_w=1920" alt="Bathroom 2"/><div class="m-overlay"><div><span class="m-cat">Bathroom</span><span class="m-lbl">Bathroom</span></div></div></div>
     <!-- EXTERIOR 4 -->
     <div class="m-item" data-c="exterior" onclick="lbOpen(27,GALLERY_IMGS)"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/22fe05b4-1397-4cc6-9704-cc98e7085cd3.jpeg?im_w=1920" alt="Exterior 4"/><div class="m-overlay"><div><span class="m-cat">Exterior</span><span class="m-lbl">Resort Architecture</span></div></div></div>
   </div>
@@ -270,12 +273,15 @@ document.querySelectorAll('.gf').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.gf').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
   const f=b.dataset.f;
-  document.querySelectorAll('.m-item,.feat-strip .m-item').forEach(el=>{
-    const show=f==='all'||el.dataset.c===f;
-    el.style.opacity=show?'1':'0.1';
-    el.style.pointerEvents=show?'all':'none';
-    el.style.transition='opacity .3s';
+  document.querySelectorAll('.m-item').forEach(el=>{
+    el.style.display=(f==='all'||el.dataset.c===f)?'':'none';
   });
+  // Show/hide feat-strip based on whether any child matches
+  const strip=document.querySelector('.feat-strip');
+  if(strip){
+    const anyMatch=f==='all'||Array.from(strip.querySelectorAll('.m-item')).some(el=>el.dataset.c===f);
+    strip.style.display=anyMatch?'':'none';
+  }
 }));
 </script>
 </body>

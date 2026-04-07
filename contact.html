@@ -204,7 +204,7 @@
   </symbol>
   <!-- Sun / Mountain / Highland -->
   <symbol id="i-mountain" viewBox="0 0 24 24">
-    <path d="M1 20L8 7l4 7 3-4.5L22 20H1z"/>
+    <path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/>
   </symbol>
   <!-- Tag / Price -->
   <symbol id="i-price" viewBox="0 0 24 24">
@@ -281,7 +281,7 @@
             </div>
             <div class="fg">
               <label>Occasion</label>
-              <select>
+              <select id="foccasion">
                 <option>Barkada Trip</option><option>Birthday Party</option>
                 <option>Family Reunion</option><option>Team Building</option>
                 <option>Company Outing</option><option>Other</option>
@@ -296,65 +296,13 @@
         <div class="success-box" id="bookSuccess">
           <div class="ck">✅</div>
           <h4>Redirecting to WhatsApp!</h4>
-          <p>Your inquiry details are ready. Complete your message on WhatsApp and we'll confirm your booking within 1–2 hours.</p>
+          <p>Your inquiry details are ready — complete your message on WhatsApp and we'll confirm your dates within 1–2 hours.</p>
           <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full">Message on Facebook instead →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-function submitToWhatsApp() {
-  var form = document.getElementById('bookForm');
-  if (!form) return;
-  // Validate required fields first
-  var ok = true;
-  form.querySelectorAll('[data-req]').forEach(function(f) {
-    var g = f.closest('.fg');
-    var valid = f.type === 'email'
-      ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)
-      : f.value.trim().length > 0;
-    if (!valid) { if (g) g.classList.add('has-err'); f.classList.add('err'); ok = false; }
-    else { if (g) g.classList.remove('has-err'); f.classList.remove('err'); }
-  });
-  if (!ok) return;
-
-  // Collect form values
-  var fn   = document.getElementById('fn').value.trim();
-  var ln   = document.getElementById('ln').value.trim();
-  var em   = document.getElementById('em').value.trim();
-  var ph   = form.querySelector('input[type="tel"]').value.trim();
-  var ci   = document.getElementById('fci').value;
-  var co   = document.getElementById('fco').value;
-  var ng   = document.getElementById('ng').value;
-  var occ  = form.querySelectorAll('select')[1] ? form.querySelectorAll('select')[1].value : '';
-  var msg  = form.querySelector('textarea').value.trim();
-
-  // Format dates nicely
-  function fmtDate(d) { if (!d) return 'TBD'; var p=d.split('-'); return p[1]+'/'+p[2]+'/'+p[0]; }
-
-  var text = [
-    'Hi! I would like to inquire about booking Santiagos Resort.',
-    '',
-    'Name: ' + fn + ' ' + ln,
-    'Email: ' + em,
-    ph ? 'Phone: ' + ph : '',
-    'Check-in: ' + fmtDate(ci),
-    'Check-out: ' + fmtDate(co),
-    'Guests: ' + ng,
-    occ ? 'Occasion: ' + occ : '',
-    msg ? 'Message: ' + msg : '',
-  ].filter(Boolean).join('\n');
-
-  // Show success then open WhatsApp
-  form.style.display = 'none';
-  document.getElementById('bookSuccess').style.display = 'block';
-  setTimeout(function() {
-    window.open('https://wa.me/639178005320?text=' + encodeURIComponent(text), '_blank');
-  }, 600);
-}
-</script>
 
 <!-- WHAT TO BRING -->
 <section style="background:var(--bg-alt)">
@@ -427,5 +375,49 @@ function submitToWhatsApp() {
 
 <div id="back-top">↑</div>
 <script src="js/app.js"></script>
+<script>
+function submitToWhatsApp() {
+  var form = document.getElementById('bookForm');
+  if (!form) return;
+  var ok = true;
+  form.querySelectorAll('[data-req]').forEach(function(f) {
+    var g = f.closest('.fg');
+    var valid = f.type === 'email'
+      ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)
+      : f.value.trim().length > 0;
+    if (!valid) { if (g) g.classList.add('has-err'); f.classList.add('err'); ok = false; }
+    else { if (g) g.classList.remove('has-err'); f.classList.remove('err'); }
+  });
+  if (!ok) return;
+  var fn  = document.getElementById('fn').value.trim();
+  var ln  = document.getElementById('ln').value.trim();
+  var em  = document.getElementById('em').value.trim();
+  var ph  = form.querySelector('input[type="tel"]') ? form.querySelector('input[type="tel"]').value.trim() : '';
+  var ci  = document.getElementById('fci').value;
+  var co  = document.getElementById('fco').value;
+  var ng  = document.getElementById('ng').value;
+  var occ = document.getElementById('foccasion') ? document.getElementById('foccasion').value : '';
+  var msg = form.querySelector('textarea') ? form.querySelector('textarea').value.trim() : '';
+  function fmtDate(d) { if (!d) return 'TBD'; var p=d.split('-'); return p[1]+'/'+p[2]+'/'+p[0]; }
+  var lines = [
+    'Hi! I would like to inquire about booking Santiagos Resort.',
+    '',
+    'Name: ' + fn + ' ' + ln,
+    'Email: ' + em,
+  ];
+  if (ph) lines.push('Phone: ' + ph);
+  lines.push('Check-in: ' + fmtDate(ci));
+  lines.push('Check-out: ' + fmtDate(co));
+  lines.push('Guests: ' + ng);
+  if (occ) lines.push('Occasion: ' + occ);
+  if (msg) lines.push('Message: ' + msg);
+  var text = lines.join('\n');
+  form.style.display = 'none';
+  document.getElementById('bookSuccess').style.display = 'block';
+  setTimeout(function() {
+    window.open('https://wa.me/639178005320?text=' + encodeURIComponent(text), '_blank');
+  }, 500);
+}
+</script>
 </body>
 </html>
