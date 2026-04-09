@@ -98,6 +98,11 @@
   .share-strip{text-align:center;justify-content:center}
 }
 </style>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- SVG Sprite — injected by app.js, hidden -->
@@ -500,7 +505,7 @@
   </div>
   <div class="share-btns">
     <button class="share-btn" onclick="shareUrl('viber')">Share on Viber</button>
-    <button class="share-btn" onclick="shareUrl('messenger')">WhatsApp</button>
+    <button class="share-btn" onclick="shareUrl('messenger')">Messenger</button>
     <button class="share-btn" onclick="shareUrl('copy')" id="copyBtn">Copy Link</button>
   </div>
 </div>
@@ -517,9 +522,9 @@ function switchOcc(id, btn) {
 }
 function shareUrl(platform) {
   const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay — perfect for group events! 🏊 🎤 🎱');
+  const text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay — perfect for group events! <svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg>');
   if (platform === 'viber') window.open(`viber://forward?text=${text}%20${url}`);
-  else if (platform === 'messenger') window.open(`https://wa.me/?text=${text}%20${url}`);
+  else if (platform === 'messenger') window.open(`https://www.facebook.com/dialog/send?link=${url}&app_id=123456`);
   else if (platform === 'copy') {
     navigator.clipboard?.writeText(window.location.href).then(() => {
       const btn = document.getElementById('copyBtn');

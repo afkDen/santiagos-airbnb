@@ -67,6 +67,11 @@
 @media(max-width:1100px){.contact-grid{grid-template-columns:1fr;gap:3rem}.faq-layout{grid-template-columns:1fr;gap:2rem}.rev-row{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.rev-row{grid-template-columns:1fr}}
 </style>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- SVG Sprite — injected by app.js, hidden -->
@@ -238,7 +243,7 @@
       <div class="ci-list">
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><span class="ci-text"><strong>Location:</strong> Alfonso, Calabarzon, Philippines — near Tagaytay City</span></div>
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span class="ci-text"><strong>Check-in:</strong> After 3:00 PM &nbsp;·&nbsp; <strong>Checkout:</strong> Before 12:00 PM noon</span></div>
-        <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span><span class="ci-text"><strong>Capacity:</strong> Up to 40 guests — base rate covers 20, ₱1,000/head for extras</span></div>
+        <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span><span class="ci-text"><strong>Capacity:</strong> Up to 40 guests — base rate covers 30, ₱1,000/head for extras</span></div>
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg></span><span class="ci-text"><strong>Rooms:</strong> 2 VIP rooms, 9 double deck beds, 8 bathrooms</span></div>
         <div class="ci-row"><span class="ci-ic"></span><span class="ci-text"><strong>No pets</strong> on the property</span></div>
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="ci-text"><strong>Phone / Viber / WhatsApp:</strong> 0917 800 5320 / 0922 830 5320</span></div>
@@ -274,14 +279,14 @@
                 <option value="">Select...</option>
                 <option>1–10 guests</option>
                 <option>11–20 guests</option>
-                <option>21–30 guests (+₱1,000/head)</option>
-                <option>31–40 guests (+₱1,000/head)</option>
+                <option>21–30 guests</option>
+                <option>21–40 guests (+₱1,000/head)</option>
               </select>
               <div class="fg-err">Required.</div>
             </div>
             <div class="fg">
               <label>Occasion</label>
-              <select id="foccasion">
+              <select>
                 <option>Barkada Trip</option><option>Birthday Party</option>
                 <option>Family Reunion</option><option>Team Building</option>
                 <option>Company Outing</option><option>Other</option>
@@ -291,13 +296,13 @@
           <div class="fg"><label>Message / Special Requests</label>
             <textarea placeholder="Tell us about your event, any special arrangements, or questions you have…"></textarea>
           </div>
-          <button class="f-submit" onclick="submitToWhatsApp()">Send Inquiry →</button>
+          <button class="f-submit" onclick="validateForm('bookForm','bookSuccess')">Send Inquiry →</button>
         </div>
         <div class="success-box" id="bookSuccess">
           <div class="ck">✅</div>
-          <h4>Redirecting to WhatsApp!</h4>
-          <p>Your inquiry details are ready — complete your message on WhatsApp and we'll confirm your dates within 1–2 hours.</p>
-          <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full">Message on Facebook instead →</a>
+          <h4>Inquiry Sent!</h4>
+          <p>Thanks for reaching out! We'll get back to you within 1–2 hours. You can also book directly on Airbnb for instant confirmation.</p>
+          <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full">Visit our Facebook →</a>
         </div>
       </div>
     </div>
@@ -375,49 +380,5 @@
 
 <div id="back-top">↑</div>
 <script src="js/app.js"></script>
-<script>
-function submitToWhatsApp() {
-  var form = document.getElementById('bookForm');
-  if (!form) return;
-  var ok = true;
-  form.querySelectorAll('[data-req]').forEach(function(f) {
-    var g = f.closest('.fg');
-    var valid = f.type === 'email'
-      ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)
-      : f.value.trim().length > 0;
-    if (!valid) { if (g) g.classList.add('has-err'); f.classList.add('err'); ok = false; }
-    else { if (g) g.classList.remove('has-err'); f.classList.remove('err'); }
-  });
-  if (!ok) return;
-  var fn  = document.getElementById('fn').value.trim();
-  var ln  = document.getElementById('ln').value.trim();
-  var em  = document.getElementById('em').value.trim();
-  var ph  = form.querySelector('input[type="tel"]') ? form.querySelector('input[type="tel"]').value.trim() : '';
-  var ci  = document.getElementById('fci').value;
-  var co  = document.getElementById('fco').value;
-  var ng  = document.getElementById('ng').value;
-  var occ = document.getElementById('foccasion') ? document.getElementById('foccasion').value : '';
-  var msg = form.querySelector('textarea') ? form.querySelector('textarea').value.trim() : '';
-  function fmtDate(d) { if (!d) return 'TBD'; var p=d.split('-'); return p[1]+'/'+p[2]+'/'+p[0]; }
-  var lines = [
-    'Hi! I would like to inquire about booking Santiagos Resort.',
-    '',
-    'Name: ' + fn + ' ' + ln,
-    'Email: ' + em,
-  ];
-  if (ph) lines.push('Phone: ' + ph);
-  lines.push('Check-in: ' + fmtDate(ci));
-  lines.push('Check-out: ' + fmtDate(co));
-  lines.push('Guests: ' + ng);
-  if (occ) lines.push('Occasion: ' + occ);
-  if (msg) lines.push('Message: ' + msg);
-  var text = lines.join('\n');
-  form.style.display = 'none';
-  document.getElementById('bookSuccess').style.display = 'block';
-  setTimeout(function() {
-    window.open('https://wa.me/639178005320?text=' + encodeURIComponent(text), '_blank');
-  }, 500);
-}
-</script>
 </body>
 </html>

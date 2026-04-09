@@ -97,6 +97,11 @@
 @media(max-width:1100px){.base-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}.group-grid{grid-template-columns:1fr 1fr}.pol-grid{grid-template-columns:1fr 1fr}.calc-layout{grid-template-columns:1fr}.notice-band .nb-btns{margin-left:0}}
 @media(max-width:680px){.group-grid{grid-template-columns:1fr 1fr}.pol-grid{grid-template-columns:1fr}.c2{grid-template-columns:1fr}.photo-divider{height:220px}.notice-band{padding:2rem 1.4rem}}
 </style>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- SVG Sprite — injected by app.js, hidden -->
@@ -234,7 +239,7 @@
   </symbol>
   <!-- Sun / Mountain / Highland -->
   <symbol id="i-mountain" viewBox="0 0 24 24">
-    <path d="M1 20L8 7l4 7 3-4.5L22 20H1z"/>
+    <path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/>
   </symbol>
   <!-- Tag / Price -->
   <symbol id="i-price" viewBox="0 0 24 24">
@@ -462,9 +467,10 @@ function calc(){
   if(gVal==='40') rate=50000;
   else if(gVal==='30') rate=40000;
   else rate=isWeekend?30000:20000;
+  var extra=(gVal==='20'&&rate<30000)?0:0; // already included in group rates
   var total=rate*nights;
   document.getElementById('rBase').textContent='₱'+rate.toLocaleString()+'/night';
-  document.getElementById('rExtra').textContent=gVal==='20'?(isWeekend?'Weekend rate':'Weekday rate'):'Group rate applied';
+  document.getElementById('rExtra').textContent=gVal==='20'?'Base rate':'Group rate applied';
   document.getElementById('rNights').textContent=nights+' night'+(nights!==1?'s':'');
   document.getElementById('rTotal').textContent='₱'+total.toLocaleString();
 }

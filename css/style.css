@@ -325,7 +325,7 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
 .ft-nl-form { display: flex; border: 1px solid rgba(255,255,255,.1); border-radius: var(--r); overflow: hidden; }
 .ft-nl-form input { flex: 1; padding: .7rem 1rem; background: rgba(255,255,255,.04); border: none; color: #fff; font-size: .8rem; outline: none; }
 .ft-nl-form input::placeholder { color: rgba(255,255,255,.18); }
-.ft-nl-form button { padding: .7rem 1.1rem; background: var(--terra); color: #fff; border: none; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; transition: background .2s, color .2s; cursor: pointer; }
+.ft-nl-form button { padding: .7rem 1.1rem; background: var(--terra); color: #fff; border: none; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; transition: background .2s; }
 .ft-nl-form button:hover { background: var(--terra-dk); }
 .ft-bottom { border-top: 1px solid rgba(255,255,255,.05); padding-top: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .8rem; }
 .ft-copy { font-size: .7rem; color: rgba(255,255,255,.18); }
