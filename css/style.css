@@ -136,11 +136,13 @@ input, select, textarea { font-family: inherit; }
 #mob-nav {
   display: none; position: fixed; inset: 0;
   background: var(--ink); z-index: 700;
-  flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  flex-direction: column; align-items: center; justify-content: center; gap: 1.6rem;
+  overflow-y: auto;
 }
 #mob-nav.open { display: flex; }
-#mob-nav a { font-family: var(--ff-d); font-size: 2rem; color: var(--cream); font-weight: 400; transition: color .2s; }
+#mob-nav a { font-family: var(--ff-d); font-size: 2rem; color: var(--cream); font-weight: 400; transition: color .2s; padding: .2rem 0; }
 #mob-nav a:hover { color: var(--terra-lt); }
+#mob-nav a.cur { color: var(--terra-lt); }
 #mob-nav .mob-book {
   margin-top: .8rem; padding: .9rem 2.8rem;
   background: var(--terra); color: #fff; border-radius: var(--r-pill);
@@ -383,12 +385,23 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
   .f2 { grid-template-columns: 1fr; }
   .pg-hero { min-height: 240px; }
   .bring-grid { grid-template-columns: 1fr 1fr; }
-  /* lightbox arrows: give them more breathing room */
+  /* lightbox arrows */
   .lb-prev { left: .5rem; }
   .lb-next { right: .5rem; }
   #lb img { max-width: 96vw; max-height: 80vh; }
-  /* announce bar: tighter padding on mobile */
+  /* announce bar */
   #announce { padding: .55rem 2.5rem; font-size: .62rem; }
+  /* buttons: full width on small screens in stacked layouts */
+  .cta-btns .btn { text-align: center; justify-content: center; }
+  /* mobile nav larger touch targets */
+  #mob-nav a { font-size: 1.75rem; padding: .3rem 0; }
+  /* stats bar tighter */
+  .st-sub { font-size: .68rem; }
+  /* form improvements */
+  .fg input, .fg select, .fg textarea { font-size: 16px; } /* prevent iOS zoom */
+  /* back to top closer to edge */
+  #back-top { bottom: 5.5rem; right: 1.2rem; }
+  #wa-btn { bottom: 1.4rem; right: 1.2rem; }
 }
 /* ── VERY SMALL MOBILE (≤ 420px) ── */
 @media (max-width: 420px) {
@@ -400,6 +413,8 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
   .bring-grid { grid-template-columns: 1fr; }
   .ft-nl-form { flex-direction: column; }
   .ft-nl-form button { border-radius: 0 0 var(--r) var(--r); }
+  /* footer columns single col */
+  .ft-top { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 /* ── SCRIPT BRAND LOGO ── */

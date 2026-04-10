@@ -1,11 +1,11 @@
 /* ================================================================
-   SANTIAGOS RESORT — app.js (clean single-file)
-   No duplicates. No stray fragments. Tested syntax.
+   SANTIAGOS RESORT — app.js
+   SVG sprite injected here (single source — removed from HTML pages)
 ================================================================ */
 
 /* ── SITE CONFIG ── */
 const AIRBNB = 'https://www.airbnb.com/rooms/1643466979772957530';
-const WA_MSG = 'https://wa.me/639178005320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay.';
+const WA_MSG = 'https://wa.me/639228305320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay.';
 
 /* ── VERIFIED PHOTO MAP ── */
 const PH = 'https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/';
@@ -49,15 +49,12 @@ const P = {
   out5:'e5bd4dfa-98c5-4931-baf0-cebb6ed2d048',  out6:'e7b07cde-5fc2-4104-bc75-d55b0feeefbd',
   out7:'ee1d6f90-bc3c-486b-a8ad-cbdfa2484e5a',  out8:'f267480b-660d-406e-b3ba-da1a4ab75272',
 };
+function img(key, w) { return PH + P[key] + '.jpeg?im_w=' + (w || 1920); }
 
-function img(key, w) {
-  return PH + P[key] + '.jpeg?im_w=' + (w || 1920);
-}
-
-/* ── GALLERY IMAGES for lightbox ── */
+/* ── GALLERY IMAGES ── */
 const GALLERY_IMGS = [
   {src:img('ext1'),  label:'Resort Exterior'},
-  {src:img('ext2'),  label:'Resort Exterior'},
+  {src:img('ext3'),  label:'Resort Exterior'},
   {src:img('pool1'), label:'Swimming Pool'},
   {src:img('pool5'), label:'Pool Area'},
   {src:img('kara1'), label:'Karaoke Lounge'},
@@ -94,9 +91,46 @@ const CURR_PAGE = (function() {
   return s || 'index.html';
 }());
 
+/* ── SVG SPRITE — single source of truth ── */
+var SVG_SPRITE = '<svg xmlns="http://www.w3.org/2000/svg" style="display:none" id="svg-sprite" aria-hidden="true">'
+  +'<symbol id="i-pool" viewBox="0 0 24 24"><path d="M2 12c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1 2.5 1 4 1v2c-1.5 0-2.5-1-4-1s-2.5 1-4 1-2.5-1-4-1-2.5 1-4 1v-2zm0 4c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1 2.5 1 4 1v2c-1.5 0-2.5-1-4-1s-2.5 1-4 1-2.5-1-4-1-2.5 1-4 1v-2zM16 4c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-6 0c0-1.1-.9-2-2-2S6 2.9 6 4s.9 2 2 2 2-.9 2-2zm8 4H6V6h12v2z"/></symbol>'
+  +'<symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></symbol>'
+  +'<symbol id="i-billiards" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13a5 5 0 100 10A5 5 0 0012 7zm0 8a3 3 0 110-6 3 3 0 010 6z"/></symbol>'
+  +'<symbol id="i-arcade" viewBox="0 0 24 24"><path d="M15 7.5V2H9v5.5l3 3 3-3zm-5 6.5H8v-2H6v2H4v2h2v2h2v-2h2v-2zm10.5 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-3 3c-.83 0-1.5.67-1.5 1.5S16.67 20 17.5 20s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zM21 9H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2z"/></symbol>'
+  +'<symbol id="i-gym" viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></symbol>'
+  +'<symbol id="i-basketball" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4.07 13H6.1c.15 1.65.76 3.16 1.72 4.38C5.65 16.24 4.43 14.77 4.07 13zm2.03-2H4.07c.36-1.77 1.58-3.24 3.75-4.38C6.86 7.84 6.25 9.35 6.1 11zm5.9-6.93c1.2.7 2.18 1.76 2.77 3.05-.88.08-1.82.13-2.77.13V4.07zm0 5.18c1.05 0 2.07-.06 3.04-.17.11.6.18 1.23.19 1.92H11V9.25zm0 3.75h3.23c-.01.69-.08 1.32-.19 1.92-.97-.11-1.99-.17-3.04-.17v-1.75zm0 3.75c.95 0 1.89.05 2.77.13-.59 1.29-1.57 2.35-2.77 3.05v-3.18zM13 19.93v-3.18c1.2-.7 2.18-1.76 2.77-3.05.88-.08 1.82-.13 2.77-.13C17.82 16.24 15.67 19.07 13 19.93zM19.93 13h-2.03c-.15-1.65-.76-3.16-1.72-4.38 2.12 1.14 3.34 2.61 3.75 4.38zm-5.75-4.62C13.18 7.09 12.24 6.03 11 5.33v3.18c.95 0 1.89-.05 2.77-.13z"/></symbol>'
+  +'<symbol id="i-bonfire" viewBox="0 0 24 24"><path d="M12.01 3C8.34 7.27 9 12 9 12c-1.49-.96-1.99-3.5-1.99-3.5C5.5 10.5 6 14 6 14c-1.49-.96-2-3.5-2-3.5C2.5 14 3 17.33 3 18c0 4.97 4.03 6 9 6s9-1.03 9-6c0-4-5-11-4.99-15-.3.45-3 4-3 4-.01 0 .5-2.5-1-4z"/></symbol>'
+  +'<symbol id="i-dining" viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8.17-15.03-8.17-15.03 0h15.03zM1.02 17h15v2h-15z"/></symbol>'
+  +'<symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M18 2.01L6 2c-1.1 0-2 .89-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-1.99-2-1.99zM18 20H6V12h12v8zm0-10H6V4h12v6zm-3-4h-2v1h2v1h-1c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm0 4h-2v-1h2v1zm-7-3H7v1h1v3H7v1h3v-1H9V7h-1z"/></symbol>'
+  +'<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M1 9l2 2c5.09-5.09 13.43-5.09 18.53.01L23.54 9C17.38 2.85 6.61 2.85 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.27-2.76 10.03 0L19 13C15.14 9.14 8.87 9.14 5 13z"/></symbol>'
+  +'<symbol id="i-parking" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></symbol>'
+  +'<symbol id="i-tv" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></symbol>'
+  +'<symbol id="i-bed" viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></symbol>'
+  +'<symbol id="i-shower" viewBox="0 0 24 24"><path d="M9.07 7.07L9 7c-.37-.37-.88-.6-1.44-.6-1.12 0-2.04.9-2.04 2.02 0 .56.23 1.07.6 1.44l.07.07L9 12.27 6.07 10l-1.22 1.22L9 15.37l1.5-1.5L12 12l-1.5-1.5zm5.41 11.42L11.92 21l-2.56-2.51.71-.71 1.85 1.82 2.07-2.07.71.71zM7.42 13.42L5 15.84l.71.71 2.42-2.42-.71-.71zm2-2L7 13.84l.71.71 2.42-2.42-.71-.71zM21 6h-8c-.55 0-1 .45-1 1v.5c-1.07-.24-2.22-.12-3.2.44l-.03-.04c-.78-.79-2.07-.82-2.87-.04s-.83 2.07-.05 2.87l.05.04c-.53.97-.64 2.11-.4 3.17H5c-.55 0-1 .45-1 1s.45 1 1 1h.92L7 18l1.42-1.42H21c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1z"/></symbol>'
+  +'<symbol id="i-ac" viewBox="0 0 24 24"><path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"/></symbol>'
+  +'<symbol id="i-outdoor" viewBox="0 0 24 24"><path d="M17 12h-2L12 7l-3 5H7l5 8 5-8zm2.17-5.17A9.978 9.978 0 0012 4a9.978 9.978 0 00-7.07 2.93C3.9 7.96 3 9.88 3 12H1c0-2.76 1.12-5.26 2.93-7.07A9.978 9.978 0 0112 2a9.978 9.978 0 017.07 2.93C20.88 6.74 22 9.24 22 12h-2c0-2.12-.83-4.04-2.17-5.44z"/></symbol>'
+  +'<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>'
+  +'<symbol id="i-star-o" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></symbol>'
+  +'<symbol id="i-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>'
+  +'<symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></symbol>'
+  +'<symbol id="i-clock" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></symbol>'
+  +'<symbol id="i-people" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></symbol>'
+  +'<symbol id="i-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>'
+  +'<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>'
+  +'<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></symbol>'
+  +'<symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></symbol>'
+  +'<symbol id="i-ig" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></symbol>'
+  +'<symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2A10 10 0 002 12c0 1.77.46 3.44 1.28 4.9L2 22l5.25-1.38A10 10 0 1012.05 2z"/></symbol>'
+  +'<symbol id="i-airbnb" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5c1.381 0 2.5 1.119 2.5 2.5S13.381 9.5 12 9.5 9.5 8.381 9.5 7s1.119-2.5 2.5-2.5zM8.5 17c0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5H8.5z"/></symbol>'
+  +'<symbol id="i-house" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></symbol>'
+  +'<symbol id="i-cal" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></symbol>'
+  +'<symbol id="i-mountain" viewBox="0 0 24 24"><path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/></symbol>'
+  +'<symbol id="i-price" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>'
+  +'<symbol id="i-driver" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c4.41 0 8 3.59 8 8H4c0-4.41 3.59-8 8-8zM4 13h16c-.49 3.95-3.85 7-7.98 7C7.85 20 4.49 16.95 4 13zm8-1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></symbol>'
+  +'</svg>';
+
 /* ── NAV HTML ── */
 var NAV_HTML = [
-  '<div id="svg-sprite-wrap" style="display:none" id="svg-sprites"></div>',
   '<div id="progress-bar"></div>',
   '<div id="splash">',
   '  <div class="sp-logo">Santiagos Resort</div>',
@@ -123,7 +157,7 @@ var NAV_HTML = [
   '    <li><a href="events.html" data-p="events.html">Events</a></li>',
   '    <li><a href="contact.html" class="nav-book">Book Now</a></li>',
   '  </ul>',
-  '  <button class="hamburger" id="hamburger" onclick="toggleMob()">',
+  '  <button class="hamburger" id="hamburger" onclick="toggleMob()" aria-label="Open menu" aria-expanded="false">',
   '    <span></span><span></span><span></span>',
   '  </button>',
   '</nav>',
@@ -135,23 +169,23 @@ var FOOTER_HTML = [
   '  <div class="fp-info"><div class="fp-label">Alfonso, Tagaytay</div><div class="fp-val">Up to 40 Guests</div></div>',
   '  <div class="fp-info" style="border:none"><div class="fp-label">8 Baths \u00b7 2 VIP Rooms</div><div class="fp-val">Direct Bookings</div></div>',
   '  <button class="fp-btn" onclick="location.href=\'contact.html\'">Book Now</button>',
-  '  <button class="fp-x" onclick="document.getElementById(\'float-pill\').style.display=\'none\'">&#10005;</button>',
+  '  <button class="fp-x" onclick="document.getElementById(\'float-pill\').style.display=\'none\'" aria-label="Close">&#10005;</button>',
   '</div>',
-  '<div id="wa-btn" onclick="window.open(\'' + WA_MSG + '\',\'_blank\')" title="WhatsApp">',
+  '<div id="wa-btn" onclick="window.open(\'' + WA_MSG + '\',\'_blank\')" title="Chat on WhatsApp" role="button" aria-label="Chat on WhatsApp">',
   '  <div class="wa-ring"></div>',
-  '  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
+  '  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
   '</div>',
   '<footer id="footer">',
   '  <div class="ft-top">',
   '    <div class="ft-brand">',
   '      <div class="ft-logo">Santiagos Resort</div>',
-  '      <div class="ft-loc">Alfonso, Calabarzon \u00b7 Philippines</div>',
-  '      <p>Group resort in Alfonso, Tagaytay \u2014 pool, videoke, game room, gym, basketball, bonfire &amp; more. Up to 40 guests.<br/>Direct: 0917 800 5320 / 0922 830 5320 &nbsp;&middot;&nbsp; Prices may vary for Airbnb vs direct bookings.</p>',
+  '      <div class="ft-loc">Alfonso, Tagaytay, Cavite \u00b7 Philippines</div>',
+  '      <p>Group resort in Alfonso, Tagaytay \u2014 pool, videoke, game room, gym, basketball, bonfire &amp; more. Up to 40 guests.<br/>Direct: 0917 800 5320 / 0922 830 5320 \u00b7 Prices may vary for Airbnb vs direct bookings.</p>',
   '      <div class="ft-socials">',
-  '        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="ft-soc" title="Facebook">f</a>',
-  '        <a href="https://www.instagram.com/santiagos.to" target="_blank" class="ft-soc" title="Instagram">ig</a>',
-  '        <a href="' + WA_MSG + '" target="_blank" class="ft-soc" title="WhatsApp">wa</a>',
-  '        <a href="' + AIRBNB + '" target="_blank" class="ft-soc" title="Airbnb">\u2708</a>',
+  '        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="ft-soc" title="Facebook" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>',
+  '        <a href="https://www.instagram.com/santiagos.to" target="_blank" class="ft-soc" title="Instagram" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></a>',
+  '        <a href="' + WA_MSG + '" target="_blank" class="ft-soc" title="WhatsApp" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>',
+  '        <a href="' + AIRBNB + '" target="_blank" class="ft-soc" title="Airbnb" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-airbnb"/></svg></a>',
   '      </div>',
   '    </div>',
   '    <div class="ft-col">',
@@ -170,32 +204,35 @@ var FOOTER_HTML = [
   '      <h5>Quick Info</h5>',
   '      <ul>',
   '        <li><a>2 VIP Rooms \u00b7 9 Double Deck Beds</a></li>',
+  '        <li><a>Driver\'s Room</a></li>',
   '        <li><a>8 Bathrooms</a></li>',
   '        <li><a>Up to 40 Guests (max)</a></li>',
   '        <li><a>Check-in: 3:00 PM</a></li>',
   '        <li><a>Checkout: 12:00 PM</a></li>',
-  '        <li><a href="' + AIRBNB + '" target="_blank">View on Airbnb \u2197</a></li>',
+  '        <li><a href="' + AIRBNB + '" target="_blank" rel="noopener">View on Airbnb \u2197</a></li>',
   '      </ul>',
   '    </div>',
   '    <div class="ft-nl">',
   '      <h5>Stay Updated</h5>',
   '      <p>Get notified about availability, promos &amp; special rates.</p>',
   '      <div class="ft-nl-form">',
-  '        <input type="email" placeholder="your@email.com"/>',
+  '        <input type="email" placeholder="your@email.com" aria-label="Email address"/>',
   '        <button onclick="this.textContent=\'Done \u2713\';this.style.background=\'#3d5229\'">Go</button>',
   '      </div>',
   '    </div>',
   '  </div>',
   '  <div class="ft-bottom">',
   '    <span class="ft-copy">\u00a9 2026 Santiagos Resort \u00b7 All rights reserved \u00b7 Made with \u2764\ufe0f in the Philippines</span>',
-  '    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="' + AIRBNB + '" target="_blank">Airbnb \u2197</a></div>',
+  '    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="' + AIRBNB + '" target="_blank" rel="noopener">Airbnb \u2197</a></div>',
   '  </div>',
   '</footer>',
 ].join('\n');
 
-/* ── INIT — single DOMContentLoaded ── */
+/* ── INIT ── */
 document.addEventListener('DOMContentLoaded', function() {
 
+  /* inject SVG sprite first — icons resolve before nav/footer render */
+  document.body.insertAdjacentHTML('afterbegin', SVG_SPRITE);
   /* inject nav + footer */
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
   document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
@@ -203,6 +240,9 @@ document.addEventListener('DOMContentLoaded', function() {
   /* active nav link */
   document.querySelectorAll('.nav-links a[data-p]').forEach(function(a) {
     if (a.dataset.p === CURR_PAGE) a.classList.add('cur');
+  });
+  document.querySelectorAll('#mob-nav a[href]').forEach(function(a) {
+    if (a.getAttribute('href') === CURR_PAGE) a.classList.add('cur');
   });
 
   /* splash screen — once per session */
@@ -233,21 +273,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  /* scroll handler */
+  /* scroll */
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* reveal on scroll — add rv-ready so CSS can safely hide elements */
+  /* reveal on scroll */
   document.body.classList.add('rv-ready');
   var ro = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        ro.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
   document.querySelectorAll('.rv, .rv-l, .rv-r').forEach(function(el, i) {
     el.style.transitionDelay = ((i % 6) * 0.065) + 's';
     ro.observe(el);
@@ -256,23 +292,16 @@ document.addEventListener('DOMContentLoaded', function() {
   /* counter animation */
   var co = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        countUp(e.target);
-        co.unobserve(e.target);
-      }
+      if (e.isIntersecting) { countUp(e.target); co.unobserve(e.target); }
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(function(el) { co.observe(el); });
 
   /* lightbox bg click */
   var lb = document.getElementById('lb');
-  if (lb) {
-    lb.addEventListener('click', function(e) {
-      if (e.target === lb) lbClose();
-    });
-  }
+  if (lb) lb.addEventListener('click', function(e) { if (e.target === lb) lbClose(); });
 
-  /* keyboard navigation */
+  /* keyboard nav */
   document.addEventListener('keydown', function(e) {
     var lb = document.getElementById('lb');
     if (lb && lb.classList.contains('on')) {
@@ -286,13 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* back to top */
   var bt = document.getElementById('back-top');
-  if (bt) {
-    bt.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+  if (bt) bt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  /* sticky CTA (amenities page) */
+  /* sticky CTA */
   window.addEventListener('scroll', function() {
     var sc = document.getElementById('sticky-cta');
     if (sc) sc.classList.toggle('show', window.scrollY > 700);
@@ -304,11 +329,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (occ) {
     var sel = document.getElementById('foccasion');
     if (sel) {
-      var map = { birthday: 'Birthday Party', barkada: 'Barkada Trip', family: 'Family Reunion', teambuilding: 'Team Building', corporate: 'Company Outing' };
+      var map = { birthday:'Birthday Party', barkada:'Barkada Trip', family:'Family Reunion', teambuilding:'Team Building', corporate:'Company Outing' };
       var val = map[occ];
-      if (val) {
-        Array.from(sel.options).forEach(function(o) { if (o.text === val) o.selected = true; });
-      }
+      if (val) Array.from(sel.options).forEach(function(o) { if (o.text === val) o.selected = true; });
     }
   }
 });
@@ -319,15 +342,10 @@ function onScroll() {
   var h = document.documentElement.scrollHeight - window.innerHeight;
   var pb = document.getElementById('progress-bar');
   if (pb) pb.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
-
   var nav = document.getElementById('nav');
-  if (nav && !nav.classList.contains('solid')) {
-    nav.classList.toggle('up', y > 80);
-  }
-
+  if (nav && !nav.classList.contains('solid')) nav.classList.toggle('up', y > 80);
   var fp = document.getElementById('float-pill');
   if (fp) fp.classList.toggle('show', y > 600);
-
   var bt = document.getElementById('back-top');
   if (bt) bt.classList.toggle('show', y > 400);
 }
@@ -337,41 +355,37 @@ function toggleMob() {
   var m = document.getElementById('mob-nav');
   var h = document.getElementById('hamburger');
   if (!m || !h) return;
-  m.classList.toggle('open');
-  h.classList.toggle('open');
-  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  var isOpen = m.classList.toggle('open');
+  h.classList.toggle('open', isOpen);
+  h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 function closeMob() {
   var m = document.getElementById('mob-nav');
   var h = document.getElementById('hamburger');
   if (m) m.classList.remove('open');
-  if (h) h.classList.remove('open');
+  if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); }
   document.body.style.overflow = '';
 }
 
 /* ── COUNTER ANIMATION ── */
 function countUp(el) {
   var target = parseInt(el.dataset.target, 10);
-  var dur = 1500;
-  var t0 = performance.now();
+  var dur = 1500, t0 = performance.now();
   function tick(now) {
     var p = Math.min((now - t0) / dur, 1);
     var e = 1 - Math.pow(1 - p, 3);
     el.textContent = Math.floor(e * target);
-    if (p < 1) requestAnimationFrame(tick);
-    else el.textContent = target;
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
   }
   requestAnimationFrame(tick);
 }
 
 /* ── LIGHTBOX ── */
-var _lbImgs = GALLERY_IMGS;
-var _lbIdx = 0;
-
+var _lbImgs = GALLERY_IMGS, _lbIdx = 0;
 function lbOpen(idx, imgs) {
   if (imgs) _lbImgs = imgs;
-  _lbIdx = idx;
-  _lbRender();
+  _lbIdx = idx; _lbRender();
   var lb = document.getElementById('lb');
   if (lb) lb.classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -381,10 +395,7 @@ function lbClose() {
   if (lb) lb.classList.remove('on');
   document.body.style.overflow = '';
 }
-function lbShift(d) {
-  _lbIdx = (_lbIdx + d + _lbImgs.length) % _lbImgs.length;
-  _lbRender();
-}
+function lbShift(d) { _lbIdx = (_lbIdx + d + _lbImgs.length) % _lbImgs.length; _lbRender(); }
 function _lbRender() {
   var imgEl = document.getElementById('lb-img');
   var infoEl = document.getElementById('lb-info');
@@ -408,17 +419,9 @@ function validateForm(formId, successId) {
   var ok = true;
   form.querySelectorAll('[data-req]').forEach(function(f) {
     var g = f.closest('.fg');
-    var valid = f.type === 'email'
-      ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)
-      : f.value.trim().length > 0;
-    if (!valid) {
-      if (g) g.classList.add('has-err');
-      f.classList.add('err');
-      ok = false;
-    } else {
-      if (g) g.classList.remove('has-err');
-      f.classList.remove('err');
-    }
+    var valid = f.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value) : f.value.trim().length > 0;
+    if (!valid) { if (g) g.classList.add('has-err'); f.classList.add('err'); ok = false; }
+    else { if (g) g.classList.remove('has-err'); f.classList.remove('err'); }
   });
   if (!ok) return;
   var s = document.getElementById(successId);
@@ -427,22 +430,17 @@ function validateForm(formId, successId) {
 }
 
 /* ── SHARE ── */
-function toggleShareMenu() {
-  var d = document.getElementById('share-dropdown');
-  if (d) d.classList.toggle('open');
-}
+function toggleShareMenu() { var d = document.getElementById('share-dropdown'); if (d) d.classList.toggle('open'); }
 function doShare(platform) {
   var url = encodeURIComponent(window.location.href);
   var text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay! \uD83C\uDFCA\uD83C\uDFA4');
   var d = document.getElementById('share-dropdown');
   if (d) d.classList.remove('open');
   if (platform === 'copy') {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href).then(function() {
-        var btn = document.getElementById('share-copy-btn');
-        if (btn) { btn.textContent = '\u2713 Copied!'; setTimeout(function() { btn.textContent = '\uD83D\uDD17 Copy Link'; }, 2000); }
-      });
-    }
+    if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).then(function() {
+      var btn = document.getElementById('share-copy-btn');
+      if (btn) { btn.textContent = '\u2713 Copied!'; setTimeout(function() { btn.textContent = '\uD83D\uDD17 Copy Link'; }, 2000); }
+    });
   } else if (platform === 'whatsapp') {
     window.open('https://wa.me/?text=' + text + '%20' + url, '_blank');
   } else if (platform === 'viber') {
@@ -450,7 +448,5 @@ function doShare(platform) {
   }
 }
 
-/* ── CHECKLIST (contact page) ── */
-function toggleBring(el) {
-  el.classList.toggle('checked');
-}
+/* ── CHECKLIST ── */
+function toggleBring(el) { el.classList.toggle('checked'); }
