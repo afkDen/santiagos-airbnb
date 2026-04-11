@@ -15,17 +15,17 @@
 <style>
 /* DIRECTIONS */
 .dir-bar{display:flex;gap:.9rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
-.dir-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:.75rem 1.2rem;display:flex;align-items:center;gap:.7rem}
+.dir-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:.85rem 1.3rem;display:flex;align-items:center;gap:.75rem;transition:border-color .2s}
 .dir-ic{font-size:1.1rem;flex-shrink:0}
 .dir-lbl{font-family:var(--ff-b);font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.12em;text-transform:uppercase}
 .dir-val{font-family:var(--ff-d);font-size:1rem;color:var(--cream);font-weight:600}
 /* MAP */
-.map-wrap{border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden;height:460px;margin-top:1rem;border-top:1px solid rgba(255,255,255,.08)}
+.map-wrap{border-radius:var(--r-lg);overflow:hidden;height:480px;margin-top:1.5rem;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block}
 /* NEARBY GRID */
 .nb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-top:3rem}
 .nb-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--sand);background:var(--cream);transition:transform .3s,box-shadow .3s}
-.nb-card:hover{transform:translateY(-5px);box-shadow:var(--sh-xl)}
+.nb-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(26,15,7,.22)}
 /* Visual */
 .nb-visual{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
 .nb-taal    .nb-visual{background:radial-gradient(ellipse at 30% 65%,#2a6e12 0%,#0f3506 50%,#030d01 100%)}
@@ -54,7 +54,7 @@
 /* TIPS */
 .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.5rem}
 .tip-card{padding:1.8rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand);transition:box-shadow .3s,transform .3s}
-.tip-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+.tip-card:hover{box-shadow:0 8px 32px rgba(26,15,7,.14);transform:translateY(-4px)}
 .tip-ic{font-size:1.9rem;margin-bottom:.8rem;display:block}
 .tip-card h4{font-family:var(--ff-d);font-size:1.12rem;color:var(--ink);margin-bottom:.45rem;font-weight:600}
 .tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}

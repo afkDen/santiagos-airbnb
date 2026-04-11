@@ -36,8 +36,8 @@
 .spot-img.tall img { height:408px }
 .spot-text p { font-family:var(--ff-d); font-size:1.06rem; color:var(--ink-s); line-height:1.95; font-weight:400; margin-bottom:1.1rem }
 .hl-list { display:flex; flex-direction:column; gap:.75rem; margin-top:1.2rem }
-.hl-row { display:flex; align-items:flex-start; gap:.8rem; padding:.9rem 1rem; background:var(--bg); border-radius:var(--r); border:1px solid var(--sand); transition:all .2s }
-.hl-row:hover { border-color:var(--terra); box-shadow:var(--sh-sm) }
+.hl-row { display:flex; align-items:flex-start; gap:.85rem; padding:.95rem 1.1rem; background:var(--bg); border-radius:var(--r-lg); border:1px solid var(--sand); transition:all .22s }
+.hl-row:hover { border-color:var(--terra); box-shadow:0 4px 18px rgba(192,115,74,.12) }
 .hl-row-ic { font-size:1.2rem; flex-shrink:0; margin-top:.05rem }
 .hl-row-body h4 { font-family:var(--ff-b); font-size:.88rem; font-weight:700; color:var(--ink); margin-bottom:.18rem }
 .hl-row-body p { font-family:var(--ff-d); font-size:.92rem; color:var(--ink-s); font-weight:400; line-height:1.55 }
@@ -47,8 +47,8 @@
 /* ── FULL AMENITY LIST ── */
 .am-full-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.5rem }
 .am-item { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.4rem; background:rgba(255,255,255,.05); border-radius:var(--r-lg); border:1px solid rgba(255,255,255,.07); transition:all .2s }
-.am-item:hover { border-color:rgba(192,115,74,.3); transform:translateX(4px) }
-.am-item-ic { font-size:1.5rem; flex-shrink:0 }
+.am-item:hover { border-color:rgba(192,115,74,.35); transform:translateX(5px); box-shadow:0 4px 20px rgba(192,115,74,.12) }
+.am-item-ic { font-size:1.4rem; flex-shrink:0; color:var(--terra-lt) }
 .am-item-name { font-family:var(--ff-b); font-size:.86rem; font-weight:700; color:var(--sand); letter-spacing:.01em }
 .am-item-desc { font-family:var(--ff-b); font-size:.72rem; color:rgba(255,255,255,.28); margin-top:.12rem; font-weight:400 }
 
@@ -73,7 +73,7 @@
 /* ── THINGS TO KNOW ── */
 .ttk-sec { background:var(--bg-alt) }
 .ttk-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:2.5rem }
-.ttk-card { padding:1.8rem; background:var(--cream); border-radius:var(--r-lg); border:1px solid var(--sand) }
+.ttk-card { padding:1.8rem; background:var(--cream); border-radius:var(--r-lg); border:1px solid var(--sand); transition:box-shadow .25s, border-color .25s }
 .ttk-head { display:flex; align-items:center; gap:.75rem; margin-bottom:1rem }
 .ttk-ic { width:40px; height:40px; border-radius:50%; background:var(--sand); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0 }
 .ttk-head h4 { font-family:var(--ff-d); font-size:1.1rem; color:var(--ink); font-weight:600 }
@@ -99,7 +99,8 @@
 @media(max-width:1100px) {
   .spot-grid, .spot-grid.flip { grid-template-columns:1fr; direction:ltr; gap:2.5rem }
   .spot-img.tall { grid-row: span 1 }
-  .spot-img.tall img { height:200px }
+  .spot-img.tall img { height:180px }
+  .spot-imgs { grid-template-columns: 1fr 1fr 1fr }
   .am-full-grid { grid-template-columns:1fr 1fr }
   .ttk-grid { grid-template-columns:1fr }
   .rules-grid { grid-template-columns:1fr }
@@ -111,9 +112,9 @@
   .photo-thumb-grid { grid-template-columns:1fr 1fr }
   .more-pair { grid-template-columns:1fr 1fr }
   .spot-img.tall { grid-row: span 1 }
-  .spot-img.tall img { height:160px !important }
-  .spot-img img { height:160px }
-  .spot-imgs { grid-template-columns: 1fr 1fr }
+  .spot-img.tall img { height:130px !important }
+  .spot-img img { height:130px }
+  .spot-imgs { grid-template-columns: 1fr 1fr 1fr }
 }
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -163,8 +164,8 @@
       <p>Queens of the Night and Weekend Warriors all welcome.</p>
       <div class="hl-list">
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></div><div class="hl-row-body"><h4>Dedicated Videoke Room</h4><p>Full screen TV with videoke setup &amp; high-quality speakers</p></div></div>
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>Music Poster Gallery Wall</h4><p>Queen, Rolling Stones, Stevie Wonder, Bob Marley, ABBA &amp; more</p></div></div>
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>Sectional Sofa Seating</h4><p>Large L-shaped sofa fits your whole group comfortably</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></div><div class="hl-row-body"><h4>Music Poster Gallery Wall</h4><p>Queen, Rolling Stones, Stevie Wonder, Bob Marley, ABBA &amp; more</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-sofa"/></svg></div><div class="hl-row-body"><h4>Sectional Sofa Seating</h4><p>Large L-shaped sofa fits your whole group comfortably</p></div></div>
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-ac"/></svg></div><div class="hl-row-body"><h4>Air-Conditioned</h4><p>Stay cool for those long singing sessions</p></div></div>
       </div>
     </div>
@@ -192,7 +193,7 @@
       <div class="hl-list">
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg></div><div class="hl-row-body"><h4>Full-Size Billiards Table</h4><p>Professional Kangaroo pool table with all equipment</p></div></div>
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-arcade"/></svg></div><div class="hl-row-body"><h4>Arcade Machines</h4><p>Multiple arcade units — retro classics for all ages</p></div></div>
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>Industrial Design</h4><p>Exposed brick, statement lighting — the perfect game room vibe</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-lamp"/></svg></div><div class="hl-row-body"><h4>Industrial Design</h4><p>Exposed brick, statement lighting — the perfect game room vibe</p></div></div>
       </div>
     </div>
   </div>
@@ -219,7 +220,7 @@
       <div class="hl-list">
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg></div><div class="hl-row-body"><h4>Private Swimming Pool</h4><p>All yours for the entire stay — one of few in Alfonso</p></div></div>
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></div><div class="hl-row-body"><h4>Cool Highland Climate</h4><p>18–24°C mountain air makes every pool day refreshing</p></div></div>
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>Photogenic Setting</h4><p>Industrial container architecture frames every shot beautifully</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg></div><div class="hl-row-body"><h4>Photogenic Setting</h4><p>Industrial container architecture frames every shot beautifully</p></div></div>
       </div>
     </div>
   </div>
@@ -244,8 +245,8 @@
       <h2 class="h2">Eat &amp; <em>Gather</em></h2>
       <p>The dining area is a genuine showpiece — a long glass dining table with rattan chairs, statement pendant lights, and Santiago's iconic gold signature on the wall. Behind it, a fully equipped kitchen handles groups of any size.</p>
       <div class="hl-list">
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>Large Dining Table</h4><p>Glass top with rattan chairs — seats your whole crew</p></div></div>
-        <div class="hl-row"><div class="hl-row-ic"></div><div class="hl-row-body"><h4>The Santiago's Sign</h4><p>Gold signature wall — most photographed spot in the resort</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-table"/></svg></div><div class="hl-row-body"><h4>Large Dining Table</h4><p>Glass top with rattan chairs — seats your whole crew</p></div></div>
+        <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></div><div class="hl-row-body"><h4>The Santiago's Sign</h4><p>Gold signature wall — most photographed spot in the resort</p></div></div>
         <div class="hl-row"><div class="hl-row-ic"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"/></svg></div><div class="hl-row-body"><h4>Full Kitchen</h4><p>Fully equipped — cook any meal for your entire group</p></div></div>
       </div>
     </div>
