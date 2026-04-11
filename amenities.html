@@ -34,13 +34,13 @@
 .spot-img:hover img { transform:scale(1.05) }
 .spot-img.tall { grid-row:span 2 }
 .spot-img.tall img { height:408px }
-.spot-text p { font-size:.93rem; color:var(--ink-s); line-height:1.85; font-weight:300; margin-bottom:1rem }
+.spot-text p { font-family:var(--ff-d); font-size:1.06rem; color:var(--ink-s); line-height:1.95; font-weight:400; margin-bottom:1.1rem }
 .hl-list { display:flex; flex-direction:column; gap:.75rem; margin-top:1.2rem }
 .hl-row { display:flex; align-items:flex-start; gap:.8rem; padding:.9rem 1rem; background:var(--bg); border-radius:var(--r); border:1px solid var(--sand); transition:all .2s }
 .hl-row:hover { border-color:var(--terra); box-shadow:var(--sh-sm) }
 .hl-row-ic { font-size:1.2rem; flex-shrink:0; margin-top:.05rem }
-.hl-row-body h4 { font-size:.88rem; font-weight:600; color:var(--ink); margin-bottom:.15rem }
-.hl-row-body p { font-size:.78rem; color:var(--ink-s); font-weight:300 }
+.hl-row-body h4 { font-family:var(--ff-b); font-size:.88rem; font-weight:700; color:var(--ink); margin-bottom:.18rem }
+.hl-row-body p { font-family:var(--ff-d); font-size:.92rem; color:var(--ink-s); font-weight:400; line-height:1.55 }
 .spot-grid.flip { direction:rtl }
 .spot-grid.flip > * { direction:ltr }
 
@@ -49,8 +49,8 @@
 .am-item { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.4rem; background:rgba(255,255,255,.05); border-radius:var(--r-lg); border:1px solid rgba(255,255,255,.07); transition:all .2s }
 .am-item:hover { border-color:rgba(192,115,74,.3); transform:translateX(4px) }
 .am-item-ic { font-size:1.5rem; flex-shrink:0 }
-.am-item-name { font-size:.85rem; font-weight:600; color:var(--sand) }
-.am-item-desc { font-size:.74rem; color:rgba(255,255,255,.3); margin-top:.1rem; font-weight:300 }
+.am-item-name { font-family:var(--ff-b); font-size:.86rem; font-weight:700; color:var(--sand); letter-spacing:.01em }
+.am-item-desc { font-family:var(--ff-b); font-size:.72rem; color:rgba(255,255,255,.28); margin-top:.12rem; font-weight:400 }
 
 /* ── MORE AMENITIES 2-COL ── */
 .more-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; align-items:start }
@@ -58,7 +58,7 @@
 .more-pair .spot-img img { height:160px }
 .more-title { font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--terra); font-weight:700; margin-bottom:.6rem; display:flex; align-items:center; gap:.4rem }
 .more-title::before { content:''; width:16px; height:1.5px; background:var(--terra) }
-.more-desc { font-size:.85rem; color:var(--ink-s); font-weight:300; line-height:1.7 }
+.more-desc { font-family:var(--ff-d); font-size:1rem; color:var(--ink-s); font-weight:400; line-height:1.78 }
 
 /* ── BEDROOMS / BATHROOMS ── */
 .sleep-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; align-items:start }
@@ -67,7 +67,7 @@
 .photo-thumb:hover { transform:scale(1.02); box-shadow:var(--sh-md) }
 .photo-thumb img { width:100%; height:130px; object-fit:cover; display:block; transition:transform .5s }
 .photo-thumb:hover img { transform:scale(1.05) }
-.sleep-label { font-size:.72rem; color:var(--terra); font-weight:700; margin-top:.8rem; text-align:center; letter-spacing:.06em; text-transform:uppercase }
+.sleep-label { font-family:var(--ff-b); font-size:.68rem; color:var(--terra); font-weight:700; margin-top:.8rem; text-align:center; letter-spacing:.08em; text-transform:uppercase }
 .sleep-intro { font-size:.93rem; color:var(--ink-s); line-height:1.8; font-weight:300; margin-bottom:1.5rem }
 
 /* ── THINGS TO KNOW ── */
@@ -76,10 +76,10 @@
 .ttk-card { padding:1.8rem; background:var(--cream); border-radius:var(--r-lg); border:1px solid var(--sand) }
 .ttk-head { display:flex; align-items:center; gap:.75rem; margin-bottom:1rem }
 .ttk-ic { width:40px; height:40px; border-radius:50%; background:var(--sand); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0 }
-.ttk-head h4 { font-family:var(--ff-d); font-size:1rem; color:var(--ink); font-weight:600 }
+.ttk-head h4 { font-family:var(--ff-d); font-size:1.1rem; color:var(--ink); font-weight:600 }
 .ttk-items { display:flex; flex-direction:column; gap:.6rem }
-.ttk-item { font-size:.82rem; color:var(--ink-s); display:flex; align-items:flex-start; gap:.5rem; font-weight:300 }
-.ttk-item::before { content:"→"; color:var(--terra); font-weight:700; flex-shrink:0; margin-top:.05rem }
+.ttk-item { font-family:var(--ff-d); font-size:.96rem; color:var(--ink-s); display:flex; align-items:flex-start; gap:.5rem; font-weight:400; line-height:1.65 }
+.ttk-item::before { content:"→"; color:var(--terra); font-weight:700; flex-shrink:0; margin-top:.05rem; font-family:var(--ff-b) }
 
 /* ── RULES ── */
 .rules-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; margin-top:2.5rem }
@@ -98,6 +98,7 @@
 /* ── RESPONSIVE ── */
 @media(max-width:1100px) {
   .spot-grid, .spot-grid.flip { grid-template-columns:1fr; direction:ltr; gap:2.5rem }
+  .spot-img.tall { grid-row: span 1 }
   .spot-img.tall img { height:200px }
   .am-full-grid { grid-template-columns:1fr 1fr }
   .ttk-grid { grid-template-columns:1fr }
@@ -109,9 +110,17 @@
   .am-full-grid { grid-template-columns:1fr }
   .photo-thumb-grid { grid-template-columns:1fr 1fr }
   .more-pair { grid-template-columns:1fr 1fr }
+  .spot-img.tall { grid-row: span 1 }
+  .spot-img.tall img { height:160px !important }
+  .spot-img img { height:160px }
+  .spot-imgs { grid-template-columns: 1fr 1fr }
 }
 </style>
-
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:description" content="22+ amenities all included — private pool, videoke, game room, gym, basketball & bonfire in Alfonso, Tagaytay."/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920"/>
   <!-- Vercel Analytics -->
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -259,7 +268,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/23fa05de-4f88-4694-9357-74ae76635ab2.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Gym 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">No skipping leg day on vacation. The gym has basic fitness equipment to keep your crew active between pool sessions.</p>
+      <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">No skipping leg day on vacation. The gym has basic fitness equipment to keep your crew active between pool sessions.</p>
     </div>
     <!-- BONFIRE -->
     <div class="anim">
@@ -272,7 +281,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/cbbf4bee-4ba1-41ec-8d0c-922684e7a936.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">As the Tagaytay highlands cool at night, gather around the bonfire for stories, s'mores, and unforgettable moments under the stars.</p>
+      <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">As the Tagaytay highlands cool at night, gather around the bonfire for stories, s'mores, and unforgettable moments under the stars.</p>
     </div>
     <!-- BASKETBALL -->
     <div class="anim">
@@ -285,7 +294,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ff9e2cfe-96b7-4992-8cd8-81499c84335f.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Basketball 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">Half-court basketball — perfect for team competitions, shooting drills, and burning off that post-lunch energy.</p>
+      <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">Half-court basketball — perfect for team competitions, shooting drills, and burning off that post-lunch energy.</p>
     </div>
     <!-- OUTDOOR -->
     <div class="anim">
@@ -298,7 +307,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor 2"/>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--ink-s);font-weight:300;line-height:1.7">Covered outdoor dining and lounge areas with fresh highland air. Perfect for morning coffee, afternoon naps, or late-night hangouts.</p>
+      <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">Covered outdoor dining and lounge areas with fresh highland air. Perfect for morning coffee, afternoon naps, or late-night hangouts.</p>
     </div>
   </div>
 </section>
@@ -309,7 +318,7 @@
   <h2 class="h2">Bedrooms &amp; <em>Bathrooms</em></h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start">
     <div class="anim-l">
-      <p style="font-size:.93rem;color:var(--ink-s);line-height:1.8;font-weight:300;margin-bottom:1.5rem">2 VIP rooms, 9 double deck beds, and a driver's room — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a large group.</p>
+      <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">2 VIP rooms, 9 double deck beds, and a driver's room — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a large group.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
         <div class="spot-img" onclick="lbOpen(0,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="VIP Room 1"/></div>
         <div class="spot-img" onclick="lbOpen(1,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1eea7c15-e6bc-480f-9049-7a7ca831306a.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="VIP Room 2"/></div>
@@ -321,14 +330,12 @@
       <p style="font-size:.75rem;color:var(--terra);font-weight:600;margin-top:.8rem;text-align:center;letter-spacing:.05em">2 VIP ROOMS &nbsp;·&nbsp; 9 DOUBLE DECK BEDS &nbsp;·&nbsp; DRIVER'S ROOM</p>
     </div>
     <div class="anim-r">
-      <p style="font-size:.93rem;color:var(--ink-s);line-height:1.8;font-weight:300;margin-bottom:1.5rem">8 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush.</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
-        <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 1"/></div>
-        <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 2"/></div>
-        <div class="spot-img" onclick="lbOpen(2,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/380a4b0e-bc04-4540-8ab5-3446055037b4.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 3"/></div>
-        <div class="spot-img" onclick="lbOpen(3,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/edf6c0b7-2c0d-416a-895b-ae85e5455368.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 4"/></div>
-        <div class="spot-img" onclick="lbOpen(4,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/73e7dd06-2f9b-479e-8925-0a24bf769a9c.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 5"/></div>
-        <div class="spot-img" onclick="lbOpen(5,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/5444278e-4394-474a-aa9f-e233672be193.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Bathroom 6"/></div>
+      <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">8 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+        <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 1 — Rain shower"/></div>
+        <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 2 — Mirror & sink"/></div>
+        <div class="spot-img" onclick="lbOpen(4,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/73e7dd06-2f9b-479e-8925-0a24bf769a9c.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 3 — Full view"/></div>
+        <div class="spot-img" onclick="lbOpen(6,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/edf6c0b7-2c0d-416a-895b-ae85e5455368.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 4 — Outdoor bathroom"/></div>
       </div>
       <p style="font-size:.75rem;color:var(--terra);font-weight:600;margin-top:.8rem;text-align:center;letter-spacing:.05em">8 BATHROOMS</p>
     </div>
@@ -376,46 +383,6 @@
   </div>
 </section>
 
-
-<!-- FULL AMENITY LIST -->
-<section class="dark-sec">
-  <p class="tag">Complete List</p>
-  <h2 class="h2">All <em>22+</em> Amenities Included</h2>
-  <p class="lead">Every amenity is included in your nightly rate — no hidden charges.</p>
-  <div class="am-full-grid">
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg></div><div><div class="am-item-name">Swimming Pool</div><div class="am-item-desc">Private · one of few in Alfonso</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></div><div><div class="am-item-name">Videoke Room</div><div class="am-item-desc">Dedicated room with full setup</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg></div><div><div class="am-item-name">Billiards Table</div><div class="am-item-desc">Full-size Kangaroo pool table</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-arcade"/></svg></div><div><div class="am-item-name">Arcade Games</div><div class="am-item-desc">Multiple cabinets, all ages</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-gym"/></svg></div><div><div class="am-item-name">Gym &amp; Fitness</div><div class="am-item-desc">Basic equipment for the crew</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-basketball"/></svg></div><div><div class="am-item-name">Basketball Court</div><div class="am-item-desc">Half-court for team games</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-bonfire"/></svg></div><div><div class="am-item-name">Bonfire Area</div><div class="am-item-desc">Stories under the stars</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"/></svg></div><div><div class="am-item-name">Full Kitchen</div><div class="am-item-desc">Fully equipped for group cooking</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></div><div><div class="am-item-name">Free Wi-Fi</div><div class="am-item-desc">High-speed throughout</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></div><div><div class="am-item-name">Free Parking</div><div class="am-item-desc">On-premises for all vehicles</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-tv"/></svg></div><div><div class="am-item-name">TV</div><div class="am-item-desc">Smart TV for streaming</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg></div><div><div class="am-item-name">2 VIP Rooms + 9 Double Deck Beds</div><div class="am-item-desc">Driver's room also available</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-shower"/></svg></div><div><div class="am-item-name">8 Bathrooms</div><div class="am-item-desc">No queuing for big groups</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-ac"/></svg></div><div><div class="am-item-name">Air Conditioning</div><div class="am-item-desc">In rooms and videoke room</div></div></div>
-    <div class="am-item anim"><div class="am-item-ic"><svg class="icon" aria-hidden="true"><use href="#i-outdoor"/></svg></div><div><div class="am-item-name">Outdoor Chill Spaces</div><div class="am-item-desc">Covered outdoor lounging areas</div></div></div>
-  </div>
-</section>
-
-<!-- THINGS TO KNOW -->
-<section class="ttk-sec">
-  <p class="tag">Good to Know</p>
-  <h2 class="h2">Things to <em>Know</em></h2>
-  <div class="ttk-grid">
-    <div class="ttk-card anim"><div class="ttk-head"><div class="ttk-ic"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></div><h4>Check-in &amp; Checkout</h4></div><div class="ttk-items"><div class="ttk-item">Check-in after 3:00 PM</div><div class="ttk-item">Checkout before 12:00 PM noon</div><div class="ttk-item">Early/late options on request</div></div></div>
-    <div class="ttk-card anim"><div class="ttk-head"><div class="ttk-ic"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></div><h4>Guest Policy</h4></div><div class="ttk-items"><div class="ttk-item">Base rate covers up to 20 guests</div><div class="ttk-item">Up to 40 guests at ₱1,000/extra head</div><div class="ttk-item">Please declare your full headcount</div></div></div>
-    <div class="ttk-card anim"><div class="ttk-head"><div class="ttk-ic"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></div><h4>House Rules</h4></div><div class="ttk-items"><div class="ttk-item">No pets on the property</div><div class="ttk-item">Keep the space clean and respectful</div><div class="ttk-item">All amenities for registered guests only</div></div></div>
-    <div class="ttk-card anim"><div class="ttk-head"><div class="ttk-ic"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></div><h4>Safety Info</h4></div><div class="ttk-items"><div class="ttk-item">Smoke alarm not present on property</div><div class="ttk-item">Carbon monoxide alarm not reported</div><div class="ttk-item">Guests may bring portable safety devices</div></div></div>
-  </div>
-  <div style="text-align:center;margin-top:3rem">
-    <a href="contact.html" class="btn btn-primary">Book Now →</a>
-    <a href="packages.html" class="btn btn-outline" style="margin-left:1rem">View Rates</a>
-  </div>
-</section>
 
 <!-- STICKY BOTTOM CTA -->
 <div class="sticky-cta" id="sticky-cta">

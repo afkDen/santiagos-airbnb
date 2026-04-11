@@ -33,7 +33,7 @@
 .occ-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);padding:.28rem .85rem;border-radius:var(--r-pill);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:.9rem}
 .occ-panel-content h2{font-family:var(--ff-d);font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;font-weight:400;line-height:1.1;margin-bottom:.8rem}
 .occ-panel-content h2 em{font-style:italic;color:var(--terra-lt)}
-.occ-panel-content p{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8;font-weight:300;margin-bottom:1.5rem;max-width:440px}
+.occ-panel-content p{font-family:var(--ff-d);font-size:1.06rem;color:rgba(255,255,255,.68);line-height:1.88;font-weight:300;margin-bottom:1.5rem;max-width:460px}
 .occ-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .occ-tag{padding:.28rem .8rem;background:rgba(255,255,255,.1);border-radius:var(--r-pill);font-size:.68rem;color:rgba(255,255,255,.7);font-weight:500}
 
@@ -48,9 +48,9 @@
 .occ-photo:hover img{transform:scale(1.04)}
 .occ-photo.main{grid-column:span 2}
 .occ-photo.main img{height:260px}
-.occ-text p{font-size:.93rem;color:var(--ink-s);line-height:1.85;font-weight:300;margin-bottom:1rem}
+.occ-text p{font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);line-height:1.88;font-weight:400;margin-bottom:1rem}
 .occ-checklist{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:1.2rem 0}
-.occ-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;color:var(--ink-s);font-weight:300}
+.occ-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-family:var(--ff-d);font-size:1rem;color:var(--ink-s);font-weight:400;line-height:1.5}
 .occ-checklist li::before{content:'✓';color:var(--forest);font-weight:700;flex-shrink:0;margin-top:.05rem}
 .occ-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
 
@@ -68,8 +68,8 @@
 .cap-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:2rem 1rem;transition:all .3s}
 .cap-card:hover{background:rgba(192,115,74,.12);border-color:rgba(192,115,74,.25);transform:translateY(-4px)}
 .cap-icon{font-size:2rem;margin-bottom:.8rem;display:block}
-.cap-name{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:.3rem}
-.cap-desc{font-size:.73rem;color:rgba(255,255,255,.3);line-height:1.5}
+.cap-name{font-family:var(--ff-b);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:.3rem}
+.cap-desc{font-family:var(--ff-b);font-size:.7rem;color:rgba(255,255,255,.28);line-height:1.5;letter-spacing:.02em}
 
 /* AMENITIES QUICK LIST */
 .quick-am{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.5rem 0}
@@ -78,7 +78,7 @@
 
 /* SHARE STRIP */
 .share-strip{background:var(--terra);padding:3rem 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.share-strip h3{font-family:var(--ff-d);font-size:1.8rem;color:#fff;font-weight:400}
+.share-strip h3{font-family:var(--ff-d);font-size:1.9rem;color:#fff;font-weight:400;line-height:1.15}
 .share-strip h3 em{font-style:italic;color:rgba(255,255,255,.65)}
 .share-btns{display:flex;gap:.7rem;flex-wrap:wrap}
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.2rem;border-radius:var(--r);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1.5px solid rgba(255,255,255,.4);color:#fff;background:transparent;cursor:pointer;transition:all .2s}
@@ -98,7 +98,9 @@
   .share-strip{text-align:center;justify-content:center}
 }
 </style>
-
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920"/>
   <!-- Vercel Analytics -->
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>

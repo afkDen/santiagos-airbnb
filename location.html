@@ -17,8 +17,8 @@
 .dir-bar{display:flex;gap:.9rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
 .dir-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:.75rem 1.2rem;display:flex;align-items:center;gap:.7rem}
 .dir-ic{font-size:1.1rem;flex-shrink:0}
-.dir-lbl{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase}
-.dir-val{font-size:.85rem;color:var(--cream);font-weight:600}
+.dir-lbl{font-family:var(--ff-b);font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.12em;text-transform:uppercase}
+.dir-val{font-family:var(--ff-d);font-size:1rem;color:var(--cream);font-weight:600}
 /* MAP */
 .map-wrap{border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden;height:460px;margin-top:1rem;border-top:1px solid rgba(255,255,255,.08)}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block}
@@ -47,8 +47,8 @@
 .nb-dist{position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,.62);backdrop-filter:blur(6px);color:#fff;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.3rem .85rem;border-radius:var(--r-pill);z-index:3}
 /* Card body */
 .nb-body{padding:1.6rem}
-.nb-name{font-family:var(--ff-d);font-size:1.3rem;color:var(--ink);font-weight:600;margin-bottom:.5rem}
-.nb-desc{font-size:.85rem;color:var(--ink-s);line-height:1.7;font-weight:300}
+.nb-name{font-family:var(--ff-d);font-size:1.4rem;color:var(--ink);font-weight:600;margin-bottom:.55rem}
+.nb-desc{font-family:var(--ff-d);font-size:1rem;color:var(--ink-s);line-height:1.82;font-weight:400}
 .nb-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
 .nb-tag{padding:.22rem .7rem;background:var(--sand);border-radius:var(--r-pill);font-size:.65rem;color:var(--ink-s);font-weight:600}
 /* TIPS */
@@ -56,13 +56,17 @@
 .tip-card{padding:1.8rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand);transition:box-shadow .3s,transform .3s}
 .tip-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
 .tip-ic{font-size:1.9rem;margin-bottom:.8rem;display:block}
-.tip-card h4{font-family:var(--ff-d);font-size:1.05rem;color:var(--ink);margin-bottom:.45rem;font-weight:600}
-.tip-card p{font-size:.82rem;color:var(--ink-s);line-height:1.65;font-weight:300}
+.tip-card h4{font-family:var(--ff-d);font-size:1.12rem;color:var(--ink);margin-bottom:.45rem;font-weight:600}
+.tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}
 /* RESPONSIVE */
 @media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
 @media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.nb-visual{height:200px}}
 </style>
-
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:description" content="Find Santiagos Resort in Alfonso, Cavite — 1.5-2 hours from Manila. Near Taal Volcano, Sky Ranch & Tagaytay Ridge."/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920"/>
   <!-- Vercel Analytics -->
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -190,7 +194,6 @@
   </div>
 </section>
 
-<div id="back-top">↑</div>
 <script src="js/app.js"></script>
 </body>
 </html>

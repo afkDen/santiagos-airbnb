@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/style.css"/>
 <style>
 .gfilters{display:flex;gap:.5rem;flex-wrap:wrap;margin:2.2rem 0 1.5rem}
-.gf{padding:.38rem 1rem;border:1.5px solid var(--sand);background:transparent;border-radius:var(--r-pill);font-size:.68rem;color:var(--ink-s);letter-spacing:.06em;font-weight:600;transition:all .2s}
+.gf{padding:.38rem 1.1rem;border:1.5px solid var(--sand);background:transparent;border-radius:var(--r-pill);font-family:var(--ff-b);font-size:.66rem;color:var(--ink-s);letter-spacing:.08em;font-weight:700;transition:all .2s}
 .gf:hover,.gf.on{background:var(--terra);border-color:var(--terra);color:#fff}
 .masonry{columns:3;column-gap:10px}
 .m-item{break-inside:avoid;margin-bottom:10px;overflow:hidden;border-radius:var(--r);cursor:zoom-in;position:relative;background:var(--sand)}
@@ -22,14 +22,17 @@
 .m-item:hover img{transform:scale(1.04)}
 .m-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,15,7,.65) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem}
 .m-item:hover .m-overlay{opacity:1}
-.m-cat{display:inline-block;font-size:.58rem;background:var(--terra);color:#fff;padding:.16rem .5rem;border-radius:10px;margin-bottom:.3rem;letter-spacing:.08em;text-transform:uppercase}
-.m-lbl{font-size:.72rem;color:rgba(255,255,255,.9);display:block;font-weight:500}
+.m-cat{display:inline-block;font-family:var(--ff-b);font-size:.55rem;background:var(--terra);color:#fff;padding:.16rem .55rem;border-radius:10px;margin-bottom:.3rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.m-lbl{font-family:var(--ff-d);font-size:.85rem;color:rgba(255,255,255,.9);display:block;font-weight:500}
 .feat-strip{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;margin-bottom:10px}
 .feat-strip .m-item img{height:400px;width:100%;object-fit:cover}
 @media(max-width:1024px){.masonry{columns:2}.feat-strip{grid-template-columns:1fr}}
 @media(max-width:640px){.masonry{columns:1}}
 </style>
-
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <meta property="og:title" content="Gallery · Santiagos Resort"/>
+  <meta property="og:description" content="Browse 30+ photos of Santiagos Resort — pool, game room, rooms, outdoor spaces and more."/>
+  <meta name="description" content="30+ photos of Santiagos Resort — pool, videoke lounge, billiards, arcade, bedrooms & outdoor spaces in Alfonso, Tagaytay."/>
   <!-- Vercel Analytics -->
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -119,7 +122,7 @@
   </div>
 
   <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--cream);border-radius:var(--r-lg);border:1px dashed var(--sand)">
-    <p style="font-size:.88rem;color:var(--ink-s);margin-bottom:1rem">More photos available on our Airbnb listing. We update the gallery regularly.</p>
+    <p style="font-family:var(--ff-d);font-size:1rem;color:var(--ink-s);margin-bottom:1rem">More photos available on our Airbnb listing. We update the gallery regularly.</p>
     <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-primary">View on Airbnb →</a>
   </div>
 </section>

@@ -133,9 +133,12 @@ var SVG_SPRITE = '<svg xmlns="http://www.w3.org/2000/svg" style="display:none" i
 var NAV_HTML = [
   '<div id="progress-bar"></div>',
   '<div id="splash">',
+  '  <div class="sp-badge">Alfonso &middot; Tagaytay &middot; Philippines</div>',
   '  <div class="sp-logo">Santiagos Resort</div>',
-  '  <div class="sp-tagline">Alfonso \u00b7 Tagaytay \u00b7 Philippines</div>',
+  '  <div class="sp-divider"></div>',
+  '  <div class="sp-tagline">Private Resort &middot; Up to 40 Guests</div>',
   '  <div class="sp-track"><div class="sp-fill"></div></div>',
+  '  <div class="sp-dots"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>',
   '</div>',
   '<div id="mob-nav">',
   '  <a href="index.html" onclick="closeMob()">Home</a>',
@@ -226,6 +229,7 @@ var FOOTER_HTML = [
   '    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="' + AIRBNB + '" target="_blank" rel="noopener">Airbnb \u2197</a></div>',
   '  </div>',
   '</footer>',
+  '<div id="back-top" role="button" aria-label="Back to top">\u2191</div>',
 ].join('\n');
 
 /* ── INIT ── */
