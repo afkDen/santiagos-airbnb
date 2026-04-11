@@ -68,7 +68,7 @@
 .photo-thumb img { width:100%; height:130px; object-fit:cover; display:block; transition:transform .5s }
 .photo-thumb:hover img { transform:scale(1.05) }
 .sleep-label { font-family:var(--ff-b); font-size:.68rem; color:var(--terra); font-weight:700; margin-top:.8rem; text-align:center; letter-spacing:.08em; text-transform:uppercase }
-.sleep-intro { font-size:.93rem; color:var(--ink-s); line-height:1.8; font-weight:300; margin-bottom:1.5rem }
+.sleep-intro { font-family:var(--ff-d); font-size:1.05rem; color:var(--ink-s); line-height:1.88; font-weight:400; margin-bottom:1.5rem }
 
 /* ── THINGS TO KNOW ── */
 .ttk-sec { background:var(--bg-alt) }
@@ -317,28 +317,49 @@
 <section style="background:var(--bg-alt)">
   <p class="tag">Sleep &amp; Refresh</p>
   <h2 class="h2">Bedrooms &amp; <em>Bathrooms</em></h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2.5rem;align-items:start">
     <div class="anim-l">
       <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">2 VIP rooms, 9 double deck beds, and a driver's room — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a large group.</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
-        <div class="spot-img" onclick="lbOpen(0,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="VIP Room 1"/></div>
-        <div class="spot-img" onclick="lbOpen(1,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1eea7c15-e6bc-480f-9049-7a7ca831306a.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="VIP Room 2"/></div>
-        <div class="spot-img" onclick="lbOpen(2,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7fdad08c-cd56-4bd8-9913-df31206d2a71.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Room 3"/></div>
-        <div class="spot-img" onclick="lbOpen(3,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/231f8e62-c8af-4ab9-ab7b-749426418278.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Room 4"/></div>
-        <div class="spot-img" onclick="lbOpen(4,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/412ac041-c128-4dcb-be95-9613525155ac.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Room 5"/></div>
-        <div class="spot-img" onclick="lbOpen(5,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/c7314967-2138-4874-bf9c-036713e1e84f.jpeg?im_w=1920" style="width:100%;height:130px;object-fit:cover;display:block" alt="Room 6"/></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:.7rem;margin-bottom:.7rem">
+        <div class="spot-img" onclick="lbOpen(0,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c.jpeg?im_w=1920" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block" alt="VIP Room 1"/>
+        </div>
+        <div class="spot-img" onclick="lbOpen(1,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1eea7c15-e6bc-480f-9049-7a7ca831306a.jpeg?im_w=1920" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block" alt="VIP Room 2"/>
+        </div>
       </div>
-      <p style="font-size:.75rem;color:var(--terra);font-weight:600;margin-top:.8rem;text-align:center;letter-spacing:.05em">2 VIP ROOMS &nbsp;·&nbsp; 9 DOUBLE DECK BEDS &nbsp;·&nbsp; DRIVER'S ROOM</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem">
+        <div class="spot-img" onclick="lbOpen(2,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7fdad08c-cd56-4bd8-9913-df31206d2a71.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Room 3"/>
+        </div>
+        <div class="spot-img" onclick="lbOpen(3,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/231f8e62-c8af-4ab9-ab7b-749426418278.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Room 4"/>
+        </div>
+        <div class="spot-img" onclick="lbOpen(4,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/412ac041-c128-4dcb-be95-9613525155ac.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Room 5"/>
+        </div>
+      </div>
+      <p style="font-family:var(--ff-b);font-size:.68rem;color:var(--terra);font-weight:700;margin-top:1rem;text-align:center;letter-spacing:.1em">2 VIP ROOMS &nbsp;·&nbsp; 9 DOUBLE DECK BEDS &nbsp;·&nbsp; DRIVER'S ROOM</p>
     </div>
     <div class="anim-r">
       <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">8 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
-        <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 1 — Rain shower"/></div>
-        <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 2 — Mirror & sink"/></div>
-        <div class="spot-img" onclick="lbOpen(4,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/73e7dd06-2f9b-479e-8925-0a24bf769a9c.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 3 — Full view"/></div>
-        <div class="spot-img" onclick="lbOpen(6,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/edf6c0b7-2c0d-416a-895b-ae85e5455368.jpeg?im_w=1920" style="width:100%;height:155px;object-fit:cover;display:block" alt="Bathroom 4 — Outdoor bathroom"/></div>
+      <div style="display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:.7rem">
+        <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;aspect-ratio:16/7;object-fit:cover;display:block;object-position:center 30%" alt="Bathroom — Rain shower"/>
+        </div>
       </div>
-      <p style="font-size:.75rem;color:var(--terra);font-weight:600;margin-top:.8rem;text-align:center;letter-spacing:.05em">8 BATHROOMS</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem">
+        <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Bathroom — Mirror &amp; sink"/>
+        </div>
+        <div class="spot-img" onclick="lbOpen(4,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/73e7dd06-2f9b-479e-8925-0a24bf769a9c.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Bathroom — Full view"/>
+        </div>
+        <div class="spot-img" onclick="lbOpen(6,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/edf6c0b7-2c0d-416a-895b-ae85e5455368.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Bathroom — Outdoor area"/>
+        </div>
+      </div>
+      <p style="font-family:var(--ff-b);font-size:.68rem;color:var(--terra);font-weight:700;margin-top:1rem;text-align:center;letter-spacing:.1em">8 BATHROOMS</p>
     </div>
   </div>
 </section>
