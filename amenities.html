@@ -54,6 +54,7 @@
 
 /* ── MORE AMENITIES 2-COL ── */
 .more-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; align-items:start }
+.more-amenities-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem }
 .more-pair { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-bottom:1rem }
 .more-pair .spot-img img { height:160px }
 .more-title { font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--terra); font-weight:700; margin-bottom:.6rem; display:flex; align-items:center; gap:.4rem }
@@ -96,6 +97,18 @@
 .sc-btns { display:flex; gap:.7rem; flex-shrink:0 }
 
 /* ── RESPONSIVE ── */
+/* ── SLEEP WRAPPER ── */
+.sleep-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-top:2.5rem; align-items:start }
+.bed-top-row   { display:grid; grid-template-columns:2fr 1fr; gap:.7rem; margin-bottom:.7rem }
+.bed-bottom-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.7rem }
+.bath-top-row  { display:grid; grid-template-columns:1fr; gap:.7rem; margin-bottom:.7rem }
+.bath-bottom-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.7rem }
+
+/* ── SC CLOSE ── */
+.sc-close { background:none; border:none; color:rgba(255,255,255,.4); font-size:1rem;
+  padding:.3rem .5rem; cursor:pointer; transition:color .2s; flex-shrink:0 }
+.sc-close:hover { color:#fff }
+
 @media(max-width:1100px) {
   .spot-grid, .spot-grid.flip { grid-template-columns:1fr; direction:ltr; gap:2.5rem }
   .spot-img.tall { grid-row: span 1 }
@@ -106,6 +119,8 @@
   .rules-grid { grid-template-columns:1fr }
   .sleep-grid { grid-template-columns:1fr }
   .more-grid { grid-template-columns:1fr }
+  .sleep-wrapper { grid-template-columns:1fr; gap:3rem }
+  .more-amenities-grid { grid-template-columns:1fr; gap:2rem }
 }
 @media(max-width:680px) {
   .am-full-grid { grid-template-columns:1fr }
@@ -115,6 +130,14 @@
   .spot-img.tall img { height:130px !important }
   .spot-img img { height:130px }
   .spot-imgs { grid-template-columns: 1fr 1fr 1fr }
+  /* Mobile bedroom: stack top row to 1fr 1fr equal */
+  .bed-top-row { grid-template-columns:1fr 1fr }
+  /* Mobile bathroom: 1-col hero + 3 below is fine, just smaller */
+  .bath-bottom-row { grid-template-columns:1fr 1fr 1fr }
+  /* Sticky CTA: compact on mobile */
+  .sticky-cta { flex-wrap:wrap; padding:.75rem 1rem }
+  .sc-text { font-size:.7rem }
+  .sc-text strong { font-size:.8rem }
 }
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -257,55 +280,55 @@
 <section style="background:var(--bg)">
   <p class="tag">More Amenities</p>
   <h2 class="h2">Even <em>More</em> to Explore</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem">
+  <div class="more-amenities-grid">
     <!-- GYM -->
-    <div class="anim">
+    <div class="rv">
       <p class="tag" style="margin-bottom:.6rem">Gym &amp; Fitness</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
         <div class="spot-img" onclick="lbOpen(0,GYM_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7b8c51d9-24b2-4846-b173-6d2459c53981.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Gym"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7b8c51d9-24b2-4846-b173-6d2459c53981.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Gym"/>
         </div>
         <div class="spot-img" onclick="lbOpen(1,GYM_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/23fa05de-4f88-4694-9357-74ae76635ab2.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Gym 2"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/23fa05de-4f88-4694-9357-74ae76635ab2.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Gym 2"/>
         </div>
       </div>
       <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">No skipping leg day on vacation. The gym has basic fitness equipment to keep your crew active between pool sessions.</p>
     </div>
     <!-- BONFIRE -->
-    <div class="anim">
+    <div class="rv">
       <p class="tag" style="margin-bottom:.6rem">Bonfire Area</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
         <div class="spot-img" onclick="lbOpen(0,FIRE_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/15fd6a0c-36f4-4c79-a187-279fc9e1d45c.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/15fd6a0c-36f4-4c79-a187-279fc9e1d45c.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire"/>
         </div>
         <div class="spot-img" onclick="lbOpen(1,FIRE_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/cbbf4bee-4ba1-41ec-8d0c-922684e7a936.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire 2"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/cbbf4bee-4ba1-41ec-8d0c-922684e7a936.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Bonfire 2"/>
         </div>
       </div>
       <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">As the Tagaytay highlands cool at night, gather around the bonfire for stories, s'mores, and unforgettable moments under the stars.</p>
     </div>
     <!-- BASKETBALL -->
-    <div class="anim">
+    <div class="rv">
       <p class="tag" style="margin-bottom:.6rem">Basketball Court</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
         <div class="spot-img" onclick="lbOpen(0,BBALL_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7932f6a1-879d-4276-ab69-433d47ad8ca0.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Basketball"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7932f6a1-879d-4276-ab69-433d47ad8ca0.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Basketball"/>
         </div>
         <div class="spot-img" onclick="lbOpen(1,BBALL_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ff9e2cfe-96b7-4992-8cd8-81499c84335f.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Basketball 2"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/ff9e2cfe-96b7-4992-8cd8-81499c84335f.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Basketball 2"/>
         </div>
       </div>
       <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">Half-court basketball — perfect for team competitions, shooting drills, and burning off that post-lunch energy.</p>
     </div>
     <!-- OUTDOOR -->
-    <div class="anim">
+    <div class="rv">
       <p class="tag" style="margin-bottom:.6rem">Outdoor Spaces</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
         <div class="spot-img" onclick="lbOpen(0,OUT_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/58004ff1-df45-4949-ad63-6316ab7abe96.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor dining"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/58004ff1-df45-4949-ad63-6316ab7abe96.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor dining"/>
         </div>
         <div class="spot-img" onclick="lbOpen(1,OUT_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor 2"/>
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s" alt="Outdoor 2"/>
         </div>
       </div>
       <p style="font-family:var(--ff-d);font-size:1.05rem;color:var(--ink-s);font-weight:400;line-height:1.85">Covered outdoor dining and lounge areas with fresh highland air. Perfect for morning coffee, afternoon naps, or late-night hangouts.</p>
@@ -317,10 +340,10 @@
 <section style="background:var(--bg-alt)">
   <p class="tag">Sleep &amp; Refresh</p>
   <h2 class="h2">Bedrooms &amp; <em>Bathrooms</em></h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2.5rem;align-items:start">
-    <div class="anim-l">
+  <div class="sleep-wrapper">
+    <div class="rv-l">
       <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">2 VIP rooms, 9 double deck beds, and a driver's room — every guest has a comfortable place to sleep. 8 bathrooms means no long queues even with a large group.</p>
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:.7rem;margin-bottom:.7rem">
+      <div class="bed-top-row">
         <div class="spot-img" onclick="lbOpen(0,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c.jpeg?im_w=1920" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block" alt="VIP Room 1"/>
         </div>
@@ -328,7 +351,7 @@
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/1eea7c15-e6bc-480f-9049-7a7ca831306a.jpeg?im_w=1920" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block" alt="VIP Room 2"/>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem">
+      <div class="bed-bottom-row">
         <div class="spot-img" onclick="lbOpen(2,BED_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7fdad08c-cd56-4bd8-9913-df31206d2a71.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Room 3"/>
         </div>
@@ -341,14 +364,14 @@
       </div>
       <p style="font-family:var(--ff-b);font-size:.68rem;color:var(--terra);font-weight:700;margin-top:1rem;text-align:center;letter-spacing:.1em">2 VIP ROOMS &nbsp;·&nbsp; 9 DOUBLE DECK BEDS &nbsp;·&nbsp; DRIVER'S ROOM</p>
     </div>
-    <div class="anim-r">
+    <div class="rv-r">
       <p style="font-family:var(--ff-d);font-size:1.06rem;color:var(--ink-s);line-height:1.9;font-weight:400;margin-bottom:1.5rem">8 bathrooms keep the whole group moving smoothly. Clean, well-maintained, and designed to handle even the biggest group's morning rush.</p>
-      <div style="display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:.7rem">
+      <div class="bath-top-row">
         <div class="spot-img" onclick="lbOpen(0,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/6a64f515-0249-440e-937b-73fe1cc63898.jpeg?im_w=1920" style="width:100%;aspect-ratio:16/7;object-fit:cover;display:block;object-position:center 30%" alt="Bathroom — Rain shower"/>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem">
+      <div class="bath-bottom-row">
         <div class="spot-img" onclick="lbOpen(1,BATH_IMGS)" style="border-radius:var(--r-lg);overflow:hidden;cursor:pointer">
           <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7bd29da9-1398-456e-81ab-7f3f06a8b10f.jpeg?im_w=1920" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Bathroom — Mirror &amp; sink"/>
         </div>
@@ -412,6 +435,7 @@
   <div class="sc-btns">
     <a href="packages.html" class="btn btn-outline" style="padding:.55rem 1.2rem;font-size:.7rem">See Rates</a>
     <a href="contact.html" class="btn btn-primary" style="padding:.55rem 1.2rem;font-size:.7rem">Book Now →</a>
+    <button class="sc-close" onclick="this.closest('.sticky-cta').classList.remove('show');this.closest('.sticky-cta').dataset.dismissed='1'" aria-label="Dismiss">✕</button>
   </div>
 </div>
 

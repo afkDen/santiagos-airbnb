@@ -173,7 +173,7 @@ var FOOTER_HTML = [
   '  <div class="fp-info"><div class="fp-label">Alfonso, Tagaytay</div><div class="fp-val">Up to 40 Guests</div></div>',
   '  <div class="fp-info" style="border:none"><div class="fp-label">8 Baths \u00b7 2 VIP Rooms</div><div class="fp-val">Direct Bookings</div></div>',
   '  <button class="fp-btn" onclick="location.href=\'contact.html\'">Book Now</button>',
-  '  <button class="fp-x" onclick="document.getElementById(\'float-pill\').style.display=\'none\'" aria-label="Close">&#10005;</button>',
+  '  <button class="fp-x" onclick="dismissPill()" aria-label="Close">&#10005;</button>',
   '</div>',
   '<div id="wa-btn" onclick="window.open(\'' + WA_MSG + '\',\'_blank\')" title="Chat on WhatsApp" role="button" aria-label="Chat on WhatsApp">',
   '  <div class="wa-ring"></div>',
@@ -288,9 +288,9 @@ document.addEventListener('DOMContentLoaded', function() {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.rv, .rv-l, .rv-r').forEach(function(el, i) {
-    el.style.transitionDelay = ((i % 6) * 0.065) + 's';
+    el.style.transitionDelay = ((i % 5) * 0.08) + 's';
     ro.observe(el);
   });
 
@@ -304,7 +304,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* lightbox bg click */
   var lb = document.getElementById('lb');
-  if (lb) lb.addEventListener('click', function(e) { if (e.target === lb) lbClose(); });
+  if (lb) {
+    lb.addEventListener('click', function(e) { if (e.target === lb) lbClose(); });
+    /* Swipe to close/navigate on mobile */
+    var _lbTouchX = 0;
+    lb.addEventListener('touchstart', function(e) {
+      _lbTouchX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lb.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - _lbTouchX;
+      if (Math.abs(dx) > 50) { if (dx < 0) lbShift(1); else lbShift(-1); }
+      else if (Math.abs(dx) < 10) lbClose();
+    }, { passive: true });
+  }
 
   /* keyboard nav */
   document.addEventListener('keydown', function(e) {
@@ -325,7 +337,11 @@ document.addEventListener('DOMContentLoaded', function() {
   /* sticky CTA */
   window.addEventListener('scroll', function() {
     var sc = document.getElementById('sticky-cta');
-    if (sc) sc.classList.toggle('show', window.scrollY > 700);
+    if (sc && !sc.dataset.dismissed) {
+      var showing = window.scrollY > 700;
+      sc.classList.toggle('show', showing);
+      document.body.classList.toggle('has-sticky', showing);
+    }
   }, { passive: true });
 
   /* pre-fill occasion from URL */
@@ -350,7 +366,7 @@ function onScroll() {
   var nav = document.getElementById('nav');
   if (nav && !nav.classList.contains('solid')) nav.classList.toggle('up', y > 80);
   var fp = document.getElementById('float-pill');
-  if (fp) fp.classList.toggle('show', y > 600);
+  if (fp && !fp.dataset.dismissed) fp.classList.toggle('show', y > 600);
   var bt = document.getElementById('back-top');
   if (bt) bt.classList.toggle('show', y > 400);
 }
@@ -365,6 +381,10 @@ function toggleMob() {
   h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
+function dismissPill() {
+  var fp = document.getElementById('float-pill');
+  if (fp) { fp.dataset.dismissed = '1'; fp.classList.remove('show'); }
+}
 function closeMob() {
   var m = document.getElementById('mob-nav');
   var h = document.getElementById('hamburger');
@@ -372,6 +392,14 @@ function closeMob() {
   if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); }
   document.body.style.overflow = '';
 }
+/* Close mobile menu on outside tap */
+document.addEventListener('click', function(e) {
+  var m = document.getElementById('mob-nav');
+  var h = document.getElementById('hamburger');
+  if (m && m.classList.contains('open') && !m.contains(e.target) && e.target !== h && !h.contains(e.target)) {
+    closeMob();
+  }
+});
 
 /* ── COUNTER ANIMATION ── */
 function countUp(el) {

@@ -27,7 +27,7 @@
 .nb-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--sand);background:var(--cream);transition:transform .3s,box-shadow .3s}
 .nb-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(26,15,7,.22)}
 /* Visual */
-.nb-visual{height:240px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+.nb-visual{aspect-ratio:16/9;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;min-height:160px}
 .nb-taal    .nb-visual{background:radial-gradient(ellipse at 30% 65%,#2a6e12 0%,#0f3506 50%,#030d01 100%)}
 .nb-tagaytay .nb-visual{background:radial-gradient(ellipse at 65% 35%,#1a5a80 0%,#092840 50%,#020d18 100%)}
 .nb-sky     .nb-visual{background:radial-gradient(ellipse at 50% 70%,#5e1f96 0%,#2a0850 55%,#08020f 100%)}
@@ -60,7 +60,7 @@
 .tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}
 /* RESPONSIVE */
 @media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
-@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.nb-visual{height:200px}}
+@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.map-wrap{height:300px}.nb-grid{gap:1.2rem}}
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
   <meta property="og:type" content="website"/>
