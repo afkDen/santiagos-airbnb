@@ -116,54 +116,61 @@
       <img class="contact-photo" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Santiagos Resort dining area" loading="lazy"/>
     </div>
 
-    <!-- RIGHT: Form -->
+    <!-- RIGHT: WhatsApp Inquiry Builder -->
     <div class="rv-r">
       <div class="form-card">
-        <div id="bookForm">
-          <h3>Send an Inquiry</h3>
-          <p class="form-sub">We respond within 1–2 hours. Fields marked * are required.</p>
-          <div class="f2">
-            <div class="fg" id="g-fn"><label>First Name *</label><input id="fn" type="text" placeholder="Maria" data-req/><div class="fg-err">Required.</div></div>
-            <div class="fg" id="g-ln"><label>Last Name *</label><input id="ln" type="text" placeholder="Santos" data-req/><div class="fg-err">Required.</div></div>
-          </div>
-          <div class="fg" id="g-em"><label>Email Address *</label><input id="em" type="email" placeholder="hello@email.com" data-req/><div class="fg-err">Enter a valid email.</div></div>
-          <div class="fg"><label>Phone / Viber / WhatsApp</label><input type="tel" placeholder="+63 9XX XXX XXXX"/></div>
-          <div class="f2">
-            <div class="fg" id="g-ci"><label>Check-in Date *</label><input id="fci" type="date" data-req/><div class="fg-err">Required.</div></div>
-            <div class="fg" id="g-co"><label>Check-out Date *</label><input id="fco" type="date" data-req/><div class="fg-err">Required.</div></div>
-          </div>
-          <div class="f2">
-            <div class="fg" id="g-ng">
-              <label>Number of Guests *</label>
-              <select id="ng" data-req>
-                <option value="">Select...</option>
-                <option>1–10 guests</option>
-                <option>11–20 guests</option>
-                <option>21–30 guests</option>
-                <option>21–40 guests (+₱1,000/head)</option>
-              </select>
-              <div class="fg-err">Required.</div>
-            </div>
-            <div class="fg">
-              <label>Occasion</label>
-              <select>
-                <option>Barkada Trip</option><option>Birthday Party</option>
-                <option>Family Reunion</option><option>Team Building</option>
-                <option>Company Outing</option><option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="fg"><label>Message / Special Requests</label>
-            <textarea placeholder="Tell us about your event, any special arrangements, or questions you have…"></textarea>
-          </div>
-          <button class="f-submit" onclick="validateForm('bookForm','bookSuccess')">Send Inquiry →</button>
+        <h3>Build Your Inquiry</h3>
+        <p class="form-sub">Fill in your details and we'll open WhatsApp with your message ready to send. We respond within 1–2 hours.</p>
+
+        <div class="f2">
+          <div class="fg" id="g-fn"><label>First Name *</label><input id="fn" type="text" placeholder="Maria"/><div class="fg-err">Required.</div></div>
+          <div class="fg" id="g-ln"><label>Last Name *</label><input id="ln" type="text" placeholder="Santos"/><div class="fg-err">Required.</div></div>
         </div>
-        <div class="success-box" id="bookSuccess">
-          <div class="ck">✅</div>
-          <h4>Inquiry Sent!</h4>
-          <p>Thanks for reaching out! We'll get back to you within 1–2 hours. You can also book directly on Airbnb for instant confirmation.</p>
-          <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full">Visit our Facebook →</a>
+        <div class="f2">
+          <div class="fg" id="g-ci"><label>Check-in Date *</label><input id="fci" type="date"/><div class="fg-err">Required.</div></div>
+          <div class="fg" id="g-co"><label>Check-out Date *</label><input id="fco" type="date"/><div class="fg-err">Required.</div></div>
         </div>
+        <div class="f2">
+          <div class="fg" id="g-ng">
+            <label>Number of Guests *</label>
+            <select id="ng">
+              <option value="">Select...</option>
+              <option>1–10 guests</option>
+              <option>11–20 guests</option>
+              <option>21–30 guests</option>
+              <option>31–40 guests (+₱1,000/head)</option>
+            </select>
+            <div class="fg-err">Required.</div>
+          </div>
+          <div class="fg">
+            <label>Occasion</label>
+            <select id="foccasion">
+              <option>Barkada Trip</option><option>Birthday Party</option>
+              <option>Family Reunion</option><option>Team Building</option>
+              <option>Company Outing</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Message / Special Requests</label>
+          <textarea id="fmsg" placeholder="Tell us about your event, any special arrangements, or questions you have…"></textarea>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <button class="f-submit" style="background:#25D366;box-shadow:0 4px 18px rgba(37,211,102,.35)" onclick="sendViaWhatsApp()">
+          <svg class="icon" aria-hidden="true" style="width:1.1rem;height:1.1rem"><use href="#i-wa"/></svg>
+          Send via WhatsApp →
+        </button>
+
+        <!-- Facebook fallback -->
+        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank"
+           class="btn btn-outline btn-full" style="margin-top:.75rem;justify-content:center;display:flex;align-items:center;gap:.5rem">
+          <svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>
+          Or Message on Facebook
+        </a>
+
+        <p style="font-family:var(--ff-b);font-size:.68rem;color:var(--ink-s);text-align:center;margin-top:1rem;line-height:1.6">
+          Tapping "Send via WhatsApp" will open WhatsApp with your details pre-filled.<br/>Just hit send — we'll reply within 1–2 hours.
+        </p>
       </div>
     </div>
   </div>
@@ -239,5 +246,65 @@
 
 
 <script src="js/app.js"></script>
+<script>
+function sendViaWhatsApp() {
+  var fn  = (document.getElementById('fn').value  || '').trim();
+  var ln  = (document.getElementById('ln').value  || '').trim();
+  var ci  = document.getElementById('fci').value;
+  var co  = document.getElementById('fco').value;
+  var ng  = document.getElementById('ng').value;
+  var occ = document.getElementById('foccasion').value;
+  var msg = (document.getElementById('fmsg').value || '').trim();
+
+  // Basic validation
+  var ok = true;
+  [['fn','g-fn'],['ln','g-ln'],['fci','g-ci'],['fco','g-co']].forEach(function(pair){
+    var el = document.getElementById(pair[0]);
+    var g  = document.getElementById(pair[1]);
+    if (!el || !el.value.trim()) {
+      if (g) g.classList.add('has-err');
+      if (el) el.classList.add('err');
+      ok = false;
+    } else {
+      if (g) g.classList.remove('has-err');
+      if (el) el.classList.remove('err');
+    }
+  });
+  var ngEl = document.getElementById('ng');
+  var ngG  = document.getElementById('g-ng');
+  if (!ngEl || !ngEl.value) {
+    if (ngG) ngG.classList.add('has-err');
+    if (ngEl) ngEl.classList.add('err');
+    ok = false;
+  } else {
+    if (ngG) ngG.classList.remove('has-err');
+    if (ngEl) ngEl.classList.remove('err');
+  }
+  if (!ok) return;
+
+  // Format dates nicely
+  function fmtDate(d) {
+    if (!d) return '';
+    var parts = d.split('-');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[parseInt(parts[1],10)-1] + ' ' + parseInt(parts[2],10) + ', ' + parts[0];
+  }
+
+  var lines = [
+    'Hi! I\u2019d like to inquire about booking Santiagos Resort.',
+    '',
+    '\uD83D\uDC64 Name: ' + fn + ' ' + ln,
+    '\uD83D\uDCC5 Check-in: ' + fmtDate(ci),
+    '\uD83D\uDCC5 Check-out: ' + fmtDate(co),
+    '\uD83D\uDC65 Guests: ' + ng,
+    '\uD83C\uDF89 Occasion: ' + occ,
+  ];
+  if (msg) lines.push('\uD83D\uDCAC Message: ' + msg);
+  lines.push('', 'Looking forward to hearing from you!');
+
+  var text = encodeURIComponent(lines.join('\n'));
+  window.open('https://wa.me/639178005320?text=' + text, '_blank');
+}
+</script>
 </body>
 </html>
