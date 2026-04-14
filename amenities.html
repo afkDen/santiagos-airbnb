@@ -26,7 +26,7 @@
 }
 
 /* ── SPOT GRID ── */
-.spot-grid { display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:center; margin-top:3rem }
+.spot-grid { display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:start; margin-top:3rem }
 .spot-imgs { display:grid; grid-template-columns:1fr 1fr; gap:.8rem }
 .spot-img { border-radius:var(--r-lg); overflow:hidden; cursor:pointer; transition:all .3s }
 .spot-img:hover { transform:scale(1.02); box-shadow:var(--sh-md) }
@@ -108,40 +108,31 @@
   cursor:pointer; transition:all .2s; flex-shrink:0 }
 .sc-close:hover { background:rgba(255,255,255,.18); color:#fff }
 
-/* ── RESPONSIVE ── */
 @media(max-width:1100px) {
-  /* Collapse spot-grid earlier at tablet */
   .spot-grid, .spot-grid.flip { grid-template-columns:1fr; direction:ltr; gap:2.5rem }
   .spot-img.tall { grid-row: span 1 }
-  .spot-img.tall img { height:200px }
-  .spot-img img { height:160px }
+  .spot-img.tall img { height:180px }
   .spot-imgs { grid-template-columns: 1fr 1fr 1fr }
   .am-full-grid { grid-template-columns:1fr 1fr }
-  .ttk-grid { grid-template-columns:1fr 1fr }
-  .rules-grid { grid-template-columns:1fr 1fr }
+  .ttk-grid { grid-template-columns:1fr }
+  .rules-grid { grid-template-columns:1fr }
   .sleep-grid { grid-template-columns:1fr }
   .more-grid { grid-template-columns:1fr }
   .sleep-wrapper { grid-template-columns:1fr; gap:3rem }
-  /* Keep 2 cols for more-amenities-grid so it doesn't stack 4 items */
-  .more-amenities-grid { grid-template-columns:1fr 1fr; gap:2rem }
+  .more-amenities-grid { grid-template-columns:1fr; gap:2rem }
 }
 @media(max-width:680px) {
   .am-full-grid { grid-template-columns:1fr }
   .photo-thumb-grid { grid-template-columns:1fr 1fr }
   .more-pair { grid-template-columns:1fr 1fr }
-  .ttk-grid { grid-template-columns:1fr }
-  .rules-grid { grid-template-columns:1fr }
-  /* Reduce to 2-col image strip on mobile — 3 at 130px each gets too small */
-  .spot-imgs { grid-template-columns: 1fr 1fr }
   .spot-img.tall { grid-row: span 1 }
-  .spot-img.tall img { height:140px !important }
-  .spot-img img { height:140px }
-  /* Full-width more-amenities on mobile */
-  .more-amenities-grid { grid-template-columns:1fr; gap:2rem }
+  .spot-img.tall img { height:130px !important }
+  .spot-img img { height:130px }
+  .spot-imgs { grid-template-columns: 1fr 1fr 1fr }
   /* Mobile bedroom: stack top row to 1fr 1fr equal */
   .bed-top-row { grid-template-columns:1fr 1fr }
   /* Mobile bathroom: 1-col hero + 3 below is fine, just smaller */
-  .bath-bottom-row { grid-template-columns:1fr 1fr }
+  .bath-bottom-row { grid-template-columns:1fr 1fr 1fr }
   /* Sticky CTA: compact on mobile */
   .sticky-cta { padding:.65rem 1rem; gap:.55rem }
   .sc-text { flex:1; min-width:0; overflow:hidden }
@@ -149,12 +140,6 @@
   .sc-text span { font-size:.65rem; color:rgba(255,255,255,.35); display:block }
   .sc-btns { gap:.45rem; flex-shrink:0 }
   .sc-btns .btn { padding:.44rem .75rem; font-size:.62rem; min-height:36px }
-}
-@media(max-width:420px) {
-  .spot-imgs { grid-template-columns: 1fr 1fr }
-  .spot-img img, .spot-img.tall img { height:110px !important }
-  .bed-top-row { grid-template-columns:1fr }
-  .bath-bottom-row { grid-template-columns:1fr 1fr }
 }
 </style>
   <meta property="og:type" content="website"/>

@@ -40,7 +40,7 @@
 /* OCCASION DETAIL */
 .occ-detail{padding:5.5rem 3.5rem;background:var(--bg)}
 .occ-detail.alt{background:var(--bg-alt)}
-.occ-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.occ-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .occ-photos{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 .occ-photo{border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:all .3s}
 .occ-photo:hover{transform:scale(1.02);box-shadow:var(--sh-md)}
@@ -90,27 +90,15 @@
   .occ-photos{grid-template-columns:1fr 1fr}
   .cap-grid{grid-template-columns:repeat(3,1fr)}
   .occ-panel-body{padding:2.5rem 2rem}
-  .occ-detail{padding:4rem 2.5rem}
-}
-@media(max-width:900px){
-  .occ-panel-hero{height:380px}
-  .occ-detail{padding:3.5rem 2rem}
 }
 @media(max-width:680px){
-  .occ-panel-hero{height:280px}
-  .occ-panel-body{padding:1.5rem 1.2rem;max-width:100%}
-  .occ-panel-content h2{font-size:clamp(1.5rem,6.5vw,2.3rem)}
-  .occ-panel-content p{font-size:.92rem;margin-bottom:1rem}
+  .occ-panel-hero{height:300px}
+  .occ-panel-body{padding:1.8rem 1.2rem}
+  .occ-panel-content h2{font-size:clamp(1.6rem,7vw,2.5rem)}
   .cap-grid{grid-template-columns:repeat(2,1fr)}
   .quick-am{grid-template-columns:1fr 1fr}
-  .share-strip{text-align:center;justify-content:center;flex-direction:column;padding:2.5rem 1.4rem}
-  .occ-detail{padding:3rem 1.25rem}
-  /* stack photos on mobile: main full width, 2 below full width */
-  .occ-photos{grid-template-columns:1fr}
-  .occ-photo.main{grid-column:span 1}
-  .price-callout{flex-direction:column;align-items:flex-start;gap:.75rem}
-  .occ-cta-row{flex-direction:column}
-  .occ-cta-row .btn{width:100%;justify-content:center}
+  .share-strip{text-align:center;justify-content:center;flex-direction:column}
+  .occ-detail{padding:3.5rem 1.25rem}
 }
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -341,34 +329,6 @@
     <div class="cap-card rv"><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><div class="cap-name">Big Blowout</div><div class="cap-desc">Up to 40 guests max · ₱1K/extra head</div></div>
   </div>
   <p style="font-size:.82rem;color:rgba(255,255,255,.3);margin-top:2rem">All packages include full access to every amenity — pool, videoke, arcade, gym, basketball, bonfire, kitchen, Wi-Fi &amp; parking.</p>
-</section>
-
-<!-- WHAT'S INCLUDED PER OCCASION -->
-<section style="background:var(--bg)">
-  <p class="tag">Everything Included</p>
-  <h2 class="h2">All <em>Amenities</em> for Your Event</h2>
-  <p class="lead" style="margin-bottom:2.5rem">No matter your occasion, every amenity is included in your rate. No extra charges to use any facility.</p>
-  <div class="quick-am">
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg> Swimming Pool</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> Videoke Lounge</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg> Billiards Table</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-arcade"/></svg> Arcade Games</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-gym"/></svg> Gym &amp; Fitness</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-basketball"/></svg> Basketball Court</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-bonfire"/></svg> Bonfire Area</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"/></svg> Full Kitchen</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg> Free Wi-Fi</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg> Free Parking</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-tv"/></svg> Smart TV</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg> 4 Bedrooms · 20 Beds</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-shower"/></svg> 8 Bathrooms</div>
-    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-outdoor"/></svg> Outdoor Spaces</div>
-    <div class="qam">Dining Area</div>
-  </div>
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
-    <a href="amenities.html" class="btn btn-outline">See Full Amenities List</a>
-    <a href="contact.html" class="btn btn-primary">Book Your Event →</a>
-  </div>
 </section>
 
 <!-- SHARE STRIP -->

@@ -59,24 +59,23 @@
 .tip-card h4{font-family:var(--ff-serif);font-size:1.08rem;color:var(--ink);margin-bottom:.45rem;font-weight:700;letter-spacing:-.01em}
 .tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}
 /* LANDMARK GRID */
-.landmark-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2rem }
+.landmark-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:2rem }
 .landmark-card { border-radius:var(--r-lg); overflow:hidden; background:var(--cream); border:1px solid var(--sand); transition:transform .3s,box-shadow .3s }
 .landmark-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg) }
-.landmark-img-wrap { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--sand-lt) }
+.landmark-img-wrap { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--sand-lt) }
 .landmark-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s }
 .landmark-card:hover .landmark-img-wrap img { transform:scale(1.04) }
 .landmark-fallback { display:none; width:100%; height:100%; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; color:var(--sand); font-family:var(--ff-b); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase }
-.landmark-label { display:flex; align-items:flex-start; gap:.85rem; padding:1rem 1.1rem }
+.landmark-label { display:flex; align-items:flex-start; gap:.85rem; padding:1.2rem 1.3rem }
 .landmark-num { font-family:var(--ff-serif); font-size:1.4rem; font-weight:700; color:var(--terra); line-height:1; flex-shrink:0; min-width:1.8rem }
 .landmark-label strong { font-family:var(--ff-serif); font-size:.95rem; color:var(--ink); font-weight:700; display:block; margin-bottom:.2rem }
 .landmark-label p { font-family:var(--ff-d); font-size:.85rem; color:var(--ink-s); line-height:1.55; margin:0 }
+/* Video embed */
+.landmark-video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
 
 /* RESPONSIVE */
-@media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}.landmark-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
 @media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.map-wrap{height:280px;border-radius:var(--r-lg)}.nb-grid{gap:1rem}.landmark-grid{grid-template-columns:1fr}}
-/* VIDEO EMBED inside landmark card */
-.landmark-video-wrap { aspect-ratio:16/9; height:auto !important; }
-.landmark-video-wrap iframe { width:100%; height:100%; border:none; display:block; }
 </style>
   <meta property="og:type" content="website"/>
   <meta property="og:description" content="Find Santiagos Resort in Alfonso, Cavite — 1.5-2 hours from Manila. Near Taal Volcano, Sky Ranch & Tagaytay Ridge."/>
@@ -123,28 +122,10 @@
 <!-- HOW TO FIND US — landmark photos -->
 <section style="background:var(--bg-alt)">
   <p class="tag">Landmark Reference</p>
-  <h2 class="h2">How to <em>Spot Us</em></h2>
-  <p class="lead" style="margin-bottom:2rem">Look for these landmarks as you approach Santiagos Resort in Alfonso, Cavite. Save these photos to guide your driver.</p>
+  <h2 class="h2">How to <em>Find Us</em></h2>
+  <p class="lead" style="margin-bottom:2rem">Watch the video guide and save the map poster below before heading out. Signal can be spotty on mountain roads — screenshot these ahead of time.</p>
 
   <div class="landmark-grid">
-    <div class="landmark-card rv">
-      <div class="landmark-img-wrap">
-        <img
-          src="https://lh3.googleusercontent.com/d/1Y81wQRKYeExTkHhZn0GyOl8hlizMNbEO"
-          alt="Santiagos Resort — Landmark 1"
-          loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-        />
-        <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Landmark Photo</span></div>
-      </div>
-      <div class="landmark-label">
-        <span class="landmark-num">01</span>
-        <div>
-          <strong>Resort Entrance</strong>
-          <p>Look for the signage as you turn into the street.</p>
-        </div>
-      </div>
-    </div>
 
     <div class="landmark-card rv">
       <div class="landmark-img-wrap landmark-video-wrap">
@@ -157,10 +138,10 @@
         ></iframe>
       </div>
       <div class="landmark-label">
-        <span class="landmark-num">02</span>
+        <span class="landmark-num">01</span>
         <div>
           <strong>Video Guide — From Tagaytay Twin Lakes</strong>
-          <p>Watch this short video to navigate to the resort from the Twin Lakes landmark in Tagaytay.</p>
+          <p>Watch this short video showing the route from Tagaytay Twin Lakes to the resort. Share with your driver before leaving.</p>
         </div>
       </div>
     </div>
@@ -169,20 +150,21 @@
       <div class="landmark-img-wrap">
         <img
           src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1920"
-          alt="Santiagos Resort — Map Poster"
+          alt="Santiagos Resort — Map Poster from Tagaytay"
           loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         />
         <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Map Poster</span></div>
       </div>
       <div class="landmark-label">
-        <span class="landmark-num">03</span>
+        <span class="landmark-num">02</span>
         <div>
           <strong>Map Poster — From Tagaytay</strong>
-          <p>Save this map poster to your phone. Shows the route from Tagaytay Twin Lakes to the resort.</p>
+          <p>Save this to your phone. Shows landmarks and turns from Tagaytay Twin Lakes to the resort entrance.</p>
         </div>
       </div>
     </div>
+
   </div>
 
   <div style="margin-top:2rem;padding:1.2rem 1.4rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand);display:flex;align-items:center;gap:.75rem">
