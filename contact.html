@@ -21,9 +21,22 @@
 .ci-text strong{color:var(--ink);font-weight:600}
 .cta-links{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
 .btn-full{width:100%;justify-content:center}
+/* Instagram button */
+.btn-ig{padding:.85rem 2rem;background:linear-gradient(135deg,#833ab4,#fd1d1d 50%,#fcb045);color:#fff;border-radius:var(--r)}
+.btn-ig:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 6px 20px rgba(131,58,180,.35)}
 
-/* Photo accent beside info */
-.contact-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-top:1.5rem}
+/* Contact photo mosaic */
+.contact-mosaic{margin-top:1.5rem;display:grid;grid-template-rows:auto auto;gap:.6rem}
+.cm-main{position:relative;border-radius:var(--r-lg);overflow:hidden;cursor:pointer}
+.cm-main img{width:100%;aspect-ratio:16/7;object-fit:cover;display:block;transition:transform .55s}
+.cm-main:hover img{transform:scale(1.04)}
+.cm-pair{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.cm-small{position:relative;border-radius:var(--r-lg);overflow:hidden;cursor:pointer}
+.cm-small img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .55s}
+.cm-small:hover img{transform:scale(1.04)}
+.cm-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,15,7,.72) 0%,transparent 55%);display:flex;align-items:flex-end;padding:.75rem 1rem;opacity:0;transition:opacity .3s}
+.cm-main:hover .cm-overlay,.cm-small:hover .cm-overlay{opacity:1}
+.cm-overlay span{font-family:var(--ff-b);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);font-weight:700}
 
 /* Form */
 .form-card{background:#fff;border-radius:var(--r-lg);padding:2.5rem;border:1.5px solid var(--sand-lt);box-shadow:0 4px 32px rgba(26,15,7,.08)}
@@ -65,7 +78,7 @@
 .rev-loc{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1px}
 
 @media(max-width:1100px){.contact-grid{grid-template-columns:1fr;gap:3rem}.faq-layout{grid-template-columns:1fr;gap:2rem}.rev-row{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.rev-row{grid-template-columns:1fr}.contact-grid{gap:2rem}.faq-layout{gap:1.5rem}}
+@media(max-width:680px){.rev-row{grid-template-columns:1fr}.contact-grid{gap:2rem}.faq-layout{gap:1.5rem}.cm-pair{grid-template-columns:1fr 1fr}}
 </style>
   <meta property="og:title" content="Book Now · Santiagos Resort"/>
   <meta property="og:description" content="Book your group getaway at Santiagos Resort, Alfonso, Tagaytay. Up to 40 guests, 22+ amenities included. Direct bookings only."/>
@@ -110,9 +123,27 @@
       </div>
       <div class="cta-links">
         <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg> Message on Facebook</a>
-        <a href="https://wa.me/639228305320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay." target="_blank" class="btn btn-wa btn-full" rel="noopener noreferrer"> Message on WhatsApp</a>
+        <a href="https://www.instagram.com/santiagos.to" target="_blank" class="btn btn-full btn-ig" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg> Message on Instagram</a>
+        <a href="https://wa.me/639228305320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay." target="_blank" class="btn btn-wa btn-full" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Message on WhatsApp</a>
       </div>
-      <img class="contact-photo" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Santiagos Resort dining area" loading="lazy"/>
+
+      <!-- Resort photo mosaic -->
+      <div class="contact-mosaic">
+        <div class="cm-main">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/422ade24-d533-4620-94ef-2f2311c99066.jpeg?im_w=1920" alt="Santiago's Signature Dining" loading="lazy"/>
+          <div class="cm-overlay"><span>The Santiago's Sign</span></div>
+        </div>
+        <div class="cm-pair">
+          <div class="cm-small">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/51364ca8-54b3-4f0b-9840-3f92171707eb.jpeg?im_w=1920" alt="Swimming Pool" loading="lazy"/>
+            <div class="cm-overlay"><span>Private Pool</span></div>
+          </div>
+          <div class="cm-small">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aedee59c-00c6-48fc-8edc-e684ae38a6d3.jpeg?im_w=1920" alt="Resort Exterior" loading="lazy"/>
+            <div class="cm-overlay"><span>Industrial Chic</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- RIGHT: WhatsApp Inquiry Builder -->
@@ -160,12 +191,19 @@
           Send via WhatsApp →
         </button>
 
-        <!-- Facebook fallback -->
-        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank"
-           class="btn btn-outline btn-full" style="margin-top:.75rem;justify-content:center;display:flex;align-items:center;gap:.5rem" rel="noopener noreferrer">
-          <svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>
-          Or Message on Facebook
-        </a>
+        <!-- Social fallbacks -->
+        <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem">
+          <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank"
+             class="btn btn-outline btn-full" style="justify-content:center;display:flex;align-items:center;gap:.5rem" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>
+            Or Message on Facebook
+          </a>
+          <a href="https://www.instagram.com/santiagos.to" target="_blank"
+             class="btn btn-ig btn-full" style="justify-content:center;display:flex;align-items:center;gap:.5rem" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>
+            Or Message on Instagram
+          </a>
+        </div>
 
         <p style="font-family:var(--ff-b);font-size:.68rem;color:var(--ink-s);text-align:center;margin-top:1rem;line-height:1.6">
           Tapping "Send via WhatsApp" will open WhatsApp with your details pre-filled.<br/>Just hit send — we'll reply within 1–2 hours.

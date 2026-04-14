@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/style.css"/>
 <style>
 
-/* ── DISTANCE CARDS (dark section) ── */
+/* ── DISTANCE CARDS ── */
 .dist-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -29,7 +29,7 @@
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.09);
   border-radius: var(--r-lg);
-  padding: .95rem 1.1rem;
+  padding: 1rem 1.2rem;
   transition: background .22s, border-color .22s, transform .22s;
 }
 .dist-card:hover {
@@ -48,7 +48,7 @@
 }
 .dist-val {
   font-family: var(--ff-serif);
-  font-size: .98rem;
+  font-size: 1rem;
   color: var(--cream);
   font-weight: 600;
   line-height: 1.25;
@@ -58,48 +58,57 @@
 .map-wrap {
   border-radius: var(--r-lg);
   overflow: hidden;
-  height: 380px;
+  height: 400px;
   border: 1px solid rgba(255,255,255,.07);
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 .map-wrap iframe { width:100%; height:100%; border:none; display:block; }
 
-/* ── DIRECTIONS — poster + steps side by side ── */
+/* ── DIRECTIONS ── */
+.dir-section {
+  background: var(--bg);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
 .dir-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.2rem;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3rem;
   align-items: start;
-  margin-top: 2rem;
-  max-width: 1080px;
+  margin-top: 2.2rem;
 }
+
+/* Poster */
 .dir-poster {
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: var(--sh-lg), 0 0 0 1px rgba(226,206,180,.45);
   background: var(--cream);
   position: sticky;
-  top: 100px;
+  top: 90px;
+  max-width: 420px;
+  margin: 0 auto;
 }
 .dir-poster img { width:100%; display:block; }
 .dir-poster-fallback { width:100%; aspect-ratio:3/4; display:none; }
 .dir-poster-fallback iframe { width:100%; height:100%; border:none; display:block; }
 
-.dir-steps-col { display: flex; flex-direction: column; gap: .5rem; }
-.dir-steps-head p {
+/* Steps column */
+.dir-steps-col { display: flex; flex-direction: column; gap: .4rem; }
+
+.dir-steps-intro {
   font-family: var(--ff-d);
   font-size: .97rem;
   color: var(--ink-s);
   line-height: 1.75;
-  margin-bottom: 1rem;
+  margin-bottom: .8rem;
 }
 
-/* Steps */
 .rs-item {
   display: flex;
   align-items: flex-start;
-  gap: .8rem;
-  padding: .85rem 1rem;
+  gap: .75rem;
+  padding: .72rem .95rem;
   background: #fff;
   border-radius: var(--r-lg);
   border: 1.5px solid var(--sand);
@@ -107,125 +116,136 @@
 }
 .rs-item:hover { border-color: var(--terra); box-shadow: 0 4px 16px rgba(192,115,74,.1); transform: translateX(3px); }
 .rs-num {
-  flex-shrink: 0; width:26px; height:26px; border-radius:50%;
+  flex-shrink: 0; width:24px; height:24px; border-radius:50%;
   background: var(--terra); color:#fff;
-  font-family:var(--ff-b); font-size:.65rem; font-weight:700;
-  display:flex; align-items:center; justify-content:center; margin-top:.12rem;
+  font-family:var(--ff-b); font-size:.62rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; margin-top:.1rem;
 }
 .rs-check {
-  flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  flex-shrink:0; width:24px; height:24px; border-radius:50%;
   background:var(--forest); color:#fff;
-  font-size:.72rem; font-weight:700;
-  display:flex; align-items:center; justify-content:center; margin-top:.12rem;
+  font-size:.68rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; margin-top:.1rem;
 }
-.rs-txt { font-family:var(--ff-d); font-size:.96rem; color:var(--ink); line-height:1.55; }
+.rs-txt { font-family:var(--ff-d); font-size:.94rem; color:var(--ink); line-height:1.5; }
 .rs-txt strong { color:var(--ink); }
 .rs-arrived { border-color:var(--forest); background:rgba(61,82,41,.05); }
 .rs-arrived .rs-txt { color:var(--forest); font-weight:500; }
 .rs-arrived:hover { border-color:var(--forest); transform:none; }
 
-.dir-cta { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.75rem; }
+.dir-cta { display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.6rem; }
 
-/* ── NAV VIDEO ── */
-.vid-inner { max-width:860px; margin:0 auto; }
-.vid-player {
-  border-radius:var(--r-lg); overflow:hidden; aspect-ratio:16/9;
-  position:relative; background:#000;
-  box-shadow: 0 28px 72px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06);
-  margin-top:1.8rem;
+/* ── QUICK REFERENCE card — fills vertical space below CTA ── */
+.dir-quickref {
+  margin-top: .75rem;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--sand);
+  background: linear-gradient(135deg, var(--cream) 0%, var(--bg-alt) 100%);
+  overflow: hidden;
 }
-.vid-player iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
-.vid-meta {
-  display:flex; gap:1.1rem; flex-wrap:wrap; margin-top:1.3rem;
-  padding:1rem 1.5rem;
-  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
-  border-radius:var(--r-lg);
+.dir-qr-head {
+  padding: .8rem 1.1rem;
+  background: var(--ink);
+  display: flex; align-items: center; gap: .5rem;
 }
-.vm-item {
-  display:flex; align-items:center; gap:.5rem;
-  font-family:var(--ff-d); font-size:.94rem; color:rgba(255,255,255,.4);
+.dir-qr-head span {
+  font-family: var(--ff-b);
+  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--terra-lt); font-weight: 700;
 }
-.vm-item strong { color:rgba(255,255,255,.78); font-weight:500; }
+.dir-qr-body { padding: .85rem 1.1rem; display: flex; flex-direction: column; gap: .55rem; }
+.dir-qr-row {
+  display: flex; align-items: center; gap: .65rem;
+  font-family: var(--ff-d); font-size: .92rem; color: var(--ink-s); line-height: 1.45;
+}
+.dir-qr-ic {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(192,115,74,.12); color: var(--terra);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.dir-qr-row strong { color: var(--ink); }
+.dir-qr-row a { color: var(--terra); font-weight: 600; }
 
 /* ── NEARBY CARDS ── */
 .nb-grid {
-  display:grid; grid-template-columns:repeat(2,1fr);
-  gap:1.3rem; margin-top:2.2rem;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.3rem; margin-top: 2.2rem;
 }
 .nb-card {
-  border-radius:var(--r-lg); overflow:hidden;
-  background:#fff; border:1px solid var(--sand); box-shadow:var(--sh-sm);
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  border-radius: var(--r-lg); overflow: hidden;
+  background: #fff; border: 1px solid var(--sand); box-shadow: var(--sh-sm);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.nb-card:hover { transform:translateY(-5px); box-shadow:var(--sh-lg); }
-.nb-img { position:relative; height:210px; overflow:hidden; }
+.nb-card:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+.nb-img { position: relative; height: 210px; overflow: hidden; }
 .nb-img img {
-  width:100%; height:100%; object-fit:cover; display:block;
-  transition:transform .55s var(--ease);
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .55s var(--ease);
 }
-.nb-card:hover .nb-img img { transform:scale(1.06); }
+.nb-card:hover .nb-img img { transform: scale(1.06); }
 .nb-img-grad {
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(26,15,7,.82) 0%, rgba(26,15,7,.3) 48%, transparent 100%);
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,15,7,.82) 0%, rgba(26,15,7,.3) 48%, transparent 100%);
 }
 .nb-badge {
-  position:absolute; top:.85rem; left:.85rem;
-  background:rgba(15,8,4,.78); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  color:rgba(255,255,255,.92);
-  font-family:var(--ff-b); font-size:.54rem; letter-spacing:.13em;
-  text-transform:uppercase; font-weight:700;
-  padding:.28rem .78rem; border-radius:var(--r-pill);
-  border:1px solid rgba(255,255,255,.12);
+  position: absolute; top: .85rem; left: .85rem;
+  background: rgba(15,8,4,.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,.92);
+  font-family: var(--ff-b); font-size: .54rem; letter-spacing: .13em;
+  text-transform: uppercase; font-weight: 700;
+  padding: .28rem .78rem; border-radius: var(--r-pill);
+  border: 1px solid rgba(255,255,255,.12);
 }
-.nb-img-title { position:absolute; bottom:.85rem; left:.95rem; right:.95rem; }
+.nb-img-title { position: absolute; bottom: .85rem; left: .95rem; right: .95rem; }
 .nb-img-title h3 {
-  font-family:var(--ff-serif); font-size:1.18rem; color:#fff;
-  font-weight:700; text-shadow:0 2px 12px rgba(0,0,0,.6);
-  line-height:1.2; letter-spacing:-.01em;
+  font-family: var(--ff-serif); font-size: 1.18rem; color: #fff;
+  font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  line-height: 1.2; letter-spacing: -.01em;
 }
-/* Card body — white bg, dark text = full contrast */
-.nb-body { padding:1.1rem 1.3rem 1.3rem; background:#fff; }
-.nb-desc { font-family:var(--ff-d); font-size:.97rem; color:var(--ink-s); line-height:1.78; }
-.nb-tags { display:flex; gap:.35rem; flex-wrap:wrap; margin-top:.9rem; }
+.nb-body { padding: 1rem 1.2rem 1.2rem; background: #fff; }
+.nb-desc { font-family: var(--ff-d); font-size: .97rem; color: var(--ink-s); line-height: 1.78; }
+.nb-tags { display: flex; gap: .35rem; flex-wrap: wrap; margin-top: .8rem; }
 .nb-tag {
-  padding:.2rem .68rem; background:var(--sand-lt); border-radius:var(--r-pill);
-  font-family:var(--ff-b); font-size:.58rem; color:var(--ink-s);
-  font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding: .2rem .68rem; background: var(--sand-lt); border-radius: var(--r-pill);
+  font-family: var(--ff-b); font-size: .58rem; color: var(--ink-s);
+  font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
 }
 
 /* ── TRAVEL TIPS ── */
 .tips-grid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:1.1rem; margin-top:2rem;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem; margin-top: 2rem;
 }
 .tip-card {
-  padding:1.5rem; background:var(--cream);
-  border-radius:var(--r-lg); border:1px solid var(--sand);
-  transition:box-shadow .3s, transform .3s;
+  padding: 1.5rem; background: var(--cream);
+  border-radius: var(--r-lg); border: 1px solid var(--sand);
+  transition: box-shadow .3s, transform .3s;
 }
-.tip-card:hover { box-shadow:var(--sh-md); transform:translateY(-3px); }
-.tip-ic { font-size:1.55rem; margin-bottom:.6rem; display:block; line-height:1; }
-.tip-card h4 { font-family:var(--ff-serif); font-size:1.05rem; color:var(--ink); margin-bottom:.35rem; font-weight:700; }
-.tip-card p { font-family:var(--ff-d); font-size:.94rem; color:var(--ink-s); line-height:1.72; }
+.tip-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); }
+.tip-ic { font-size: 1.4rem; margin-bottom: .55rem; display: block; color: var(--terra); line-height: 1; }
+.tip-card h4 { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--ink); margin-bottom: .35rem; font-weight: 700; }
+.tip-card p { font-family: var(--ff-d); font-size: .94rem; color: var(--ink-s); line-height: 1.72; }
 
 /* ── RESPONSIVE ── */
-@media (max-width:1024px) {
-  .dist-row { grid-template-columns:repeat(3,1fr); }
-  .dir-layout { grid-template-columns:1fr; }
-  .dir-poster { position:static; max-width:520px; margin:0 auto; }
-  .tips-grid { grid-template-columns:1fr 1fr; }
+@media (max-width: 1100px) {
+  .dist-row { grid-template-columns: repeat(3, 1fr); }
+  .dir-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .dir-poster { position: static; max-width: 420px; margin: 0 auto; }
+  .tips-grid { grid-template-columns: 1fr 1fr; }
+  .nav-vid-inner { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
 }
-@media (max-width:768px) {
-  .nb-grid { grid-template-columns:1fr; gap:1rem; }
-  .dist-row { grid-template-columns:repeat(2,1fr); }
-  .map-wrap { height:300px; }
-  .nb-img { height:190px; }
+@media (max-width: 768px) {
+  .nb-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .dist-row { grid-template-columns: repeat(3, 1fr); }
+  .map-wrap { height: 300px; }
+  .nb-img { height: 190px; }
 }
-@media (max-width:480px) {
-  .tips-grid { grid-template-columns:1fr; }
-  .vid-meta { flex-direction:column; gap:.65rem; }
-  .dir-cta { flex-direction:column; }
-  .dir-cta .btn { width:100%; justify-content:center; }
+@media (max-width: 540px) {
+  .dist-row { grid-template-columns: repeat(2, 1fr); }
+  .dir-cta { flex-direction: column; }
+  .dir-cta .btn { width: 100%; justify-content: center; }
+  .tips-grid { grid-template-columns: 1fr; }
 }
 </style>
 <!-- Vercel Analytics -->
@@ -286,14 +306,14 @@
   </div>
 </section>
 
-<!-- DIRECTIONS — poster + steps SIDE BY SIDE -->
-<section style="background:var(--bg);padding-top:3.5rem;padding-bottom:3.5rem">
+<!-- DIRECTIONS -->
+<section class="dir-section">
   <p class="tag">From Twin Lakes Tagaytay</p>
   <h2 class="h2">Map &amp; <em>Directions</em></h2>
 
   <div class="dir-layout rv">
 
-    <!-- LEFT: poster image -->
+    <!-- LEFT: poster -->
     <div class="dir-poster">
       <img
         src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1200"
@@ -306,11 +326,9 @@
       </div>
     </div>
 
-    <!-- RIGHT: step-by-step -->
+    <!-- RIGHT: steps + quick-ref -->
     <div class="dir-steps-col">
-      <div class="dir-steps-head">
-        <p>Only 15 minutes from Twin Lakes. Screenshot the poster or follow the steps — everything you need to find us.</p>
-      </div>
+      <p class="dir-steps-intro">Only 15 minutes from Twin Lakes. Screenshot the poster or follow the steps — everything you need to find us.</p>
 
       <div class="rs-item">
         <span class="rs-num">1</span>
@@ -342,33 +360,70 @@
       </div>
 
       <div class="dir-cta">
-        <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary" rel="noopener noreferrer">Open in Google Maps →</a>
+        <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open in Google Maps →</a>
         <a href="tel:+639228305320" class="btn btn-outline">Call Us for Help</a>
+      </div>
+
+      <!-- Quick reference — fills the remaining vertical space naturally -->
+      <div class="dir-quickref rv">
+        <div class="dir-qr-head">
+          <svg class="icon" aria-hidden="true" style="color:var(--terra-lt);flex-shrink:0"><use href="#i-info"/></svg>
+          <span>Quick Reference</span>
+        </div>
+        <div class="dir-qr-body">
+          <div class="dir-qr-row">
+            <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></div>
+            <div><strong>Full address:</strong> Kaytitinga II, Alfonso, Cavite 4123</div>
+          </div>
+          <div class="dir-qr-row">
+            <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></div>
+            <div><strong>~15 min</strong> from Twin Lakes · <strong>~1.5–2 hrs</strong> from Manila</div>
+          </div>
+          <div class="dir-qr-row">
+            <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></div>
+            <div>Free on-site parking for <strong>3 cars</strong>. Gate code shared upon booking.</div>
+          </div>
+          <div class="dir-qr-row">
+            <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></div>
+            <div>Lost? Call us: <a href="tel:+639228305320">0922 830 5320</a> / <a href="tel:+639178005320">0917 800 5320</a></div>
+          </div>
+          <div class="dir-qr-row">
+            <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></div>
+            <div>Key landmark before turn: <strong>Alfamart on Kaytitinga-Magallanes Rd</strong></div>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- NAV VIDEO — dark -->
-<section class="dark-sec" style="padding-top:3.5rem;padding-bottom:3.5rem">
-  <div class="vid-inner">
-    <div class="rv">
-      <p class="tag">Navigation Video</p>
-      <h2 class="h2">Watch: Google Maps <em>Walkthrough</em></h2>
-      <p style="font-family:var(--ff-d);font-size:1rem;color:rgba(255,255,255,.45);line-height:1.85;max-width:540px;margin:.5rem 0 0">Starting from Alfamart on Kaytitinga-Magallanes Road — follow along as we drive the exact route to the resort.</p>
+<!-- NAV VIDEO — index style: text left, video right -->
+<section class="dark-sec" style="padding-top:4rem;padding-bottom:4rem;position:relative;overflow:hidden">
+  <!-- Subtle background glow matching index -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(192,115,74,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 100% 50%,rgba(201,168,76,.07) 0%,transparent 60%);pointer-events:none"></div>
+  <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:center;position:relative;z-index:1" class="nav-vid-inner">
+    <div class="rv-l">
+      <p class="tag" style="color:var(--gold-lt)">Navigation Video</p>
+      <h2 class="h2" style="color:#fff">Watch: How to <em>Find Us</em></h2>
+      <p style="font-family:var(--ff-d);color:rgba(255,255,255,.55);font-size:1.05rem;line-height:1.88;font-weight:300;max-width:420px;margin-bottom:1.8rem">Starting from Alfamart on Kaytitinga-Magallanes Road — follow along as we drive the exact route to the resort. ~15 minutes from the 7-Eleven landmark.</p>
+      <div style="display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem">
+        <div style="display:flex;align-items:center;gap:.65rem;font-family:var(--ff-d);font-size:.95rem;color:rgba(255,255,255,.45)"><span style="width:28px;height:28px;border-radius:50%;background:rgba(192,115,74,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem">📍</span><span>Start: <strong style="color:rgba(255,255,255,.78)">Alfamart, Kaytitinga-Magallanes Rd</strong></span></div>
+        <div style="display:flex;align-items:center;gap:.65rem;font-family:var(--ff-d);font-size:.95rem;color:rgba(255,255,255,.45)"><span style="width:28px;height:28px;border-radius:50%;background:rgba(192,115,74,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem">⏱️</span><span>Travel time: <strong style="color:rgba(255,255,255,.78)">~15 min from 7-Eleven Kaytitinga</strong></span></div>
+        <div style="display:flex;align-items:center;gap:.65rem;font-family:var(--ff-d);font-size:.95rem;color:rgba(255,255,255,.45)"><span style="width:28px;height:28px;border-radius:50%;background:rgba(192,115,74,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem">📞</span><span>Lost? Call: <strong style="color:rgba(255,255,255,.78)"><a href="tel:+639228305320" style="color:var(--terra-lt)">0922 830 5320</a></strong></span></div>
+      </div>
+      <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open in Google Maps →</a>
     </div>
-    <div class="vid-player rv">
-      <iframe
-        src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
-        allow="autoplay; fullscreen" allowfullscreen loading="lazy"
-        title="Navigation walkthrough to Santiagos Resort"
-      ></iframe>
-    </div>
-    <div class="vid-meta rv">
-      <div class="vm-item"><span>📍</span><span>Starting point: <strong>Alfamart, Kaytitinga-Magallanes Rd</strong></span></div>
-      <div class="vm-item"><span>⏱️</span><span>Travel time: <strong>~15 min from 7-Eleven Kaytitinga</strong></span></div>
-      <div class="vm-item"><span>📞</span><span>Lost? Call us: <strong><a href="tel:+639228305320" style="color:var(--terra-lt)">0922 830 5320</a></strong></span></div>
+    <div class="rv-r">
+      <div style="position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 0 0 1px rgba(201,168,76,.2),0 28px 72px rgba(0,0,0,.55);aspect-ratio:16/9;background:#000">
+        <iframe
+          src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
+          style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block"
+          allow="autoplay; fullscreen" allowfullscreen loading="lazy"
+          title="Navigation walkthrough to Santiagos Resort"
+        ></iframe>
+        <div style="position:absolute;inset:-1px;border-radius:var(--r-lg);border:1px solid rgba(201,168,76,.2);pointer-events:none;box-shadow:inset 0 0 40px rgba(201,168,76,.05)"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -471,7 +526,7 @@
   </div>
   <div style="text-align:center;margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
     <a href="contact.html" class="btn btn-primary">Book Your Stay →</a>
-    <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" class="btn btn-outline" rel="noopener noreferrer">View on Airbnb</a>
+    <a href="https://www.airbnb.com/rooms/1643466979772957530" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View on Airbnb</a>
   </div>
 </section>
 

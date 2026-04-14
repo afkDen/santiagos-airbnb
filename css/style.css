@@ -738,12 +738,12 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
   #footer { padding: 3rem 1.25rem 2rem; }
   #float-pill { display: none; }
   .f2 { grid-template-columns: 1fr; }
-  .pg-hero { min-height: 260px; }
+  .pg-hero { min-height: 300px; }
   .pg-hero-body { padding: 1.8rem 1.25rem 2.8rem; }
   .bring-grid { grid-template-columns: 1fr 1fr; }
   .lb-prev { left: .4rem; } .lb-next { right: .4rem; }
   #lb img { max-width: 96vw; max-height: 80vh; }
-  #announce { padding: .5rem 2.5rem; font-size: .59rem; }
+  #announce { padding: .5rem 3.4rem .5rem 1.2rem; font-size: .59rem; }
   #back-top { bottom: 5.5rem; right: 1rem; }
   #wa-btn { bottom: 1.2rem; right: 1.1rem; width: 46px; height: 46px; }
   #wa-btn svg { width: 22px; height: 22px; }
@@ -768,7 +768,7 @@ body.rv-ready .rv.in, body.rv-ready .rv-l.in, body.rv-ready .rv-r.in { opacity: 
   .sc-text strong { font-size: .75rem; }
   .sc-text span { font-size: .65rem; color: rgba(255,255,255,.35); }
   .sc-btns { gap: .45rem; flex-shrink: 0; }
-  .sc-btns .btn { padding: .44rem .75rem; font-size: .62rem; min-height: 36px; }
+  .sc-btns .btn { padding: .44rem .75rem; font-size: .62rem; min-height: 44px; }
   /* Hero text */
   .pg-hero-body h1 { font-size: clamp(1.9rem, 8vw, 2.8rem); }
   .pg-hero-body p { font-size: .95rem; }
