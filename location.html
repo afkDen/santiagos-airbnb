@@ -20,19 +20,31 @@
 .dir-ic{font-size:1.25rem;flex-shrink:0;color:var(--terra-lt)}
 .dir-lbl{font-family:var(--ff-b);font-size:.56rem;color:rgba(255,255,255,.3);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .dir-val{font-family:var(--ff-serif);font-size:1.05rem;color:var(--cream);font-weight:600;margin-top:.15rem}
-/* DIRECTIONS MEDIA */
-.dir-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
-.dir-poster-wrap{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--sand);background:var(--cream)}
-.dir-poster-wrap img{width:100%;display:block}
-.dir-poster-fallback{padding:3rem 2rem;text-align:center;font-family:var(--ff-d);font-size:1rem;color:var(--ink-s)}
-.dir-video-wrap{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);border:1.5px solid var(--sand);aspect-ratio:16/9;position:relative;background:#000;margin-top:1.5rem}
-.dir-video-wrap iframe{width:100%;height:100%;border:none;display:block;position:absolute;inset:0}
-.dir-video-label{}
-.dir-steps{display:flex;flex-direction:column;gap:.6rem}
-.dir-step{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem .85rem;background:#fff;border-radius:var(--r);border:1px solid var(--sand)}
-.ds-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--terra);color:#fff;font-family:var(--ff-b);font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.05rem}
-.ds-txt{font-family:var(--ff-d);font-size:.96rem;color:var(--ink-s);line-height:1.55}
-@media(max-width:1100px){.dir-media-grid{grid-template-columns:1fr;gap:2.5rem}}
+/* MAP POSTER FRAME */
+.dir-poster-frame{border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 72px rgba(26,15,7,.22),0 0 0 1px rgba(226,206,180,.5);background:var(--cream);margin-bottom:2.5rem;max-width:860px}
+.dir-poster-frame img{width:100%;display:block}
+.dir-poster-fallback{width:100%;min-height:640px;display:flex;align-items:stretch}
+.dir-poster-fallback iframe{width:100%;min-height:640px;border:none;display:block;flex:1}
+/* ROUTE STEPS */
+.route-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;max-width:860px}
+.rs-item{display:flex;align-items:flex-start;gap:.8rem;padding:.85rem 1rem;background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--sand);transition:border-color .2s,box-shadow .2s}
+.rs-item:hover{border-color:var(--terra);box-shadow:0 4px 16px rgba(192,115,74,.1)}
+.rs-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-family:var(--ff-b);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.05rem}
+.rs-check{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--forest);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.05rem}
+.rs-txt{font-family:var(--ff-d);font-size:.96rem;color:var(--ink-s);line-height:1.5}
+.rs-arrived{border-color:var(--forest);background:rgba(61,82,41,.05)}
+.rs-arrived .rs-txt{color:var(--forest)}
+/* NAV VIDEO SECTION */
+.nav-vid-sec{padding:5.5rem 3.5rem}
+.nav-vid-inner{max-width:960px;margin:0 auto}
+.nav-vid-text{margin-bottom:2.5rem}
+.nav-vid-wrap{}
+.nav-vid-player{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/9;position:relative;background:#000;box-shadow:0 32px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.nav-vid-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.nav-vid-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.8rem;padding:1.4rem 1.8rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg)}
+.nvm-item{display:flex;align-items:center;gap:.6rem;font-family:var(--ff-d);font-size:.96rem;color:rgba(255,255,255,.5)}
+.nvm-item .nvm-ic{font-size:1rem;flex-shrink:0}
+.nvm-item strong{color:rgba(255,255,255,.82);font-weight:500}
 /* MAP */
 .map-wrap{border-radius:var(--r-lg);overflow:hidden;height:480px;margin-top:1.5rem;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block}
@@ -73,8 +85,8 @@
 .tip-card h4{font-family:var(--ff-serif);font-size:1.08rem;color:var(--ink);margin-bottom:.45rem;font-weight:700;letter-spacing:-.01em}
 .tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}
 /* RESPONSIVE */
-@media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
-@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.map-wrap{height:300px}.nb-grid{gap:1.2rem}}
+@media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}.route-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.map-wrap{height:300px}.nb-grid{gap:1.2rem}.route-steps{grid-template-columns:1fr}.nav-vid-sec{padding:3rem 1.25rem}.nav-vid-meta{flex-direction:column;gap:.85rem}}
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
   <meta property="og:type" content="website"/>
@@ -119,63 +131,76 @@
   </div>
 </section>
 
-<!-- DIRECTIONS GUIDE -->
-<section style="background:var(--bg-alt)">
-  <p class="tag">How to Get Here</p>
-  <h2 class="h2">Step-by-Step <em>Directions</em></h2>
-  <p class="lead" style="margin-bottom:2.5rem">Coming from Twin Lakes Tagaytay? Follow this guide — it's easy and only about 15 minutes away.</p>
+<!-- MAP POSTER SECTION -->
+<section style="background:var(--bg);padding-bottom:0">
+  <p class="tag">From Twin Lakes Tagaytay</p>
+  <h2 class="h2">Map &amp; <em>Directions</em> Guide</h2>
+  <p class="lead" style="margin-bottom:2.5rem">Only 15 minutes from Twin Lakes. Save or screenshot this poster — it has everything you need to find us.</p>
 
-  <div class="dir-media-grid">
-    <!-- Map Poster -->
-    <div class="rv-l">
-      <div class="dir-poster-wrap" id="dirPosterWrap">
-        <img
-          src="https://drive.google.com/uc?export=view&id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH"
-          alt="Map and Directions Guide from Twin Lakes Tagaytay to Santiagos Resort"
-          loading="lazy"
-          onerror="dirPosterFallback()"
-        />
-      </div>
+  <!-- Poster image — framed, centered, max width -->
+  <div class="dir-poster-frame rv">
+    <img
+      src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600"
+      alt="Map and Directions Guide — Santiagos Resort from Twin Lakes Tagaytay"
+      loading="lazy"
+      onerror="this.style.display='none';document.getElementById('dirPosterFallback').style.display='flex'"
+    />
+    <!-- Fallback if Drive blocks the thumbnail -->
+    <div id="dirPosterFallback" class="dir-poster-fallback" style="display:none">
+      <iframe
+        src="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/preview"
+        title="Map and Directions Guide"
+        allowfullscreen
+      ></iframe>
     </div>
+  </div>
 
-    <!-- Travel Video -->
-    <div class="rv-r">
-      <div class="dir-video-label">
-        <span class="tag" style="margin-bottom:.6rem">Navigation Video</span>
-        <h3 style="font-family:var(--ff-serif);font-size:1.55rem;color:var(--ink);font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em">Watch: Google Maps <em style="color:var(--terra);font-style:italic">Walkthrough</em></h3>
-        <p style="font-family:var(--ff-d);font-size:1rem;color:var(--ink-s);line-height:1.8;margin-bottom:1.4rem">Starting from Alfamart on Kaytitinga-Magallanes Road, this video shows you exactly how to navigate to Santiagos Resort using Google Maps.</p>
-        <div class="dir-steps">
-          <div class="dir-step"><span class="ds-num">1</span><span class="ds-txt">Start at <strong>Twin Lakes Tagaytay</strong></span></div>
-          <div class="dir-step"><span class="ds-num">2</span><span class="ds-txt">Head west on Tagaytay-Laurel Rd toward Amuyong-Kaytitinga Road</span></div>
-          <div class="dir-step"><span class="ds-num">3</span><span class="ds-txt">Turn right onto Amuyong-Kaytitinga Road</span></div>
-          <div class="dir-step"><span class="ds-num">4</span><span class="ds-txt">Turn left onto Kaytitinga-Magallanes Rd</span></div>
-          <div class="dir-step"><span class="ds-num">5</span><span class="ds-txt">Turn right at <strong>7-Eleven</strong></span></div>
-          <div class="dir-step"><span class="ds-num">6</span><span class="ds-txt">Turn right at the <strong>Cell Repair Shop</strong> — you've arrived!</span></div>
-        </div>
-      </div>
-      <div class="dir-video-wrap">
+  <!-- Route steps -->
+  <div class="route-steps rv">
+    <div class="rs-item"><span class="rs-num">1</span><div class="rs-txt"><strong>Start at Twin Lakes Tagaytay</strong> — your landmark reference</div></div>
+    <div class="rs-item"><span class="rs-num">2</span><div class="rs-txt">Head <strong>west</strong> on Tagaytay-Laurel Rd toward Amuyong-Kaytitinga Road</div></div>
+    <div class="rs-item"><span class="rs-num">3</span><div class="rs-txt">Turn <strong>right</strong> onto Amuyong-Kaytitinga Road</div></div>
+    <div class="rs-item"><span class="rs-num">4</span><div class="rs-txt">Turn <strong>left</strong> onto Kaytitinga-Magallanes Rd</div></div>
+    <div class="rs-item"><span class="rs-num">5</span><div class="rs-txt">Turn <strong>right</strong> at the <strong>7-Eleven</strong> (it will be on your left)</div></div>
+    <div class="rs-item"><span class="rs-num">6</span><div class="rs-txt">Turn <strong>right</strong> at the Cell Repair Shop — take the small street straight to the resort</div></div>
+    <div class="rs-item rs-arrived"><span class="rs-check">✓</span><div class="rs-txt"><strong>You've arrived at Santiagos Resort!</strong> Kaytitinga II, Alfonso, Cavite</div></div>
+  </div>
+
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem">
+    <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary">Open in Google Maps →</a>
+    <a href="tel:+639228305320" class="btn btn-outline">Call Us for Help</a>
+  </div>
+</section>
+
+<!-- NAVIGATION VIDEO SECTION -->
+<section class="dark-sec nav-vid-sec">
+  <div class="nav-vid-inner">
+    <div class="nav-vid-text rv">
+      <p class="tag">Navigation Video</p>
+      <h2 class="h2" style="color:var(--cream);max-width:560px">Watch: Google Maps <em>Walkthrough</em></h2>
+      <p style="font-family:var(--ff-d);font-size:1.06rem;color:rgba(255,255,255,.5);line-height:1.88;max-width:560px;margin:.8rem 0 0">Starting from Alfamart on Kaytitinga-Magallanes Road — follow along as we drive the exact route to the resort. No guesswork needed.</p>
+    </div>
+    <div class="nav-vid-wrap rv">
+      <div class="nav-vid-player">
         <iframe
           src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
-          allow="autoplay"
+          allow="autoplay; fullscreen"
           allowfullscreen
           loading="lazy"
-          title="Google Maps navigation to Santiagos Resort"
+          title="Google Maps navigation walkthrough to Santiagos Resort"
         ></iframe>
       </div>
-      <div style="margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap">
-        <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary">Open in Google Maps →</a>
-        <a href="tel:+639228305320" class="btn btn-outline">Call for Help</a>
+      <div class="nav-vid-meta">
+        <div class="nvm-item"><span class="nvm-ic">📍</span><span>Starting point: <strong>Alfamart, Kaytitinga-Magallanes Rd</strong></span></div>
+        <div class="nvm-item"><span class="nvm-ic">⏱️</span><span>Travel time: <strong>~15 minutes from 7-Eleven 4760 Kaytitinga</strong></span></div>
+        <div class="nvm-item"><span class="nvm-ic">📞</span><span>Lost? Call us: <strong><a href="tel:+639228305320" style="color:var(--terra-lt)">0922 830 5320</a></strong></span></div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-function dirPosterFallback() {
-  var wrap = document.getElementById('dirPosterWrap');
-  if (!wrap) return;
-  wrap.innerHTML = '<div class="dir-poster-fallback"><div style="font-size:3rem;margin-bottom:.8rem">🗺️</div><p style="margin-bottom:1rem">Map &amp; Directions Guide</p><a href="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/view?usp=sharing" target="_blank" class="btn btn-outline">View Full Map →</a></div>';
-}
+// No-op — dirPosterFallback handled inline above
 </script>
 
 <!-- NEARBY -->
