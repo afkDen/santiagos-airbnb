@@ -58,25 +58,11 @@
 .tip-ic{font-size:1.9rem;margin-bottom:.8rem;display:block}
 .tip-card h4{font-family:var(--ff-serif);font-size:1.08rem;color:var(--ink);margin-bottom:.45rem;font-weight:700;letter-spacing:-.01em}
 .tip-card p{font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);line-height:1.75;font-weight:400}
-/* LANDMARK GRID */
-.landmark-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:2rem }
-.landmark-card { border-radius:var(--r-lg); overflow:hidden; background:var(--cream); border:1px solid var(--sand); transition:transform .3s,box-shadow .3s }
-.landmark-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg) }
-.landmark-img-wrap { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--sand-lt) }
-.landmark-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s }
-.landmark-card:hover .landmark-img-wrap img { transform:scale(1.04) }
-.landmark-fallback { display:none; width:100%; height:100%; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; color:var(--sand); font-family:var(--ff-b); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase }
-.landmark-label { display:flex; align-items:flex-start; gap:.85rem; padding:1.2rem 1.3rem }
-.landmark-num { font-family:var(--ff-serif); font-size:1.4rem; font-weight:700; color:var(--terra); line-height:1; flex-shrink:0; min-width:1.8rem }
-.landmark-label strong { font-family:var(--ff-serif); font-size:.95rem; color:var(--ink); font-weight:700; display:block; margin-bottom:.2rem }
-.landmark-label p { font-family:var(--ff-d); font-size:.85rem; color:var(--ink-s); line-height:1.55; margin:0 }
-/* Video embed */
-.landmark-video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
-
 /* RESPONSIVE */
 @media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}}
-@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.map-wrap{height:280px;border-radius:var(--r-lg)}.nb-grid{gap:1rem}.landmark-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{flex-direction:column}.map-wrap{height:300px}.nb-grid{gap:1.2rem}}
 </style>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
   <meta property="og:type" content="website"/>
   <meta property="og:description" content="Find Santiagos Resort in Alfonso, Cavite — 1.5-2 hours from Manila. Near Taal Volcano, Sky Ranch & Tagaytay Ridge."/>
   <meta name="twitter:card" content="summary_large_image"/>
@@ -108,70 +94,14 @@
   <h2 class="h2">Our <em>Location</em></h2>
   <p class="lead">Alfonso, Tagaytay, Cavite — about 1.5–2 hours from Metro Manila.</p>
   <div class="dir-bar">
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span><div><div class="dir-lbl">From EDSA / Manila</div><div class="dir-val">~1.5–2 hours</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">From EDSA / Manila</div><div class="dir-val">~1.5–2 hours</div></div></div>
     <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><div class="dir-lbl">From Tagaytay City</div><div class="dir-val">~15–20 min</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span><div><div class="dir-lbl">From Cavite City</div><div class="dir-val">~45 min</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-road"/></svg></span><div><div class="dir-lbl">Best Route</div><div class="dir-val">Via STAR Tollway</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-bus"/></svg></span><div><div class="dir-lbl">Public Transport</div><div class="dir-val">Bus → tricycle</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg></span><div><div class="dir-lbl">From Cavite City</div><div class="dir-val">~45 min</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">Best Route</div><div class="dir-val">Via STAR Tollway</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">Public Transport</div><div class="dir-val">Bus → tricycle</div></div></div>
   </div>
   <div class="map-wrap">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3866.5!2d120.8199956!3d14.1093627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd9d005b93125d%3A0x6c0a9094a9d4399b!2sSantiagos+Private+Resort!5e0!3m2!1sen!2sph!4v1712400000000!5m2!1sen!2sph" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
-
-<!-- HOW TO FIND US — landmark photos -->
-<section style="background:var(--bg-alt)">
-  <p class="tag">Landmark Reference</p>
-  <h2 class="h2">How to <em>Find Us</em></h2>
-  <p class="lead" style="margin-bottom:2rem">Watch the video guide and save the map poster below before heading out. Signal can be spotty on mountain roads — screenshot these ahead of time.</p>
-
-  <div class="landmark-grid">
-
-    <div class="landmark-card rv">
-      <div class="landmark-img-wrap landmark-video-wrap">
-        <iframe
-          src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
-          allow="autoplay"
-          allowfullscreen
-          loading="lazy"
-          title="How to Find Santiagos Resort — Video Guide"
-        ></iframe>
-      </div>
-      <div class="landmark-label">
-        <span class="landmark-num">01</span>
-        <div>
-          <strong>Video Guide — From Tagaytay Twin Lakes</strong>
-          <p>Watch this short video showing the route from Tagaytay Twin Lakes to the resort. Share with your driver before leaving.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="landmark-card rv">
-      <div class="landmark-img-wrap">
-        <img
-          src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1920"
-          alt="Santiagos Resort — Map Poster from Tagaytay"
-          loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-        />
-        <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Map Poster</span></div>
-      </div>
-      <div class="landmark-label">
-        <span class="landmark-num">02</span>
-        <div>
-          <strong>Map Poster — From Tagaytay</strong>
-          <p>Save this to your phone. Shows landmarks and turns from Tagaytay Twin Lakes to the resort entrance.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="margin-top:2rem;padding:1.2rem 1.4rem;background:var(--cream);border-radius:var(--r-lg);border:1px solid var(--sand);display:flex;align-items:center;gap:.75rem">
-    <svg class="icon" aria-hidden="true" style="color:var(--terra);flex-shrink:0;font-size:1.2rem"><use href="#i-pin"/></svg>
-    <p style="font-family:var(--ff-d);font-size:.98rem;color:var(--ink-s);line-height:1.65;margin:0">
-      <strong style="color:var(--ink)">Pro tip:</strong> Save the Google Maps pin below and screenshot these photos before you leave Manila. Signal can be spotty on mountain roads.
-    </p>
   </div>
 </section>
 

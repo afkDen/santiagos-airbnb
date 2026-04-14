@@ -128,7 +128,6 @@ var SVG_SPRITE = '<svg xmlns="http://www.w3.org/2000/svg" style="display:none" i
   +'<symbol id="i-price" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>'
   +'<symbol id="i-driver" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c4.41 0 8 3.59 8 8H4c0-4.41 3.59-8 8-8zM4 13h16c-.49 3.95-3.85 7-7.98 7C7.85 20 4.49 16.95 4 13zm8-1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></symbol>'
   +'<symbol id="i-music" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></symbol><symbol id="i-sofa" viewBox="0 0 24 24"><path d="M21 9V7c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v2c-1.1 0-2 .9-2 2v5h1.33L3 18h1l.67-2h14.67l.66 2h1l-.33-2H23v-5c0-1.1-.9-2-2-2zm-8 1H5V7h8v3zm7 0h-5V7h3c1.1 0 2 .9 2 2v1z"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><path d="M12 15.2c-1.77 0-3.2-1.43-3.2-3.2s1.43-3.2 3.2-3.2 3.2 1.43 3.2 3.2-1.43 3.2-3.2 3.2zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></symbol><symbol id="i-lamp" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-8h12v8h2V3h-2zm0 8H6V7h12v4z"/></symbol><symbol id="i-pen" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>'
-  +'<symbol id="i-road" viewBox="0 0 24 24"><path d="M4 16v5h3v-3h10v3h3v-5H4zm15-8h-4V3H9v5H5l7 7 7-7zM11 7V5h2v2h2l-3 3-3-3h2z"/></symbol><symbol id="i-bus" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/></symbol><symbol id="i-car" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></symbol><symbol id="i-clock2" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></symbol>'
   +'</svg>';
 
 /* ── NAV HTML ── */
@@ -227,7 +226,7 @@ var FOOTER_HTML = [
   '    </div>',
   '  </div>',
   '  <div class="ft-bottom">',
-  '    <span class="ft-copy">\u00a9 ' + new Date().getFullYear() + ' Santiagos Resort \u00b7 All rights reserved \u00b7 Made with \u2764\ufe0f in the Philippines</span>',
+  '    <span class="ft-copy">\u00a9 2026 Santiagos Resort \u00b7 All rights reserved \u00b7 Made with \u2764\ufe0f in the Philippines</span>',
   '    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="' + AIRBNB + '" target="_blank" rel="noopener">Airbnb \u2197</a></div>',
   '  </div>',
   '</footer>',
@@ -405,13 +404,12 @@ document.addEventListener('click', function(e) {
 /* ── COUNTER ANIMATION ── */
 function countUp(el) {
   var target = parseInt(el.dataset.target, 10);
-  var dur = 1600, t0 = performance.now();
+  var dur = 1500, t0 = performance.now();
   function tick(now) {
     var p = Math.min((now - t0) / dur, 1);
-    var e = 1 - Math.pow(1 - p, 3.5);
-    var val = Math.floor(e * target);
-    el.textContent = val >= 1000 ? val.toLocaleString() : val;
-    if (p < 1) requestAnimationFrame(tick); else el.textContent = target >= 1000 ? target.toLocaleString() : target;
+    var e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(e * target);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
   }
   requestAnimationFrame(tick);
 }
