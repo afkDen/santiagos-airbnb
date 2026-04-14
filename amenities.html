@@ -89,12 +89,9 @@
 .r-body h4 { font-family:var(--ff-d); font-size:1rem; color:var(--ink); margin-bottom:.4rem; font-weight:600 }
 .r-body p { font-size:.8rem; color:var(--ink-s); line-height:1.55; font-weight:300 }
 
-/* ── STICKY CTA ── */
-.sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:600; background:var(--ink); padding:.9rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-top:1px solid rgba(255,255,255,.08); transform:translateY(100%); transition:transform .4s cubic-bezier(.34,1.56,.64,1) }
-.sticky-cta.show { transform:translateY(0) }
-.sc-text { font-size:.78rem; color:rgba(255,255,255,.55) }
-.sc-text strong { color:#fff; display:block; font-size:.88rem }
-.sc-btns { display:flex; gap:.7rem; flex-shrink:0 }
+/* ── STICKY CTA — defers to global style.css ── */
+/* Overrides to match global version */
+.sticky-cta { background:rgba(12,6,2,.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:.85rem 1.75rem; box-shadow:0 -6px 28px rgba(0,0,0,.3); transition:transform .45s cubic-bezier(.34,1.56,.64,1) }
 
 /* ── RESPONSIVE ── */
 /* ── SLEEP WRAPPER ── */
@@ -105,9 +102,11 @@
 .bath-bottom-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.7rem }
 
 /* ── SC CLOSE ── */
-.sc-close { background:none; border:none; color:rgba(255,255,255,.4); font-size:1rem;
-  padding:.3rem .5rem; cursor:pointer; transition:color .2s; flex-shrink:0 }
-.sc-close:hover { color:#fff }
+.sc-close { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.5); font-size:.75rem; width:30px; height:30px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all .2s; flex-shrink:0 }
+.sc-close:hover { background:rgba(255,255,255,.18); color:#fff }
 
 @media(max-width:1100px) {
   .spot-grid, .spot-grid.flip { grid-template-columns:1fr; direction:ltr; gap:2.5rem }
@@ -135,12 +134,14 @@
   /* Mobile bathroom: 1-col hero + 3 below is fine, just smaller */
   .bath-bottom-row { grid-template-columns:1fr 1fr 1fr }
   /* Sticky CTA: compact on mobile */
-  .sticky-cta { flex-wrap:wrap; padding:.75rem 1rem }
-  .sc-text { font-size:.7rem }
-  .sc-text strong { font-size:.8rem }
+  .sticky-cta { padding:.65rem 1rem; gap:.55rem }
+  .sc-text { flex:1; min-width:0; overflow:hidden }
+  .sc-text strong { font-size:.75rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+  .sc-text span { font-size:.65rem; color:rgba(255,255,255,.35); display:block }
+  .sc-btns { gap:.45rem; flex-shrink:0 }
+  .sc-btns .btn { padding:.44rem .75rem; font-size:.62rem; min-height:36px }
 }
 </style>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
   <meta property="og:type" content="website"/>
   <meta property="og:description" content="22+ amenities all included — private pool, videoke, game room, gym, basketball & bonfire in Alfonso, Tagaytay."/>
   <meta name="twitter:card" content="summary_large_image"/>

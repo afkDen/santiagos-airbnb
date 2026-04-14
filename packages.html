@@ -20,11 +20,11 @@
 .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
 .base-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--sand);background:var(--cream);transition:all .3s}
 .base-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(26,15,7,.2)}
-.base-card.featured{border-color:var(--terra)}
+.base-card.featured{border-color:var(--terra);box-shadow:0 8px 40px rgba(192,115,74,.2)}
 .base-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--sand-lt)}
 .base-badge{display:inline-block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.22rem .8rem;border-radius:var(--r-pill);margin-bottom:.9rem}
-.bb-wd{background:rgba(192,115,74,.12);color:var(--terra-dk)}
-.bb-we{background:var(--gold);color:var(--ink)}
+.bb-wd{background:rgba(192,115,74,.1);color:var(--terra-dk);font-family:var(--ff-b);letter-spacing:.1em}
+.bb-we{background:var(--gold);color:var(--ink);font-family:var(--ff-b);letter-spacing:.1em}
 .base-name{font-family:var(--ff-serif);font-size:1.3rem;color:var(--ink);font-weight:700;margin-bottom:.2rem;letter-spacing:-.01em}
 .base-when{font-size:.78rem;color:var(--ink-s);font-weight:400}
 .base-price{display:flex;align-items:baseline;gap:.3rem;margin-top:1rem}
@@ -47,7 +47,7 @@
 .group-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
 .grp-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:2rem 1.5rem;text-align:center;transition:all .3s}
 .grp-card:hover{background:rgba(192,115,74,.1);border-color:rgba(192,115,74,.3);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.2)}
-.grp-pax{font-family:var(--ff-d);font-size:2.2rem;color:var(--gold);font-weight:600;line-height:1}
+.grp-pax{font-family:var(--ff-serif);font-size:2.2rem;color:var(--gold);font-weight:700;line-height:1;letter-spacing:-.02em}
 .grp-pax-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem}
 .grp-rate{font-family:var(--ff-d);font-size:1.5rem;color:var(--cream);font-weight:600;margin-top:1rem}
 .grp-note{font-family:var(--ff-b);font-size:.7rem;color:rgba(255,255,255,.28);margin-top:.4rem;line-height:1.4;letter-spacing:.03em}
