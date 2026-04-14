@@ -72,7 +72,7 @@
 }
 .dir-layout {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 3rem;
   align-items: start;
   margin-top: 2.2rem;
@@ -83,7 +83,7 @@
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: var(--sh-lg), 0 0 0 1px rgba(226,206,180,.45);
-  background: var(--cream);
+  background: var(--cream-dk);
   position: sticky;
   top: 90px;
   cursor: zoom-in;
@@ -93,7 +93,13 @@
   transform: translateY(-3px);
   box-shadow: var(--sh-xl), 0 0 0 1px rgba(192,115,74,.35);
 }
-.dir-poster img { width:100%; display:block; }
+.dir-poster img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  display: block;
+  background: var(--cream-dk);
+}
 .dir-poster-hint {
   display: flex; align-items: center; justify-content: center; gap: .45rem;
   padding: .5rem .8rem;
@@ -324,8 +330,8 @@
 
   <div class="dir-layout rv">
 
-    <!-- LEFT: poster — click to enlarge -->
-    <div class="dir-poster" onclick="openPosterModal()" title="Click to enlarge">
+    <!-- LEFT: poster — click to enlarge via native lightbox -->
+    <div class="dir-poster" onclick="lbOpen(0,POSTER_IMGS)" title="Click to enlarge">
       <img
         id="posterImg"
         src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600"
@@ -341,40 +347,6 @@
         Click to enlarge
       </div>
     </div>
-
-<!-- POSTER MODAL LIGHTBOX -->
-<div id="posterModal" onclick="closePosterModal()" style="
-  display:none; position:fixed; inset:0; z-index:9500;
-  background:rgba(8,4,2,.96); backdrop-filter:blur(6px);
-  align-items:center; justify-content:center; padding:1.5rem;
-  cursor:zoom-out;
-">
-  <div style="position:relative; max-width:min(780px,92vw); width:100%; cursor:default" onclick="event.stopPropagation()">
-    <img
-      src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w2400"
-      alt="Map and Directions Guide"
-      style="width:100%;display:block;border-radius:10px;box-shadow:0 32px 100px rgba(0,0,0,.7)"
-    />
-    <button onclick="closePosterModal()" style="
-      position:absolute; top:-14px; right:-14px;
-      width:40px; height:40px; border-radius:50%;
-      background:var(--ink); border:1.5px solid rgba(255,255,255,.18);
-      color:rgba(255,255,255,.7); font-size:1rem;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:all .2s; z-index:2;
-    " onmouseover="this.style.background='var(--terra)';this.style.color='#fff'"
-       onmouseout="this.style.background='var(--ink)';this.style.color='rgba(255,255,255,.7)'"
-    >✕</button>
-    <div style="text-align:center;margin-top:.85rem">
-      <a
-        href="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/view"
-        target="_blank" rel="noopener noreferrer"
-        class="btn btn-primary" style="font-size:.68rem;padding:.65rem 1.6rem"
-        onclick="event.stopPropagation()"
-      >Open Full Size →</a>
-    </div>
-  </div>
-</div>
 
     <!-- RIGHT: steps + quick-ref -->
     <div class="dir-steps-col">
@@ -580,19 +552,19 @@
   </div>
 </section>
 
+<div id="lb">
+  <button class="lb-x" onclick="lbClose()">✕</button>
+  <button class="lb-arr lb-prev" onclick="lbShift(-1);event.stopPropagation()">&#8592;</button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lb-arr lb-next" onclick="lbShift(1);event.stopPropagation()">&#8594;</button>
+  <div class="lb-info" id="lb-info"></div>
+</div>
+
 <script src="js/app.js"></script>
 <script>
-function openPosterModal() {
-  var m = document.getElementById('posterModal');
-  if (m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-}
-function closePosterModal() {
-  var m = document.getElementById('posterModal');
-  if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
-}
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closePosterModal();
-});
+const POSTER_IMGS = [
+  { src: 'https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w2400', label: 'Map & Directions Guide — From Twin Lakes Tagaytay' }
+];
 </script>
 </body>
 </html>
