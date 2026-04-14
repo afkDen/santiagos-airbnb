@@ -15,10 +15,24 @@
 <style>
 /* DIRECTIONS */
 .dir-bar{display:flex;gap:.9rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
-.dir-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:.85rem 1.3rem;display:flex;align-items:center;gap:.75rem;transition:border-color .2s}
-.dir-ic{font-size:1.1rem;flex-shrink:0}
-.dir-lbl{font-family:var(--ff-b);font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.12em;text-transform:uppercase}
-.dir-val{font-family:var(--ff-d);font-size:1rem;color:var(--cream);font-weight:600}
+.dir-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:1rem 1.4rem;display:flex;align-items:center;gap:.85rem;transition:all .2s;backdrop-filter:blur(4px)}
+.dir-card:hover{background:rgba(192,115,74,.12);border-color:rgba(192,115,74,.35);transform:translateY(-2px)}
+.dir-ic{font-size:1.25rem;flex-shrink:0;color:var(--terra-lt)}
+.dir-lbl{font-family:var(--ff-b);font-size:.56rem;color:rgba(255,255,255,.3);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.dir-val{font-family:var(--ff-serif);font-size:1.05rem;color:var(--cream);font-weight:600;margin-top:.15rem}
+/* DIRECTIONS MEDIA */
+.dir-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.dir-poster-wrap{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--sand);background:var(--cream)}
+.dir-poster-wrap img{width:100%;display:block}
+.dir-poster-fallback{padding:3rem 2rem;text-align:center;font-family:var(--ff-d);font-size:1rem;color:var(--ink-s)}
+.dir-video-wrap{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);border:1.5px solid var(--sand);aspect-ratio:16/9;position:relative;background:#000;margin-top:1.5rem}
+.dir-video-wrap iframe{width:100%;height:100%;border:none;display:block;position:absolute;inset:0}
+.dir-video-label{}
+.dir-steps{display:flex;flex-direction:column;gap:.6rem}
+.dir-step{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem .85rem;background:#fff;border-radius:var(--r);border:1px solid var(--sand)}
+.ds-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--terra);color:#fff;font-family:var(--ff-b);font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.05rem}
+.ds-txt{font-family:var(--ff-d);font-size:.96rem;color:var(--ink-s);line-height:1.55}
+@media(max-width:1100px){.dir-media-grid{grid-template-columns:1fr;gap:2.5rem}}
 /* MAP */
 .map-wrap{border-radius:var(--r-lg);overflow:hidden;height:480px;margin-top:1.5rem;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block}
@@ -96,14 +110,73 @@
   <div class="dir-bar">
     <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">From EDSA / Manila</div><div class="dir-val">~1.5–2 hours</div></div></div>
     <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><div class="dir-lbl">From Tagaytay City</div><div class="dir-val">~15–20 min</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg></span><div><div class="dir-lbl">From Cavite City</div><div class="dir-val">~45 min</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">Best Route</div><div class="dir-val">Via STAR Tollway</div></div></div>
-    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span><div><div class="dir-lbl">Public Transport</div><div class="dir-val">Bus → tricycle</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><div class="dir-lbl">From Cavite City</div><div class="dir-val">~45 min</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></span><div><div class="dir-lbl">Best Route</div><div class="dir-val">Via STAR Tollway</div></div></div>
+    <div class="dir-card"><span class="dir-ic"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span><div><div class="dir-lbl">Public Transport</div><div class="dir-val">Bus → tricycle</div></div></div>
   </div>
   <div class="map-wrap">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3866.5!2d120.8199956!3d14.1093627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd9d005b93125d%3A0x6c0a9094a9d4399b!2sSantiagos+Private+Resort!5e0!3m2!1sen!2sph!4v1712400000000!5m2!1sen!2sph" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
+
+<!-- DIRECTIONS GUIDE -->
+<section style="background:var(--bg-alt)">
+  <p class="tag">How to Get Here</p>
+  <h2 class="h2">Step-by-Step <em>Directions</em></h2>
+  <p class="lead" style="margin-bottom:2.5rem">Coming from Twin Lakes Tagaytay? Follow this guide — it's easy and only about 15 minutes away.</p>
+
+  <div class="dir-media-grid">
+    <!-- Map Poster -->
+    <div class="rv-l">
+      <div class="dir-poster-wrap" id="dirPosterWrap">
+        <img
+          src="https://drive.google.com/uc?export=view&id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH"
+          alt="Map and Directions Guide from Twin Lakes Tagaytay to Santiagos Resort"
+          loading="lazy"
+          onerror="dirPosterFallback()"
+        />
+      </div>
+    </div>
+
+    <!-- Travel Video -->
+    <div class="rv-r">
+      <div class="dir-video-label">
+        <span class="tag" style="margin-bottom:.6rem">Navigation Video</span>
+        <h3 style="font-family:var(--ff-serif);font-size:1.55rem;color:var(--ink);font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em">Watch: Google Maps <em style="color:var(--terra);font-style:italic">Walkthrough</em></h3>
+        <p style="font-family:var(--ff-d);font-size:1rem;color:var(--ink-s);line-height:1.8;margin-bottom:1.4rem">Starting from Alfamart on Kaytitinga-Magallanes Road, this video shows you exactly how to navigate to Santiagos Resort using Google Maps.</p>
+        <div class="dir-steps">
+          <div class="dir-step"><span class="ds-num">1</span><span class="ds-txt">Start at <strong>Twin Lakes Tagaytay</strong></span></div>
+          <div class="dir-step"><span class="ds-num">2</span><span class="ds-txt">Head west on Tagaytay-Laurel Rd toward Amuyong-Kaytitinga Road</span></div>
+          <div class="dir-step"><span class="ds-num">3</span><span class="ds-txt">Turn right onto Amuyong-Kaytitinga Road</span></div>
+          <div class="dir-step"><span class="ds-num">4</span><span class="ds-txt">Turn left onto Kaytitinga-Magallanes Rd</span></div>
+          <div class="dir-step"><span class="ds-num">5</span><span class="ds-txt">Turn right at <strong>7-Eleven</strong></span></div>
+          <div class="dir-step"><span class="ds-num">6</span><span class="ds-txt">Turn right at the <strong>Cell Repair Shop</strong> — you've arrived!</span></div>
+        </div>
+      </div>
+      <div class="dir-video-wrap">
+        <iframe
+          src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
+          allow="autoplay"
+          allowfullscreen
+          loading="lazy"
+          title="Google Maps navigation to Santiagos Resort"
+        ></iframe>
+      </div>
+      <div style="margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap">
+        <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary">Open in Google Maps →</a>
+        <a href="tel:+639228305320" class="btn btn-outline">Call for Help</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function dirPosterFallback() {
+  var wrap = document.getElementById('dirPosterWrap');
+  if (!wrap) return;
+  wrap.innerHTML = '<div class="dir-poster-fallback"><div style="font-size:3rem;margin-bottom:.8rem">🗺️</div><p style="margin-bottom:1rem">Map &amp; Directions Guide</p><a href="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/view?usp=sharing" target="_blank" class="btn btn-outline">View Full Map →</a></div>';
+}
+</script>
 
 <!-- NEARBY -->
 <section style="background:var(--bg)">
