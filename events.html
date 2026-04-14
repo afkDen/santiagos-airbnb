@@ -54,23 +54,6 @@
 .occ-checklist li::before{content:'✓';color:var(--forest);font-weight:700;flex-shrink:0;margin-top:.05rem}
 .occ-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
 
-/* TEAM BUILDING HERO */
-.tb-hero-sec{background:var(--bg-alt)}
-.tb-hero{position:relative;height:580px;overflow:hidden;background:var(--charcoal);display:flex;align-items:center}
-.tb-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.55;transition:transform 8s ease}
-.tb-hero:hover .tb-hero-img{transform:scale(1.04)}
-.tb-hero-vig{position:absolute;inset:0;background:linear-gradient(to right,rgba(12,6,2,.97) 0%,rgba(12,6,2,.72) 48%,rgba(12,6,2,.15) 100%)}
-.tb-hero-body{position:relative;z-index:2;padding:4rem 3.5rem;max-width:680px}
-.tb-h2{color:#fff!important;margin-bottom:.85rem}
-.tb-h2 em{color:var(--terra-lt)!important}
-.tb-hero-lead{font-family:var(--ff-d);font-size:1.06rem;color:rgba(255,255,255,.6);line-height:1.88;margin-bottom:1.6rem;max-width:460px}
-.tb-detail{padding:4rem 3.5rem;background:var(--bg-alt)}
-.tb-detail-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4.5rem;align-items:start}
-.tb-photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-.tb-photo-pair .occ-photo img{aspect-ratio:3/4;object-fit:cover}
-@media(max-width:1100px){.tb-hero{height:440px}.tb-detail-grid{grid-template-columns:1fr;gap:2.5rem}.tb-photo-pair{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.tb-hero{height:360px}.tb-hero-body{padding:2rem 1.25rem;max-width:100%}.tb-detail{padding:3rem 1.25rem}.tb-photo-pair .occ-photo img{aspect-ratio:4/3}}
-
 /* PRICING CALLOUT */
 .price-callout{background:linear-gradient(135deg,rgba(192,115,74,.08) 0%,rgba(201,168,76,.06) 100%);border:1px solid rgba(192,115,74,.2);border-radius:var(--r-lg);padding:1.5rem 2rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .pc-text{font-size:.82rem;color:var(--ink-s)}
@@ -88,15 +71,10 @@
 .cap-name{font-family:var(--ff-b);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:.3rem}
 .cap-desc{font-family:var(--ff-b);font-size:.7rem;color:rgba(255,255,255,.28);line-height:1.5;letter-spacing:.02em}
 
-/* AMENITY CARDS */
-.am-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
-.am-card{background:#fff;border:1.5px solid var(--sand);border-radius:var(--r-lg);padding:1.4rem 1rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:.7rem;text-align:center;transition:all .25s;cursor:default}
-.am-card:hover{border-color:var(--terra);transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,15,7,.12)}
-.am-ic{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.am-name{font-family:var(--ff-b);font-size:.75rem;font-weight:600;color:var(--ink-s);line-height:1.35;letter-spacing:.01em}
-@media(max-width:1100px){.am-cards{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:680px){.am-cards{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:420px){.am-cards{grid-template-columns:repeat(2,1fr)}}
+/* AMENITIES QUICK LIST */
+.quick-am{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.5rem 0}
+.qam{display:flex;align-items:center;gap:.5rem;font-family:var(--ff-d);font-size:.97rem;color:var(--ink-s);font-weight:400;line-height:1.5}
+.qam::before{content:'●';color:var(--terra);font-size:.5rem;flex-shrink:0}
 
 /* SHARE STRIP */
 .share-strip{background:var(--terra);padding:3rem 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
@@ -303,56 +281,41 @@
   </div>
 </section>
 
-<!-- TEAM BUILDING HERO + DETAIL -->
-<div class="tb-hero-sec">
-  <!-- Full-bleed photo hero with text overlay -->
-  <div class="tb-hero">
-    <img class="tb-hero-img" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7932f6a1-879d-4276-ab69-433d47ad8ca0.jpeg?im_w=1920" alt="Basketball Court at Santiagos Resort"/>
-    <div class="tb-hero-vig"></div>
-    <div class="tb-hero-body">
-      <p class="tag" style="color:var(--terra-lt)">Team Building &amp; Corporate</p>
-      <h2 class="h2 tb-h2">Your Team Will <em>Actually</em> Want to Come</h2>
-      <p class="tb-hero-lead">The perfect team building venue isn't a hotel conference room — it's a resort with 10+ activity zones where your team can actually bond. Sports, games, cooking, and relaxing all in one exclusive private venue.</p>
-      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
-        <a href="contact.html?occasion=teambuilding" class="btn btn-primary">Book Team Building →</a>
-        <a href="contact.html?occasion=corporate" class="btn btn-ghost">Corporate Outing</a>
+<!-- TEAM BUILDING DETAIL -->
+<section class="occ-detail alt">
+  <p class="tag">Team Building &amp; Corporate</p>
+  <h2 class="h2">Your Team Will <em>Actually</em> Want to Come</h2>
+  <div class="occ-detail-grid" style="direction:rtl">
+    <div class="occ-photos rv-r" style="direction:ltr">
+      <div class="occ-photo main" onclick="lbOpen(23,GALLERY_IMGS)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7932f6a1-879d-4276-ab69-433d47ad8ca0.jpeg?im_w=1920" alt="Basketball"/>
+      </div>
+      <div class="occ-photo" onclick="lbOpen(21,GALLERY_IMGS)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7b8c51d9-24b2-4846-b173-6d2459c53981.jpeg?im_w=1920" alt="Gym"/>
+      </div>
+      <div class="occ-photo" onclick="lbOpen(22,GALLERY_IMGS)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/15fd6a0c-36f4-4c79-a187-279fc9e1d45c.jpeg?im_w=1920" alt="Bonfire"/>
+      </div>
+    </div>
+    <div class="rv-l" style="direction:ltr">
+      <p>The perfect team building venue isn't a hotel conference room — it's a resort with 10+ activity zones where your team can actually bond. Sports, games, cooking, and relaxing all in one exclusive private venue.</p>
+      <p>With <strong>basketball, billiards, arcade, pool, and gym</strong> all included, there's no shortage of organized team activities. Close the day with a bonfire and watch the conversations flow.</p>
+      <ul class="occ-checklist">
+        <li>Basketball court — team games &amp; competitions</li>
+        <li>Pool relay races &amp; water activities</li>
+        <li>Billiards &amp; arcade tournament formats</li>
+        <li>Gym for the fitness-focused team members</li>
+        <li>Bonfire — best team discussion setting ever</li>
+        <li>Full kitchen — catered meals or group cooking</li>
+        <li>Sleeps 20 people across 4 bedrooms</li>
+      </ul>
+      <div class="price-callout">
+        <div><div class="pc-text">Starting from (up to 20 pax)</div><div class="pc-rate">₱20,000 <span style="font-size:.9rem;color:var(--ink-s);font-family:var(--ff-b);font-weight:300">/night</span></div></div>
+        <a href="contact.html?occasion=teambuilding" class="btn btn-primary">Book Now →</a>
       </div>
     </div>
   </div>
-
-  <!-- Detail strip below hero -->
-  <div class="tb-detail">
-    <div class="tb-detail-grid">
-      <!-- Checklist column -->
-      <div class="rv-l">
-        <p class="tag">What's Included</p>
-        <p style="font-family:var(--ff-d);font-size:1.04rem;color:var(--ink-s);line-height:1.85;margin-bottom:1.2rem">With <strong>basketball, billiards, arcade, pool, and gym</strong> all included, there's no shortage of organized team activities. Close the day with a bonfire and watch the conversations flow.</p>
-        <ul class="occ-checklist">
-          <li>Basketball court — team games &amp; competitions</li>
-          <li>Pool relay races &amp; water activities</li>
-          <li>Billiards &amp; arcade tournament formats</li>
-          <li>Gym for the fitness-focused team members</li>
-          <li>Bonfire — best team discussion setting ever</li>
-          <li>Full kitchen — catered meals or group cooking</li>
-          <li>Sleeps 20 people across 4 bedrooms</li>
-        </ul>
-        <div class="price-callout">
-          <div><div class="pc-text">Starting from (up to 20 pax)</div><div class="pc-rate">₱20,000 <span style="font-size:.9rem;color:var(--ink-s);font-family:var(--ff-b);font-weight:300">/night</span></div></div>
-          <a href="contact.html?occasion=teambuilding" class="btn btn-primary">Book Now →</a>
-        </div>
-      </div>
-      <!-- Two supporting photos -->
-      <div class="tb-photo-pair rv-r">
-        <div class="occ-photo" onclick="lbOpen(21,GALLERY_IMGS)">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/7b8c51d9-24b2-4846-b173-6d2459c53981.jpeg?im_w=1920" alt="Gym"/>
-        </div>
-        <div class="occ-photo" onclick="lbOpen(22,GALLERY_IMGS)">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/15fd6a0c-36f4-4c79-a187-279fc9e1d45c.jpeg?im_w=1920" alt="Bonfire"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- CAPACITY VISUAL -->
 <section class="capacity-vis">
@@ -373,24 +336,24 @@
   <p class="tag">Everything Included</p>
   <h2 class="h2">All <em>Amenities</em> for Your Event</h2>
   <p class="lead" style="margin-bottom:2.5rem">No matter your occasion, every amenity is included in your rate. No extra charges to use any facility.</p>
-  <div class="am-cards">
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-pool"/></svg></div><div class="am-name">Swimming Pool</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-mic"/></svg></div><div class="am-name">Videoke Lounge</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-billiards"/></svg></div><div class="am-name">Billiards Table</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(201,168,76,.12);color:var(--gold)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-arcade"/></svg></div><div class="am-name">Arcade Games</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(201,168,76,.12);color:var(--gold)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-gym"/></svg></div><div class="am-name">Gym &amp; Fitness</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(61,82,41,.12);color:var(--forest)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-basketball"/></svg></div><div class="am-name">Basketball Court</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(61,82,41,.12);color:var(--forest)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-bonfire"/></svg></div><div class="am-name">Bonfire Area</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(61,82,41,.12);color:var(--forest)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-kitchen"/></svg></div><div class="am-name">Full Kitchen</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-wifi"/></svg></div><div class="am-name">Free Wi-Fi</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-parking"/></svg></div><div class="am-name">Free Parking</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(201,168,76,.12);color:var(--gold)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-tv"/></svg></div><div class="am-name">Smart TV</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(61,82,41,.12);color:var(--forest)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-bed"/></svg></div><div class="am-name">4 Bedrooms · 20 Beds</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(192,115,74,.12);color:var(--terra)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-shower"/></svg></div><div class="am-name">8 Bathrooms</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(201,168,76,.12);color:var(--gold)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-outdoor"/></svg></div><div class="am-name">Outdoor Spaces</div></div>
-    <div class="am-card rv"><div class="am-ic" style="background:rgba(61,82,41,.12);color:var(--forest)"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-kitchen"/></svg></div><div class="am-name">Dining Area</div></div>
+  <div class="quick-am">
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg> Swimming Pool</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> Videoke Lounge</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg> Billiards Table</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-arcade"/></svg> Arcade Games</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-gym"/></svg> Gym &amp; Fitness</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-basketball"/></svg> Basketball Court</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-bonfire"/></svg> Bonfire Area</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"/></svg> Full Kitchen</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg> Free Wi-Fi</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg> Free Parking</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-tv"/></svg> Smart TV</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg> 4 Bedrooms · 20 Beds</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-shower"/></svg> 8 Bathrooms</div>
+    <div class="qam"><svg class="icon" aria-hidden="true"><use href="#i-outdoor"/></svg> Outdoor Spaces</div>
+    <div class="qam">Dining Area</div>
   </div>
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem">
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
     <a href="amenities.html" class="btn btn-outline">See Full Amenities List</a>
     <a href="contact.html" class="btn btn-primary">Book Your Event →</a>
   </div>
@@ -421,7 +384,7 @@ function switchOcc(id, btn) {
 }
 function shareUrl(platform) {
   const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay — perfect for group events! Pool, Videoke, Billiards & more.');
+  const text = encodeURIComponent('Check out Santiagos Resort in Alfonso, Tagaytay — perfect for group events! <svg class="icon" aria-hidden="true"><use href="#i-pool"/></svg><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg><svg class="icon" aria-hidden="true"><use href="#i-billiards"/></svg>');
   if (platform === 'viber') window.open(`viber://forward?text=${text}%20${url}`);
   else if (platform === 'messenger') window.open(`https://www.facebook.com/dialog/send?link=${url}&app_id=123456`);
   else if (platform === 'copy') {
