@@ -18,296 +18,214 @@
 <link rel="stylesheet" href="css/style.css"/>
 <style>
 
-/* ── LOCATION PAGE OVERRIDES ── */
-
-/* ── DISTANCE CARDS ── */
+/* ── DISTANCE CARDS (dark section) ── */
 .dist-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: .75rem;
-  margin: 2rem 0 2.5rem;
+  gap: .65rem;
+  margin: 1.8rem 0 2rem;
 }
 .dist-card {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
   border-radius: var(--r-lg);
-  padding: .9rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: .3rem;
-  transition: background .2s, border-color .2s, transform .2s;
+  padding: .95rem 1.1rem;
+  transition: background .22s, border-color .22s, transform .22s;
 }
 .dist-card:hover {
-  background: rgba(192,115,74,.13);
-  border-color: rgba(192,115,74,.4);
+  background: rgba(192,115,74,.14);
+  border-color: rgba(192,115,74,.38);
   transform: translateY(-2px);
 }
 .dist-lbl {
   font-family: var(--ff-b);
-  font-size: .55rem;
-  color: rgba(255,255,255,.38);
-  letter-spacing: .14em;
+  font-size: .52rem;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .15em;
   text-transform: uppercase;
   font-weight: 700;
+  margin-bottom: .3rem;
 }
 .dist-val {
   font-family: var(--ff-serif);
-  font-size: 1rem;
+  font-size: .98rem;
   color: var(--cream);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 /* ── MAP ── */
 .map-wrap {
   border-radius: var(--r-lg);
   overflow: hidden;
-  height: 400px;
-  border: 1px solid rgba(255,255,255,.08);
+  height: 380px;
+  border: 1px solid rgba(255,255,255,.07);
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
-.map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+.map-wrap iframe { width:100%; height:100%; border:none; display:block; }
 
-/* ── DIRECTIONS POSTER ── */
-.poster-section { background: var(--bg); }
-.poster-wrap {
+/* ── DIRECTIONS — poster + steps side by side ── */
+.dir-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.2rem;
+  align-items: start;
+  margin-top: 2rem;
+  max-width: 1080px;
+}
+.dir-poster {
   border-radius: var(--r-lg);
   overflow: hidden;
-  box-shadow: var(--sh-xl), 0 0 0 1px rgba(226,206,180,.5);
+  box-shadow: var(--sh-lg), 0 0 0 1px rgba(226,206,180,.45);
   background: var(--cream);
-  max-width: 820px;
-  margin: 0 auto 2rem;
+  position: sticky;
+  top: 100px;
 }
-.poster-wrap img { width: 100%; display: block; }
-.poster-fallback { width: 100%; aspect-ratio: 4/3; display: none; }
-.poster-fallback iframe { width: 100%; height: 100%; border: none; display: block; }
+.dir-poster img { width:100%; display:block; }
+.dir-poster-fallback { width:100%; aspect-ratio:3/4; display:none; }
+.dir-poster-fallback iframe { width:100%; height:100%; border:none; display:block; }
 
-/* ── ROUTE STEPS ── */
-.route-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: .6rem;
-  max-width: 820px;
-  margin: 0 auto 2rem;
-}
-.rs-item {
-  display: flex;
-  align-items: flex-start;
-  gap: .7rem;
-  padding: .8rem .95rem;
-  background: #fff;
-  border-radius: var(--r-lg);
-  border: 1.5px solid var(--sand);
-  transition: border-color .2s, box-shadow .2s;
-}
-.rs-item:hover { border-color: var(--terra); box-shadow: 0 4px 16px rgba(192,115,74,.1); }
-.rs-num {
-  flex-shrink: 0;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--terra);
-  color: #fff;
-  font-family: var(--ff-b);
-  font-size: .64rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: .1rem;
-}
-.rs-check {
-  flex-shrink: 0;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--forest);
-  color: #fff;
-  font-size: .7rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: .1rem;
-}
-.rs-txt {
-  font-family: var(--ff-d);
-  font-size: .88rem;
-  color: var(--ink-s);
-  line-height: 1.5;
-}
-.rs-arrived { border-color: var(--forest); background: rgba(61,82,41,.04); }
-.rs-arrived .rs-txt { color: var(--forest); }
-/* Full-width arrived row */
-.rs-item.rs-arrived { grid-column: 1 / -1; }
-
-/* ── NAV VIDEO ── */
-.vid-section { background: var(--charcoal); padding: 4rem 0; }
-.vid-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
-.vid-player {
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  aspect-ratio: 16/9;
-  position: relative;
-  background: #000;
-  box-shadow: 0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06);
-  margin-top: 1.8rem;
-}
-.vid-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
-.vid-meta {
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  margin-top: 1.4rem;
-  padding: 1.1rem 1.5rem;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: var(--r-lg);
-}
-.vm-item {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: var(--ff-d);
-  font-size: .92rem;
-  color: rgba(255,255,255,.45);
-}
-.vm-item strong { color: rgba(255,255,255,.8); font-weight: 500; }
-
-/* ── NEARBY CARDS ── */
-.nb-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.4rem;
-  margin-top: 2.5rem;
-}
-.nb-card {
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  border: 1px solid var(--sand);
-  background: #fff;
-  transition: transform .3s, box-shadow .3s;
-}
-.nb-card:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
-.nb-img-wrap {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-.nb-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .5s;
-}
-.nb-card:hover .nb-img-wrap img { transform: scale(1.05); }
-.nb-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(26,15,7,.72) 0%, transparent 55%);
-}
-.nb-dist-badge {
-  position: absolute;
-  top: .85rem; left: .85rem;
-  background: rgba(0,0,0,.6);
-  backdrop-filter: blur(6px);
-  color: #fff;
-  font-family: var(--ff-b);
-  font-size: .54rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: .25rem .75rem;
-  border-radius: var(--r-pill);
-}
-.nb-title-over {
-  position: absolute;
-  bottom: .85rem; left: .9rem;
-  font-family: var(--ff-serif);
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: 600;
-  text-shadow: 0 2px 8px rgba(0,0,0,.5);
-}
-.nb-body { padding: 1.2rem 1.4rem 1.4rem; }
-.nb-name {
-  font-family: var(--ff-serif);
-  font-size: 1.2rem;
-  color: var(--ink);
-  font-weight: 700;
-  margin-bottom: .4rem;
-  letter-spacing: -.01em;
-}
-.nb-desc {
+.dir-steps-col { display: flex; flex-direction: column; gap: .5rem; }
+.dir-steps-head p {
   font-family: var(--ff-d);
   font-size: .97rem;
   color: var(--ink-s);
   line-height: 1.75;
-}
-.nb-tags {
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
-  margin-top: .85rem;
-}
-.nb-tag {
-  padding: .18rem .65rem;
-  background: var(--sand-lt);
-  border-radius: var(--r-pill);
-  font-family: var(--ff-b);
-  font-size: .6rem;
-  color: var(--ink-s);
-  font-weight: 600;
-  letter-spacing: .04em;
+  margin-bottom: 1rem;
 }
 
-/* ── TIPS ── */
+/* Steps */
+.rs-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  padding: .85rem 1rem;
+  background: #fff;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--sand);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.rs-item:hover { border-color: var(--terra); box-shadow: 0 4px 16px rgba(192,115,74,.1); transform: translateX(3px); }
+.rs-num {
+  flex-shrink: 0; width:26px; height:26px; border-radius:50%;
+  background: var(--terra); color:#fff;
+  font-family:var(--ff-b); font-size:.65rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; margin-top:.12rem;
+}
+.rs-check {
+  flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  background:var(--forest); color:#fff;
+  font-size:.72rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; margin-top:.12rem;
+}
+.rs-txt { font-family:var(--ff-d); font-size:.96rem; color:var(--ink); line-height:1.55; }
+.rs-txt strong { color:var(--ink); }
+.rs-arrived { border-color:var(--forest); background:rgba(61,82,41,.05); }
+.rs-arrived .rs-txt { color:var(--forest); font-weight:500; }
+.rs-arrived:hover { border-color:var(--forest); transform:none; }
+
+.dir-cta { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.75rem; }
+
+/* ── NAV VIDEO ── */
+.vid-inner { max-width:860px; margin:0 auto; }
+.vid-player {
+  border-radius:var(--r-lg); overflow:hidden; aspect-ratio:16/9;
+  position:relative; background:#000;
+  box-shadow: 0 28px 72px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06);
+  margin-top:1.8rem;
+}
+.vid-player iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
+.vid-meta {
+  display:flex; gap:1.1rem; flex-wrap:wrap; margin-top:1.3rem;
+  padding:1rem 1.5rem;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r-lg);
+}
+.vm-item {
+  display:flex; align-items:center; gap:.5rem;
+  font-family:var(--ff-d); font-size:.94rem; color:rgba(255,255,255,.4);
+}
+.vm-item strong { color:rgba(255,255,255,.78); font-weight:500; }
+
+/* ── NEARBY CARDS ── */
+.nb-grid {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:1.3rem; margin-top:2.2rem;
+}
+.nb-card {
+  border-radius:var(--r-lg); overflow:hidden;
+  background:#fff; border:1px solid var(--sand); box-shadow:var(--sh-sm);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.nb-card:hover { transform:translateY(-5px); box-shadow:var(--sh-lg); }
+.nb-img { position:relative; height:210px; overflow:hidden; }
+.nb-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .55s var(--ease);
+}
+.nb-card:hover .nb-img img { transform:scale(1.06); }
+.nb-img-grad {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(26,15,7,.82) 0%, rgba(26,15,7,.3) 48%, transparent 100%);
+}
+.nb-badge {
+  position:absolute; top:.85rem; left:.85rem;
+  background:rgba(15,8,4,.78); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  color:rgba(255,255,255,.92);
+  font-family:var(--ff-b); font-size:.54rem; letter-spacing:.13em;
+  text-transform:uppercase; font-weight:700;
+  padding:.28rem .78rem; border-radius:var(--r-pill);
+  border:1px solid rgba(255,255,255,.12);
+}
+.nb-img-title { position:absolute; bottom:.85rem; left:.95rem; right:.95rem; }
+.nb-img-title h3 {
+  font-family:var(--ff-serif); font-size:1.18rem; color:#fff;
+  font-weight:700; text-shadow:0 2px 12px rgba(0,0,0,.6);
+  line-height:1.2; letter-spacing:-.01em;
+}
+/* Card body — white bg, dark text = full contrast */
+.nb-body { padding:1.1rem 1.3rem 1.3rem; background:#fff; }
+.nb-desc { font-family:var(--ff-d); font-size:.97rem; color:var(--ink-s); line-height:1.78; }
+.nb-tags { display:flex; gap:.35rem; flex-wrap:wrap; margin-top:.9rem; }
+.nb-tag {
+  padding:.2rem .68rem; background:var(--sand-lt); border-radius:var(--r-pill);
+  font-family:var(--ff-b); font-size:.58rem; color:var(--ink-s);
+  font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+}
+
+/* ── TRAVEL TIPS ── */
 .tips-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-  margin-top: 2rem;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.1rem; margin-top:2rem;
 }
 .tip-card {
-  padding: 1.5rem;
-  background: var(--cream);
-  border-radius: var(--r-lg);
-  border: 1px solid var(--sand);
-  transition: box-shadow .3s, transform .3s;
+  padding:1.5rem; background:var(--cream);
+  border-radius:var(--r-lg); border:1px solid var(--sand);
+  transition:box-shadow .3s, transform .3s;
 }
-.tip-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); }
-.tip-ic { font-size: 1.6rem; margin-bottom: .65rem; display: block; }
-.tip-card h4 {
-  font-family: var(--ff-serif);
-  font-size: 1.02rem;
-  color: var(--ink);
-  margin-bottom: .35rem;
-  font-weight: 700;
-}
-.tip-card p {
-  font-family: var(--ff-d);
-  font-size: .94rem;
-  color: var(--ink-s);
-  line-height: 1.7;
-}
+.tip-card:hover { box-shadow:var(--sh-md); transform:translateY(-3px); }
+.tip-ic { font-size:1.55rem; margin-bottom:.6rem; display:block; line-height:1; }
+.tip-card h4 { font-family:var(--ff-serif); font-size:1.05rem; color:var(--ink); margin-bottom:.35rem; font-weight:700; }
+.tip-card p { font-family:var(--ff-d); font-size:.94rem; color:var(--ink-s); line-height:1.72; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .dist-row { grid-template-columns: repeat(3, 1fr); }
-  .route-steps { grid-template-columns: repeat(2, 1fr); }
+@media (max-width:1024px) {
+  .dist-row { grid-template-columns:repeat(3,1fr); }
+  .dir-layout { grid-template-columns:1fr; }
+  .dir-poster { position:static; max-width:520px; margin:0 auto; }
+  .tips-grid { grid-template-columns:1fr 1fr; }
 }
-@media (max-width: 768px) {
-  .nb-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .tips-grid { grid-template-columns: 1fr 1fr; }
-  .dist-row { grid-template-columns: repeat(2, 1fr); }
-  .route-steps { grid-template-columns: 1fr 1fr; }
-  .map-wrap { height: 320px; }
+@media (max-width:768px) {
+  .nb-grid { grid-template-columns:1fr; gap:1rem; }
+  .dist-row { grid-template-columns:repeat(2,1fr); }
+  .map-wrap { height:300px; }
+  .nb-img { height:190px; }
 }
-@media (max-width: 480px) {
-  .tips-grid { grid-template-columns: 1fr; }
-  .dist-row { grid-template-columns: 1fr 1fr; }
-  .route-steps { grid-template-columns: 1fr; }
-  .rs-item.rs-arrived { grid-column: 1; }
-  .nb-img-wrap { height: 180px; }
-  .vid-meta { flex-direction: column; gap: .7rem; }
+@media (max-width:480px) {
+  .tips-grid { grid-template-columns:1fr; }
+  .vid-meta { flex-direction:column; gap:.65rem; }
+  .dir-cta { flex-direction:column; }
+  .dir-cta .btn { width:100%; justify-content:center; }
 }
 </style>
 <!-- Vercel Analytics -->
@@ -330,13 +248,13 @@
   </div>
 </div>
 
-<!-- MAP SECTION -->
+<!-- MAP — dark section -->
 <section class="dark-sec" style="padding-bottom:2.5rem">
   <p class="tag">Find Us</p>
   <h2 class="h2">Our <em>Location</em></h2>
-  <p class="lead" style="max-width:640px">Alfonso, Tagaytay, Cavite — about 1.5–2 hours from Metro Manila via SLEX or CAVITEX.</p>
+  <p class="lead">Alfonso, Tagaytay, Cavite — about 1.5–2 hours from Metro Manila via SLEX or CAVITEX.</p>
 
-  <div class="dist-row">
+  <div class="dist-row rv">
     <div class="dist-card">
       <div class="dist-lbl">From EDSA / Manila</div>
       <div class="dist-val">~1.5–2 hrs</div>
@@ -368,175 +286,161 @@
   </div>
 </section>
 
-<!-- DIRECTIONS POSTER -->
-<section class="poster-section" style="padding-top:3rem;padding-bottom:3rem">
+<!-- DIRECTIONS — poster + steps SIDE BY SIDE -->
+<section style="background:var(--bg);padding-top:3.5rem;padding-bottom:3.5rem">
   <p class="tag">From Twin Lakes Tagaytay</p>
-  <h2 class="h2" style="text-align:center">Map &amp; <em>Directions</em> Guide</h2>
-  <p class="lead" style="text-align:center;margin:0 auto 2rem;max-width:560px">Only 15 minutes from Twin Lakes. Save or screenshot this poster — it has everything you need to find us.</p>
+  <h2 class="h2">Map &amp; <em>Directions</em></h2>
 
-  <div class="poster-wrap rv">
-    <img
-      src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600"
-      alt="Map and Directions Guide — Santiagos Resort from Twin Lakes Tagaytay"
-      loading="lazy"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-    />
-    <div class="poster-fallback" style="display:none;aspect-ratio:4/3">
-      <iframe
-        src="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/preview"
-        title="Map and Directions Guide"
-        allowfullscreen
-        style="width:100%;height:100%;border:none;display:block"
-      ></iframe>
+  <div class="dir-layout rv">
+
+    <!-- LEFT: poster image -->
+    <div class="dir-poster">
+      <img
+        src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1200"
+        alt="Map and Directions Guide — Santiagos Resort from Twin Lakes Tagaytay"
+        loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      />
+      <div class="dir-poster-fallback">
+        <iframe src="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/preview" title="Map and Directions Guide" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
 
-  <!-- Route Steps -->
-  <div class="route-steps rv">
-    <div class="rs-item"><span class="rs-num">1</span><div class="rs-txt"><strong>Start at Twin Lakes Tagaytay</strong> — your landmark reference</div></div>
-    <div class="rs-item"><span class="rs-num">2</span><div class="rs-txt">Head <strong>west</strong> on Tagaytay-Laurel Rd toward Amuyong-Kaytitinga Road</div></div>
-    <div class="rs-item"><span class="rs-num">3</span><div class="rs-txt">Turn <strong>right</strong> onto Amuyong-Kaytitinga Road</div></div>
-    <div class="rs-item"><span class="rs-num">4</span><div class="rs-txt">Turn <strong>left</strong> onto Kaytitinga-Magallanes Rd</div></div>
-    <div class="rs-item"><span class="rs-num">5</span><div class="rs-txt">Turn <strong>right</strong> at the <strong>7-Eleven</strong> (it will be on your left)</div></div>
-    <div class="rs-item"><span class="rs-num">6</span><div class="rs-txt">Turn <strong>right</strong> at the Cell Repair Shop — small street straight to the resort</div></div>
-    <div class="rs-item rs-arrived"><span class="rs-check">✓</span><div class="rs-txt"><strong>You've arrived!</strong> Santiagos Resort — Kaytitinga II, Alfonso, Cavite</div></div>
-  </div>
+    <!-- RIGHT: step-by-step -->
+    <div class="dir-steps-col">
+      <div class="dir-steps-head">
+        <p>Only 15 minutes from Twin Lakes. Screenshot the poster or follow the steps — everything you need to find us.</p>
+      </div>
 
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;max-width:820px;margin:0 auto">
-    <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary">Open in Google Maps →</a>
-    <a href="tel:+639228305320" class="btn btn-outline">Call Us for Help</a>
+      <div class="rs-item">
+        <span class="rs-num">1</span>
+        <div class="rs-txt"><strong>Start at Twin Lakes Tagaytay</strong> — your landmark reference point</div>
+      </div>
+      <div class="rs-item">
+        <span class="rs-num">2</span>
+        <div class="rs-txt">Head <strong>west</strong> on Tagaytay-Laurel Rd toward Amuyong-Kaytitinga Road</div>
+      </div>
+      <div class="rs-item">
+        <span class="rs-num">3</span>
+        <div class="rs-txt">Turn <strong>right</strong> onto Amuyong-Kaytitinga Road</div>
+      </div>
+      <div class="rs-item">
+        <span class="rs-num">4</span>
+        <div class="rs-txt">Turn <strong>left</strong> onto Kaytitinga-Magallanes Rd</div>
+      </div>
+      <div class="rs-item">
+        <span class="rs-num">5</span>
+        <div class="rs-txt">Turn <strong>right</strong> at the <strong>7-Eleven</strong> (it will be on your left)</div>
+      </div>
+      <div class="rs-item">
+        <span class="rs-num">6</span>
+        <div class="rs-txt">Turn <strong>right</strong> at the Cell Repair Shop — small street straight to the resort</div>
+      </div>
+      <div class="rs-item rs-arrived">
+        <span class="rs-check">✓</span>
+        <div class="rs-txt"><strong>You've arrived at Santiagos Resort!</strong> Kaytitinga II, Alfonso, Cavite</div>
+      </div>
+
+      <div class="dir-cta">
+        <a href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z" target="_blank" class="btn btn-primary">Open in Google Maps →</a>
+        <a href="tel:+639228305320" class="btn btn-outline">Call Us for Help</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- NAV VIDEO -->
-<section class="vid-section">
+<!-- NAV VIDEO — dark -->
+<section class="dark-sec" style="padding-top:3.5rem;padding-bottom:3.5rem">
   <div class="vid-inner">
     <div class="rv">
       <p class="tag">Navigation Video</p>
-      <h2 class="h2" style="color:var(--cream);max-width:560px">Watch: Google Maps <em>Walkthrough</em></h2>
-      <p style="font-family:var(--ff-d);font-size:1rem;color:rgba(255,255,255,.5);line-height:1.85;max-width:540px;margin:.6rem 0 0">Starting from Alfamart on Kaytitinga-Magallanes Road — follow along as we drive the exact route to the resort.</p>
+      <h2 class="h2">Watch: Google Maps <em>Walkthrough</em></h2>
+      <p style="font-family:var(--ff-d);font-size:1rem;color:rgba(255,255,255,.45);line-height:1.85;max-width:540px;margin:.5rem 0 0">Starting from Alfamart on Kaytitinga-Magallanes Road — follow along as we drive the exact route to the resort.</p>
     </div>
     <div class="vid-player rv">
       <iframe
         src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        loading="lazy"
+        allow="autoplay; fullscreen" allowfullscreen loading="lazy"
         title="Navigation walkthrough to Santiagos Resort"
       ></iframe>
     </div>
     <div class="vid-meta rv">
       <div class="vm-item"><span>📍</span><span>Starting point: <strong>Alfamart, Kaytitinga-Magallanes Rd</strong></span></div>
-      <div class="vm-item"><span>⏱️</span><span>Travel time: <strong>~15 minutes from 7-Eleven Kaytitinga</strong></span></div>
+      <div class="vm-item"><span>⏱️</span><span>Travel time: <strong>~15 min from 7-Eleven Kaytitinga</strong></span></div>
       <div class="vm-item"><span>📞</span><span>Lost? Call us: <strong><a href="tel:+639228305320" style="color:var(--terra-lt)">0922 830 5320</a></strong></span></div>
     </div>
   </div>
 </section>
 
 <!-- NEARBY -->
-<section style="background:var(--bg);padding-top:3.5rem;padding-bottom:3.5rem">
+<section style="background:var(--bg-alt);padding-top:3.5rem;padding-bottom:3.5rem">
   <p class="tag">Explore the Area</p>
   <h2 class="h2">What's <em>Nearby</em></h2>
-  <p class="lead" style="max-width:580px">Santiagos Resort puts you right in the heart of Cavite's most scenic destinations — all within easy reach.</p>
+  <p class="lead">Santiagos puts you right in the heart of Cavite's most scenic destinations — all within easy reach during your stay.</p>
 
   <div class="nb-grid">
 
-    <!-- TAAL -->
     <div class="nb-card rv">
-      <div class="nb-img-wrap">
-        <img
-          src="https://drive.google.com/thumbnail?id=1OGJyrH47pygVITjsf6QV6NGNmOus2F4p&sz=w800"
-          alt="Taal Volcano and Lake"
-          loading="lazy"
-          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/3af6b26c-4a6b-427f-a28a-c767df166b86.jpeg?im_w=800'"
-        />
-        <div class="nb-overlay"></div>
-        <div class="nb-dist-badge">~30 min away</div>
-        <div class="nb-title-over">Taal Volcano &amp; Lake</div>
+      <div class="nb-img">
+        <img src="https://drive.google.com/thumbnail?id=1OGJyrH47pygVITjsf6QV6NGNmOus2F4p&sz=w800" alt="Taal Volcano and Lake" loading="lazy"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Taal_Volcano_Island.jpg/1280px-Taal_Volcano_Island.jpg'"/>
+        <div class="nb-img-grad"></div>
+        <span class="nb-badge">~30 min away</span>
+        <div class="nb-img-title"><h3>Taal Volcano &amp; Lake</h3></div>
       </div>
       <div class="nb-body">
-        <div class="nb-name">Taal Volcano &amp; Lake</div>
         <p class="nb-desc">One of the world's most unique geological wonders — a volcano island within a lake, within a larger island. Take a boat across Taal Lake for breathtaking close-up views of the crater. A must-see Philippine landmark right in your backyard.</p>
         <div class="nb-tags">
-          <span class="nb-tag">Nature</span>
-          <span class="nb-tag">Scenic View</span>
-          <span class="nb-tag">Day Trip</span>
-          <span class="nb-tag">Photography</span>
+          <span class="nb-tag">Nature</span><span class="nb-tag">Scenic View</span><span class="nb-tag">Day Trip</span><span class="nb-tag">Photography</span>
         </div>
       </div>
     </div>
 
-    <!-- TAGAYTAY RIDGE -->
     <div class="nb-card rv">
-      <div class="nb-img-wrap">
-        <img
-          src="https://drive.google.com/thumbnail?id=189rkrY-lBENvoB0qA4NhTmuGE8-XUWbZ&sz=w800"
-          alt="Tagaytay City Ridge"
-          loading="lazy"
-          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/e9fae679-5f90-4c28-9675-71c03be31de0.jpeg?im_w=800'"
-        />
-        <div class="nb-overlay"></div>
-        <div class="nb-dist-badge">~15–20 min away</div>
-        <div class="nb-title-over">Tagaytay City Ridge</div>
+      <div class="nb-img">
+        <img src="https://drive.google.com/thumbnail?id=189rkrY-lBENvoB0qA4NhTmuGE8-XUWbZ&sz=w800" alt="Tagaytay City Ridge" loading="lazy"
+          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/e9fae679-5f90-4c28-9675-71c03be31de0.jpeg?im_w=800'"/>
+        <div class="nb-img-grad"></div>
+        <span class="nb-badge">~15–20 min away</span>
+        <div class="nb-img-title"><h3>Tagaytay City Ridge</h3></div>
       </div>
       <div class="nb-body">
-        <div class="nb-name">Tagaytay City Ridge</div>
-        <p class="nb-desc">Famous for its cool climate (18–24°C), panoramic views of Taal Lake and Volcano, and vibrant dining scene. Walk along the ridge, dine at cliff-side restaurants, and enjoy Tagaytay's legendary <em>bulalo</em> and fresh strawberry taho.</p>
+        <p class="nb-desc">Famous for its cool climate (18–24°C), panoramic views of Taal Lake, and a vibrant dining scene. Walk the ridge, dine at cliff-side restaurants, and enjoy Tagaytay's legendary <em>bulalo</em> and fresh strawberry taho.</p>
         <div class="nb-tags">
-          <span class="nb-tag">Dining</span>
-          <span class="nb-tag">Scenic View</span>
-          <span class="nb-tag">Shopping</span>
-          <span class="nb-tag">Cool Climate</span>
+          <span class="nb-tag">Dining</span><span class="nb-tag">Scenic View</span><span class="nb-tag">Shopping</span><span class="nb-tag">Cool Climate</span>
         </div>
       </div>
     </div>
 
-    <!-- SKY RANCH -->
     <div class="nb-card rv">
-      <div class="nb-img-wrap">
-        <img
-          src="https://drive.google.com/thumbnail?id=1Mq2yzNDtGJSP8nN69y6FfiehXslg5c-2&sz=w800"
-          alt="Sky Ranch Tagaytay"
-          loading="lazy"
-          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/37fb90b8-9556-4c2a-a22f-6c3936a6aebc.jpeg?im_w=800'"
-        />
-        <div class="nb-overlay"></div>
-        <div class="nb-dist-badge">~20 min away</div>
-        <div class="nb-title-over">Sky Ranch Tagaytay</div>
+      <div class="nb-img">
+        <img src="https://drive.google.com/thumbnail?id=1Mq2yzNDtGJSP8nN69y6FfiehXslg5c-2&sz=w800" alt="Sky Ranch Tagaytay" loading="lazy"
+          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/37fb90b8-9556-4c2a-a22f-6c3936a6aebc.jpeg?im_w=800'"/>
+        <div class="nb-img-grad"></div>
+        <span class="nb-badge">~20 min away</span>
+        <div class="nb-img-title"><h3>Sky Ranch Tagaytay</h3></div>
       </div>
       <div class="nb-body">
-        <div class="nb-name">Sky Ranch Tagaytay</div>
-        <p class="nb-desc">A family-favorite amusement park perched above the Taal Ridge. Ride the iconic Sky Eye Ferris wheel for 360° views of the lake and volcano. Fun rides, games, and attractions for kids and adults alike — great for large groups.</p>
+        <p class="nb-desc">A family-favorite amusement park perched above the Taal Ridge. Ride the iconic Sky Eye Ferris wheel for 360° views of the lake and volcano. Fun for all ages — great for large groups and celebrations.</p>
         <div class="nb-tags">
-          <span class="nb-tag">Family</span>
-          <span class="nb-tag">Amusement Park</span>
-          <span class="nb-tag">Views</span>
-          <span class="nb-tag">All Ages</span>
+          <span class="nb-tag">Family</span><span class="nb-tag">Amusement Park</span><span class="nb-tag">Views</span><span class="nb-tag">All Ages</span>
         </div>
       </div>
     </div>
 
-    <!-- ALFONSO -->
     <div class="nb-card rv">
-      <div class="nb-img-wrap">
-        <img
-          src="https://drive.google.com/thumbnail?id=1o5xjyXtrcUe_h-a-bqw83L5B9V1QbMC2&sz=w800"
-          alt="Alfonso Town — Coffee Capital of Cavite"
-          loading="lazy"
-          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=800'"
-        />
-        <div class="nb-overlay"></div>
-        <div class="nb-dist-badge">~5 min away</div>
-        <div class="nb-title-over">Alfonso Town Proper</div>
+      <div class="nb-img">
+        <img src="https://drive.google.com/thumbnail?id=1o5xjyXtrcUe_h-a-bqw83L5B9V1QbMC2&sz=w800" alt="Alfonso Town — Coffee Capital of Cavite" loading="lazy"
+          onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/aacade7c-b80f-4262-bf7a-465fd693b8a1.jpeg?im_w=800'"/>
+        <div class="nb-img-grad"></div>
+        <span class="nb-badge">~5 min away</span>
+        <div class="nb-img-title"><h3>Alfonso Town Proper</h3></div>
       </div>
       <div class="nb-body">
-        <div class="nb-name">Alfonso Town Proper</div>
-        <p class="nb-desc">Known as the <strong>"Coffee Capital of Cavite"</strong> — a charming highland town with local coffee farms, farm-to-table restaurants, fresh produce markets, and quaint cafes. Perfect for a relaxed morning stroll during your stay.</p>
+        <p class="nb-desc">Known as the <strong>"Coffee Capital of Cavite"</strong> — a charming highland town with local coffee farms, farm-to-table restaurants, fresh produce markets, and quaint cafes. The perfect morning stroll during your stay.</p>
         <div class="nb-tags">
-          <span class="nb-tag">Coffee</span>
-          <span class="nb-tag">Local Food</span>
-          <span class="nb-tag">Farm Visits</span>
-          <span class="nb-tag">Chill Vibes</span>
+          <span class="nb-tag">Coffee</span><span class="nb-tag">Local Food</span><span class="nb-tag">Farm Visits</span><span class="nb-tag">Chill Vibes</span>
         </div>
       </div>
     </div>
@@ -544,23 +448,23 @@
   </div>
 </section>
 
-<!-- TRAVEL TIPS -->
-<section style="background:var(--bg-alt);padding-top:3rem;padding-bottom:3.5rem">
+<!-- TIPS -->
+<section style="background:var(--bg);padding-top:3.5rem;padding-bottom:4rem">
   <p class="tag">Travel Tips</p>
   <h2 class="h2">Getting Here &amp; <em>Around</em></h2>
   <div class="tips-grid">
     <div class="tip-card rv">
-      <span class="tip-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></span>
+      <span class="tip-ic"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-parking"/></svg></span>
       <h4>Best Way to Get Here</h4>
-      <p>Driving is most convenient. Take SLEX or CAVITEX then STAR Tollway to Alfonso. Use Waze for exact routing. Free parking on premises for multiple vehicles.</p>
+      <p>Driving is most convenient. Take SLEX or CAVITEX then STAR Tollway to Alfonso. Use Waze for exact routing. Free on-premises parking for multiple vehicles.</p>
     </div>
     <div class="tip-card rv">
-      <span class="tip-ic"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></span>
+      <span class="tip-ic"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-mountain"/></svg></span>
       <h4>Weather &amp; Climate</h4>
       <p>Alfonso sits at ~600m elevation — expect a refreshing 18–24°C year-round. Perfect for pool days without Metro Manila's heat. Bring a light jacket for cool evenings.</p>
     </div>
     <div class="tip-card rv">
-      <span class="tip-ic"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"/></svg></span>
+      <span class="tip-ic"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-kitchen"/></svg></span>
       <h4>Stocking Up</h4>
       <p>Groceries and wet market are 5 minutes away in Alfonso town. Larger supermarkets (Robinsons, Walter Mart) are 20 minutes away in Tagaytay City.</p>
     </div>
