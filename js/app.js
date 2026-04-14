@@ -349,11 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var occ = params.get('occasion');
   if (occ) {
     var sel = document.getElementById('foccasion');
-    if (sel) {
-      var map = { birthday:'Birthday Party', barkada:'Barkada Trip', family:'Family Reunion', teambuilding:'Team Building', corporate:'Company Outing' };
-      var val = map[occ];
-      if (val) Array.from(sel.options).forEach(function(o) { if (o.text === val) o.selected = true; });
-    }
+    if (sel) sel.value = occ; /* works because option values now match URL param keys */
   }
 });
 
@@ -422,6 +418,13 @@ function lbOpen(idx, imgs) {
   var lb = document.getElementById('lb');
   if (lb) lb.classList.add('on');
   document.body.style.overflow = 'hidden';
+}
+/* Open lightbox by image src — looks up index in _lbImgs so hardcoded indices aren't needed */
+function lbOpenBySrc(src, imgs) {
+  if (imgs) _lbImgs = imgs;
+  var idx = _lbImgs.findIndex(function(i) { return i.src === src; });
+  if (idx === -1) idx = 0;
+  lbOpen(idx, null);
 }
 function lbClose() {
   var lb = document.getElementById('lb');

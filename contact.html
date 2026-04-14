@@ -67,7 +67,6 @@
 @media(max-width:1100px){.contact-grid{grid-template-columns:1fr;gap:3rem}.faq-layout{grid-template-columns:1fr;gap:2rem}.rev-row{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.rev-row{grid-template-columns:1fr}.contact-grid{gap:2rem}.faq-layout{gap:1.5rem}}
 </style>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
   <meta property="og:title" content="Book Now · Santiagos Resort"/>
   <meta property="og:description" content="Book your group getaway at Santiagos Resort, Alfonso, Tagaytay. Up to 40 guests, 22+ amenities included. Direct bookings only."/>
   <meta name="description" content="Book Santiagos Resort in Alfonso, Tagaytay. Private resort for up to 40 guests. Pool, videoke, game room & more. Direct: 0917 800 5320."/>
@@ -107,11 +106,11 @@
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg></span><span class="ci-text"><strong>Rooms:</strong> 2 VIP rooms, 9 double deck beds, 8 bathrooms</span></div>
         <div class="ci-row"><span class="ci-ic"></span><span class="ci-text"><strong>No pets</strong> on the property</span></div>
         <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="ci-text"><strong>Phone / Viber / WhatsApp:</strong> 0917 800 5320 / 0922 830 5320</span></div>
-        <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></span><span class="ci-text"><strong>Facebook &amp; Instagram:</strong> <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" style="color:var(--terra);font-weight:600">@santiagos.to</a></span></div>
+        <div class="ci-row"><span class="ci-ic"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></span><span class="ci-text"><strong>Facebook &amp; Instagram:</strong> <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" style="color:var(--terra);font-weight:600" rel="noopener noreferrer">@santiagos.to</a></span></div>
       </div>
       <div class="cta-links">
-        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg> Message on Facebook</a>
-        <a href="https://wa.me/639178005320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay." target="_blank" class="btn btn-wa btn-full"> Message on WhatsApp</a>
+        <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" class="btn btn-primary btn-full" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg> Message on Facebook</a>
+        <a href="https://wa.me/639228305320?text=Hi!+Im+interested+in+booking+Santiagos+Resort+Tagaytay." target="_blank" class="btn btn-wa btn-full" rel="noopener noreferrer"> Message on WhatsApp</a>
       </div>
       <img class="contact-photo" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/679d0422-ca4d-483a-9930-9b9171905841.jpeg?im_w=1920" alt="Santiagos Resort dining area" loading="lazy"/>
     </div>
@@ -145,9 +144,9 @@
           <div class="fg">
             <label>Occasion</label>
             <select id="foccasion">
-              <option>Barkada Trip</option><option>Birthday Party</option>
-              <option>Family Reunion</option><option>Team Building</option>
-              <option>Company Outing</option><option>Other</option>
+              <option value="barkada">Barkada Trip</option><option value="birthday">Birthday Party</option>
+              <option value="family">Family Reunion</option><option value="teambuilding">Team Building</option>
+              <option value="corporate">Company Outing</option><option value="other">Other</option>
             </select>
           </div>
         </div>
@@ -163,7 +162,7 @@
 
         <!-- Facebook fallback -->
         <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank"
-           class="btn btn-outline btn-full" style="margin-top:.75rem;justify-content:center;display:flex;align-items:center;gap:.5rem">
+           class="btn btn-outline btn-full" style="margin-top:.75rem;justify-content:center;display:flex;align-items:center;gap:.5rem" rel="noopener noreferrer">
           <svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>
           Or Message on Facebook
         </a>
@@ -226,7 +225,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Should I book through Airbnb or directly?</span><span class="faq-ic">+</span></div>
-        <div class="faq-a"><div class="faq-ai">Book directly by messaging us on <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" style="color:var(--terra)">Facebook</a> or Instagram <strong>@santiagos.to</strong>, or call 0917 800 5320 / 0922 830 5320. Direct bookings only — pricing may vary between Airbnb and direct bookings.</div></div>
+        <div class="faq-a"><div class="faq-ai">Book directly by messaging us on <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" style="color:var(--terra)" rel="noopener noreferrer">Facebook</a> or Instagram <strong>@santiagos.to</strong>, or call 0917 800 5320 / 0922 830 5320. Direct bookings only — pricing may vary between Airbnb and direct bookings.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="faqToggle(this)"><span class="faq-qt">Is Santiagos good for corporate team buildings?</span><span class="faq-ic">+</span></div>
@@ -253,7 +252,9 @@ function sendViaWhatsApp() {
   var ci  = document.getElementById('fci').value;
   var co  = document.getElementById('fco').value;
   var ng  = document.getElementById('ng').value;
-  var occ = document.getElementById('foccasion').value;
+  var occVal = document.getElementById('foccasion').value;
+  var occLabels = { barkada:'Barkada Trip', birthday:'Birthday Party', family:'Family Reunion', teambuilding:'Team Building', corporate:'Company Outing', other:'Other' };
+  var occ = occLabels[occVal] || occVal;
   var msg = (document.getElementById('fmsg').value || '').trim();
 
   // Basic validation
@@ -303,7 +304,7 @@ function sendViaWhatsApp() {
   lines.push('', 'Looking forward to hearing from you!');
 
   var text = encodeURIComponent(lines.join('\n'));
-  window.open('https://wa.me/639178005320?text=' + text, '_blank');
+  window.open('https://wa.me/639228305320?text=' + text, '_blank');
 }
 </script>
 </body>
