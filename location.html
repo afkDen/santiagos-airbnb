@@ -72,7 +72,7 @@
 }
 .dir-layout {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 3rem;
   align-items: start;
   margin-top: 2.2rem;
@@ -86,10 +86,21 @@
   background: var(--cream);
   position: sticky;
   top: 90px;
-  max-width: 420px;
-  margin: 0 auto;
+  cursor: zoom-in;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.dir-poster:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-xl), 0 0 0 1px rgba(192,115,74,.35);
 }
 .dir-poster img { width:100%; display:block; }
+.dir-poster-hint {
+  display: flex; align-items: center; justify-content: center; gap: .45rem;
+  padding: .5rem .8rem;
+  background: var(--ink); color: rgba(255,255,255,.55);
+  font-family: var(--ff-b); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+}
+.dir-poster-hint svg { width: 13px; height: 13px; fill: var(--terra-lt); flex-shrink: 0; }
 .dir-poster-fallback { width:100%; aspect-ratio:3/4; display:none; }
 .dir-poster-fallback iframe { width:100%; height:100%; border:none; display:block; }
 
@@ -231,7 +242,7 @@
 @media (max-width: 1100px) {
   .dist-row { grid-template-columns: repeat(3, 1fr); }
   .dir-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .dir-poster { position: static; max-width: 420px; margin: 0 auto; }
+  .dir-poster { position: static; margin: 0 auto; }
   .tips-grid { grid-template-columns: 1fr 1fr; }
   .nav-vid-inner { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
 }
@@ -313,18 +324,57 @@
 
   <div class="dir-layout rv">
 
-    <!-- LEFT: poster -->
-    <div class="dir-poster">
+    <!-- LEFT: poster — click to enlarge -->
+    <div class="dir-poster" onclick="openPosterModal()" title="Click to enlarge">
       <img
-        src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1200"
+        id="posterImg"
+        src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600"
         alt="Map and Directions Guide — Santiagos Resort from Twin Lakes Tagaytay"
         loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        onerror="this.style.display='none';document.getElementById('posterFallback').style.display='block'"
       />
-      <div class="dir-poster-fallback">
+      <div id="posterFallback" class="dir-poster-fallback">
         <iframe src="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/preview" title="Map and Directions Guide" allowfullscreen></iframe>
       </div>
+      <div class="dir-poster-hint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3h-6zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3v6zM9 21l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6h6zM21 15l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6v-6z"/></svg>
+        Click to enlarge
+      </div>
     </div>
+
+<!-- POSTER MODAL LIGHTBOX -->
+<div id="posterModal" onclick="closePosterModal()" style="
+  display:none; position:fixed; inset:0; z-index:9500;
+  background:rgba(8,4,2,.96); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center; padding:1.5rem;
+  cursor:zoom-out;
+">
+  <div style="position:relative; max-width:min(780px,92vw); width:100%; cursor:default" onclick="event.stopPropagation()">
+    <img
+      src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w2400"
+      alt="Map and Directions Guide"
+      style="width:100%;display:block;border-radius:10px;box-shadow:0 32px 100px rgba(0,0,0,.7)"
+    />
+    <button onclick="closePosterModal()" style="
+      position:absolute; top:-14px; right:-14px;
+      width:40px; height:40px; border-radius:50%;
+      background:var(--ink); border:1.5px solid rgba(255,255,255,.18);
+      color:rgba(255,255,255,.7); font-size:1rem;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all .2s; z-index:2;
+    " onmouseover="this.style.background='var(--terra)';this.style.color='#fff'"
+       onmouseout="this.style.background='var(--ink)';this.style.color='rgba(255,255,255,.7)'"
+    >✕</button>
+    <div style="text-align:center;margin-top:.85rem">
+      <a
+        href="https://drive.google.com/file/d/1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH/view"
+        target="_blank" rel="noopener noreferrer"
+        class="btn btn-primary" style="font-size:.68rem;padding:.65rem 1.6rem"
+        onclick="event.stopPropagation()"
+      >Open Full Size →</a>
+    </div>
+  </div>
+</div>
 
     <!-- RIGHT: steps + quick-ref -->
     <div class="dir-steps-col">
@@ -381,7 +431,7 @@
           </div>
           <div class="dir-qr-row">
             <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-parking"/></svg></div>
-            <div>Free on-site parking for <strong>3 cars</strong>. Gate code shared upon booking.</div>
+            <div>Free on-site parking</div>
           </div>
           <div class="dir-qr-row">
             <div class="dir-qr-ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></div>
@@ -531,5 +581,18 @@
 </section>
 
 <script src="js/app.js"></script>
+<script>
+function openPosterModal() {
+  var m = document.getElementById('posterModal');
+  if (m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+}
+function closePosterModal() {
+  var m = document.getElementById('posterModal');
+  if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePosterModal();
+});
+</script>
 </body>
 </html>
