@@ -74,6 +74,9 @@
 /* RESPONSIVE */
 @media(max-width:1100px){.nb-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr 1fr}.map-wrap{height:340px}.landmark-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.tips-grid{grid-template-columns:1fr}.dir-bar{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.map-wrap{height:280px;border-radius:var(--r-lg)}.nb-grid{gap:1rem}.landmark-grid{grid-template-columns:1fr}}
+/* VIDEO EMBED inside landmark card */
+.landmark-video-wrap { aspect-ratio:16/9; height:auto !important; }
+.landmark-video-wrap iframe { width:100%; height:100%; border:none; display:block; }
 </style>
   <meta property="og:type" content="website"/>
   <meta property="og:description" content="Find Santiagos Resort in Alfonso, Cavite — 1.5-2 hours from Manila. Near Taal Volcano, Sky Ranch & Tagaytay Ridge."/>
@@ -127,7 +130,7 @@
     <div class="landmark-card rv">
       <div class="landmark-img-wrap">
         <img
-          src="https://drive.google.com/uc?export=view&id=1Y81wQRKYeExTkHhZn0GyOl8hlizMNbEO"
+          src="https://lh3.googleusercontent.com/d/1Y81wQRKYeExTkHhZn0GyOl8hlizMNbEO"
           alt="Santiagos Resort — Landmark 1"
           loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
@@ -144,20 +147,20 @@
     </div>
 
     <div class="landmark-card rv">
-      <div class="landmark-img-wrap">
-        <img
-          src="https://drive.google.com/uc?export=view&id=1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm"
-          alt="Santiagos Resort — Landmark 2"
+      <div class="landmark-img-wrap landmark-video-wrap">
+        <iframe
+          src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
+          allow="autoplay"
+          allowfullscreen
           loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-        />
-        <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Landmark Photo</span></div>
+          title="How to Find Santiagos Resort — Video Guide"
+        ></iframe>
       </div>
       <div class="landmark-label">
         <span class="landmark-num">02</span>
         <div>
-          <strong>Gate &amp; Driveway</strong>
-          <p>The container-style gate is the main indicator you've arrived.</p>
+          <strong>Video Guide — From Tagaytay Twin Lakes</strong>
+          <p>Watch this short video to navigate to the resort from the Twin Lakes landmark in Tagaytay.</p>
         </div>
       </div>
     </div>
@@ -165,18 +168,18 @@
     <div class="landmark-card rv">
       <div class="landmark-img-wrap">
         <img
-          src="https://drive.google.com/uc?export=view&id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH"
-          alt="Santiagos Resort — Landmark 3"
+          src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1920"
+          alt="Santiagos Resort — Map Poster"
           loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         />
-        <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Landmark Photo</span></div>
+        <div class="landmark-fallback"><svg class="icon icon-xl" aria-hidden="true"><use href="#i-pin"/></svg><span>Map Poster</span></div>
       </div>
       <div class="landmark-label">
         <span class="landmark-num">03</span>
         <div>
-          <strong>Street View</strong>
-          <p>The resort sits along this road. Watch for the container architecture.</p>
+          <strong>Map Poster — From Tagaytay</strong>
+          <p>Save this map poster to your phone. Shows the route from Tagaytay Twin Lakes to the resort.</p>
         </div>
       </div>
     </div>

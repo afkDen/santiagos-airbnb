@@ -90,15 +90,27 @@
   .occ-photos{grid-template-columns:1fr 1fr}
   .cap-grid{grid-template-columns:repeat(3,1fr)}
   .occ-panel-body{padding:2.5rem 2rem}
+  .occ-detail{padding:4rem 2.5rem}
+}
+@media(max-width:900px){
+  .occ-panel-hero{height:380px}
+  .occ-detail{padding:3.5rem 2rem}
 }
 @media(max-width:680px){
-  .occ-panel-hero{height:300px}
-  .occ-panel-body{padding:1.8rem 1.2rem}
-  .occ-panel-content h2{font-size:clamp(1.6rem,7vw,2.5rem)}
+  .occ-panel-hero{height:280px}
+  .occ-panel-body{padding:1.5rem 1.2rem;max-width:100%}
+  .occ-panel-content h2{font-size:clamp(1.5rem,6.5vw,2.3rem)}
+  .occ-panel-content p{font-size:.92rem;margin-bottom:1rem}
   .cap-grid{grid-template-columns:repeat(2,1fr)}
   .quick-am{grid-template-columns:1fr 1fr}
-  .share-strip{text-align:center;justify-content:center;flex-direction:column}
-  .occ-detail{padding:3.5rem 1.25rem}
+  .share-strip{text-align:center;justify-content:center;flex-direction:column;padding:2.5rem 1.4rem}
+  .occ-detail{padding:3rem 1.25rem}
+  /* stack photos on mobile: main full width, 2 below full width */
+  .occ-photos{grid-template-columns:1fr}
+  .occ-photo.main{grid-column:span 1}
+  .price-callout{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .occ-cta-row{flex-direction:column}
+  .occ-cta-row .btn{width:100%;justify-content:center}
 }
 </style>
   <script defer src="/_vercel/speed-insights/script.js"></script>
