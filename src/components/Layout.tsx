@@ -21,6 +21,37 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
+    // A short timeout ensures React has finished mounting DOM nodes
+    const timer = setTimeout(() => {
+      document.body.classList.add('rv-ready');
+      const revealElements = document.querySelectorAll('.rv, .rv-l, .rv-r');
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+
+      return () => {
+        observer.disconnect();
+      };
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.classList.remove('rv-ready');
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
       const h = document.documentElement.scrollHeight - window.innerHeight;

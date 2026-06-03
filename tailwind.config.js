@@ -15,6 +15,7 @@ export default {
           DEFAULT: '#c07a4f',
           dk: '#9a5835',
           lt: '#d4956e',
+          light: '#d4956e',
         },
         cream: {
           DEFAULT: '#faf5ee',
@@ -27,6 +28,7 @@ export default {
         gold: {
           DEFAULT: '#c9a84c',
           lt: '#e0c46e',
+          light: '#e0c46e',
         },
         forest: '#3d5229',
         charcoal: '#0f0804',
