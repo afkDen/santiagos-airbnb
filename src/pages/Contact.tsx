@@ -166,12 +166,15 @@ export const Contact: React.FC = () => {
   return (
     <div>
       {/* Hero Banner */}
-      <div className="pg-hero">
-        <div className="pg-hero-bg" style={{ backgroundImage: `url(${img('ext1')})` }} />
-        <div className="pg-hero-vig" />
-        <div className="pg-hero-body">
-          <div className="breadcrumb">
-            <Link to="/">Home</Link> / Book Now
+      <div className="relative min-h-[300px] md:min-h-[360px] bg-ink flex items-end overflow-hidden text-left pt-20">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-38 scale-[1.03] transition-transform duration-1000"
+          style={{ backgroundImage: `url(${img('ext1')})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/42 to-ink/8 pointer-events-none" />
+        <div className="relative z-10 p-5 md:p-[3rem_3.5rem_4rem] w-full">
+          <div className="font-sans text-[0.61rem] tracking-[0.2em] uppercase text-white/30 mb-3 flex items-center gap-2 before:content-[''] before:w-3.5 before:h-[1px] before:bg-white/20 before:flex-shrink-0">
+            <Link to="/" className="text-terra-light hover:text-white/85 transition-colors duration-200">Home</Link> / Book Now
           </div>
           <h1 className="font-headline text-[2.2rem] md:text-[4rem] font-bold text-white leading-[1.06] tracking-[-0.02em]">
             Book Your <em>Stay</em>

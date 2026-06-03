@@ -75,7 +75,10 @@ export const P = {
 export type ImageKey = keyof typeof P;
 
 export function img(key: ImageKey, w: number = 1920): string {
-  return `${PH}${P[key]}.jpeg?im_w=${w}`;
+  // Airbnb CDN only supports standard widths: 240, 480, 720, 1200, 1920
+  const standardWidths = [240, 480, 720, 1200, 1920];
+  const matchedWidth = standardWidths.find(sw => sw >= w) || 1920;
+  return `${PH}${P[key]}.jpeg?im_w=${matchedWidth}`;
 }
 
 export interface GalleryImage {
