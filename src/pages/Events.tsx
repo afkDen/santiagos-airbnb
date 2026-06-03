@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { img, GALLERY_IMGS, GalleryImage } from '../assets/images';
 import { Lightbox } from '../components/Lightbox';
+import * as Icons from 'lucide-react';
 
 export const Events: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -336,27 +337,30 @@ export const Events: React.FC = () => {
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4.5 mt-10 max-w-[1200px] mx-auto select-none">
           {[
-            { icon: '🎂', name: 'Intimate Birthday', desc: '1–20 guests · Weekday · ₱25K/night' },
-            { icon: '👥', name: 'Barkada Trip', desc: '1–20 guests · Base rate applies' },
-            { icon: '🏡', name: 'Family Reunion', desc: '20–40 guests · Group rates apply' },
-            { icon: '🏀', name: 'Team Building', desc: '20–40 pax · Group rates apply' },
-            { icon: '🌟', name: 'Big Blowout', desc: 'Up to 40 guests max · ₱1K/extra head' },
-          ].map((card, idx) => (
-            <div
-              key={idx}
-              className="bg-white/5 border border-white/8 rounded-lg p-6 py-8 transition-all duration-300 hover:bg-terra/10 hover:border-terra/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(192,115,74,0.15)] flex flex-col items-center text-center"
-            >
-              <span className="text-[2rem] block mb-3.5 leading-none">
-                {card.icon}
-              </span>
-              <div className="font-sans text-[0.72rem] tracking-[0.1em] uppercase text-sand font-bold mb-1">
-                {card.name}
+            { iconName: 'Cake', name: 'Intimate Birthday', desc: '1–20 guests · Weekday · ₱25K/night' },
+            { iconName: 'Users', name: 'Barkada Trip', desc: '1–20 guests · Base rate applies' },
+            { iconName: 'Home', name: 'Family Reunion', desc: '20–40 guests · Group rates apply' },
+            { iconName: 'Dribbble', name: 'Team Building', desc: '20–40 pax · Group rates apply' },
+            { iconName: 'Sparkles', name: 'Big Blowout', desc: 'Up to 40 guests max · ₱1K/extra head' },
+          ].map((card, idx) => {
+            const CardIcon = (Icons as any)[card.iconName] || Icons.Sparkles;
+            return (
+              <div
+                key={idx}
+                className="bg-white/5 border border-white/8 rounded-lg p-6 py-8 transition-all duration-300 hover:bg-terra/10 hover:border-terra/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(192,115,74,0.15)] flex flex-col items-center text-center"
+              >
+                <span className="block mb-3.5 leading-none text-terra-light">
+                  <CardIcon className="w-8 h-8" />
+                </span>
+                <div className="font-sans text-[0.72rem] tracking-[0.1em] uppercase text-sand font-bold mb-1">
+                  {card.name}
+                </div>
+                <div className="font-sans text-[0.7rem] text-white/28 leading-snug tracking-wide">
+                  {card.desc}
+                </div>
               </div>
-              <div className="font-sans text-[0.7rem] text-white/28 leading-snug tracking-wide">
-                {card.desc}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <p className="font-serif text-[0.82rem] text-white/30 mt-8 max-w-[650px] mx-auto">
           All packages include full access to every amenity — pool, videoke, arcade, gym, basketball, bonfire, kitchen, Wi-Fi &amp; parking.
@@ -373,34 +377,37 @@ export const Events: React.FC = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 max-w-[1200px] mx-auto select-none">
           {[
-            { icon: '🏊‍♂️', name: 'Swimming Pool' },
-            { icon: '🎤', name: 'Videoke Lounge' },
-            { icon: '🎱', name: 'Billiards Table' },
-            { icon: '👾', name: 'Arcade Games' },
-            { icon: '🏋️‍♂️', name: 'Gym & Fitness' },
-            { icon: '🏀', name: 'Basketball Court' },
-            { icon: '🔥', name: 'Bonfire Area' },
-            { icon: '🍳', name: 'Full Kitchen' },
-            { icon: '📶', name: 'Free Wi-Fi' },
-            { icon: '🚗', name: 'Free Parking' },
-            { icon: '📺', name: 'Smart TV' },
-            { icon: '🛏️', name: '4 Bedrooms · 20 Beds' },
-            { icon: '🚿', name: '8 Bathrooms' },
-            { icon: '🌳', name: 'Outdoor Spaces' },
-            { icon: '🍽️', name: 'Dining Area' },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-sand rounded-lg p-5 flex flex-col items-center gap-3.5 text-center transition-all duration-200 hover:border-terra hover:translate-y-[-4px] hover:shadow-[0_10px_32px_rgba(26,15,7,0.12)] cursor-default"
-            >
-              <div className="w-12 h-12 rounded-xl bg-terra/12 text-terra flex items-center justify-center flex-shrink-0 text-[1.4rem]">
-                {item.icon}
+            { iconName: 'Waves', name: 'Swimming Pool' },
+            { iconName: 'Mic', name: 'Videoke Lounge' },
+            { iconName: 'CircleDot', name: 'Billiards Table' },
+            { iconName: 'Gamepad2', name: 'Arcade Games' },
+            { iconName: 'Dumbbell', name: 'Gym & Fitness' },
+            { iconName: 'Dribbble', name: 'Basketball Court' },
+            { iconName: 'Flame', name: 'Bonfire Area' },
+            { iconName: 'ChefHat', name: 'Full Kitchen' },
+            { iconName: 'Wifi', name: 'Free Wi-Fi' },
+            { iconName: 'Car', name: 'Free Parking' },
+            { iconName: 'Tv', name: 'Smart TV' },
+            { iconName: 'Bed', name: '4 Bedrooms · 20 Beds' },
+            { iconName: 'ShowerHead', name: '8 Bathrooms' },
+            { iconName: 'Trees', name: 'Outdoor Spaces' },
+            { iconName: 'Utensils', name: 'Dining Area' },
+          ].map((item, idx) => {
+            const ItemIcon = (Icons as any)[item.iconName] || Icons.Sparkles;
+            return (
+              <div
+                key={idx}
+                className="bg-white border border-sand rounded-lg p-5 flex flex-col items-center gap-3.5 text-center transition-all duration-200 hover:border-terra hover:translate-y-[-4px] hover:shadow-[0_10px_32px_rgba(26,15,7,0.12)] cursor-default"
+              >
+                <div className="w-12 h-12 rounded-xl bg-terra/12 text-terra flex items-center justify-center flex-shrink-0">
+                  <ItemIcon className="w-6 h-6" />
+                </div>
+                <div className="font-sans text-[0.75rem] font-bold text-ink-soft leading-snug tracking-wide">
+                  {item.name}
+                </div>
               </div>
-              <div className="font-sans text-[0.75rem] font-bold text-ink-soft leading-snug tracking-wide">
-                {item.name}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div className="flex gap-4.5 flex-wrap mt-10 justify-start select-none">
           <Link to="/amenities" className="btn btn-outline">

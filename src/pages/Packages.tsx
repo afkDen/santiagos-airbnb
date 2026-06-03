@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { img } from '../assets/images';
 import { RateEstimator } from '../components/RateEstimator';
+import * as Icons from 'lucide-react';
 
 export const Packages: React.FC = () => {
   return (
@@ -209,13 +210,15 @@ export const Packages: React.FC = () => {
             {/* Check-in */}
             <div className="p-7 bg-cream border border-sand rounded-lg hover:border-terra/40 hover:shadow-sh-sm transition-all duration-200">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-[1.1rem]">✦</span>
+                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-terra">
+                  <Icons.Clock className="w-5 h-5" />
+                </span>
                 <h4 className="font-headline text-[1.05rem] text-ink font-bold tracking-[-0.01em]">Check-in &amp; Checkout</h4>
               </div>
               <div className="flex flex-col gap-2.5">
                 {['Check-in after 3:00 PM', 'Checkout before 12:00 PM (noon)', 'Early/late options available on request'].map((item, idx) => (
-                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2 leading-relaxed">
-                    <span className="text-terra font-sans font-bold">→</span>
+                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2.5 leading-relaxed">
+                    <Icons.ChevronRight className="w-4 h-4 text-terra flex-shrink-0 mt-1" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -225,13 +228,15 @@ export const Packages: React.FC = () => {
             {/* Capacity */}
             <div className="p-7 bg-cream border border-sand rounded-lg hover:border-terra/40 hover:shadow-sh-sm transition-all duration-200">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-[1.1rem]">✦</span>
+                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-terra">
+                  <Icons.Users className="w-5 h-5" />
+                </span>
                 <h4 className="font-headline text-[1.05rem] text-ink font-bold tracking-[-0.01em]">Capacity</h4>
               </div>
               <div className="flex flex-col gap-2.5">
                 {['Base rate: up to 20 guests', 'Additional guests: ₱1,000/head', 'Maximum capacity: 40 guests', 'Kids under 3 y/o: max 3, FREE'].map((item, idx) => (
-                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2 leading-relaxed">
-                    <span className="text-terra font-sans font-bold">→</span>
+                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2.5 leading-relaxed">
+                    <Icons.ChevronRight className="w-4 h-4 text-terra flex-shrink-0 mt-1" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -241,7 +246,9 @@ export const Packages: React.FC = () => {
             {/* Important Notes */}
             <div className="p-7 bg-cream border border-sand rounded-lg hover:border-terra/40 hover:shadow-sh-sm transition-all duration-200">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-[1.1rem]">✦</span>
+                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-terra">
+                  <Icons.Info className="w-5 h-5" />
+                </span>
                 <h4 className="font-headline text-[1.05rem] text-ink font-bold tracking-[-0.01em]">Important Notes</h4>
               </div>
               <div className="flex flex-col gap-2.5">
@@ -252,8 +259,8 @@ export const Packages: React.FC = () => {
                   'For direct bookings only',
                   'Book via phone or social media',
                 ].map((item, idx) => (
-                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2 leading-relaxed">
-                    <span className="text-terra font-sans font-bold">→</span>
+                  <div key={idx} className="font-serif text-[0.98rem] text-ink-soft flex items-start gap-2.5 leading-relaxed">
+                    <Icons.ChevronRight className="w-4 h-4 text-terra flex-shrink-0 mt-1" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -272,7 +279,9 @@ export const Packages: React.FC = () => {
 
       {/* Direct Booking Notice Band */}
       <div className="bg-gradient-to-r from-charcoal via-[#2a1808] to-charcoal p-[3rem_3.5rem] flex flex-wrap gap-8 items-center border-t border-white/5">
-        <div className="text-terra text-[2rem] flex-shrink-0">✦</div>
+        <div className="text-terra flex-shrink-0">
+          <Icons.Sparkles className="w-8 h-8 text-terra" />
+        </div>
         <div className="text-left flex-1 min-w-[280px]">
           <h3 className="font-sans text-[1.6rem] text-cream font-normal mb-1">Book Directly with Us</h3>
           <p className="font-sans text-[0.98rem] text-white/48 leading-[1.7]">

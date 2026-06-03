@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { img, GalleryImage } from '../assets/images';
 import { Lightbox } from '../components/Lightbox';
+import * as Icons from 'lucide-react';
 
 const MOSAIC_IMGS: GalleryImage[] = [
   { src: img('din3'), label: "The Santiago's Sign" },
@@ -201,19 +202,19 @@ export const Contact: React.FC = () => {
             {/* Quick stats / info list */}
             <div className="flex flex-col gap-3 my-6">
               {[
-                { icon: '📍', text: <><strong>Location:</strong> Alfonso, Tagaytay, Cavite, Philippines</> },
-                { icon: '⏰', text: <><strong>Check-in:</strong> After 3:00 PM &nbsp;·&nbsp; <strong>Checkout:</strong> Before 12:00 PM noon</> },
-                { icon: '👥', text: <><strong>Capacity:</strong> Up to 40 guests — base rate covers 20, ₱1,000/head for extras</> },
-                { icon: '🛏️', text: <><strong>Rooms:</strong> 2 VIP rooms, 9 double deck beds, 8 bathrooms</> },
-                { icon: '🚫', text: <><strong>No pets</strong> on the property</> },
-                { icon: '📞', text: <><strong>Phone / Viber / WhatsApp:</strong> 0917 800 5320 / 0922 830 5320</> },
-                { icon: '🌐', text: <><strong>Facebook &amp; Instagram:</strong> <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" className="text-terra hover:underline font-semibold" rel="noopener noreferrer">@santiagos.to</a></> },
+                { icon: <Icons.MapPin className="w-5 h-5 text-terra" />, text: <><strong>Location:</strong> Alfonso, Tagaytay, Cavite, Philippines</> },
+                { icon: <Icons.Clock className="w-5 h-5 text-terra" />, text: <><strong>Check-in:</strong> After 3:00 PM &nbsp;·&nbsp; <strong>Checkout:</strong> Before 12:00 PM noon</> },
+                { icon: <Icons.Users className="w-5 h-5 text-terra" />, text: <><strong>Capacity:</strong> Up to 40 guests — base rate covers 20, ₱1,000/head for extras</> },
+                { icon: <Icons.Bed className="w-5 h-5 text-terra" />, text: <><strong>Rooms:</strong> 2 VIP rooms, 9 double deck beds, 8 bathrooms</> },
+                { icon: <Icons.Ban className="w-5 h-5 text-terra" />, text: <><strong>No pets</strong> on the property</> },
+                { icon: <Icons.Phone className="w-5 h-5 text-terra" />, text: <><strong>Phone / Viber / WhatsApp:</strong> 0917 800 5320 / 0922 830 5320</> },
+                { icon: <Icons.Globe className="w-5 h-5 text-terra" />, text: <><strong>Facebook &amp; Instagram:</strong> <a href="https://www.facebook.com/people/Santiagos-Private-Resort/61576644491245/" target="_blank" className="text-terra hover:underline font-semibold" rel="noopener noreferrer">@santiagos.to</a></> },
               ].map((row, idx) => (
                 <div
                   key={idx}
                   className="flex items-start gap-3.5 p-3.5 px-4.5 bg-white border border-sand/45 rounded-lg text-left"
                 >
-                  <span className="text-[1.1rem] flex-shrink-0 mt-0.5 select-none">{row.icon}</span>
+                  <span className="flex-shrink-0 mt-0.5 select-none">{row.icon}</span>
                   <span className="font-serif text-[0.96rem] text-ink-soft leading-relaxed">
                     {row.text}
                   </span>
@@ -584,8 +585,10 @@ export const Contact: React.FC = () => {
               key={idx}
               className="bg-white/5 border border-white/8 rounded-lg p-6 py-8 transition-all duration-300 hover:bg-white/8 hover:-translate-y-0.5 text-left"
             >
-              <div className="text-gold text-[0.85rem] mb-3.5 tracking-wide select-none">
-                {rev.stars}
+              <div className="flex gap-1 text-gold mb-3.5 select-none">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Icons.Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                ))}
               </div>
               <p className="font-serif text-[1.02rem] text-white/60 leading-[1.82] font-light italic mb-5">
                 "{rev.text}"

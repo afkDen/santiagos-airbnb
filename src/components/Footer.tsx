@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import * as Icons from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [subscribed, setSubscribed] = useState(false);
@@ -139,8 +140,8 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-3 border-t border-white/5 pt-8">
-        <span className="font-sans text-[0.67rem] text-white/15">
-          © 2026 Santiagos Resort · All rights reserved · Made with ❤️ in the Philippines
+        <span className="font-sans text-[0.67rem] text-white/15 flex items-center gap-1.5 flex-wrap justify-center md:justify-start">
+          © 2026 Santiagos Resort · All rights reserved · Made with <Icons.Heart className="w-3 h-3 text-terra fill-terra inline" /> in the Philippines
         </span>
         <div className="flex gap-6">
           <a href="#" className="font-sans text-[0.67rem] text-white/17 hover:text-terra-lt transition-colors duration-200">Privacy</a>

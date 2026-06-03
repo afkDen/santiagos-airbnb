@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { img, GALLERY_IMGS } from '../assets/images';
 import { Lightbox } from '../components/Lightbox';
+import * as Icons from 'lucide-react';
 
 interface StatItemProps {
   target: number;
@@ -123,7 +124,7 @@ export const Home: React.FC = () => {
 
         <div className="relative z-30 px-5 pb-20 md:px-14 md:pb-20 max-w-[860px] text-left">
           <div className="inline-flex items-center gap-2 bg-gold/15 backdrop-blur-[10px] border border-gold/30 px-4 py-1.5 rounded-pill font-sans text-[0.62rem] tracking-[0.2em] uppercase text-gold-light font-bold mb-4">
-            ✦ Alfonso, Tagaytay, Cavite · Philippines
+            <Icons.MapPin className="w-3.5 h-3.5 text-gold-light flex-shrink-0" /> Alfonso, Tagaytay, Cavite · Philippines
           </div>
           <h1 className="font-headline text-[3.2rem] md:text-[5.5rem] lg:text-[6.2rem] font-bold leading-[1.02] text-white tracking-[-0.02em] mb-4">
             Unwind &amp; <em className="italic text-terra-light font-normal">Play</em>
@@ -427,22 +428,27 @@ export const Home: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {[
-            { title: 'All-in-One Resort', desc: 'Pool, videoke, game room, gym, basketball, bonfire — all included. No need to go anywhere else for a full day of fun.' },
-            { title: 'Cool Tagaytay Climate', desc: 'Alfonso sits at ~600m elevation — refreshing 18–24°C year-round. Pool days without Manila\'s heat.' },
-            { title: 'Unique Container Design', desc: 'Industrial chic architecture unlike anything else in the Tagaytay-Alfonso area. Every corner is photogenic.' },
-            { title: 'Built for Big Groups', desc: '4 bedrooms, 20 beds, 8 bathrooms — your whole barkada sleeps comfortably. Base rate covers up to 20 guests.' },
-            { title: 'Perfect for Any Event', desc: 'Birthdays, reunions, team buildings, outings — every amenity is designed to make group events unforgettable.' },
-            { title: 'Smart Group Value', desc: 'Split the rate across your crew and the per-head cost is surprisingly affordable for a full resort experience.' },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="p-[2.2rem_1.8rem] bg-white rounded-lg border border-sand relative overflow-hidden transition-all duration-300 hover:shadow-sh-md hover:translate-y-[-4px] hover:before:scale-x-100 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2.5px] before:bg-terra before:scale-x-0 before:origin-left before:transition-transform before:duration-[350ms] text-left"
-            >
-              <span className="text-[1.6rem] block text-terra mb-3.5">✦</span>
-              <h3 className="font-headline text-[1.15rem] font-bold text-ink mb-2 tracking-[-0.01em]">{item.title}</h3>
-              <p className="font-serif text-[0.98rem] leading-[1.8] text-ink-soft font-normal">{item.desc}</p>
-            </div>
-          ))}
+            { iconName: 'Sparkles', title: 'All-in-One Resort', desc: 'Pool, videoke, game room, gym, basketball, bonfire — all included. No need to go anywhere else for a full day of fun.' },
+            { iconName: 'CloudSun', title: 'Cool Tagaytay Climate', desc: 'Alfonso sits at ~600m elevation — refreshing 18–24°C year-round. Pool days without Manila\'s heat.' },
+            { iconName: 'Home', title: 'Unique Container Design', desc: 'Industrial chic architecture unlike anything else in the Tagaytay-Alfonso area. Every corner is photogenic.' },
+            { iconName: 'Users', title: 'Built for Big Groups', desc: '4 bedrooms, 20 beds, 8 bathrooms — your whole barkada sleeps comfortably. Base rate covers up to 20 guests.' },
+            { iconName: 'Gift', title: 'Perfect for Any Event', desc: 'Birthdays, reunions, team buildings, outings — every amenity is designed to make group events unforgettable.' },
+            { iconName: 'Coins', title: 'Smart Group Value', desc: 'Split the rate across your crew and the per-head cost is surprisingly affordable for a full resort experience.' },
+          ].map((item, idx) => {
+            const CardIcon = (Icons as any)[item.iconName] || Icons.Sparkles;
+            return (
+              <div
+                key={idx}
+                className="p-[2.2rem_1.8rem] bg-white rounded-lg border border-sand relative overflow-hidden transition-all duration-300 hover:shadow-sh-md hover:translate-y-[-4px] hover:before:scale-x-100 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2.5px] before:bg-terra before:scale-x-0 before:origin-left before:transition-transform before:duration-[350ms] text-left"
+              >
+                <span className="block text-terra mb-3.5">
+                  <CardIcon className="w-6 h-6 text-terra" />
+                </span>
+                <h3 className="font-headline text-[1.15rem] font-bold text-ink mb-2 tracking-[-0.01em]">{item.title}</h3>
+                <p className="font-serif text-[0.98rem] leading-[1.8] text-ink-soft font-normal">{item.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 

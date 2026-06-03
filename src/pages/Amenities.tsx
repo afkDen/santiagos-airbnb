@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { img, GALLERY_IMGS, GalleryImage } from '../assets/images';
 import { Lightbox } from '../components/Lightbox';
+import * as Icons from 'lucide-react';
 
 // Sub-galleries
 const BED_IMGS: GalleryImage[] = [
@@ -68,6 +69,36 @@ export const Amenities: React.FC = () => {
     triggerLightbox(index !== -1 ? index : 0, gallery);
   };
 
+  // Dynamic Lucide icon mapping
+  const getIcon = (name: string) => {
+    const iconClass = "w-5 h-5 text-terra flex-shrink-0";
+    switch (name) {
+      case 'pool': return <Icons.Waves className={iconClass} />;
+      case 'mic': return <Icons.Mic className={iconClass} />;
+      case 'music': return <Icons.Music className={iconClass} />;
+      case 'sofa': return <Icons.Sofa className={iconClass} />;
+      case 'ac': return <Icons.Wind className={iconClass} />;
+      case 'billiards': return <Icons.CircleDot className={iconClass} />;
+      case 'arcade': return <Icons.Gamepad2 className={iconClass} />;
+      case 'lamp': return <Icons.Lightbulb className={iconClass} />;
+      case 'mountain': return <Icons.Mountain className={iconClass} />;
+      case 'camera': return <Icons.Camera className={iconClass} />;
+      case 'table': return <Icons.Utensils className={iconClass} />;
+      case 'pen': return <Icons.Sparkles className={iconClass} />;
+      case 'kitchen': return <Icons.ChefHat className={iconClass} />;
+      case 'gym': return <Icons.Dumbbell className={iconClass} />;
+      case 'basketball': return <Icons.Dribbble className={iconClass} />;
+      case 'bonfire': return <Icons.Flame className={iconClass} />;
+      case 'wifi': return <Icons.Wifi className={iconClass} />;
+      case 'parking': return <Icons.ParkingCircle className={iconClass} />;
+      case 'tv': return <Icons.Tv className={iconClass} />;
+      case 'bed': return <Icons.Bed className={iconClass} />;
+      case 'shower': return <Icons.ShowerHead className={iconClass} />;
+      case 'outdoor': return <Icons.Trees className={iconClass} />;
+      default: return <Icons.Sparkles className={iconClass} />;
+    }
+  };
+
   const AMENITIES_FULL_LIST = [
     { name: 'Swimming Pool', desc: 'Private · one of few in Alfonso', icon: 'pool' },
     { name: 'Videoke Room', desc: 'Dedicated room with full setup', icon: 'mic' },
@@ -80,7 +111,7 @@ export const Amenities: React.FC = () => {
     { name: 'Free Wi-Fi', desc: 'High-speed throughout', icon: 'wifi' },
     { name: 'Free Parking', desc: 'On-premises for all vehicles', icon: 'parking' },
     { name: 'TV', desc: 'Smart TV for streaming', icon: 'tv' },
-    { name: '2 VIP Rooms + 9 Double Deck Beds', desc: 'Driver\'s room also available', icon: 'bed' },
+    { name: '2 VIP Rooms + 9 Double Deck Beds', desc: "Driver's room also available", icon: 'bed' },
     { name: '8 Bathrooms', desc: 'No queuing for big groups', icon: 'shower' },
     { name: 'Air Conditioning', desc: 'In rooms and videoke room', icon: 'ac' },
     { name: 'Outdoor Chill Spaces', desc: 'Covered outdoor lounging areas', icon: 'outdoor' },
@@ -111,24 +142,25 @@ export const Amenities: React.FC = () => {
       {/* Karaoke Section */}
       <section className="bg-cream px-5 md:px-14 py-22">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 items-center max-w-[1200px] mx-auto text-left">
-          <div className="grid grid-cols-3 gap-3 anim-l select-none">
+          {/* Asymmetric Bento Grid - Large Left, Stacked Right */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 anim-l select-none">
             <div
               onClick={() => triggerLightboxBySrc(img('kara1'), GALLERY_IMGS)}
-              className="col-span-3 lg:col-span-3 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 sm:col-span-2 sm:row-span-2 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('kara1')} alt="Videoke main" className="w-full aspect-video lg:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('kara1')} alt="Videoke main" className="w-full h-full object-cover aspect-[4/3] sm:aspect-auto transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('kara2'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('kara2')} alt="Videoke 2" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('kara2')} alt="Videoke 2" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('kara3'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('kara3')} alt="Videoke 3" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('kara3')} alt="Videoke 3" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
           <div className="anim-r">
@@ -144,7 +176,7 @@ export const Amenities: React.FC = () => {
                 { title: 'Air-Conditioned', desc: 'Stay cool for those long singing sessions', icon: 'ac' },
               ].map((row, idx) => (
                 <div key={idx} className="flex gap-[0.85rem] p-[0.95rem_1.1rem] bg-cream-dk/40 border border-sand rounded-lg hover:border-terra hover:shadow-[0_4px_18px_rgba(192,115,74,0.12)] transition-all duration-200">
-                  <span className="text-terra text-[1.2rem] mt-[0.05rem]">✦</span>
+                  <span className="mt-[0.15rem]">{getIcon(row.icon)}</span>
                   <div>
                     <h4 className="font-sans text-[0.88rem] font-bold text-ink mb-[0.18rem]">{row.title}</h4>
                     <p className="font-serif text-[0.92rem] text-ink-soft font-normal leading-[1.55]">{row.desc}</p>
@@ -159,24 +191,25 @@ export const Amenities: React.FC = () => {
       {/* Billiards & Arcade Section */}
       <section className="bg-cream-dk px-5 md:px-14 py-22 border-t border-sand/40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 items-center max-w-[1200px] mx-auto text-left">
-          <div className="lg:order-2 grid grid-cols-3 gap-3 anim-r select-none">
-            <div
-              onClick={() => triggerLightboxBySrc(img('bill2'), GALLERY_IMGS)}
-              className="col-span-3 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
-            >
-              <img src={img('bill2')} alt="Billiards main" className="w-full aspect-video lg:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
+          {/* Asymmetric Bento Grid - Stacked Left, Large Right */}
+          <div className="lg:order-2 grid grid-cols-1 sm:grid-cols-3 gap-3 anim-r select-none">
             <div
               onClick={() => triggerLightboxBySrc(img('bill1'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('bill1')} alt="Billiards 2" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('bill1')} alt="Billiards 2" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div
+              onClick={() => triggerLightboxBySrc(img('bill2'), GALLERY_IMGS)}
+              className="col-span-1 sm:col-span-2 sm:row-span-2 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+            >
+              <img src={img('bill2')} alt="Billiards main" className="w-full h-full object-cover aspect-[4/3] sm:aspect-auto transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('arc1'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('arc1')} alt="Arcade" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('arc1')} alt="Arcade" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
           <div className="lg:order-1 anim-l">
@@ -190,7 +223,7 @@ export const Amenities: React.FC = () => {
                 { title: 'Industrial Design', desc: 'Exposed brick, statement lighting — the perfect game room vibe', icon: 'lamp' },
               ].map((row, idx) => (
                 <div key={idx} className="flex gap-[0.85rem] p-[0.95rem_1.1rem] bg-cream/60 border border-sand rounded-lg hover:border-terra hover:shadow-[0_4px_18px_rgba(192,115,74,0.12)] transition-all duration-200">
-                  <span className="text-terra text-[1.2rem] mt-[0.05rem]">✦</span>
+                  <span className="mt-[0.15rem]">{getIcon(row.icon)}</span>
                   <div>
                     <h4 className="font-sans text-[0.88rem] font-bold text-ink mb-[0.18rem]">{row.title}</h4>
                     <p className="font-serif text-[0.92rem] text-ink-soft font-normal leading-[1.55]">{row.desc}</p>
@@ -205,24 +238,25 @@ export const Amenities: React.FC = () => {
       {/* Pool Section */}
       <section className="bg-cream px-5 md:px-14 py-22 border-t border-sand/40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 items-center max-w-[1200px] mx-auto text-left">
-          <div className="grid grid-cols-3 gap-3 anim-l select-none">
+          {/* Asymmetric Bento Grid - Large Left, Stacked Right */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 anim-l select-none">
             <div
               onClick={() => triggerLightboxBySrc(img('pool1'), GALLERY_IMGS)}
-              className="col-span-3 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 sm:col-span-2 sm:row-span-2 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('pool1')} alt="Pool main" className="w-full aspect-video lg:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('pool1')} alt="Pool main" className="w-full h-full object-cover aspect-[4/3] sm:aspect-auto transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('pool2'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('pool2')} alt="Pool 2" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('pool2')} alt="Pool 2" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('pool3'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('pool3')} alt="Pool 3" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('pool3')} alt="Pool 3" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
           <div className="anim-r">
@@ -236,7 +270,7 @@ export const Amenities: React.FC = () => {
                 { title: 'Photogenic Setting', desc: 'Industrial container architecture frames every shot beautifully', icon: 'camera' },
               ].map((row, idx) => (
                 <div key={idx} className="flex gap-[0.85rem] p-[0.95rem_1.1rem] bg-cream-dk/40 border border-sand rounded-lg hover:border-terra hover:shadow-[0_4px_18px_rgba(192,115,74,0.12)] transition-all duration-200">
-                  <span className="text-terra text-[1.2rem] mt-[0.05rem]">✦</span>
+                  <span className="mt-[0.15rem]">{getIcon(row.icon)}</span>
                   <div>
                     <h4 className="font-sans text-[0.88rem] font-bold text-ink mb-[0.18rem]">{row.title}</h4>
                     <p className="font-serif text-[0.92rem] text-ink-soft font-normal leading-[1.55]">{row.desc}</p>
@@ -251,24 +285,25 @@ export const Amenities: React.FC = () => {
       {/* Dining & Kitchen Section */}
       <section className="bg-cream-dk px-5 md:px-14 py-22 border-t border-sand/40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 items-center max-w-[1200px] mx-auto text-left">
-          <div className="lg:order-2 grid grid-cols-3 gap-3 anim-r select-none">
-            <div
-              onClick={() => triggerLightboxBySrc(img('din3'), GALLERY_IMGS)}
-              className="col-span-3 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
-            >
-              <img src={img('din3')} alt="Dining main" className="w-full aspect-video lg:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
+          {/* Asymmetric Bento Grid - Stacked Left, Large Right */}
+          <div className="lg:order-2 grid grid-cols-1 sm:grid-cols-3 gap-3 anim-r select-none">
             <div
               onClick={() => triggerLightboxBySrc(img('din1'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('din1')} alt="Dining 2" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('din1')} alt="Dining 2" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div
+              onClick={() => triggerLightboxBySrc(img('din3'), GALLERY_IMGS)}
+              className="col-span-1 sm:col-span-2 sm:row-span-2 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+            >
+              <img src={img('din3')} alt="Dining main" className="w-full h-full object-cover aspect-[4/3] sm:aspect-auto transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div
               onClick={() => triggerLightboxBySrc(img('kit1'), GALLERY_IMGS)}
-              className="col-span-1.5 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
+              className="col-span-1 overflow-hidden rounded-lg cursor-pointer shadow-sh-sm group"
             >
-              <img src={img('kit1')} alt="Kitchen" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img('kit1')} alt="Kitchen" className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
           <div className="lg:order-1 anim-l">
@@ -282,7 +317,7 @@ export const Amenities: React.FC = () => {
                 { title: 'Full Kitchen', desc: 'Fully equipped — cook any meal for your entire group', icon: 'kitchen' },
               ].map((row, idx) => (
                 <div key={idx} className="flex gap-[0.85rem] p-[0.95rem_1.1rem] bg-cream/60 border border-sand rounded-lg hover:border-terra hover:shadow-[0_4px_18px_rgba(192,115,74,0.12)] transition-all duration-200">
-                  <span className="text-terra text-[1.2rem] mt-[0.05rem]">✦</span>
+                  <span className="mt-[0.15rem]">{getIcon(row.icon)}</span>
                   <div>
                     <h4 className="font-sans text-[0.88rem] font-bold text-ink mb-[0.18rem]">{row.title}</h4>
                     <p className="font-serif text-[0.92rem] text-ink-soft font-normal leading-[1.55]">{row.desc}</p>
@@ -434,7 +469,7 @@ export const Amenities: React.FC = () => {
               key={idx}
               className="flex items-center gap-4 p-[1.2rem_1.4rem] bg-white/5 rounded-lg border border-white/7 hover:border-terra/35 hover:translate-x-1.5 hover:shadow-[0_4px_20px_rgba(192,115,74,0.12)] transition-all duration-200 text-left"
             >
-              <span className="text-[1.4rem] text-terra-light flex-shrink-0">✦</span>
+              {getIcon(item.icon)}
               <div>
                 <div className="font-sans text-[0.86rem] font-bold text-sand tracking-[0.01em]">
                   {item.name}
@@ -457,36 +492,45 @@ export const Amenities: React.FC = () => {
           {[
             {
               title: 'Check-in & Checkout',
+              iconName: 'Clock',
               items: ['Check-in is available after 3:00 PM', 'Checkout is before 12:00 PM (noon)', 'Early/late options available on request'],
             },
             {
               title: 'Guest Policy',
+              iconName: 'Users',
               items: ['Base rate covers up to 20 guests', 'Additional guests: ₱1,000/head (max 40)', 'Kids under 3 y/o: max 3 are FREE'],
             },
             {
               title: 'House Rules',
+              iconName: 'Home',
               items: ['No pets on the property', 'Keep the space clean and respectful', 'All amenities for registered guests only'],
             },
             {
               title: 'Safety Info',
+              iconName: 'ShieldAlert',
               items: ['Smoke alarm not present on property', 'Carbon monoxide alarm not reported', 'Guests may bring portable safety devices'],
             },
-          ].map((card, idx) => (
-            <div key={idx} className="p-7 bg-cream border border-sand rounded-lg hover:shadow-sh-sm hover:border-terra/40 transition-all duration-200">
-              <div className="flex items-center gap-3 mb-4 text-left">
-                <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-[1.1rem] text-terra font-bold">✦</span>
-                <h4 className="font-headline text-[1.05rem] text-ink font-bold tracking-[-0.01em]">{card.title}</h4>
+          ].map((card, idx) => {
+            const CircleIcon = (Icons as any)[card.iconName] || Icons.Sparkles;
+            return (
+              <div key={idx} className="p-7 bg-cream border border-sand rounded-lg hover:shadow-sh-sm hover:border-terra/40 transition-all duration-200">
+                <div className="flex items-center gap-3 mb-4 text-left">
+                  <span className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-terra font-bold">
+                    <CircleIcon className="w-5 h-5" />
+                  </span>
+                  <h4 className="font-headline text-[1.05rem] text-ink font-bold tracking-[-0.01em]">{card.title}</h4>
+                </div>
+                <div className="flex flex-col gap-2.5 text-left">
+                  {card.items.map((item, itemIdx) => (
+                    <div key={itemIdx} className="font-serif text-[0.96rem] text-ink-soft flex items-start gap-2.5 font-normal leading-[1.65]">
+                      <Icons.ChevronRight className="w-4 h-4 text-terra flex-shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-2.5 text-left">
-                {card.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="font-serif text-[0.96rem] text-ink-soft flex items-start gap-2 font-normal leading-[1.65]">
-                    <span className="text-terra font-sans font-bold">→</span>
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="flex gap-4 justify-center flex-wrap mt-12">

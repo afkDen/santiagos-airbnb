@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { img, GalleryImage } from '../assets/images';
 import { Lightbox } from '../components/Lightbox';
+import * as Icons from 'lucide-react';
 
 const POSTER_IMGS: GalleryImage[] = [
   { src: 'https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w2400', label: 'Map & Directions Guide — From Twin Lakes Tagaytay' }
@@ -222,7 +223,7 @@ export const Location: React.FC = () => {
             {/* Quick Reference Card */}
             <div className="mt-4 border-[1.5px] border-sand rounded-lg bg-gradient-to-br from-cream to-cream-dk overflow-hidden text-left">
               <div className="p-3 px-4 bg-ink flex items-center gap-2 select-none">
-                <span className="text-terra-light text-[0.9rem] flex items-center">&#9432;</span>
+                <Icons.Info className="w-4 h-4 text-terra-light" />
                 <span className="font-sans text-[0.58rem] tracking-[0.18em] uppercase text-terra-light font-bold">
                   Quick Reference
                 </span>
@@ -230,35 +231,38 @@ export const Location: React.FC = () => {
               <div className="p-4 px-5 flex flex-col gap-3">
                 {[
                   {
-                    icon: '📍',
+                    iconName: 'MapPin',
                     text: <><strong>Full address:</strong> Kaytitinga II, Alfonso, Cavite 4123</>
                   },
                   {
-                    icon: '⏱️',
+                    iconName: 'Clock',
                     text: <><strong>~15 min</strong> from Twin Lakes · <strong>~1.5–2 hrs</strong> from Manila</>
                   },
                   {
-                    icon: '🚗',
+                    iconName: 'Car',
                     text: <>Free on-site parking</>
                   },
                   {
-                    icon: '📞',
+                    iconName: 'Phone',
                     text: <>Lost? Call us: <a href="tel:+639228305320" className="text-terra font-semibold hover:underline">0922 830 5320</a> / <a href="tel:+639178005320" className="text-terra font-semibold hover:underline">0917 800 5320</a></>
                   },
                   {
-                    icon: '⛰️',
+                    iconName: 'Mountain',
                     text: <>Key landmark before turn: <strong>Alfamart on Kaytitinga-Magallanes Rd</strong></>
                   }
-                ].map((row, idx) => (
-                  <div key={idx} className="flex items-center gap-3 font-serif text-[0.92rem] text-ink-soft leading-snug text-left">
-                    <div className="w-7 h-7 rounded-lg bg-terra/12 text-terra flex items-center justify-center flex-shrink-0 select-none text-[0.88rem]">
-                      {row.icon}
+                ].map((row, idx) => {
+                  const CardIcon = (Icons as any)[row.iconName] || Icons.Sparkles;
+                  return (
+                    <div key={idx} className="flex items-center gap-3 font-serif text-[0.92rem] text-ink-soft leading-snug text-left">
+                      <div className="w-7 h-7 rounded-lg bg-terra/12 text-terra flex items-center justify-center flex-shrink-0 select-none">
+                        <CardIcon className="w-4 h-4 text-terra" />
+                      </div>
+                      <div className="font-serif">
+                        {row.text}
+                      </div>
                     </div>
-                    <div className="font-serif">
-                      {row.text}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -280,17 +284,20 @@ export const Location: React.FC = () => {
             </p>
             <div className="flex flex-col gap-2.5 mb-7">
               {[
-                { icon: '📍', text: <>Start: <strong className="text-white/80">Alfamart, Kaytitinga-Magallanes Rd</strong></> },
-                { icon: '⏱️', text: <>Travel time: <strong className="text-white/80">~15 min from 7-Eleven Kaytitinga</strong></> },
-                { icon: '📞', text: <>Lost? Call: <a href="tel:+639228305320" className="text-terra-light font-semibold hover:underline">0922 830 5320</a></> }
-              ].map((row, idx) => (
-                <div key={idx} className="flex items-center gap-3 font-serif text-[0.95rem] text-white/45 text-left">
-                  <span className="w-7 h-7 rounded-full bg-terra/20 flex items-center justify-center flex-shrink-0 text-[0.7rem] select-none">
-                    {row.icon}
-                  </span>
-                  <span>{row.text}</span>
-                </div>
-              ))}
+                { iconName: 'MapPin', text: <>Start: <strong className="text-white/80">Alfamart, Kaytitinga-Magallanes Rd</strong></> },
+                { iconName: 'Clock', text: <>Travel time: <strong className="text-white/80">~15 min from 7-Eleven Kaytitinga</strong></> },
+                { iconName: 'Phone', text: <>Lost? Call: <a href="tel:+639228305320" className="text-terra-light font-semibold hover:underline">0922 830 5320</a></> }
+              ].map((row, idx) => {
+                const RowIcon = (Icons as any)[row.iconName] || Icons.Sparkles;
+                return (
+                  <div key={idx} className="flex items-center gap-3 font-serif text-[0.95rem] text-white/45 text-left">
+                    <span className="w-7 h-7 rounded-full bg-terra/20 flex items-center justify-center flex-shrink-0 select-none">
+                      <RowIcon className="w-3.5 h-3.5 text-terra-light" />
+                    </span>
+                    <span>{row.text}</span>
+                  </div>
+                );
+              })}
             </div>
             <a
               href="https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z"
@@ -375,36 +382,39 @@ export const Location: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-9">
           {[
             {
-              icon: '🚗',
+              iconName: 'Car',
               title: 'Best Way to Get Here',
               desc: 'Driving is most convenient. Take SLEX or CAVITEX then STAR Tollway to Alfonso. Use Waze/Google Maps for exact routing. Free on-premises parking for multiple vehicles.'
             },
             {
-              icon: '⛰️',
+              iconName: 'Mountain',
               title: 'Weather & Climate',
               desc: "Alfonso sits at ~600m elevation — expect a refreshing 18–24°C year-round. Perfect for pool days without Metro Manila's heat. Bring a light jacket for cool evenings."
             },
             {
-              icon: '🍳',
+              iconName: 'ChefHat',
               title: 'Stocking Up',
               desc: 'Groceries and wet market are 5 minutes away in Alfonso town proper. Larger supermarkets (Robinsons, Walter Mart) are 20 minutes away in Tagaytay City.'
             }
-          ].map((tip, idx) => (
-            <div
-              key={idx}
-              className="p-6.5 bg-white border border-sand rounded-lg transition-all duration-200 hover:shadow-sh-md hover:-translate-y-0.5 text-left"
-            >
-              <span className="text-[1.4rem] block text-terra mb-2.5 leading-none select-none">
-                {tip.icon}
-              </span>
-              <h4 className="font-serif text-[1.05rem] text-ink font-bold mb-1.5">
-                {tip.title}
-              </h4>
-              <p className="font-serif text-[0.94rem] text-ink-soft leading-[1.72]">
-                {tip.desc}
-              </p>
-            </div>
-          ))}
+          ].map((tip, idx) => {
+            const TipIcon = (Icons as any)[tip.iconName] || Icons.Sparkles;
+            return (
+              <div
+                key={idx}
+                className="p-6.5 bg-white border border-sand rounded-lg transition-all duration-200 hover:shadow-sh-md hover:-translate-y-0.5 text-left"
+              >
+                <span className="block text-terra mb-3 select-none">
+                  <TipIcon className="w-7 h-7 text-terra" />
+                </span>
+                <h4 className="font-serif text-[1.05rem] text-ink font-bold mb-1.5">
+                  {tip.title}
+                </h4>
+                <p className="font-serif text-[0.94rem] text-ink-soft leading-[1.72]">
+                  {tip.desc}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="flex gap-3 justify-center flex-wrap mt-11 select-none">
