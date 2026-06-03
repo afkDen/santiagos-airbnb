@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased overflow-x-hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+
+  p {
+    @apply font-serif;
+  }
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2ceb4; /* sand */
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c07a4f; /* terra */
+}
+
+/* KEYFRAME ANIMATIONS */
+@keyframes marq {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+
+/* UTILITY CLASSES */
+.animate-marquee {
+  animation: marq 32s linear infinite;
+}
+
+.animate-wa-ring {
+  animation: ring 2.4s ease-out infinite;
+}
+
+/* IMAGE LIGHTBOX ANIMATION */
+@keyframes lbIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-lightbox-in {
+  animation: lbIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* REVEAL ON SCROLL CLASSES */
+.rv-element {
+  @apply transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0;
+}
+.rv-element.rv-y {
+  @apply translate-y-[26px];
+}
+.rv-element.rv-l {
+  @apply -translate-x-[24px];
+}
+.rv-element.rv-r {
+  @apply translate-x-[24px];
+}
+.rv-element.in {
+  @apply opacity-100 translate-x-0 translate-y-0;
+}
+
+/* PRINT STYLES */
+@media print {
+  #nav, #footer, #wa-btn, #back-top, .marquee-bar, .announce-bar {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
