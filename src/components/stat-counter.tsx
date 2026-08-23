@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { useInView, useReducedMotion } from 'framer-motion'
+import { useInView, useReducedMotion } from 'motion/react'
 
 interface StatCounterProps {
   value: number
