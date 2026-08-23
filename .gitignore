@@ -36,7 +36,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# agents & local caches
+# agents, codex & local caches
 .agents/
 .codex/
 .impeccable/
+skills-lock.json
+
+# Ignore all internal spec and planning markdown files (keep only README.md)
+*.md
+!README.md
