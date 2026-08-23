@@ -1,0 +1,465 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'motion/react'
+import { PROPERTY_INFO } from '@/content/property'
+import { StickyBookingBar } from '@/components/sticky-booking-bar'
+import { buildWhatsAppLink } from '@/lib/whatsapp-link'
+import {
+  MessageCircle,
+  Phone,
+  Facebook,
+  Instagram,
+  MapPin,
+  Clock,
+  ShieldCheck,
+  CheckSquare,
+  Square,
+  Send,
+  ExternalLink,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Luggage,
+} from 'lucide-react'
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    checkIn: '',
+    checkOut: '',
+    guests: '20',
+    occasion: 'Birthday Party',
+    message: '',
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  // Pre-Arrival Packing Checklist Items from §9
+  const initialChecklist = [
+    { label: 'Food & cooking ingredients / snacks', checked: false },
+    { label: 'Alcoholic & non-alcoholic beverages / drinks', checked: false },
+    { label: 'Birthday cake & celebration party decor', checked: false },
+    { label: 'Swimwear, goggles & pool towels', checked: false },
+    { label: 'Personal toiletries & bath towels', checked: false },
+    { label: 'Extra clothes & sleepwear', checked: false },
+    { label: 'Light jacket or sweater (Alfonso evenings drop to 18°C)', checked: false },
+    { label: 'Phone chargers, powerbanks & selfie sticks', checked: false },
+    { label: 'Cooler & extra ice bags', checked: false },
+    { label: 'Marshmallows & hotdogs for the bonfire pit', checked: false },
+    { label: 'Board games / card games', checked: false },
+    { label: 'Personal maintenance medications', checked: false },
+  ]
+
+  const [checklist, setChecklist] = useState(initialChecklist)
+
+  const toggleChecklist = (index: number) => {
+    setChecklist((prev) =>
+      prev.map((item, i) => (i === index ? { ...item, checked: !item.checked } : item))
+    )
+  }
+
+  const packedCount = checklist.filter((i) => i.checked).length
+  const progressPercent = Math.round((packedCount / checklist.length) * 100)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const checkIn = formData.checkIn ? new Date(formData.checkIn) : undefined
+    const checkOut = formData.checkOut ? new Date(formData.checkOut) : undefined
+    const guests = parseInt(formData.guests) || 20
+
+    const whatsappUrl = buildWhatsAppLink({
+      checkIn,
+      checkOut,
+      guestCount: guests,
+      occasion: formData.occasion,
+    })
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setIsSuccess(true)
+      }
+    } catch (err) {
+      console.error('Error submitting form to API:', err)
+    } finally {
+      setIsSubmitting(false)
+      window.open(whatsappUrl, '_blank')
+    }
+  }
+
+  return (
+    <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+        className="text-center max-w-3xl mx-auto space-y-4"
+      >
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
+          <MessageCircle className="w-4 h-4 text-whatsapp" />
+          <span>Direct Inquiries & Fast Response</span>
+        </div>
+
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
+          Get in Touch with <span className="text-terra">Santiagos</span>
+        </h1>
+
+        <p className="text-base sm:text-lg text-ink-muted leading-relaxed font-sans">
+          Message us directly on WhatsApp for instant date availability checks, direct-booking rate confirmations, or special requests.
+        </p>
+      </motion.div>
+
+      {/* Main Grid: Form + Direct Channels */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Left Col: Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+          className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-sand shadow-warm-md space-y-6"
+        >
+          <div className="space-y-1 border-b border-sand pb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
+              Send a Booking Inquiry
+            </h2>
+            <p className="text-xs text-ink-muted font-sans">
+              Fill in your details to generate a pre-filled WhatsApp message.
+            </p>
+          </div>
+
+          {isSuccess ? (
+            <div className="p-6 bg-forest/10 border border-forest/30 rounded-2xl space-y-3">
+              <div className="flex items-center gap-2 text-forest font-bold">
+                <CheckCircle2 className="w-5 h-5" />
+                <span>Inquiry Prepared & WhatsApp Opened!</span>
+              </div>
+              <p className="text-xs text-ink-muted leading-relaxed font-sans">
+                Your details have been registered. If WhatsApp did not open automatically, click the button below to connect with our reservations team.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  const checkIn = formData.checkIn ? new Date(formData.checkIn) : undefined
+                  const checkOut = formData.checkOut ? new Date(formData.checkOut) : undefined
+                  const guests = parseInt(formData.guests) || 20
+                  window.open(buildWhatsAppLink({ checkIn, checkOut, guestCount: guests, occasion: formData.occasion }), '_blank')
+                }}
+                className="px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-xs font-bold rounded-full flex items-center gap-2 active:scale-95 transition-all"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Open WhatsApp Chat</span>
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4 font-sans text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Maria Santos"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                    Email Address (Optional)
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="maria@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                    Check-in Date
+                  </label>
+                  <input
+                    type="date"
+                    value={formData.checkIn}
+                    onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
+                    className="w-full px-3 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-xs"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                    Check-out Date
+                  </label>
+                  <input
+                    type="date"
+                    value={formData.checkOut}
+                    onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
+                    className="w-full px-3 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-xs"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                    Estimated Headcount
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    max={40}
+                    value={formData.guests}
+                    onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                    className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-xs"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                  Occasion / Trip Type
+                </label>
+                <select
+                  value={formData.occasion}
+                  onChange={(e) => setFormData({ ...formData, occasion: e.target.value })}
+                  className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-sm"
+                >
+                  <option value="Birthday Party">Birthday Party / Milestone</option>
+                  <option value="Barkada Getaway">Barkada Trip / Weekend Escape</option>
+                  <option value="Family Reunion">Family Reunion</option>
+                  <option value="Corporate Team Building">Corporate Team Outing / Retreat</option>
+                  <option value="General Vacation">General Group Vacation</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                  Special Requests or Questions
+                </label>
+                <textarea
+                  rows={3}
+                  placeholder="Any special requests, early check-in inquiries, etc..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-sm resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2.5 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-all disabled:opacity-75 group"
+              >
+                {isSubmitting ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
+                )}
+                <span>{isSubmitting ? 'Preparing Inquiry...' : 'Submit & Open in WhatsApp'}</span>
+              </button>
+            </form>
+          )}
+        </motion.div>
+
+        {/* Right Col: Direct Channels & Stay Policies */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+          className="lg:col-span-5 space-y-6"
+        >
+          {/* Direct Channels Box */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-sand shadow-warm-md space-y-5">
+            <h3 className="font-serif text-xl font-bold text-ink">All Direct Booking Channels</h3>
+
+            <div className="space-y-3 font-sans text-sm">
+              <a
+                href={PROPERTY_INFO.contacts.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3.5 rounded-2xl bg-whatsapp/10 border border-whatsapp/30 flex items-center justify-between hover:bg-whatsapp/15 transition-colors group active:scale-95"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-whatsapp flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <MessageCircle className="w-5 h-5 fill-white" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-ink">WhatsApp Direct</div>
+                    <div className="text-xs text-ink-muted">0922 830 5320</div>
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-whatsapp group-hover:translate-x-0.5 transition-transform" />
+              </a>
+
+              <a
+                href={PROPERTY_INFO.contacts.phone1.tel}
+                className="p-3.5 rounded-2xl bg-sand/30 border border-sand flex items-center justify-between hover:bg-sand/50 transition-colors active:scale-95"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-terra flex items-center justify-center text-white">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-ink">Call Primary (Smart)</div>
+                    <div className="text-xs text-ink-muted">{PROPERTY_INFO.contacts.phone1.display}</div>
+                  </div>
+                </div>
+                <span className="text-xs font-semibold text-terra">Call Now</span>
+              </a>
+
+              <a
+                href={PROPERTY_INFO.contacts.phone2.tel}
+                className="p-3.5 rounded-2xl bg-sand/30 border border-sand flex items-center justify-between hover:bg-sand/50 transition-colors active:scale-95"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-terra-dark flex items-center justify-center text-white">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-ink">Call Secondary (Sun/Globe)</div>
+                    <div className="text-xs text-ink-muted">{PROPERTY_INFO.contacts.phone2.display}</div>
+                  </div>
+                </div>
+                <span className="text-xs font-semibold text-terra">Call Now</span>
+              </a>
+
+              <div className="grid grid-cols-2 gap-3 pt-1">
+                <a
+                  href={PROPERTY_INFO.contacts.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-sand/30 border border-sand text-center hover:bg-sand/50 transition-colors active:scale-95"
+                >
+                  <Facebook className="w-4 h-4 text-[#1877F2] mx-auto mb-1" />
+                  <span className="text-xs font-bold text-ink">Facebook</span>
+                </a>
+
+                <a
+                  href={PROPERTY_INFO.contacts.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-sand/30 border border-sand text-center hover:bg-sand/50 transition-colors active:scale-95"
+                >
+                  <Instagram className="w-4 h-4 text-[#E4405F] mx-auto mb-1" />
+                  <span className="text-xs font-bold text-ink">Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* House Rules & Policies Summary from §5 */}
+          <div className="bg-sand/30 p-6 sm:p-8 rounded-3xl border border-sand-dark/40 space-y-4 font-sans text-xs sm:text-sm">
+            <h4 className="font-serif text-lg font-bold text-ink flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-forest" />
+              <span>House Rules & Key Policies</span>
+            </h4>
+
+            <ul className="space-y-2.5 text-ink-muted">
+              <li className="flex items-start gap-2">
+                <span className="font-bold text-terra">•</span>
+                <span><strong>Strictly Pet-Free Property:</strong> No pets allowed to ensure pristine cleanliness for all guests.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold text-terra">•</span>
+                <span><strong>Check-in / Check-out:</strong> Check-in after 3:00 PM; checkout before 12:00 PM (Noon).</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold text-terra">•</span>
+                <span><strong>Food & Cooking:</strong> Guests are welcome to bring food, groceries, and celebration cakes (No corkage fees).</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold text-terra">•</span>
+                <span><strong>Registered Guests:</strong> Sleeping spaces are strictly for declared guests up to 40 max.</span>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Pre-Arrival Packing Checklist with Progress Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+        className="bg-white border border-sand rounded-3xl p-6 sm:p-10 shadow-warm-md space-y-6"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sand pb-4">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
+              <Luggage className="w-3.5 h-3.5 text-terra" />
+              <span>Interactive Guest Helper</span>
+            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
+              Pre-Arrival Packing Checklist
+            </h2>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="space-y-1 sm:text-right">
+            <div className="text-xs font-bold text-terra-dark">
+              {packedCount} of {checklist.length} Packed ({progressPercent}%)
+            </div>
+            <div className="w-44 h-2 bg-sand rounded-full overflow-hidden">
+              <div
+                style={{ width: `${progressPercent}%` }}
+                className="h-full bg-forest transition-all duration-300 rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <p className="text-xs sm:text-sm text-ink-muted font-sans">
+          The resort provides all major appliances, kitchenware, and entertainment facilities. Tap items as you pack them:
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 font-sans text-xs sm:text-sm">
+          {checklist.map((item, index) => (
+            <button
+              key={item.label}
+              onClick={() => toggleChecklist(index)}
+              className={`p-3.5 rounded-xl border text-left flex items-start gap-3 transition-all active:scale-95 ${
+                item.checked
+                  ? 'bg-forest/10 border-forest/30 text-forest'
+                  : 'bg-cream/40 border-sand text-ink hover:bg-cream'
+              }`}
+            >
+              <div className="shrink-0 mt-0.5">
+                {item.checked ? (
+                  <CheckSquare className="w-4 h-4 text-forest" />
+                ) : (
+                  <Square className="w-4 h-4 text-ink-muted" />
+                )}
+              </div>
+              <span className={item.checked ? 'line-through opacity-80' : ''}>
+                {item.label}
+              </span>
+            </button>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Floating Sticky Booking Quick-Action Pill */}
+      <StickyBookingBar />
+    </div>
+  )
+}

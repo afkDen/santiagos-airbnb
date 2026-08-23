@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FAF6F0;
+  --bg-secondary: #F3ECE2;
+  --bg-card: #FFFFFF;
+  --bg-dark: #1C130D;
+  --bg-dark-surface: #2A1E16;
+
+  --brand-primary: #C26E38;
+  --brand-primary-hover: #A55727;
+  --brand-gold: #D4AF37;
+  --brand-gold-glow: #F3DC7B;
+  --brand-olive: #4A5D3B;
+
+  --text-primary: #1C130D;
+  --text-muted: #6B5D52;
+  --text-light: #FAF6F0;
+
+  --border-subtle: #E8DEC8;
+  --border-strong: #D5C7B0;
+  
+  --whatsapp: #25D366;
+}
+
+@layer base {
+  html {
+    scrollbar-color: #C26E38 #FAF6F0;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-jakarta), system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: #C26E38;
+    color: #FAF6F0;
+  }
+
+  * {
+    caret-color: #C26E38;
+  }
+
+  :focus-visible {
+    outline: 2px solid #C26E38;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom Themed WebKit Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5C7B0;
+  border-radius: 9999px;
+  border: 2px solid #FAF6F0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C26E38;
+}
+
+/* Tabular Numerals for Pricing and Sliders */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Emil Kowalski tactile active feedback */
+button:active, a:active {
+  transform: scale(0.97);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
