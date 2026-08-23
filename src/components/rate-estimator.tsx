@@ -36,15 +36,15 @@ export function RateEstimator() {
   })
 
   return (
-    <div className="bg-white border-2 border-terra/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-warm-lg space-y-8">
+    <div className="bg-white border-2 border-terra/30 rounded-3xl p-5 sm:p-10 lg:p-12 shadow-warm-lg space-y-6 sm:space-y-8">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sand pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-sand pb-4 sm:pb-5">
         <div className="space-y-1">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider">
             <Coins className="w-3.5 h-3.5 text-terra" />
             <span>Direct Booking Rate Engine</span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
+          <h3 className="font-serif text-xl sm:text-3xl lg:text-4xl font-bold text-ink">
             Interactive Stay Cost Estimator
           </h3>
         </div>

@@ -17,18 +17,18 @@ export function DirectionsStepper() {
   const [activeStep, setActiveStep] = useState<number>(1)
 
   return (
-    <div className="bg-white border border-sand rounded-3xl p-6 sm:p-10 shadow-warm-md space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sand pb-4">
+    <div className="bg-white border border-sand rounded-3xl p-5 sm:p-10 shadow-warm-md space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-sand pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider mb-1">
             <Compass className="w-3.5 h-3.5 text-terra" />
             <span>Interactive Driving Stepper • ~15 Minutes</span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink mt-1">
+          <h3 className="font-serif text-xl sm:text-3xl font-bold text-ink mt-0.5">
             Twin Lakes Tagaytay to Santiagos Resort Gate
           </h3>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <a
             href={PROPERTY_INFO.contacts.waze}
             target="_blank"

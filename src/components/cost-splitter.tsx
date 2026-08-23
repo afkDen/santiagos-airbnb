@@ -38,11 +38,11 @@ export function CostSplitter() {
         </div>
 
         {/* Weekday / Weekend Toggle with Spring layoutId */}
-        <div className="flex items-center bg-cream rounded-full p-1 border border-sand shadow-inner self-start sm:self-auto">
+        <div className="flex items-center bg-cream rounded-full p-1 border border-sand shadow-inner w-full sm:w-auto justify-between sm:justify-start">
           <button
             type="button"
             onClick={() => setIsWeekend(false)}
-            className={`relative isolate overflow-hidden px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95 ${
+            className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95 flex-1 sm:flex-initial text-center ${
               !isWeekend ? 'text-white' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -53,12 +53,12 @@ export function CostSplitter() {
                 transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
               />
             )}
-            <span className="relative z-10">Weekday (Mon–Thu)</span>
+            <span className="relative z-10">Weekday</span>
           </button>
           <button
             type="button"
             onClick={() => setIsWeekend(true)}
-            className={`relative isolate overflow-hidden px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95 ${
+            className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95 flex-1 sm:flex-initial text-center ${
               isWeekend ? 'text-white' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -69,7 +69,7 @@ export function CostSplitter() {
                 transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
               />
             )}
-            <span className="relative z-10">Weekend (Fri–Sun)</span>
+            <span className="relative z-10">Weekend</span>
           </button>
         </div>
       </div>
