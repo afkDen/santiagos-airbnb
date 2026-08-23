@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { FAQ_ITEMS } from '@/content/faq'
 import { PROPERTY_INFO } from '@/content/property'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import {
   HelpCircle,
   ChevronDown,
@@ -164,9 +163,6 @@ export default function FAQPage() {
           </a>
         </div>
       </motion.div>
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

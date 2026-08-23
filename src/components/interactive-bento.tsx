@@ -44,7 +44,7 @@ export function InteractiveBento() {
       image: getLocalImageUrl('din1'), // 379.2 KB High-Res Dining Setup
       icon: UtensilsCrossed,
       href: '/amenities',
-      className: 'lg:col-span-8 min-h-[440px] sm:min-h-[480px] lg:min-h-[540px]',
+      className: 'lg:col-span-8 min-h-[340px] sm:min-h-[480px] lg:min-h-[540px]',
       features: [
         '10 comfortable rattan dining armchairs',
         'Heavy-duty gas cooktops & cookware included',
@@ -61,7 +61,7 @@ export function InteractiveBento() {
       image: getLocalImageUrl('kara1'), // 421.6 KB High-Res
       icon: Mic,
       href: '/amenities',
-      className: 'lg:col-span-4 min-h-[320px] sm:min-h-[360px] lg:min-h-[260px]',
+      className: 'lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[260px]',
       features: [
         'Updated digital songbook (OPM & Global Hits)',
         '2 professional wireless microphones',
@@ -78,7 +78,7 @@ export function InteractiveBento() {
       image: getLocalImageUrl('pool1'), // 408.6 KB High-Res
       icon: Waves,
       href: '/amenities',
-      className: 'lg:col-span-4 min-h-[320px] sm:min-h-[360px] lg:min-h-[260px]',
+      className: 'lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[260px]',
       features: [
         'Depth: 4ft to 5.5ft gradual slope',
         'Ambient underwater LED night illumination',

@@ -88,9 +88,9 @@ export function AmenitiesCatalog() {
       : AMENITIES_CATALOG.filter((item) => item.category === selectedCategory)
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8 sm:space-y-10">
       {/* Category Pills with Seamless Spring layoutId */}
-      <div className="flex items-center justify-center flex-wrap gap-2">
+      <div className="flex items-center overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 sm:justify-center sm:flex-wrap gap-1.5 sm:gap-2 -mx-4 px-4 sm:mx-0 sm:px-0">
         {categories.map((cat) => {
           const count =
             cat === 'All'
@@ -103,7 +103,7 @@ export function AmenitiesCatalog() {
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`relative isolate overflow-hidden px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'
@@ -129,7 +129,7 @@ export function AmenitiesCatalog() {
         })}
       </div>
 
-      {/* Grid of All 22+ Amenities with Generous Photo Dimensions */}
+      {/* Grid of All 22+ Amenities */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedCategory}
@@ -137,7 +137,7 @@ export function AmenitiesCatalog() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {filteredAmenities.map((item, idx) => (
             <motion.div
@@ -155,13 +155,13 @@ export function AmenitiesCatalog() {
               {item.imageKey && (
                 <div
                   onClick={() => setLightboxAmenity(item)}
-                  className="relative h-52 sm:h-56 w-full bg-sand/20 overflow-hidden cursor-pointer"
+                  className="relative h-44 sm:h-56 w-full bg-sand/20 overflow-hidden cursor-pointer"
                 >
                   <Image
                     src={getLocalImageUrl(item.imageKey)}
                     alt={item.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3.5">

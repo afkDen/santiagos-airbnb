@@ -29,7 +29,7 @@ export function EstateZoneExplorer() {
   const zones = [
     {
       id: 'pool',
-      name: 'The Pool Deck & Waterfalls',
+      name: 'Pool Deck & Waterfall',
       tagline: '100% Private Swimming & Mountain Sun',
       icon: Waves,
       capacity: 'All 40 Guests',
@@ -48,7 +48,7 @@ export function EstateZoneExplorer() {
     },
     {
       id: 'entertainment',
-      name: 'Entertainment & Gaming Hub',
+      name: 'Gaming & Videoke Hub',
       tagline: 'Soundproofed Videoke, Billiards & Arcades',
       icon: Mic,
       capacity: 'Multi-Activity Space',
@@ -58,65 +58,64 @@ export function EstateZoneExplorer() {
         'A dedicated acoustic entertainment wing. Features a soundproofed videoke lounge with music poster walls, full-size Kangaroo pool table set against authentic exposed brick, and classic retro arcade cabinets with multiplayer tournament titles.',
       features: [
         'Soundproofed air-conditioned videoke room with zero curfew',
-        'Kangaroo billiards table with cues, balls & racks provided',
-        'Authentic retro arcade multi-game machines',
-        'High-power sound system and comfortable sectional seating',
+        'Full-size Kangaroo billiard table with premium cue sticks and chalk',
+        'Multiplayer retro arcade machines with hundreds of classic games',
+        'No tokens needed — 100% free unlimited play included in stay',
       ],
       linkHref: '/amenities',
-      linkText: 'View All Entertainment Amenities',
+      linkText: 'Explore Game & Lounge Areas',
     },
     {
       id: 'dining',
-      name: 'Banquet Dining & Chef’s Kitchen',
-      tagline: '10-Seater Banquet Table & Group Cooking',
+      name: 'Banquet Hall & Kitchen',
+      tagline: '10-Seater Glass Table, BBQ Pit & Free Corkage',
       icon: ChefHat,
-      capacity: 'Banquet & Prep Area',
-      image: getLocalImageUrl('din1'), // 379.2 KB High-Res Banquet Table
-      secondaryImage: getLocalImageUrl('kit4'), // 220.8 KB Kitchen Overview
+      capacity: 'Full Self-Catering & Grilling',
+      image: getLocalImageUrl('din1'), // 379.2 KB
+      secondaryImage: getLocalImageUrl('kit1'), // 411.3 KB
       description:
-        'The social heart of the resort. Dine together at the 10-seater glass table with a fully equipped commercial kitchen featuring heavy-duty gas cooktops, refrigeration, and zero corkage fees on outside catering.',
+        'Designed for memorable group feasts. Features a 10-seater contemporary glass banquet table, full outdoor covered BBQ grill, commercial refrigerator, gas stove, microwave, rice cooker, and pure mineral water dispenser.',
       features: [
-        '10-seater solid glass-top dining table for group meals',
-        'Heavy-duty chef gas cooktops, prep counters & cookware included',
-        'Large-capacity refrigerator for outside food & party drinks',
-        'Zero corkage fees on outside catering, drinks & birthday cakes',
+        '₱0 Corkage on all food, drinks, liquors, and celebration cakes',
+        'Heavy-duty outdoor charcoal BBQ grill & preparation counter',
+        'Full kitchenware: pots, pans, plates, glasses, and utensils',
+        'Purified mineral water dispenser with complimentary refill jugs',
       ],
       linkHref: '/amenities',
-      linkText: 'View Kitchen & Dining Specs',
+      linkText: 'Explore Dining & Cooking Setup',
     },
     {
-      id: 'accommodations',
-      name: 'Sleeping Quarters & 8 Bathrooms',
-      tagline: '4 Private Zones • 20 Beds • Zero Queues',
+      id: 'suites',
+      name: '4 Bedroom Zones',
+      tagline: '20 Beds (2 VIP + 9 Bunks + Quarters)',
       icon: Bed,
-      capacity: '40 Sleeping Capacity',
+      capacity: 'Sleeps 40 Guests Comfortably',
       image: getLocalImageUrl('bed7'), // 554.5 KB High-Res VIP Suite
-      secondaryImage: getLocalImageUrl('bat1'), // 429.9 KB Modern Rain Shower
+      secondaryImage: getLocalImageUrl('bed2'), // 411.3 KB Bunk Pods
       description:
         'Engineered to eliminate the usual group travel frustrations. 4 distinct air-conditioned bedroom zones (2 VIP master suites + 9 sturdy double-deck bunks + driver quarters) paired with 8 full bathrooms so morning routines flow effortlessly.',
       features: [
-        '8 Full Bathrooms distributed strategically — Zero Queue Guarantee',
         '2 VIP Master Suites with private ensuite rainfall bathrooms',
-        '9 heavy-duty double-deck bunk beds with comfortable spring mattresses',
-        'Dedicated ground-level sleeping quarters for drivers & staff',
+        '9 heavy-duty bunk pods equipped with charging sockets and reading lights',
+        'Dedicated air-conditioned driver & staff quarters',
+        '8 full bathrooms throughout — zero waiting lines for large groups',
       ],
       linkHref: '/rooms',
-      linkText: 'Explore 4 Room Zones & Bathrooms',
+      linkText: 'View All 8 Bedrooms & Bathrooms',
     },
     {
       id: 'outdoor',
-      name: 'Outdoor Grounds & Bonfire Pit',
-      tagline: 'Fireside Gathering, Basketball & Parking',
+      name: 'Bonfire & Basketball',
+      tagline: 'Under-the-Stars Hearth & Half-Court',
       icon: Flame,
-      capacity: 'Outdoor Recreation',
-      image: getLocalImageUrl('fir1'), // 386.1 KB
-      secondaryImage: getLocalImageUrl('bbl1'), // 307.8 KB
+      capacity: 'Evening Gatherings',
+      image: getLocalImageUrl('fir1'), // 243.6 KB
+      secondaryImage: getLocalImageUrl('ext4'), // 436.2 KB
       description:
-        'Expansive highland outdoor spaces. Gather around the sunken circular fire pit for marshmallow roasting and acoustic jamming in the crisp 18°C evening air, play pickup basketball on the half-court, and park up to 3+ large vans inside the secure gate.',
+        'A dedicated stone fire pit ringed by wooden benches for evening marshmallow roasting and guitar sessions under the cool Alfonso stars, alongside a gated basketball half-court and secure parking for 3+ family vans.',
       features: [
-        'Sunken outdoor bonfire pit circle under the open highland sky',
-        'Regulation basketball half-court with balls provided',
-        'Covered al fresco verandas on ground and second floors',
+        'Stone fire pit with firewood setup available on request',
+        'Outdoor half-court basketball ring with balls provided',
         'Gated secure parking accommodating 3+ large family vans/SUVs',
       ],
       linkHref: '/amenities',
@@ -127,15 +126,15 @@ export function EstateZoneExplorer() {
   const current = zones[activeZone]
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-sand pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-sand pb-4 sm:pb-6">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider mb-0.5">
             <Compass className="w-3.5 h-3.5 text-terra" />
             <span>Architectural Layout Navigator</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-ink">
             Explore the 5 Compound Zones
           </h2>
           <p className="text-xs sm:text-sm text-ink-muted font-sans">
@@ -148,8 +147,8 @@ export function EstateZoneExplorer() {
         </div>
       </div>
 
-      {/* Zone Selector Pills with Zero Border Clash */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+      {/* Zone Selector Chips (Scrollable Snap on Mobile) */}
+      <div className="flex overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0">
         {zones.map((zone, idx) => {
           const Icon = zone.icon
           const isActive = activeZone === idx
@@ -159,7 +158,7 @@ export function EstateZoneExplorer() {
               key={zone.id}
               type="button"
               onClick={() => setActiveZone(idx)}
-              className={`relative isolate overflow-hidden p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-3 ${
+              className={`relative isolate overflow-hidden p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-2.5 min-w-[145px] sm:min-w-0 shrink-0 ${
                 isActive
                   ? 'text-cream shadow-warm-md scale-[1.02] border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/30 hover:border-sand-dark'
@@ -174,14 +173,14 @@ export function EstateZoneExplorer() {
               )}
               <div className="relative z-10 flex items-center justify-between w-full">
                 <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center ${
                     isActive ? 'bg-terra text-white' : 'bg-sand/50 text-terra-dark'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
                 </div>
                 <span
-                  className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                  className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
                     isActive ? 'bg-white/20 text-gold-light' : 'bg-sand/60 text-ink-muted'
                   }`}
                 >
@@ -189,8 +188,8 @@ export function EstateZoneExplorer() {
                 </span>
               </div>
               <div className="relative z-10">
-                <div className="text-xs sm:text-sm font-bold leading-tight">{zone.name}</div>
-                <div className={`text-[11px] mt-0.5 ${isActive ? 'text-sand-light/80' : 'text-ink-muted'}`}>
+                <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1 sm:line-clamp-2">{zone.name}</div>
+                <div className={`text-[10px] sm:text-[11px] mt-0.5 line-clamp-1 ${isActive ? 'text-sand-light/80' : 'text-ink-muted'}`}>
                   {zone.capacity}
                 </div>
               </div>
@@ -207,13 +206,13 @@ export function EstateZoneExplorer() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-          className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-sand shadow-warm-lg grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+          className="bg-white rounded-3xl p-5 sm:p-10 lg:p-12 border border-sand shadow-warm-lg grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
         >
           {/* Dual Photo Viewport */}
-          <div className="lg:col-span-6 space-y-3.5">
+          <div className="lg:col-span-6 space-y-3">
             <div
               onClick={() => setLightboxImage(current.image)}
-              className="relative h-72 sm:h-84 md:h-96 rounded-2xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
+              className="relative h-56 sm:h-84 md:h-96 rounded-2xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
             >
               <Image
                 src={current.image}
@@ -222,84 +221,83 @@ export function EstateZoneExplorer() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute top-3.5 left-3.5 px-3.5 py-1.5 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-xs font-bold shadow-sm">
+              <div className="absolute top-3 left-3 px-3 py-1 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-[11px] sm:text-xs font-bold shadow-sm">
                 {current.tagline}
               </div>
-              <div className="absolute bottom-3.5 right-3.5 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-4 h-4 text-gold-light" />
               </div>
             </div>
 
-            {/* Generous Secondary Photo Strip */}
+            {/* Secondary Photo Thumbnail */}
             <div
               onClick={() => setLightboxImage(current.secondaryImage)}
-              className="relative h-36 sm:h-40 rounded-2xl overflow-hidden shadow-xs border border-sand bg-sand/20 cursor-pointer group"
+              className="relative h-24 sm:h-32 rounded-xl overflow-hidden shadow-sm border border-sand bg-sand/20 cursor-pointer group flex items-center justify-between p-3"
             >
               <Image
                 src={current.secondaryImage}
                 alt={`${current.name} Secondary Angle`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-ink/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="text-xs font-bold text-cream px-3.5 py-1.5 bg-ink/70 rounded-full backdrop-blur-md flex items-center gap-1.5">
-                  <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
-                  <span>Click to enlarge angle</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/40 to-transparent flex items-center p-3 sm:p-4">
+                <span className="text-cream text-xs font-semibold">
+                  Tap to view secondary angle ↗
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Description & Feature Checklist */}
-          <div className="lg:col-span-6 space-y-5">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-terra">
-                Zone {activeZone + 1} Architecture & Flow
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink leading-tight">
+          {/* Zone Details & Highlights */}
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-terra">
+                  Zone Details
+                </span>
+                <span className="text-[11px] text-ink-muted bg-sand/40 px-2 py-0.5 rounded-full font-medium">
+                  {current.capacity}
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
                 {current.name}
               </h3>
-              <p className="text-sm sm:text-base text-ink-muted leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans pt-1">
                 {current.description}
               </p>
             </div>
 
             {/* Feature Bullets */}
-            <div className="space-y-2.5 pt-2 border-t border-sand/60">
-              {current.features.map((feat) => (
-                <div key={feat} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                  <span>{feat}</span>
-                </div>
-              ))}
+            <div className="space-y-2 border-t border-sand pt-3 sm:pt-4">
+              <span className="text-xs font-bold text-ink uppercase tracking-wider">
+                Zone Highlights:
+              </span>
+              <ul className="space-y-2 font-sans text-xs sm:text-sm text-ink-muted">
+                {current.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Action Links */}
-            <div className="pt-3 flex flex-wrap items-center gap-3">
-              <a
-                href={PROPERTY_INFO.contacts.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-all"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Inquire About {current.name.split('&')[0].trim()}</span>
-              </a>
-
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
                 href={current.linkHref}
-                className="inline-flex items-center gap-1.5 px-5 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink text-xs sm:text-sm font-semibold rounded-full active:scale-95 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-terra hover:bg-terra-dark text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-all"
               >
                 <span>{current.linkText}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-terra" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Lightbox for Zone Explorer */}
+      {/* Lightbox Modal */}
       {lightboxImage && (
         <div
           className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
@@ -310,9 +308,8 @@ export function EstateZoneExplorer() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between text-cream px-2">
-              <h4 className="text-sm sm:text-base font-semibold">{current.name} HD View</h4>
+              <h4 className="text-sm sm:text-base font-semibold">{current.name}</h4>
               <button
-                type="button"
                 onClick={() => setLightboxImage(null)}
                 className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
                 aria-label="Close Lightbox"

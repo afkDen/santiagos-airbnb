@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { GALLERY_REGISTRY, GalleryImage } from '@/content/gallery'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { MessageCircle, Play, Camera, Filter, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
 
 export default function GalleryPage() {
@@ -60,7 +59,7 @@ export default function GalleryPage() {
     activeImageIndex !== null ? filteredImages[activeImageIndex] : null
 
   return (
-    <div className="py-12 md:py-16 space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-12 md:py-16 space-y-10 sm:space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -73,17 +72,17 @@ export default function GalleryPage() {
           <span>Real Unfiltered Photography • 59 High-Res Photos</span>
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
           Visual Tour of <span className="text-terra">Santiagos Resort</span>
         </h1>
 
-        <p className="text-base sm:text-lg text-ink-muted leading-relaxed font-sans">
+        <p className="text-xs sm:text-lg text-ink-muted leading-relaxed font-sans">
           Browse all authentic photographs of the container architecture, pool deck, private suites, game areas, and outdoor gathering spaces.
         </p>
       </motion.div>
 
       {/* Interactive Category Filter Tabs with Morphing Spring Pill */}
-      <div className="flex items-center justify-center flex-wrap gap-2 pt-2">
+      <div className="flex items-center justify-start sm:justify-center overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 gap-1.5 sm:gap-2 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0">
         {filterCategories.map((cat) => {
           const count =
             cat === 'All'
@@ -98,7 +97,7 @@ export default function GalleryPage() {
                 setSelectedCategory(cat)
                 setActiveImageIndex(null)
               }}
-              className={`relative isolate overflow-hidden px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'
@@ -124,7 +123,7 @@ export default function GalleryPage() {
         })}
       </div>
 
-      {/* Photo Grid with Staggered Fade Entrance */}
+      {/* Photo Grid with Balanced 2-Column Mobile Layout */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedCategory}
@@ -132,7 +131,7 @@ export default function GalleryPage() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"
         >
           {filteredImages.map((img, idx) => (
             <div
@@ -141,25 +140,25 @@ export default function GalleryPage() {
               className="bg-white rounded-2xl overflow-hidden border border-sand/80 shadow-warm-sm hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group flex flex-col justify-between"
             >
               {/* Photo Viewport */}
-              <div className="relative h-56 sm:h-64 w-full bg-sand/20 overflow-hidden">
+              <div className="relative h-36 sm:h-64 w-full bg-sand/20 overflow-hidden">
                 <Image
                   src={img.url}
                   alt={img.label}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-                <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-ink/75 backdrop-blur-md text-gold-light text-[10px] font-bold">
+                <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-ink/75 backdrop-blur-md text-gold-light text-[9px] sm:text-[10px] font-bold">
                   {img.category}
                 </div>
-                <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-4 h-4 text-gold-light" />
+                <div className="absolute bottom-2 right-2 p-1.5 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
                 </div>
               </div>
 
               {/* Caption */}
-              <div className="p-3.5 border-t border-sand/30">
-                <h4 className="font-serif text-xs sm:text-sm font-bold text-ink leading-snug">
+              <div className="p-2.5 sm:p-3.5 border-t border-sand/30">
+                <h4 className="font-serif text-[11px] sm:text-sm font-bold text-ink leading-snug line-clamp-2">
                   {img.label}
                 </h4>
               </div>
@@ -168,15 +167,15 @@ export default function GalleryPage() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Video Tour Section Embed from §16 */}
+      {/* Video Tour Section Embed */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-6 sm:p-10 space-y-6"
+        className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-5 sm:p-10 space-y-4 sm:space-y-6"
       >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sand pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand pb-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
               <Play className="w-3.5 h-3.5 fill-terra text-terra" />
@@ -196,7 +195,7 @@ export default function GalleryPage() {
           </a>
         </div>
 
-        <div className="relative h-80 sm:h-96 md:h-[460px] rounded-2xl overflow-hidden bg-black shadow-inner">
+        <div className="relative h-64 sm:h-96 md:h-[460px] rounded-2xl overflow-hidden bg-black shadow-inner">
           <iframe
             src="https://drive.google.com/file/d/1f1u_JuPgRRNEjmTNMZfvg9KpugSRYgEO/preview"
             title="Santiagos Private Resort Official Video Tour"
@@ -275,9 +274,6 @@ export default function GalleryPage() {
           </div>
         </div>
       )}
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

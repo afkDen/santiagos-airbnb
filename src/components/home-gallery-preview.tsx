@@ -109,7 +109,7 @@ export function HomeGalleryPreview() {
           <div
             key={img.key}
             onClick={() => setActiveImageIndex(index)}
-            className="group relative h-64 sm:h-72 lg:h-80 rounded-3xl overflow-hidden shadow-warm-sm border border-sand bg-sand/20 cursor-pointer hover:shadow-warm-xl hover:-translate-y-1.5 transition-all duration-300"
+            className="group relative h-44 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-sm border border-sand bg-sand/20 cursor-pointer hover:shadow-warm-xl hover:-translate-y-1.5 transition-all duration-300"
           >
             <Image
               src={img.url}

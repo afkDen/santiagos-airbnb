@@ -6,7 +6,6 @@ import { AmenityMarquee } from '@/components/amenity-marquee'
 import { AmenitiesSpotlight } from '@/components/amenities-spotlight'
 import { AmenitiesCatalog } from '@/components/amenities-catalog'
 import { AmenitiesChecklist } from '@/components/amenities-checklist'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { PROPERTY_INFO } from '@/content/property'
 import { ShieldCheck, MessageCircle, ArrowRight, Sparkles, UtensilsCrossed } from 'lucide-react'
 
@@ -151,9 +150,6 @@ export default function AmenitiesPage() {
           </div>
         </motion.div>
       </div>
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

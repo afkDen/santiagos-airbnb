@@ -10,7 +10,6 @@ import { OccasionSwitcher } from '@/components/occasion-switcher'
 import { CostSplitter } from '@/components/cost-splitter'
 import { HomeGalleryPreview } from '@/components/home-gallery-preview'
 import { HomeFAQ } from '@/components/home-faq'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { PROPERTY_INFO } from '@/content/property'
 import { AMENITIES_CATALOG } from '@/content/amenities'
 import { TESTIMONIALS } from '@/content/reviews'
@@ -351,9 +350,6 @@ export default function HomePage() {
           </div>
         </div>
       </motion.section>
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

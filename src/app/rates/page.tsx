@@ -3,7 +3,6 @@
 import { motion } from 'motion/react'
 import { PRICING_TIERS, PRICING_RULES } from '@/content/pricing'
 import { RateEstimator } from '@/components/rate-estimator'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { MANDATORY_PRICE_DISCLAIMER } from '@/lib/calculate-rate'
 import {
   Coins,
@@ -209,9 +208,6 @@ export default function RatesPage() {
           ))}
         </div>
       </motion.div>
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

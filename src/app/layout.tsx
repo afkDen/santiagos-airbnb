@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display, Plus_Jakarta_Sans, Great_Vibes, Outfit } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/navbar'
-import { StickyContactBar } from '@/components/sticky-contact-bar'
+import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { Footer } from '@/components/footer'
 import { SmoothScrollProvider } from '@/lib/smooth-scroll'
 import { LodgingStructuredData } from '@/components/structured-data'
@@ -78,12 +78,12 @@ export default function RootLayout({
       <head>
         <LodgingStructuredData />
       </head>
-      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col selection:bg-terra/20 selection:text-terra-dark">
+      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col selection:bg-terra/20 selection:text-terra-dark pb-24 md:pb-0">
         <SmoothScrollProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
-          <StickyContactBar />
+          <StickyBookingBar />
         </SmoothScrollProvider>
       </body>
     </html>

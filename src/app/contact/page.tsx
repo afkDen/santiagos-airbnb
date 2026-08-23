@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import { PROPERTY_INFO } from '@/content/property'
-import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { buildWhatsAppLink } from '@/lib/whatsapp-link'
 import {
   MessageCircle,
@@ -457,9 +456,6 @@ export default function ContactPage() {
           ))}
         </div>
       </motion.div>
-
-      {/* Floating Sticky Booking Quick-Action Pill */}
-      <StickyBookingBar />
     </div>
   )
 }

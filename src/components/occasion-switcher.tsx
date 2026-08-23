@@ -116,7 +116,7 @@ export function OccasionSwitcher() {
       </div>
 
       {/* Interactive Tabs with Spring layoutId */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
         {occasions.map((occ, idx) => {
           const Icon = occ.icon
           const isActive = activeTab === idx
@@ -126,7 +126,7 @@ export function OccasionSwitcher() {
               key={occ.id}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`relative isolate overflow-hidden p-4 rounded-2xl border text-left transition-all duration-200 active:scale-95 flex items-center gap-3.5 ${
+              className={`relative isolate overflow-hidden p-3 sm:p-4 rounded-2xl border text-left transition-all duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 ${
                 isActive
                   ? 'text-cream border-transparent shadow-warm-md scale-[1.02]'
                   : 'bg-cream/40 border-sand text-ink hover:bg-cream hover:border-terra/40'
@@ -140,15 +140,15 @@ export function OccasionSwitcher() {
                 />
               )}
               <div
-                className={`relative z-10 w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                className={`relative z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                   isActive ? 'bg-terra text-white' : 'bg-sand/60 text-terra-dark'
                 }`}
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className="relative z-10">
-                <div className="text-xs sm:text-sm font-bold leading-tight">{occ.label}</div>
-                <div className={`text-[11px] mt-0.5 ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
+                <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{occ.label}</div>
+                <div className={`text-[10px] sm:text-[11px] mt-0.5 line-clamp-1 ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
                   {occ.suggestedHeadcount}
                 </div>
               </div>
