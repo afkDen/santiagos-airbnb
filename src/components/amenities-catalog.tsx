@@ -90,7 +90,7 @@ export function AmenitiesCatalog() {
   return (
     <div className="space-y-8 sm:space-y-10">
       {/* Category Pills with Seamless Spring layoutId */}
-      <div className="flex items-center overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 sm:justify-center sm:flex-wrap gap-1.5 sm:gap-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto">
         {categories.map((cat) => {
           const count =
             cat === 'All'

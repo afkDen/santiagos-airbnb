@@ -147,8 +147,8 @@ export function EstateZoneExplorer() {
         </div>
       </div>
 
-      {/* Zone Selector Chips (Scrollable Snap on Mobile) */}
-      <div className="flex overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0">
+      {/* Zone Selector Chips */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
         {zones.map((zone, idx) => {
           const Icon = zone.icon
           const isActive = activeZone === idx
@@ -158,7 +158,9 @@ export function EstateZoneExplorer() {
               key={zone.id}
               type="button"
               onClick={() => setActiveZone(idx)}
-              className={`relative isolate overflow-hidden p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-2.5 min-w-[145px] sm:min-w-0 shrink-0 ${
+              className={`relative isolate overflow-hidden p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-2.5 ${
+                idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+              } ${
                 isActive
                   ? 'text-cream shadow-warm-md scale-[1.02] border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/30 hover:border-sand-dark'

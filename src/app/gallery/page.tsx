@@ -82,7 +82,7 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* Interactive Category Filter Tabs with Morphing Spring Pill */}
-      <div className="flex items-center justify-start sm:justify-center overflow-x-auto snap-x scrollbar-none pb-2 sm:pb-0 gap-1.5 sm:gap-2 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto pt-2">
         {filterCategories.map((cat) => {
           const count =
             cat === 'All'
