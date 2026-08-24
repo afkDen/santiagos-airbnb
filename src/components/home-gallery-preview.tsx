@@ -87,7 +87,7 @@ export function HomeGalleryPreview() {
           href="/gallery"
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-terra hover:text-terra-dark transition-colors group self-start sm:self-auto"
         >
-          <span>Explore all 59+ photos & videos</span>
+          <span>Explore all 74+ photos & videos</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

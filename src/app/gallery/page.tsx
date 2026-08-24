@@ -20,8 +20,13 @@ export default function GalleryPage() {
     'Arcade',
     'Dining',
     'Kitchen',
+    'Living',
+    'Lounge',
     'Bedroom',
     'Bathroom',
+    'Gym',
+    'Bonfire',
+    'Basketball',
     'Outdoor',
   ]
 
@@ -58,7 +63,7 @@ export default function GalleryPage() {
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
           <Camera className="w-4 h-4 text-terra" />
-          <span>Real Unfiltered Photography • 59 High-Res Photos</span>
+          <span>Real Unfiltered Photography • {GALLERY_REGISTRY.length} High-Res Photos</span>
         </div>
 
         <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
