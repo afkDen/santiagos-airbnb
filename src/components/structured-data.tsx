@@ -28,8 +28,8 @@ export function LodgingStructuredData() {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 14.128,
-      longitude: 120.849,
+      latitude: PROPERTY_INFO.geo.lat,
+      longitude: PROPERTY_INFO.geo.lng,
     },
     checkinTime: '15:00',
     checkoutTime: '12:00',
@@ -55,9 +55,9 @@ export function LodgingStructuredData() {
       worstRating: '1',
     },
     sameAs: [
-      'https://www.facebook.com/santiagos.to',
-      'https://www.instagram.com/santiagos.to',
-      'https://www.airbnb.com/rooms/1643466979772957530',
+      PROPERTY_INFO.contacts.facebook,
+      PROPERTY_INFO.contacts.instagram,
+      PROPERTY_INFO.contacts.airbnb,
     ],
   }
 

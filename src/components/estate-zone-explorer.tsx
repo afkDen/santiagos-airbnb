@@ -113,7 +113,7 @@ export function EstateZoneExplorer() {
         '8 full bathrooms throughout — zero waiting lines for large groups',
       ],
       linkHref: '/rooms',
-      linkText: 'View All 8 Bedrooms & Bathrooms',
+      linkText: 'View All Rooms & 8 Bathrooms',
     },
     {
       id: 'outdoor',

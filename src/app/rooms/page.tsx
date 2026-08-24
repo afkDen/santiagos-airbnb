@@ -308,7 +308,7 @@ export default function RoomsPage() {
               <span>Full Sleeping Configuration</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-              All 8 Bedroom Views & Pods
+              All 8 Bedroom Views & Pod Perspectives
             </h2>
           </div>
           <span className="text-xs font-bold text-ink-muted bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">
