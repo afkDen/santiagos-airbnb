@@ -57,7 +57,7 @@ export function Hero() {
 
   const currentView = heroViews[activeViewIndex]
 
-  // Snappy, lively 3.8-second auto-cycle that pauses on user hover or interaction
+  // Snappy 3.8-second auto-cycle that pauses on user hover or interaction
   useEffect(() => {
     if (isPaused) return
     const timer = setInterval(() => {
@@ -80,7 +80,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[92vh] md:min-h-[96dvh] flex flex-col justify-between overflow-hidden bg-ink text-cream">
+    <section className="relative lg:h-[calc(100dvh-72px)] lg:max-h-[calc(100dvh-72px)] min-h-[auto] flex flex-col justify-between overflow-hidden bg-ink text-cream">
       {/* Background Photography with Fast, Fluid Hardware-Accelerated AnimatePresence Motion */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence initial={false} mode="sync">
@@ -108,18 +108,18 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/40 pointer-events-none" />
       </div>
 
-      {/* Main Hero Content (2-Column Desktop + Balanced Mobile Stack) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 md:pt-14 pb-4 sm:pb-6 flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      {/* Main Hero Content (Auto-Proportioned for Complete Viewport Fit) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-4 xl:pt-6 pb-2 lg:pb-3 flex-1 flex flex-col justify-center min-h-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
           {/* Left Column: Editorial Headline & Action CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-            className="lg:col-span-7 space-y-5 sm:space-y-6"
+            className="lg:col-span-7 space-y-3.5 sm:space-y-4 xl:space-y-5"
           >
             {/* Live Estate Status Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cream/10 backdrop-blur-md border border-white/15 text-gold-light text-xs font-bold tracking-wide shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/10 backdrop-blur-md border border-white/15 text-gold-light text-[11px] sm:text-xs font-bold tracking-wide shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-forest"></span>
@@ -131,26 +131,26 @@ export function Hero() {
             </div>
 
             {/* Display Headline */}
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-cream leading-[1.1] drop-shadow-md">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold tracking-tight text-cream leading-[1.08] drop-shadow-md">
               The Whole-Property <br className="hidden sm:inline" />
               <span className="text-gold-light italic">Container Resort</span> Built for 40.
             </h1>
 
             {/* Value Subtext */}
-            <p className="text-sm sm:text-base lg:text-lg text-sand-light/90 leading-relaxed font-sans max-w-2xl font-normal">
+            <p className="text-xs sm:text-sm lg:text-sm xl:text-base text-sand-light/90 leading-relaxed font-sans max-w-xl font-normal">
               Private pool, 8 full bathrooms, air-conditioned videoke lounge, Kangaroo billiards, retro arcades, and full chef&apos;s kitchen. Exclusive compound privacy with zero strangers.
             </p>
 
             {/* Action CTAs with Tactile Spring Physics */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="pt-1 sm:pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <a
                 href={PROPERTY_INFO.contacts.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-lg hover:shadow-xl transition-all duration-200 active:scale-95 group relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-lg hover:shadow-xl transition-all duration-200 active:scale-95 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
+                <MessageCircle className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-white group-hover:scale-110 transition-transform" />
                 <span>Inquire Dates on WhatsApp</span>
               </a>
 
@@ -158,7 +158,7 @@ export function Hero() {
 
               <Link
                 href="/gallery"
-                className="hidden xl:inline-flex items-center justify-center gap-2 px-5 py-4 bg-cream/10 hover:bg-cream/20 border border-white/15 text-cream font-medium text-sm rounded-full backdrop-blur-sm transition-all duration-200 active:scale-95"
+                className="hidden xl:inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 bg-cream/10 hover:bg-cream/20 border border-white/15 text-cream font-medium text-xs sm:text-sm rounded-full backdrop-blur-sm transition-all duration-200 active:scale-95"
               >
                 <Camera className="w-4 h-4 text-gold-light" />
                 <span>59+ Real Photos</span>
@@ -168,16 +168,16 @@ export function Hero() {
 
           {/* Right Column: Spatial 2x2 Perspective Deck (Snappy Auto-Cycle + 3D Tilt) */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="lg:col-span-5 bg-ink/75 backdrop-blur-2xl border border-sand/30 rounded-3xl p-4 sm:p-5 space-y-3 shadow-2xl"
+            className="lg:col-span-5 bg-ink/75 backdrop-blur-2xl border border-sand/30 rounded-2xl sm:rounded-3xl p-3 sm:p-4 space-y-2 sm:space-y-2.5 shadow-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between text-xs text-sand-light px-1">
-              <span className="font-bold uppercase tracking-wider text-gold-light text-[11px] flex items-center gap-1.5">
+              <span className="font-bold uppercase tracking-wider text-gold-light text-[10px] sm:text-[11px] flex items-center gap-1.5">
                 <Compass className="w-3.5 h-3.5 text-gold-light" />
                 <span>Multi-Angle Estate Views</span>
               </span>
@@ -187,7 +187,7 @@ export function Hero() {
             </div>
 
             {/* 2x2 Spatial Glass Tiles Grid */}
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
               {heroViews.map((view, idx) => {
                 const isActive = activeViewIndex === idx
                 const isHovered = activeTilt?.index === idx
@@ -218,9 +218,9 @@ export function Hero() {
                       setIsPaused(true)
                     }}
                     style={tiltStyle}
-                    className={`group relative h-28 sm:h-32 rounded-2xl overflow-hidden border text-left transition-all duration-200 active:scale-95 flex flex-col justify-end p-3 ${
+                    className={`group relative h-20 sm:h-24 lg:h-24 xl:h-28 2xl:h-30 rounded-xl sm:rounded-2xl overflow-hidden border text-left transition-all duration-200 active:scale-95 flex flex-col justify-end p-2 sm:p-2.5 ${
                       isActive
-                        ? 'border-gold shadow-[0_0_20px_rgba(212,175,55,0.4)] ring-1 ring-gold scale-[1.02]'
+                        ? 'border-gold shadow-[0_0_18px_rgba(212,175,55,0.4)] ring-1 ring-gold scale-[1.02]'
                         : 'border-sand/25 opacity-75 hover:opacity-100 hover:border-sand/60'
                     }`}
                   >
@@ -245,14 +245,14 @@ export function Hero() {
                       >
                         {view.label}
                       </div>
-                      <div className="text-[10px] text-sand-light/85 truncate font-sans">
+                      <div className="text-[9px] sm:text-[10px] text-sand-light/85 truncate font-sans">
                         {view.badge}
                       </div>
                     </div>
 
                     {/* Active Snappy Progress Timer Line */}
                     {isActive && !isPaused && (
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden z-20">
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-white/20 overflow-hidden z-20">
                         <motion.div
                           key={`progress-${activeViewIndex}`}
                           initial={{ width: '0%' }}
@@ -268,7 +268,7 @@ export function Hero() {
             </div>
 
             {/* Current Viewing Caption */}
-            <div className="px-1 text-[11px] text-sand-light/80 font-sans flex items-center justify-between pt-0.5">
+            <div className="px-1 text-[10px] sm:text-[11px] text-sand-light/80 font-sans flex items-center justify-between pt-0.5">
               <span>
                 Viewing: <strong className="text-gold-light font-semibold">{currentView.label}</strong>
               </span>
@@ -280,19 +280,19 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Ultra-Sleek Floating Frosted Glass Spec Capsule (Low-Profile, Zero Clutter) */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
+      {/* Ultra-Sleek Floating Frosted Glass Spec Capsule (100% Above-the-Fold on Desktop) */}
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-3 sm:pb-4 lg:pb-3 xl:pb-4 shrink-0">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-          className="bg-ink/75 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-full shadow-2xl p-2.5 sm:px-6 sm:py-3"
+          className="bg-ink/80 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-full shadow-2xl p-2 sm:px-6 sm:py-2.5"
         >
-          <div className="grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-2.5 lg:gap-0">
+          <div className="grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-2 lg:gap-0">
             {/* Stat 1: 40 Guests */}
-            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
-              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
-                <Users className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-1.5 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div className="min-w-0">
                 <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
@@ -308,12 +308,12 @@ export function Hero() {
             </div>
 
             {/* Hairline Divider */}
-            <div className="hidden lg:block w-px h-7 bg-white/10" />
+            <div className="hidden lg:block w-px h-6 bg-white/10" />
 
             {/* Stat 2: 8 Full Baths */}
-            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
-              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
-                <Droplets className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-1.5 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Droplets className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div className="min-w-0">
                 <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
@@ -329,12 +329,12 @@ export function Hero() {
             </div>
 
             {/* Hairline Divider */}
-            <div className="hidden lg:block w-px h-7 bg-white/10" />
+            <div className="hidden lg:block w-px h-6 bg-white/10" />
 
             {/* Stat 3: 20 Real Beds */}
-            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
-              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
-                <Bed className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-1.5 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Bed className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div className="min-w-0">
                 <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
@@ -350,12 +350,12 @@ export function Hero() {
             </div>
 
             {/* Hairline Divider */}
-            <div className="hidden lg:block w-px h-7 bg-white/10" />
+            <div className="hidden lg:block w-px h-6 bg-white/10" />
 
             {/* Stat 4: 22+ Amenities */}
-            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
-              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
-                <Gamepad2 className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-1.5 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Gamepad2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div className="min-w-0">
                 <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
