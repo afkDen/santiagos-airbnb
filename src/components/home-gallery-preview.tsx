@@ -34,10 +34,10 @@ export function HomeGalleryPreview() {
       url: getLocalImageUrl('bill2'),
     },
     {
-      key: 'bed9',
+      key: 'bed3',
       category: 'Suites',
-      label: 'VIP Master Bedroom Suite Detailed View',
-      url: getLocalImageUrl('bed9'),
+      label: 'VIP Master Bedroom Suite with Queen Bed',
+      url: getLocalImageUrl('bed3'),
     },
     {
       key: 'arc4',
@@ -87,7 +87,7 @@ export function HomeGalleryPreview() {
           href="/gallery"
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-terra hover:text-terra-dark transition-colors group self-start sm:self-auto"
         >
-          <span>Explore all 71+ photos & videos</span>
+          <span>Explore all 70+ photos & video</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
@@ -140,7 +140,7 @@ export function HomeGalleryPreview() {
         onNext={handleNext}
         actionButton={
           <Link href="/gallery" className="text-gold-light hover:underline font-bold text-xs">
-            View all 59 property photos →
+            View all 70 property photos →
           </Link>
         }
       />

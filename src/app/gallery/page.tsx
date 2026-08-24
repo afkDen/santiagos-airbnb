@@ -21,7 +21,6 @@ export default function GalleryPage() {
     'Dining',
     'Kitchen',
     'Living',
-    'Lounge',
     'Bedroom',
     'Bathroom',
     'Gym',

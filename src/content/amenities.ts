@@ -170,7 +170,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     iconName: 'Car',
     description:
       'Private gated driveway inside the compound perimeter capable of securely parking multiple family vans and SUVs.',
-    imageKey: 'ext1',
+    imageKey: 'out6',
     specs: ['Perimeter fenced & gated', 'Fits 3-4 full size passenger vans / SUVs', 'Direct easy street access in Alfonso'],
   },
 
@@ -182,7 +182,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     description:
       'Large solid glass-top dining table with rattan armchairs for memorable family feasts and celebratory dinners.',
     featured: true,
-    imageKey: 'din1',
+    imageKey: 'din4',
     specs: ['10 comfortable dining armchairs', 'Centerpiece serving setup', 'Adjacent to indoor prep kitchen'],
   },
   {
@@ -200,8 +200,8 @@ export const AMENITIES_CATALOG: Amenity[] = [
     category: 'Dining & Cooking',
     iconName: 'Flame',
     description:
-      'Heavy-duty outdoor stainless steel charcoal grill for cooking inihaw na baboy, chicken barbecue, and fresh seafood.',
-    imageKey: 'out1',
+      'Heavy-duty outdoor brick and stainless steel charcoal grill for cooking inihaw na baboy, chicken barbecue, and fresh seafood.',
+    imageKey: 'out8',
     specs: ['Stainless steel heavy-duty grates', 'Separate charcoal preparation zone', 'Outdoor smoke-free ventilation'],
   },
   {

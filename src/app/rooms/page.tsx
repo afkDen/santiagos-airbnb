@@ -37,7 +37,7 @@ export default function RoomsPage() {
         'Large window overlooking the compound courtyard',
         'Hotel-grade cotton linens, pillows, and acoustic privacy',
       ],
-      image: getLocalImageUrl('bed1'), // 387.8 KB High-Res VIP Suite
+      image: getLocalImageUrl('bed3'), // 411.3 KB High-Res VIP Suite Queen Bed
       badge: 'VIP Bedroom',
     },
     {
@@ -71,7 +71,7 @@ export default function RoomsPage() {
         'Multi-unit high-capacity split air conditioners keep the room 18°C',
         '4 full bathrooms immediately adjacent to prevent morning lines',
       ],
-      image: getLocalImageUrl('bed2'), // 411.3 KB High-Res Bunk Pods
+      image: getLocalImageUrl('bed1'), // 387.8 KB High-Res Bunk Pods Hallway
       badge: '16-Bed Capacity',
     },
     {
@@ -87,23 +87,23 @@ export default function RoomsPage() {
         'Private access door near the compound driveway and parking area',
         'Direct access to ground floor guest bathroom',
       ],
-      image: getLocalImageUrl('bed8'), // 534.5 KB High-Res Quarters
+      image: getLocalImageUrl('bed8'), // 534.5 KB High-Res VIP Nightstand / Quarters
       badge: 'Staff Quarters',
     },
   ]
 
-  // Verified 10 Sleeping Perspectives Registry
+  // Verified Sleeping Perspectives Registry
   const allBedrooms = [
-    { key: 'bed1', label: 'VIP Room 1 — Queen Bed Master Suite', tag: 'VIP Suite 1' },
+    { key: 'bed3', label: 'VIP Room 1 — Queen Bed Master Suite with Ensuite Bath', tag: 'VIP Suite 1' },
     { key: 'bed7', label: 'VIP Room 2 — Second Queen Bed Master Suite', tag: 'VIP Suite 2' },
-    { key: 'bed9', label: 'VIP Master Bedroom Suite Detailed View', tag: 'VIP Suite' },
-    { key: 'bed2', label: 'Bunk Pod 1 — Air-Conditioned Bunk Beds', tag: 'Bunk Zone' },
-    { key: 'bed3', label: 'Bunk Pod 2 — Upper & Lower Mattresses', tag: 'Bunk Zone' },
-    { key: 'bed4', label: 'Bunk Pod 3 — Custom Wood Container Frames', tag: 'Bunk Zone' },
-    { key: 'bed5', label: 'Bunk Pod 4 — Fresh Hotel-Grade Linens', tag: 'Bunk Zone' },
-    { key: 'bed6', label: 'Bunk Pod 5 — High-Ceiling Group Quarters', tag: 'Bunk Zone' },
-    { key: 'gal_int1', label: '2nd Floor Quarters — Highland View Windows', tag: 'Bunk Zone' },
-    { key: 'bed8', label: 'Staff & Driver Air-Conditioned Room', tag: 'Staff Room' },
+    { key: 'bed4', label: 'VIP Suite Smart TV on Slatted Wood Accent Wall', tag: 'VIP Suite 1' },
+    { key: 'bed8', label: 'VIP Suite Bedside Nightstand & Headboard Close-Up', tag: 'VIP Suite 2' },
+    { key: 'bed1', label: 'Bunk Zone Hallway — Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
+    { key: 'bed2', label: 'Bunk Room Ante-Room — Glass Sliding Door to Gym', tag: 'Bunk Zone' },
+    { key: 'bed5', label: 'Bunk Pods — Crisp White Linens & Slatted Headboards', tag: 'Bunk Zone' },
+    { key: 'bed6', label: 'Bunk Room Entryway — 4 Built-In Bunk Pods', tag: 'Bunk Zone' },
+    { key: 'bed9', label: 'Spacious Group Bunk Room — High Capacity Pods', tag: 'Bunk Zone' },
+    { key: 'lou1', label: 'VIP Bedroom Suite — 4K Smart TV & Plush Bedding', tag: 'VIP Suite' },
   ]
 
   const bathroomDetails = [
@@ -130,11 +130,11 @@ export default function RoomsPage() {
   ]
 
   const bathroomPhotos = [
-    { key: 'bat1', label: 'Bathroom 1 — Rainfall Shower & Hot Water' },
-    { key: 'bat2', label: 'Bathroom 2 — Modern Ceramic Vanity & Clean Tiling' },
-    { key: 'bat3', label: 'Bathroom 3 — Hot Water Shower Suite' },
-    { key: 'bat8', label: 'Bathroom 4 — Modern Vanity & Glass Enclosure' },
-    { key: 'bat7', label: 'Bathroom 7 — Dedicated Outdoor Garden & Pool Access' },
+    { key: 'bat1', label: 'VIP Ensuite Rainfall Shower with Hot Water System' },
+    { key: 'bat2', label: 'Modern Ensuite Ceramic Vanity & LED Backlit Mirror' },
+    { key: 'bat3', label: 'Full Ensuite Bathroom with Glass Shower & Bidet Toilet' },
+    { key: 'bat8', label: 'Ensuite Bathroom with LED Mirror & Rainfall Shower Stall' },
+    { key: 'bat7', label: 'Common Restroom & Shower Corridor with Dedicated Stalls' },
   ]
 
   const currentZone = roomZones[selectedZone]
