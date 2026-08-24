@@ -92,13 +92,13 @@ export function HomeGalleryPreview() {
         </Link>
       </div>
 
-      {/* Grid with Generous Proportions */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      {/* Grid with Generous Proportions & Mobile-Friendly Captions */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
         {previewImages.map((img, index) => (
           <div
             key={img.key}
             onClick={() => setActiveImageIndex(index)}
-            className="group relative h-44 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-sm border border-sand bg-sand/20 cursor-pointer hover:shadow-warm-xl hover:-translate-y-1.5 transition-all duration-300"
+            className="group relative h-40 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-sm border border-sand bg-sand/20 cursor-pointer hover:shadow-warm-xl hover:-translate-y-1.5 transition-all duration-300 active:scale-[0.98]"
           >
             <Image
               src={img.url}
@@ -107,20 +107,20 @@ export function HomeGalleryPreview() {
               sizes="(max-width: 768px) 50vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            {/* Hover Icon & Label */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 flex flex-col justify-between">
-              <div className="self-end">
-                <span className="p-2.5 rounded-full bg-ink/70 text-cream backdrop-blur-md inline-flex items-center justify-center">
-                  <Maximize2 className="w-4 h-4 text-gold-light" />
-                </span>
-              </div>
-              <div>
-                <span className="text-[10px] font-bold text-gold-light uppercase tracking-wider block">
-                  {img.category}
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-cream leading-tight mt-0.5 block">
-                  {img.label}
-                </span>
+            {/* Always-Visible Subtle Mobile Gradient + Hover Desktop Info */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent p-3 sm:p-5 flex flex-col justify-end">
+              <div className="flex items-center justify-between gap-1">
+                <div>
+                  <span className="text-[9px] sm:text-[10px] font-bold text-gold-light uppercase tracking-wider block">
+                    {img.category}
+                  </span>
+                  <span className="text-[11px] sm:text-sm font-bold text-cream leading-tight mt-0.5 block line-clamp-1">
+                    {img.label}
+                  </span>
+                </div>
+                <div className="p-1.5 sm:p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md shrink-0">
+                  <Maximize2 className="w-3 h-3 sm:w-4 sm:h-4 text-gold-light" />
+                </div>
               </div>
             </div>
           </div>

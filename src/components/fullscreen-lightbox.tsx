@@ -18,6 +18,7 @@ interface FullscreenLightboxProps {
   onNext?: () => void
   actionButton?: React.ReactNode
   caption?: string
+  children?: React.ReactNode
 }
 
 export function FullscreenLightbox({
@@ -33,6 +34,7 @@ export function FullscreenLightbox({
   onNext,
   actionButton,
   caption,
+  children,
 }: FullscreenLightboxProps) {
   const [mounted, setMounted] = useState(false)
 
@@ -54,9 +56,8 @@ export function FullscreenLightbox({
     }
 
     window.addEventListener('keydown', handleKeyDown)
-
     return () => {
-      document.body.style.overflow = originalOverflow || 'unset'
+      document.body.style.overflow = originalOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen, src, onClose, onNext, onPrev])
@@ -67,16 +68,17 @@ export function FullscreenLightbox({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
+      aria-label={title || 'Enlarged Image View'}
       onClick={onClose}
+      className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 select-none animate-in fade-in duration-200"
     >
       <div
-        className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
         onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-5xl h-[92vh] max-h-[880px] bg-ink/95 border border-sand/30 rounded-3xl p-4 sm:p-6 shadow-2xl flex flex-col justify-between gap-3 text-cream overflow-hidden"
       >
-        {/* Header */}
-        <div className="flex items-center justify-between text-cream px-2 shrink-0">
-          <div className="space-y-0.5">
+        {/* Top Header */}
+        <div className="flex items-center justify-between gap-4 border-b border-sand/20 pb-3 shrink-0">
+          <div>
             {(category || (index !== undefined && total !== undefined)) && (
               <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider block">
                 {category ? category : 'HD Photo'}
@@ -143,6 +145,13 @@ export function FullscreenLightbox({
             </button>
           )}
         </div>
+
+        {/* Optional Custom Children Details */}
+        {children && (
+          <div className="shrink-0 max-h-32 overflow-y-auto no-scrollbar border-t border-sand/15 pt-2">
+            {children}
+          </div>
+        )}
 
         {/* Footer */}
         <div className="px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-sand-light/70 font-sans shrink-0 border-t border-sand/15 pt-2">

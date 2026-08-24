@@ -89,8 +89,8 @@ export function AmenitiesCatalog() {
 
   return (
     <div className="space-y-8 sm:space-y-10">
-      {/* Category Pills with Seamless Spring layoutId */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto">
+      {/* Category Pills with Seamless Spring layoutId (Horizontal Swipe on Mobile) */}
+      <div className="flex overflow-x-auto no-scrollbar justify-start sm:justify-center items-center gap-1.5 sm:gap-2 max-w-4xl -mx-4 px-4 sm:mx-auto pb-1">
         {categories.map((cat) => {
           const count =
             cat === 'All'
@@ -103,7 +103,7 @@ export function AmenitiesCatalog() {
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 min-h-[40px] text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'
@@ -118,7 +118,7 @@ export function AmenitiesCatalog() {
               )}
               <span className="relative z-10">{cat}</span>
               <span
-                className={`relative z-10 text-[10px] px-1.5 py-0.2 rounded-full ${
+                className={`relative z-10 text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums ${
                   isActive ? 'bg-white/20 text-white' : 'bg-sand/60 text-ink-muted'
                 }`}
               >

@@ -178,8 +178,8 @@ export default function RoomsPage() {
           </div>
         </div>
 
-        {/* Zone Selector Buttons with Clear Mobile Layout */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
+        {/* Zone Selector Buttons with Clear Mobile Layout (Horizontal Scroll on Mobile) */}
+        <div className="flex overflow-x-auto no-scrollbar gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 pb-1">
           {roomZones.map((zone, idx) => {
             const isActive = selectedZone === idx
             return (
@@ -187,7 +187,7 @@ export default function RoomsPage() {
                 key={zone.id}
                 type="button"
                 onClick={() => setSelectedZone(idx)}
-                className={`relative isolate p-3 sm:p-4 text-left rounded-2xl sm:rounded-full transition-all duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 overflow-hidden ${
+                className={`relative isolate p-3 sm:p-4 text-left rounded-2xl transition-all duration-200 active:scale-95 flex flex-col justify-between gap-1.5 shrink-0 w-[145px] sm:w-auto overflow-hidden ${
                   isActive
                     ? 'text-cream shadow-warm-sm border border-transparent'
                     : 'bg-cream/40 border border-sand text-ink hover:bg-sand/40'
@@ -196,18 +196,18 @@ export default function RoomsPage() {
                 {isActive && (
                   <motion.div
                     layoutId="active-room-zone"
-                    className="absolute inset-0 bg-ink rounded-2xl sm:rounded-full z-0 shadow-warm-sm"
+                    className="absolute inset-0 bg-ink rounded-2xl z-0 shadow-warm-sm"
                     transition={{ type: 'spring', duration: 0.45, bounce: 0.15 }}
                   />
                 )}
                 <div className="relative z-10 space-y-0.5">
-                  <div className="text-xs sm:text-sm font-bold leading-tight">{zone.tabLabel}</div>
-                  <div className={`text-[10px] sm:hidden ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
+                  <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{zone.tabLabel}</div>
+                  <div className={`text-[10px] truncate ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
                     {zone.tabSub}
                   </div>
                 </div>
                 <span
-                  className={`relative z-10 text-[10px] px-2 py-0.5 rounded-full shrink-0 self-start sm:self-auto ${
+                  className={`relative z-10 text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full shrink-0 self-start ${
                     isActive ? 'bg-white/20 text-gold-light' : 'bg-sand/60 text-ink-muted'
                   }`}
                 >

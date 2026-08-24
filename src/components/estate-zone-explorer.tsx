@@ -159,8 +159,8 @@ export function EstateZoneExplorer() {
         </div>
       </div>
 
-      {/* Zone Selector Chips */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+      {/* Zone Selector Chips (Horizontal Scroll on Mobile, Grid on Tablet/Desktop) */}
+      <div className="flex overflow-x-auto no-scrollbar gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 pb-1">
         {zones.map((zone, idx) => {
           const Icon = zone.icon
           const isActive = activeZone === idx
@@ -170,9 +170,7 @@ export function EstateZoneExplorer() {
               key={zone.id}
               type="button"
               onClick={() => setActiveZone(idx)}
-              className={`relative isolate overflow-hidden p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-2.5 ${
-                idx === 4 ? 'col-span-2 sm:col-span-1' : ''
-              } ${
+              className={`relative isolate overflow-hidden p-3 sm:p-4 rounded-2xl text-left transition-all duration-200 active:scale-95 flex flex-col justify-between gap-2 shrink-0 w-[140px] sm:w-auto ${
                 isActive
                   ? 'text-cream shadow-warm-md scale-[1.02] border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/30 hover:border-sand-dark'
@@ -187,11 +185,11 @@ export function EstateZoneExplorer() {
               )}
               <div className="relative z-10 flex items-center justify-between w-full">
                 <div
-                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center ${
+                  className={`w-7 h-7 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center ${
                     isActive ? 'bg-terra text-white' : 'bg-sand/50 text-terra-dark'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <span
                   className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
@@ -202,8 +200,8 @@ export function EstateZoneExplorer() {
                 </span>
               </div>
               <div className="relative z-10">
-                <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1 sm:line-clamp-2">{zone.name}</div>
-                <div className={`text-[10px] sm:text-[11px] mt-0.5 line-clamp-1 ${isActive ? 'text-sand-light/80' : 'text-ink-muted'}`}>
+                <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{zone.name}</div>
+                <div className={`text-[10px] sm:text-[11px] mt-0.5 truncate ${isActive ? 'text-sand-light/80' : 'text-ink-muted'}`}>
                   {zone.capacity}
                 </div>
               </div>
