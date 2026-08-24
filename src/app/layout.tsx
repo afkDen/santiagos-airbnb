@@ -64,9 +64,13 @@ export const metadata: Metadata = {
     images: ['https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/b800534f-c860-4d16-a179-fb2c4a90a4b8.jpeg?im_w=1920'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: [
+      { url: '/icon-32.png?v=2', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-16.png?v=2', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+    ],
+    shortcut: '/favicon.ico?v=2',
+    apple: '/apple-touch-icon.png?v=2',
   },
 }
 
@@ -81,6 +85,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${plusJakarta.variable} ${greatVibes.variable} ${outfit.variable}`}
     >
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=2" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png?v=2" />
+        <link rel="shortcut icon" href="/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
         <LodgingStructuredData />
       </head>
       <body className="min-h-screen bg-cream text-ink antialiased flex flex-col selection:bg-terra/20 selection:text-terra-dark pb-24 md:pb-0">
