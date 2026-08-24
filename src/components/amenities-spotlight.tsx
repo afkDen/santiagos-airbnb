@@ -100,14 +100,14 @@ export function AmenitiesSpotlight() {
         </p>
       </div>
 
-      {/* 4 Spotlights Grid (Horizontal Snap Carousel on Mobile, 2-Col Grid on Desktop) */}
-      <div className="flex md:grid md:grid-cols-2 gap-4 sm:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 items-stretch">
+      {/* 4 Spotlights Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {spotlights.map((spot) => {
           const Icon = spot.icon
           return (
             <div
               key={spot.title}
-              className="w-[86vw] max-w-[360px] md:w-auto shrink-0 snap-center md:snap-none bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col group"
             >
               {/* Photo Viewport with Zoom Lightbox Trigger (Clean, No Overlay Pill) */}
               <div

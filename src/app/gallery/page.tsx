@@ -70,8 +70,8 @@ export default function GalleryPage() {
         </p>
       </motion.div>
 
-      {/* Interactive Category Filter Tabs with Morphing Spring Pill (Horizontal Swipe on Mobile) */}
-      <div className="flex overflow-x-auto no-scrollbar justify-start sm:justify-center items-center gap-1.5 sm:gap-2 max-w-4xl -mx-4 px-4 sm:mx-auto pt-2 pb-1">
+      {/* Interactive Category Filter Tabs with Morphing Spring Pill */}
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto pt-2">
         {filterCategories.map((cat) => {
           const count =
             cat === 'All'
@@ -86,7 +86,7 @@ export default function GalleryPage() {
                 setSelectedCategory(cat)
                 setActiveImageIndex(null)
               }}
-              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 min-h-[40px] text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'

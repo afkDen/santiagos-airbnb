@@ -94,15 +94,15 @@ export function OccasionSwitcher() {
   const whatsappUrl = buildWhatsAppLink({ occasion: current.title })
 
   return (
-    <div className="bg-white border border-sand rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 shadow-warm-lg space-y-6 sm:space-y-8">
+    <div className="bg-white border border-sand rounded-3xl p-6 sm:p-10 lg:p-12 shadow-warm-lg space-y-8">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-sand pb-4 sm:pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-sand pb-6">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider mb-0.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider">
             <CalendarCheck className="w-3.5 h-3.5 text-terra" />
             <span>Tailored Experience Finder</span>
           </div>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-ink">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-ink">
             What Kind of Group Stay Are You Planning?
           </h2>
         </div>
@@ -111,8 +111,8 @@ export function OccasionSwitcher() {
         </div>
       </div>
 
-      {/* Interactive Tabs with Spring layoutId (Horizontal Scroll on Mobile) */}
-      <div className="flex overflow-x-auto no-scrollbar gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 pb-1">
+      {/* Interactive Tabs with Spring layoutId */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
         {occasions.map((occ, idx) => {
           const Icon = occ.icon
           const isActive = activeTab === idx
@@ -122,7 +122,7 @@ export function OccasionSwitcher() {
               key={occ.id}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`relative isolate overflow-hidden p-3 sm:p-4 rounded-2xl border text-left transition-all duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 shrink-0 w-[150px] sm:w-auto ${
+              className={`relative isolate overflow-hidden p-3 sm:p-4 rounded-2xl border text-left transition-all duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 ${
                 isActive
                   ? 'text-cream border-transparent shadow-warm-md scale-[1.02]'
                   : 'bg-cream/40 border-sand text-ink hover:bg-cream hover:border-terra/40'
@@ -136,15 +136,15 @@ export function OccasionSwitcher() {
                 />
               )}
               <div
-                className={`relative z-10 w-7 h-7 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                className={`relative z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                   isActive ? 'bg-terra text-white' : 'bg-sand/60 text-terra-dark'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className="relative z-10">
                 <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{occ.label}</div>
-                <div className={`text-[10px] sm:text-[11px] mt-0.5 truncate ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
+                <div className={`text-[10px] sm:text-[11px] mt-0.5 line-clamp-1 ${isActive ? 'text-gold-light' : 'text-ink-muted'}`}>
                   {occ.suggestedHeadcount}
                 </div>
               </div>
@@ -161,12 +161,12 @@ export function OccasionSwitcher() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center pt-2"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-2"
         >
           {/* Photo Container (Clean without floating tag pills) */}
           <div
             onClick={() => setLightboxImage(current.image)}
-            className="lg:col-span-6 relative h-64 sm:h-84 md:h-96 lg:h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
+            className="lg:col-span-6 relative h-72 sm:h-84 md:h-96 lg:h-[440px] rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
           >
             <Image
               src={current.image}

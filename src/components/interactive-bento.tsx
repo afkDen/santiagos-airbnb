@@ -22,7 +22,7 @@ export function InteractiveBento() {
 
   const handleMouseMove = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
     // Only apply 3D tilt on fine pointer (desktop mouse)
-    if (window.matchMedia('(pointer: coarse)').matches) return
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return
     const card = cardRefs.current[index]
     if (!card) return
     const rect = card.getBoundingClientRect()
@@ -88,43 +88,36 @@ export function InteractiveBento() {
     },
   ]
 
+  const getTiltStyle = (index: number) => {
+    if (activeCardIndex === index && activeTilt) {
+      return {
+        transform: `perspective(1000px) rotateX(${activeTilt.y * -6}deg) rotateY(${activeTilt.x * 6}deg) scale3d(1.01, 1.01, 1.01)`,
+        transition: 'transform 0.15s ease-out',
+      }
+    }
+    return {
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transition: 'transform 0.4s ease-out',
+    }
+  }
+
   return (
     <>
-      {/* Mobile Swipe Hint */}
-      <div className="flex items-center justify-between text-xs text-ink-muted lg:hidden px-1">
-        <span className="font-semibold">Featured Spaces</span>
-        <span className="text-[11px] text-terra flex items-center gap-1 font-bold">
-          <span>Swipe to explore</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-        </span>
-      </div>
-
-      {/* Desktop 12-Col Bento Grid + Mobile Apple Horizontal Snap Carousel */}
-      <div className="flex lg:grid lg:grid-cols-12 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0 pb-2 lg:pb-0 items-stretch">
-        {/* Card 1: Banquet Dining (8 Cols on Desktop, Full Snap Card on Mobile) */}
-        {bentoCards.slice(0, 1).map((card, idx) => {
+      {/* ============================================================ */}
+      {/* 1. DESKTOP BENTO GRID (Perfect 8-Col + 4-Col Stacked Layout)  */}
+      {/* ============================================================ */}
+      <div className="hidden lg:grid grid-cols-12 gap-6 items-stretch">
+        {/* Left Column (8 Cols): Large Banquet Dining */}
+        {(() => {
+          const card = bentoCards[0]
           const Icon = card.icon
-          const isHovered = activeCardIndex === idx
-          const tiltStyle =
-            isHovered && activeTilt
-              ? {
-                  transform: `perspective(1000px) rotateX(${
-                    activeTilt.y * -6
-                  }deg) rotateY(${activeTilt.x * 6}deg) scale3d(1.01, 1.01, 1.01)`,
-                  transition: 'transform 0.15s ease-out',
-                }
-              : {
-                  transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-                  transition: 'transform 0.4s ease-out',
-                }
-
           return (
             <div
               key={card.title}
               ref={(el) => {
-                cardRefs.current[idx] = el
+                cardRefs.current[0] = el
               }}
-              onMouseMove={(e) => handleMouseMove(idx, e)}
+              onMouseMove={(e) => handleMouseMove(0, e)}
               onMouseLeave={handleMouseLeave}
               onClick={() =>
                 setLightboxImage({
@@ -136,151 +129,205 @@ export function InteractiveBento() {
                   features: card.features,
                 })
               }
-              style={tiltStyle}
-              className="lg:col-span-8 w-[86vw] max-w-[360px] sm:max-w-[420px] lg:w-auto shrink-0 snap-center lg:snap-none group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-ink cursor-pointer hover:shadow-warm-xl transition-all duration-300 min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex flex-col justify-between p-5 sm:p-8 lg:p-10 active:scale-[0.98]"
+              style={getTiltStyle(0)}
+              className="col-span-8 group relative rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-ink cursor-pointer hover:shadow-warm-xl transition-all duration-300 min-h-[540px] flex flex-col justify-between p-8 lg:p-10"
             >
-              {/* Background Photography */}
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
-                sizes="(max-width: 1024px) 88vw, 66vw"
+                sizes="66vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-65 group-hover:opacity-55"
               />
-
-              {/* Gradient Overlay for 100% Contrast */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
 
-              {/* Top Row: Badge & Zoom Icon */}
               <div className="relative z-10 flex items-center justify-between gap-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
-                  <Icon className="w-3.5 h-3.5 text-gold-light" />
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                  <Icon className="w-4 h-4 text-gold-light" />
                   <span>{card.badge}</span>
                 </span>
                 <div className="p-2.5 rounded-full bg-ink/75 text-cream backdrop-blur-md hover:bg-terra transition-colors group-hover:scale-110 flex items-center justify-center">
-                  <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
+                  <Maximize2 className="w-4 h-4 text-gold-light" />
                 </div>
               </div>
 
-              {/* Bottom Row: Text Content & Actions */}
-              <div className="relative z-10 space-y-2.5 sm:space-y-3 max-w-2xl pt-6">
-                <span className="text-[11px] sm:text-xs font-bold text-gold-light uppercase tracking-wider block">
+              <div className="relative z-10 space-y-3 max-w-2xl pt-8">
+                <span className="text-xs font-bold text-gold-light uppercase tracking-wider block">
                   {card.subtitle}
                 </span>
-                <h3 className="font-serif text-xl sm:text-3xl lg:text-4xl font-bold text-cream leading-tight">
+                <h3 className="font-serif text-3xl lg:text-4xl font-bold text-cream leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-sand-light/90 leading-relaxed font-sans max-w-xl line-clamp-3 sm:line-clamp-none">
+                <p className="text-sm text-sand-light/90 leading-relaxed font-sans max-w-xl">
                   {card.description}
                 </p>
-                <div className="pt-2.5 sm:pt-3 flex items-center justify-between gap-3 border-t border-sand/20">
+                <div className="pt-3 flex items-center justify-between gap-3 border-t border-sand/20">
                   <span className="inline-flex items-center gap-1.5 text-xs font-bold text-gold-light group-hover:text-white transition-colors">
-                    <span>Tap to view HD photo & specs</span>
+                    <span>Click to enlarge HD view & specs</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <Link
                     href={card.href}
                     onClick={(e) => e.stopPropagation()}
-                    className="text-xs font-bold text-cream hover:text-gold-light bg-cream/15 hover:bg-cream/25 border border-sand/30 px-3 py-1.5 rounded-full transition-all shrink-0"
+                    className="text-xs font-bold text-cream hover:text-gold-light bg-cream/15 hover:bg-cream/25 border border-sand/30 px-3.5 py-1.5 rounded-full transition-all"
                   >
-                    Catalog →
+                    View in Catalog →
                   </Link>
                 </div>
               </div>
             </div>
           )
-        })}
+        })()}
 
-        {/* Right Cards: Videoke & Pool (4 Cols on Desktop, Snap Cards on Mobile) */}
-        {bentoCards.slice(1).map((card, idx) => {
-          const cardActualIndex = idx + 1
-          const Icon = card.icon
-          const isHovered = activeCardIndex === cardActualIndex
-          const tiltStyle =
-            isHovered && activeTilt
-              ? {
-                  transform: `perspective(1000px) rotateX(${
-                    activeTilt.y * -6
-                  }deg) rotateY(${activeTilt.x * 6}deg) scale3d(1.01, 1.01, 1.01)`,
-                  transition: 'transform 0.15s ease-out',
+        {/* Right Stacked Column (4 Cols): Videoke & Pool Cards */}
+        <div className="col-span-4 flex flex-col gap-6 justify-between">
+          {bentoCards.slice(1).map((card, idx) => {
+            const cardActualIndex = idx + 1
+            const Icon = card.icon
+            return (
+              <div
+                key={card.title}
+                ref={(el) => {
+                  cardRefs.current[cardActualIndex] = el
+                }}
+                onMouseMove={(e) => handleMouseMove(cardActualIndex, e)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() =>
+                  setLightboxImage({
+                    src: card.image,
+                    title: card.title,
+                    subtitle: card.subtitle,
+                    desc: card.description,
+                    badge: card.badge,
+                    features: card.features,
+                  })
                 }
-              : {
-                  transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-                  transition: 'transform 0.4s ease-out',
-                }
+                style={getTiltStyle(cardActualIndex)}
+                className="group relative rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-ink cursor-pointer hover:shadow-warm-xl transition-all duration-300 min-h-[255px] flex flex-col justify-between p-6 lg:p-7"
+              >
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  sizes="33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 group-hover:opacity-50"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
 
-          return (
-            <div
-              key={card.title}
-              ref={(el) => {
-                cardRefs.current[cardActualIndex] = el
-              }}
-              onMouseMove={(e) => handleMouseMove(cardActualIndex, e)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() =>
-                setLightboxImage({
-                  src: card.image,
-                  title: card.title,
-                  subtitle: card.subtitle,
-                  desc: card.description,
-                  badge: card.badge,
-                  features: card.features,
-                })
-              }
-              style={tiltStyle}
-              className="lg:col-span-4 w-[86vw] max-w-[360px] sm:max-w-[420px] lg:w-auto shrink-0 snap-center lg:snap-none group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-ink cursor-pointer hover:shadow-warm-xl transition-all duration-300 min-h-[380px] sm:min-h-[320px] lg:min-h-[255px] flex flex-col justify-between p-5 sm:p-6 lg:p-7 active:scale-[0.98]"
-            >
-              {/* Background Photography */}
-              <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                sizes="(max-width: 1024px) 88vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 group-hover:opacity-50"
-              />
-
-              {/* Gradient Overlay for Contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
-
-              {/* Top Row: Badge & Zoom Icon */}
-              <div className="relative z-10 flex items-center justify-between gap-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
-                  <Icon className="w-3.5 h-3.5 text-gold-light" />
-                  <span>{card.badge}</span>
-                </span>
-                <div className="p-2 rounded-full bg-ink/75 text-cream backdrop-blur-md hover:bg-terra transition-colors group-hover:scale-110 flex items-center justify-center">
-                  <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
-                </div>
-              </div>
-
-              {/* Bottom Row: Text Content & Actions */}
-              <div className="relative z-10 space-y-2 pt-4">
-                <span className="text-[11px] sm:text-xs font-bold text-gold-light uppercase tracking-wider block">
-                  {card.subtitle}
-                </span>
-                <h4 className="font-serif text-xl sm:text-2xl font-bold text-cream leading-tight">
-                  {card.title}
-                </h4>
-                <p className="text-xs text-sand-light/90 leading-relaxed font-sans line-clamp-2 sm:line-clamp-none">
-                  {card.description}
-                </p>
-                <div className="pt-2 flex items-center justify-between gap-2 border-t border-sand/20 text-xs">
-                  <span className="text-gold-light font-bold flex items-center gap-1">
-                    <span>Details</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                <div className="relative z-10 flex items-center justify-between gap-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                    <Icon className="w-3.5 h-3.5 text-gold-light" />
+                    <span>{card.badge}</span>
                   </span>
-                  <Link
-                    href={card.href}
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-xs font-bold text-cream hover:text-gold-light bg-cream/15 px-3 py-1 rounded-full"
-                  >
-                    Catalog →
-                  </Link>
+                  <div className="p-2 rounded-full bg-ink/75 text-cream backdrop-blur-md hover:bg-terra transition-colors group-hover:scale-110 flex items-center justify-center">
+                    <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
+                  </div>
+                </div>
+
+                <div className="relative z-10 space-y-1.5 pt-4">
+                  <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider block">
+                    {card.subtitle}
+                  </span>
+                  <h4 className="font-serif text-xl sm:text-2xl font-bold text-cream leading-tight">
+                    {card.title}
+                  </h4>
+                  <div className="pt-2 flex items-center justify-between gap-2 border-t border-sand/20 text-xs">
+                    <span className="text-gold-light font-bold flex items-center gap-1">
+                      <span>Click to view details</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <Link
+                      href={card.href}
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs font-bold text-cream hover:text-gold-light bg-cream/15 hover:bg-cream/25 border border-sand/30 px-3 py-1 rounded-full transition-all"
+                    >
+                      Catalog →
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* 2. MOBILE SNAP CAROUSEL (< lg Viewports)                      */}
+      {/* ============================================================ */}
+      <div className="lg:hidden space-y-3">
+        <div className="flex items-center justify-between text-xs text-ink-muted px-1">
+          <span className="font-semibold">Featured Spaces</span>
+          <span className="text-[11px] text-terra flex items-center gap-1 font-bold">
+            <span>Swipe to explore</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </span>
+        </div>
+
+        <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 -mx-4 px-4 pb-2 items-stretch">
+          {bentoCards.map((card) => {
+            const Icon = card.icon
+            return (
+              <div
+                key={`mobile-${card.title}`}
+                onClick={() =>
+                  setLightboxImage({
+                    src: card.image,
+                    title: card.title,
+                    subtitle: card.subtitle,
+                    desc: card.description,
+                    badge: card.badge,
+                    features: card.features,
+                  })
+                }
+                className="w-[86vw] max-w-[360px] shrink-0 snap-center group relative rounded-2xl overflow-hidden shadow-warm-md border border-sand bg-ink cursor-pointer min-h-[380px] flex flex-col justify-between p-5 active:scale-[0.98] transition-all"
+              >
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  sizes="86vw"
+                  className="object-cover opacity-60"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
+
+                <div className="relative z-10 flex items-center justify-between gap-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                    <Icon className="w-3.5 h-3.5 text-gold-light" />
+                    <span>{card.badge}</span>
+                  </span>
+                  <div className="p-2 rounded-full bg-ink/75 text-cream backdrop-blur-md flex items-center justify-center">
+                    <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
+                  </div>
+                </div>
+
+                <div className="relative z-10 space-y-2 pt-4">
+                  <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider block">
+                    {card.subtitle}
+                  </span>
+                  <h4 className="font-serif text-xl font-bold text-cream leading-tight">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs text-sand-light/90 leading-relaxed font-sans line-clamp-2">
+                    {card.description}
+                  </p>
+                  <div className="pt-2 flex items-center justify-between gap-2 border-t border-sand/20 text-xs">
+                    <span className="text-gold-light font-bold flex items-center gap-1">
+                      <span>Tap for specs</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
+                    <Link
+                      href={card.href}
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs font-bold text-cream bg-cream/15 px-3 py-1 rounded-full"
+                    >
+                      Catalog →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       {/* Fullscreen Modal Lightbox */}
