@@ -275,23 +275,23 @@ export function InteractiveBento() {
         </div>
       </div>
 
-      {/* Interactive Lightbox Modal */}
+      {/* Interactive Lightbox Modal (z-[100] ensures complete coverage) */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
           onClick={() => setLightboxImage(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl space-y-4 p-4 sm:p-6 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
+            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between text-cream px-2">
+            <div className="flex items-center justify-between text-cream px-2 shrink-0">
               <div>
                 <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider block">
                   {lightboxImage.badge} • Full HD Resolution
                 </span>
-                <h3 className="text-base sm:text-lg font-bold">{lightboxImage.title}</h3>
+                <h3 className="text-sm sm:text-lg font-bold truncate max-w-[240px] sm:max-w-none">{lightboxImage.title}</h3>
               </div>
               <button
                 type="button"
@@ -304,24 +304,25 @@ export function InteractiveBento() {
             </div>
 
             {/* Viewport */}
-            <div className="relative h-[55vh] sm:h-[65vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
               <Image
                 src={lightboxImage.src}
                 alt={lightboxImage.title}
                 fill
                 sizes="95vw"
                 className="object-contain"
+                priority
               />
             </div>
 
             {/* Features & Direct Actions in Modal */}
-            <div className="px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-sand-light/80 font-sans border-t border-sand/20 pt-3">
-              <p>{lightboxImage.desc}</p>
+            <div className="px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-sand-light/80 font-sans border-t border-sand/20 pt-2 shrink-0">
+              <p className="line-clamp-1 sm:line-clamp-none">{lightboxImage.desc}</p>
               <div className="flex items-center gap-3 shrink-0">
                 <Link
                   href="/amenities"
                   onClick={() => setLightboxImage(null)}
-                  className="px-4 py-2 bg-terra hover:bg-terra-dark text-white font-bold rounded-full transition-colors active:scale-95"
+                  className="px-4 py-2 bg-terra hover:bg-terra-dark text-white font-bold rounded-full transition-colors active:scale-95 text-xs"
                 >
                   Explore All 22+ Amenities →
                 </Link>

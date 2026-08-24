@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
@@ -20,6 +20,18 @@ import {
 
 export default function OccasionsPage() {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; label: string } | null>(null)
+
+  // Body scroll lock on modal open
+  useEffect(() => {
+    if (lightboxImage !== null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [lightboxImage])
 
   const sampleItinerary = [
     { time: '3:00 PM', event: 'Check-in & Welcome Pool Dip', desc: 'Settle into air-conditioned quarters and cool off in the private swimming pool.' },
@@ -77,7 +89,7 @@ export default function OccasionsPage() {
                 isReversed ? 'lg:grid-flow-dense' : ''
               }`}
             >
-              {/* Photo Showcase with Lightbox Trigger */}
+              {/* Photo Showcase with Lightbox Trigger (Clean, No Redundant Tag Overlays) */}
               <div
                 onClick={() => setLightboxImage({ src: getLocalImageUrl(photoKey), label: pkg.title })}
                 className={`lg:col-span-6 relative h-56 sm:h-96 rounded-2xl overflow-hidden shadow-sm border border-sand bg-sand/20 cursor-pointer group ${
@@ -91,9 +103,6 @@ export default function OccasionsPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-                <div className="absolute top-3 left-3 px-3 py-1 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-xs font-bold shadow-sm">
-                  {pkg.tagline}
-                </div>
                 <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-gold-light" />
                 </div>
@@ -191,18 +200,20 @@ export default function OccasionsPage() {
         </div>
       </motion.div>
 
-      {/* Lightbox Modal */}
+      {/* Fullscreen Lightbox Modal (z-[100] covers navbar and screen completely) */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
           onClick={() => setLightboxImage(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-4 sm:p-6 space-y-3 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
+            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between text-cream px-2">
-              <h4 className="text-sm sm:text-base font-semibold">{lightboxImage.label}</h4>
+            <div className="flex items-center justify-between text-cream px-2 shrink-0">
+              <h4 className="text-sm sm:text-base font-semibold truncate max-w-[250px] sm:max-w-none">
+                {lightboxImage.label}
+              </h4>
               <button
                 type="button"
                 onClick={() => setLightboxImage(null)}
@@ -212,11 +223,11 @@ export default function OccasionsPage() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="relative h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
-              <Image src={lightboxImage.src} alt={lightboxImage.label} fill sizes="95vw" className="object-contain" />
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
+              <Image src={lightboxImage.src} alt={lightboxImage.label} fill sizes="95vw" className="object-contain" priority />
             </div>
-            <div className="px-2 text-xs text-sand-light/70 font-sans">
-              Press Escape to close
+            <div className="px-2 text-xs text-sand-light/70 font-sans shrink-0">
+              Tap outside or press Escape to close
             </div>
           </div>
         </div>

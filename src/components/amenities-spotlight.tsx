@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getLocalImageUrl } from '@/content/gallery'
@@ -20,6 +20,18 @@ import {
 
 export function AmenitiesSpotlight() {
   const [activeLightbox, setActiveLightbox] = useState<string | null>(null)
+
+  // Body scroll lock on modal open
+  useEffect(() => {
+    if (activeLightbox !== null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [activeLightbox])
 
   const spotlights = [
     {
@@ -97,7 +109,7 @@ export function AmenitiesSpotlight() {
               key={spot.title}
               className="bg-white rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col group"
             >
-              {/* Photo Viewport with Zoom Lightbox Trigger */}
+              {/* Photo Viewport with Zoom Lightbox Trigger (Clean, No Overlay Pill) */}
               <div
                 onClick={() => setActiveLightbox(spot.image)}
                 className="relative h-64 sm:h-72 bg-sand/20 overflow-hidden cursor-pointer"
@@ -109,10 +121,6 @@ export function AmenitiesSpotlight() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-3 left-3 px-3 py-1 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-xs font-bold shadow-sm flex items-center gap-1.5">
-                  <Icon className="w-3.5 h-3.5 text-gold-light" />
-                  <span>{spot.tagline}</span>
-                </div>
                 <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-gold-light" />
                 </div>
@@ -121,9 +129,14 @@ export function AmenitiesSpotlight() {
               {/* Card Details */}
               <div className="p-6 sm:p-7 space-y-4 flex-1 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <h3 className="font-serif text-2xl font-bold text-ink group-hover:text-terra transition-colors">
-                    {spot.title}
-                  </h3>
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-sand/60 text-terra flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-serif text-2xl font-bold text-ink group-hover:text-terra transition-colors">
+                      {spot.title}
+                    </h3>
+                  </div>
                   <div className="space-y-2 pt-1 border-t border-sand/50">
                     {spot.bullets.map((b) => (
                       <div key={b} className="flex items-start gap-2 text-xs sm:text-sm text-ink font-medium">
@@ -154,32 +167,32 @@ export function AmenitiesSpotlight() {
         })}
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Fullscreen Lightbox Modal (z-[100] ensures complete coverage over navbar and screen) */}
       {activeLightbox && (
         <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
           onClick={() => setActiveLightbox(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-4 sm:p-6 space-y-3 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
+            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between text-cream px-2">
-              <h4 className="text-sm sm:text-base font-semibold">Amenity HD Photography</h4>
+            <div className="flex items-center justify-between text-cream px-2 shrink-0">
+              <h4 className="text-sm sm:text-base font-semibold">Amenity Full HD View</h4>
               <button
                 type="button"
                 onClick={() => setActiveLightbox(null)}
-                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
+                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors active:scale-95"
                 aria-label="Close Lightbox"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="relative h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
-              <Image src={activeLightbox} alt="Amenity HD View" fill sizes="95vw" className="object-contain" />
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
+              <Image src={activeLightbox} alt="Amenity HD View" fill sizes="95vw" className="object-contain" priority />
             </div>
-            <div className="px-2 text-xs text-sand-light/70 font-sans">
-              Press Escape to close
+            <div className="px-2 text-xs text-sand-light/70 font-sans shrink-0">
+              Tap outside or press Escape to close
             </div>
           </div>
         </div>

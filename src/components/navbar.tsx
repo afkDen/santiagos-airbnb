@@ -41,13 +41,13 @@ export function Navbar() {
         {/* Brand Logo with Script & Subtitle */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-2.5 group focus:outline-none"
           aria-label="Santiagos Resort Homepage"
         >
-          <span className="font-script text-3xl sm:text-4xl text-terra-dark group-hover:text-terra transition-colors drop-shadow-xs">
+          <span className="font-script text-2xl sm:text-4xl text-terra-dark group-hover:text-terra transition-colors drop-shadow-xs leading-tight">
             Santiago&apos;s
           </span>
-          <span className="hidden sm:inline-block text-[11px] font-sans font-bold tracking-widest text-ink-muted uppercase border-l border-sand-dark/40 pl-2.5">
+          <span className="text-[9px] sm:text-[11px] font-sans font-bold tracking-wider sm:tracking-widest text-ink-muted uppercase sm:border-l sm:border-sand-dark/40 sm:pl-2.5 leading-none">
             Private Resort • Alfonso
           </span>
         </Link>

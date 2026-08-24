@@ -138,23 +138,23 @@ export function HomeGalleryPreview() {
         ))}
       </div>
 
-      {/* Enlargement Lightbox Modal */}
+      {/* Enlargement Lightbox Modal (z-[100] covers screen completely) */}
       {currentActive && activeImageIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
           onClick={() => setActiveImageIndex(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl space-y-3 p-4 sm:p-6 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
+            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-2 text-cream">
+            <div className="flex items-center justify-between px-2 text-cream shrink-0">
               <div className="space-y-0.5">
                 <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider">
                   {currentActive.category} • Photo {activeImageIndex + 1} of {previewImages.length}
                 </span>
-                <h3 className="text-sm sm:text-base font-semibold">{currentActive.label}</h3>
+                <h3 className="text-sm sm:text-base font-semibold truncate max-w-[240px] sm:max-w-none">{currentActive.label}</h3>
               </div>
               <button
                 type="button"
@@ -167,13 +167,14 @@ export function HomeGalleryPreview() {
             </div>
 
             {/* Viewport */}
-            <div className="relative h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
               <Image
                 src={currentActive.url}
                 alt={currentActive.label}
                 fill
                 sizes="95vw"
                 className="object-contain"
+                priority
               />
 
               {/* Prev */}
@@ -183,7 +184,7 @@ export function HomeGalleryPreview() {
                   e.stopPropagation()
                   handlePrev()
                 }}
-                className="absolute left-3 p-3 rounded-full bg-ink/70 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
+                className="absolute left-2 sm:left-4 p-2.5 sm:p-3 rounded-full bg-ink/75 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
                 aria-label="Previous Image"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -196,15 +197,15 @@ export function HomeGalleryPreview() {
                   e.stopPropagation()
                   handleNext()
                 }}
-                className="absolute right-3 p-3 rounded-full bg-ink/70 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
+                className="absolute right-2 sm:right-4 p-2.5 sm:p-3 rounded-full bg-ink/75 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
                 aria-label="Next Image"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="px-2 flex items-center justify-between text-xs text-sand-light/70 font-sans">
-              <span>Use Left / Right arrow keys to navigate</span>
+            <div className="px-2 flex items-center justify-between text-xs text-sand-light/70 font-sans shrink-0">
+              <span>Swipe or use Arrow keys to navigate</span>
               <Link href="/gallery" className="text-gold-light hover:underline font-bold">
                 View all 59 property photos →
               </Link>

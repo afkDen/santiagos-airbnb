@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
@@ -25,6 +25,18 @@ import {
 export function EstateZoneExplorer() {
   const [activeZone, setActiveZone] = useState<number>(0)
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+
+  // Body scroll lock on modal open
+  useEffect(() => {
+    if (lightboxImage !== null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [lightboxImage])
 
   const zones = [
     {
@@ -68,7 +80,7 @@ export function EstateZoneExplorer() {
     {
       id: 'dining',
       name: 'Banquet Hall & Kitchen',
-      tagline: '10-Seater Glass Table, BBQ Pit & Free Corkage',
+      tagline: '100% Self-Catering & Grilling',
       icon: ChefHat,
       capacity: 'Full Self-Catering & Grilling',
       image: getLocalImageUrl('din1'), // 379.2 KB
@@ -200,7 +212,7 @@ export function EstateZoneExplorer() {
         })}
       </div>
 
-      {/* Deep-Dive Zone Card with Generous Image Dimensions */}
+      {/* Deep-Dive Zone Card with Generous Image Dimensions (Clean, Unobscured Photos) */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current.id}
@@ -223,9 +235,6 @@ export function EstateZoneExplorer() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute top-3 left-3 px-3 py-1 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-[11px] sm:text-xs font-bold shadow-sm">
-                {current.tagline}
-              </div>
               <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-4 h-4 text-gold-light" />
               </div>
@@ -299,18 +308,18 @@ export function EstateZoneExplorer() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Lightbox Modal */}
+      {/* Fullscreen Lightbox Modal (z-[100] ensures complete coverage over navbar and screen) */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
           onClick={() => setLightboxImage(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-4 sm:p-6 space-y-3 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
+            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between text-cream px-2">
-              <h4 className="text-sm sm:text-base font-semibold">{current.name}</h4>
+            <div className="flex items-center justify-between text-cream px-2 shrink-0">
+              <h4 className="text-sm sm:text-base font-semibold truncate max-w-[250px] sm:max-w-none">{current.name}</h4>
               <button
                 onClick={() => setLightboxImage(null)}
                 className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
@@ -319,11 +328,11 @@ export function EstateZoneExplorer() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="relative h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
-              <Image src={lightboxImage} alt={current.name} fill sizes="95vw" className="object-contain" />
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
+              <Image src={lightboxImage} alt={current.name} fill sizes="95vw" className="object-contain" priority />
             </div>
-            <div className="px-2 text-xs text-sand-light/70 font-sans">
-              Press Escape to close
+            <div className="px-2 text-xs text-sand-light/70 font-sans shrink-0">
+              Tap outside or press Escape to close
             </div>
           </div>
         </div>
