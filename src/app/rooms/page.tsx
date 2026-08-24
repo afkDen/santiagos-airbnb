@@ -92,15 +92,17 @@ export default function RoomsPage() {
     },
   ]
 
-  // Verified 8 Bedroom Photography Registry
+  // Verified 10 Sleeping Perspectives Registry
   const allBedrooms = [
     { key: 'bed1', label: 'VIP Room 1 — Queen Bed Master Suite', tag: 'VIP Suite 1' },
     { key: 'bed7', label: 'VIP Room 2 — Second Queen Bed Master Suite', tag: 'VIP Suite 2' },
+    { key: 'bed9', label: 'VIP Master Bedroom Suite Detailed View', tag: 'VIP Suite' },
     { key: 'bed2', label: 'Bunk Pod 1 — Air-Conditioned Bunk Beds', tag: 'Bunk Zone' },
     { key: 'bed3', label: 'Bunk Pod 2 — Upper & Lower Mattresses', tag: 'Bunk Zone' },
     { key: 'bed4', label: 'Bunk Pod 3 — Custom Wood Container Frames', tag: 'Bunk Zone' },
     { key: 'bed5', label: 'Bunk Pod 4 — Fresh Hotel-Grade Linens', tag: 'Bunk Zone' },
     { key: 'bed6', label: 'Bunk Pod 5 — High-Ceiling Group Quarters', tag: 'Bunk Zone' },
+    { key: 'gal_int1', label: '2nd Floor Quarters — Highland View Windows', tag: 'Bunk Zone' },
     { key: 'bed8', label: 'Staff & Driver Air-Conditioned Room', tag: 'Staff Room' },
   ]
 
@@ -130,6 +132,8 @@ export default function RoomsPage() {
   const bathroomPhotos = [
     { key: 'bat1', label: 'Bathroom 1 — Rainfall Shower & Hot Water' },
     { key: 'bat2', label: 'Bathroom 2 — Modern Ceramic Vanity & Clean Tiling' },
+    { key: 'bat3', label: 'Bathroom 3 — Hot Water Shower Suite' },
+    { key: 'bat8', label: 'Bathroom 4 — Modern Vanity & Glass Enclosure' },
     { key: 'bat7', label: 'Bathroom 7 — Dedicated Outdoor Garden & Pool Access' },
   ]
 
@@ -308,7 +312,7 @@ export default function RoomsPage() {
               <span>Full Sleeping Configuration</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-              All 8 Bedroom Views & Pod Perspectives
+              All 10 Bedroom Views & Pod Perspectives
             </h2>
           </div>
           <span className="text-xs font-bold text-ink-muted bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">

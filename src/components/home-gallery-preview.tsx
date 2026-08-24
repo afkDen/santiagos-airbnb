@@ -16,16 +16,16 @@ export function HomeGalleryPreview() {
       url: getLocalImageUrl('pool1'),
     },
     {
-      key: 'din1',
+      key: 'din4',
       category: 'Dining',
-      label: '10-Seater Banquet Glass Dining Table',
-      url: getLocalImageUrl('din1'),
+      label: '10-Seater Banquet Dining & Warm Evening Lighting',
+      url: getLocalImageUrl('din4'),
     },
     {
-      key: 'kara1',
+      key: 'kara4',
       category: 'Videoke',
-      label: 'Air-Conditioned Videoke Lounge & Poster Gallery',
-      url: getLocalImageUrl('kara1'),
+      label: 'Air-Conditioned Videoke Lounge & Music Wall',
+      url: getLocalImageUrl('kara4'),
     },
     {
       key: 'bill2',
@@ -34,16 +34,16 @@ export function HomeGalleryPreview() {
       url: getLocalImageUrl('bill2'),
     },
     {
-      key: 'bed7',
+      key: 'bed9',
       category: 'Suites',
-      label: 'VIP Master Suite with Private Rainfall Ensuite',
-      url: getLocalImageUrl('bed7'),
+      label: 'VIP Master Bedroom Suite Detailed View',
+      url: getLocalImageUrl('bed9'),
     },
     {
-      key: 'fir1',
-      category: 'Outdoor',
-      label: 'Sunken Bonfire Pit & Evening Hearth Area',
-      url: getLocalImageUrl('fir1'),
+      key: 'arc4',
+      category: 'Arcade',
+      label: 'Retro Multiplayer Arcade Tournament Station',
+      url: getLocalImageUrl('arc4'),
     },
   ]
 
@@ -87,7 +87,7 @@ export function HomeGalleryPreview() {
           href="/gallery"
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-terra hover:text-terra-dark transition-colors group self-start sm:self-auto"
         >
-          <span>Explore all 74+ photos & videos</span>
+          <span>Explore all 71+ photos & videos</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

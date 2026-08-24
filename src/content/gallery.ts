@@ -107,13 +107,10 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
   { key: 'bed9', category: 'Bedroom', uuid: 'ac7d1d93-69dd-4f83-9f5e-199ae922012f', label: 'VIP Master Bedroom Suite Detailed View', url: getLocalImageUrl('bed9') },
   { key: 'gal_int1', category: 'Bedroom', uuid: 'c5099b93-dc0b-4082-ab4e-66d7c6229024', label: '2nd Floor — Highland View Windows', url: getLocalImageUrl('gal_int1') },
   
-  // 10. Bathrooms
+  // 10. Bathrooms (5 Distinct, Unique Bathroom Angles)
   { key: 'bat1', category: 'Bathroom', uuid: '6a64f515-0249-440e-937b-73fe1cc63898', label: 'Modern Bathroom 1 with Rain Showerhead', url: getLocalImageUrl('bat1') },
   { key: 'bat2', category: 'Bathroom', uuid: '7bd29da9-1398-456e-81ab-7f3f06a8b10f', label: 'Bathroom 2 with Clean Tiles & Vanity', url: getLocalImageUrl('bat2') },
   { key: 'bat3', category: 'Bathroom', uuid: '73e7dd06-2f9b-479e-8925-0a24bf769a9c', label: 'Bathroom 3 with Hot Water System', url: getLocalImageUrl('bat3') },
-  { key: 'bat4', category: 'Bathroom', uuid: '380a4b0e-bc04-4540-8ab5-3446055037b4', label: 'Bathroom 4', url: getLocalImageUrl('bat4') },
-  { key: 'bat5', category: 'Bathroom', uuid: '01672d22-f62b-4081-9372-e090179020ca', label: 'Bathroom 5', url: getLocalImageUrl('bat5') },
-  { key: 'bat6', category: 'Bathroom', uuid: '5444278e-4394-474a-aa9f-e233672be193', label: 'Bathroom 6', url: getLocalImageUrl('bat6') },
   { key: 'bat7', category: 'Bathroom', uuid: 'edf6c0b7-2c0d-416a-895b-ae85e5455368', label: 'Outdoor Garden-Access Bathroom', url: getLocalImageUrl('bat7') },
   { key: 'bat8', category: 'Bathroom', uuid: '81d13019-e81c-4497-950d-32dd698989e4', label: 'Modern Bathroom Vanity & Rainfall Shower', url: getLocalImageUrl('bat8') },
   

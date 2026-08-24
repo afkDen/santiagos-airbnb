@@ -33,7 +33,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     iconName: 'Waves',
     description:
       'Continuous running water wall feature creating natural acoustic privacy and a refreshing atmosphere.',
-    imageKey: 'pool4',
+    imageKey: 'pool7',
     specs: ['Natural stone wall finish', 'Continuous aerating water circulation'],
   },
   {
@@ -54,7 +54,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     description:
       'Air-conditioned entertainment lounge with classic music poster gallery, high-power sound system, and zero curfew.',
     featured: true,
-    imageKey: 'kara1',
+    imageKey: 'kara4',
     specs: ['Digital songbook with latest OPM & international hits', '2 wireless microphones', 'Large LED screen', 'Comfortable L-shaped sectional couch'],
   },
   {
@@ -74,7 +74,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     description:
       'Custom standalone arcade cabinets loaded with classic 90s fighting and cooperative tournament games.',
     featured: true,
-    imageKey: 'arc1',
+    imageKey: 'arc4',
     specs: ['1000+ retro arcade classics', '2-player dual joystick controls', 'Free play enabled — zero tokens required'],
   },
   {
@@ -85,6 +85,24 @@ export const AMENITIES_CATALOG: Amenity[] = [
       'Flat-screen smart televisions with YouTube, Netflix, and screen mirroring capability for group movie nights.',
     imageKey: 'lou1',
     specs: ['High-speed Wi-Fi connected', 'HDMI ports for laptops / Nintendo Switch'],
+  },
+  {
+    name: 'Spacious Highland Living Area',
+    category: 'Entertainment',
+    iconName: 'Home',
+    description:
+      'High-ceiling indoor container living space with modern architectural lines, natural daylight, and plush group seating.',
+    imageKey: 'liv2',
+    specs: ['High container ceilings', 'Panoramic daylit windows', 'Deep sectional sofa seating'],
+  },
+  {
+    name: 'Indoor Container Lounge',
+    category: 'Entertainment',
+    iconName: 'Sparkles',
+    description:
+      'Cozy indoor relaxation nook with ambient warm lighting for intimate conversations and reading.',
+    imageKey: 'liv3',
+    specs: ['Ambient warm container lighting', 'Comfortable accent chairs', 'Acoustic calm'],
   },
 
   // 3. Sports & Fitness
@@ -107,6 +125,15 @@ export const AMENITIES_CATALOG: Amenity[] = [
     imageKey: 'gym1',
     specs: ['Adjustable workout bench', 'Free weights & dumbbells', 'Rubberized gym flooring'],
   },
+  {
+    name: 'Gym Dumbbell Rack & Free Weights',
+    category: 'Sports & Fitness',
+    iconName: 'Dumbbell',
+    description:
+      'Full dumbbell rack with incremental weights for morning strength training and resistance workouts.',
+    imageKey: 'gym4',
+    specs: ['Multi-tier dumbbell storage rack', 'Hex rubber weights', 'Mirror workout wall'],
+  },
 
   // 4. Outdoor Gathering
   {
@@ -127,6 +154,15 @@ export const AMENITIES_CATALOG: Amenity[] = [
       'Spacious upper and lower container decks with outdoor seating to enjoy the breezy Alfonso highland climate.',
     imageKey: 'gal_out1',
     specs: ['Covered all-weather roof canopy', 'Rattan patio tables and chairs', 'Panoramic property garden view'],
+  },
+  {
+    name: 'Outdoor Garden Patio & Container Deck',
+    category: 'Outdoor Gathering',
+    iconName: 'Trees',
+    description:
+      'Ground-level landscaped garden patio with sun loungers and breezy walkways connecting all property zones.',
+    imageKey: 'out8',
+    specs: ['Landscaped garden pathways', 'Outdoor loungers & umbrella shade', 'Direct pool and bonfire access'],
   },
   {
     name: 'Secure Gated Parking for 3+ Large Vans',

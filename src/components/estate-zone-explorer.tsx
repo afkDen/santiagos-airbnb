@@ -46,7 +46,7 @@ export function EstateZoneExplorer() {
       icon: Waves,
       capacity: 'All 40 Guests',
       image: getLocalImageUrl('pool1'), // 408.6 KB
-      secondaryImage: getLocalImageUrl('pool3'), // 344.9 KB
+      secondaryImage: getLocalImageUrl('pool7'), // 239.3 KB Sunlit Pool & Waterfall
       description:
         'Pristine private pool with ambient underwater night illumination, cascading stone waterfall feature, comfortable sun loungers, and direct outdoor garden shower access so guests never track pool water inside.',
       features: [
@@ -65,7 +65,7 @@ export function EstateZoneExplorer() {
       icon: Mic,
       capacity: 'Multi-Activity Space',
       image: getLocalImageUrl('kara1'), // 421.6 KB
-      secondaryImage: getLocalImageUrl('bill2'), // 219.4 KB
+      secondaryImage: getLocalImageUrl('arc4'), // 172.8 KB Retro Arcade Tournament Station
       description:
         'A dedicated acoustic entertainment wing. Features a soundproofed videoke lounge with music poster walls, full-size Kangaroo pool table set against authentic exposed brick, and classic retro arcade cabinets with multiplayer tournament titles.',
       features: [
@@ -84,7 +84,7 @@ export function EstateZoneExplorer() {
       icon: ChefHat,
       capacity: 'Full Self-Catering & Grilling',
       image: getLocalImageUrl('din1'), // 379.2 KB
-      secondaryImage: getLocalImageUrl('kit1'), // 411.3 KB
+      secondaryImage: getLocalImageUrl('din4'), // 328.9 KB Ambient Warm Evening Dining
       description:
         'Designed for memorable group feasts. Features a 10-seater contemporary glass banquet table, full outdoor covered BBQ grill, commercial refrigerator, gas stove, microwave, rice cooker, and pure mineral water dispenser.',
       features: [
@@ -103,7 +103,7 @@ export function EstateZoneExplorer() {
       icon: Bed,
       capacity: 'Sleeps 40 Guests Comfortably',
       image: getLocalImageUrl('bed7'), // 554.5 KB High-Res VIP Suite
-      secondaryImage: getLocalImageUrl('bed2'), // 411.3 KB Bunk Pods
+      secondaryImage: getLocalImageUrl('bed9'), // 120.8 KB VIP Master Suite Detailed View
       description:
         'Engineered to eliminate the usual group travel frustrations. 4 distinct air-conditioned bedroom zones (2 VIP master suites + 9 sturdy double-deck bunks + driver quarters) paired with 8 full bathrooms so morning routines flow effortlessly.',
       features: [
@@ -122,7 +122,7 @@ export function EstateZoneExplorer() {
       icon: Flame,
       capacity: 'Evening Gatherings',
       image: getLocalImageUrl('fir1'), // 243.6 KB
-      secondaryImage: getLocalImageUrl('ext4'), // 436.2 KB
+      secondaryImage: getLocalImageUrl('out8'), // 523.8 KB Garden Patio & Container Deck
       description:
         'A dedicated stone fire pit ringed by wooden benches for evening marshmallow roasting and guitar sessions under the cool Alfonso stars, alongside a gated basketball half-court and secure parking for 3+ family vans.',
       features: [
