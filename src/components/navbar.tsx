@@ -98,15 +98,17 @@ export function Navbar() {
         </nav>
 
         {/* Desktop Header Actions */}
-        <div className="hidden sm:flex items-center gap-3">
-          {/* Animated Call Button */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Direct Airbnb Link */}
           <a
-            href={PROPERTY_INFO.contacts.phone1.tel}
-            className="hidden xl:flex items-center gap-2 px-3.5 py-2 text-xs font-bold text-ink-muted hover:text-terra hover:bg-sand/40 rounded-full transition-all group"
-            title="Call Smart line"
+            href={PROPERTY_INFO.contacts.airbnb}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-ink-muted hover:text-[#FF385C] hover:bg-sand/40 rounded-full transition-all group"
+            title="View Official Airbnb Listing"
           >
-            <Phone className="w-3.5 h-3.5 text-terra group-hover:rotate-12 transition-transform duration-200" />
-            <span>0917 800 5320</span>
+            <span className="w-2 h-2 rounded-full bg-[#FF385C] inline-block group-hover:scale-125 transition-transform" />
+            <span>Airbnb Listing</span>
           </a>
 
           {/* Animated WhatsApp Button */}

@@ -291,6 +291,7 @@ export default function ContactPage() {
             <h3 className="font-serif text-xl font-bold text-ink">All Direct Booking Channels</h3>
 
             <div className="space-y-3 font-sans text-sm">
+              {/* WhatsApp Direct */}
               <a
                 href={PROPERTY_INFO.contacts.whatsappUrl}
                 target="_blank"
@@ -302,13 +303,43 @@ export default function ContactPage() {
                     <MessageCircle className="w-5 h-5 fill-white" />
                   </div>
                   <div>
-                    <div className="font-bold text-ink">WhatsApp Direct</div>
-                    <div className="text-xs text-ink-muted">0922 830 5320</div>
+                    <div className="font-bold text-ink flex items-center gap-1.5">
+                      <span>WhatsApp Direct</span>
+                      <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-whatsapp/20 text-whatsapp-dark">
+                        Instant
+                      </span>
+                    </div>
+                    <div className="text-xs text-ink-muted">0922 830 5320 • Fast response</div>
                   </div>
                 </div>
                 <ExternalLink className="w-4 h-4 text-whatsapp group-hover:translate-x-0.5 transition-transform" />
               </a>
 
+              {/* Official Airbnb Listing */}
+              <a
+                href={PROPERTY_INFO.contacts.airbnb}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3.5 rounded-2xl bg-[#FF385C]/10 border border-[#FF385C]/30 flex items-center justify-between hover:bg-[#FF385C]/15 transition-colors group active:scale-95"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#FF385C] flex items-center justify-center text-white group-hover:scale-110 transition-transform font-bold text-xs">
+                    ★
+                  </div>
+                  <div>
+                    <div className="font-bold text-ink flex items-center gap-1.5">
+                      <span>Airbnb Official Listing</span>
+                      <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-[#FF385C]/20 text-[#D70466]">
+                        Verified
+                      </span>
+                    </div>
+                    <div className="text-xs text-ink-muted">Reserve via Airbnb Platform</div>
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-[#FF385C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+
+              {/* Primary Phone */}
               <a
                 href={PROPERTY_INFO.contacts.phone1.tel}
                 className="p-3.5 rounded-2xl bg-sand/30 border border-sand flex items-center justify-between hover:bg-sand/50 transition-colors active:scale-95"
@@ -318,13 +349,14 @@ export default function ContactPage() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-bold text-ink">Call Primary (Smart)</div>
+                    <div className="font-bold text-ink">Call Smart Line</div>
                     <div className="text-xs text-ink-muted">{PROPERTY_INFO.contacts.phone1.display}</div>
                   </div>
                 </div>
                 <span className="text-xs font-semibold text-terra">Call Now</span>
               </a>
 
+              {/* Secondary Phone */}
               <a
                 href={PROPERTY_INFO.contacts.phone2.tel}
                 className="p-3.5 rounded-2xl bg-sand/30 border border-sand flex items-center justify-between hover:bg-sand/50 transition-colors active:scale-95"
@@ -334,7 +366,7 @@ export default function ContactPage() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-bold text-ink">Call Secondary (Sun/Globe)</div>
+                    <div className="font-bold text-ink">Call Globe Line</div>
                     <div className="text-xs text-ink-muted">{PROPERTY_INFO.contacts.phone2.display}</div>
                   </div>
                 </div>
