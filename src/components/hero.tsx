@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
@@ -51,10 +51,20 @@ export function Hero() {
   ]
 
   const [activeViewIndex, setActiveViewIndex] = useState<number>(0)
+  const [isPaused, setIsPaused] = useState<boolean>(false)
   const [activeTilt, setActiveTilt] = useState<{ index: number; x: number; y: number } | null>(null)
   const cardRefs = useRef<(HTMLButtonElement | null)[]>([])
 
   const currentView = heroViews[activeViewIndex]
+
+  // Snappy, lively 3.8-second auto-cycle that pauses on user hover or interaction
+  useEffect(() => {
+    if (isPaused) return
+    const timer = setInterval(() => {
+      setActiveViewIndex((prev) => (prev + 1) % heroViews.length)
+    }, 3800)
+    return () => clearInterval(timer)
+  }, [isPaused, heroViews.length])
 
   const handleTileMouseMove = (idx: number, e: React.MouseEvent<HTMLButtonElement>) => {
     const el = cardRefs.current[idx]
@@ -156,11 +166,13 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column: Spatial 2x2 Perspective Deck (Clean, No Clutter Pills) */}
+          {/* Right Column: Spatial 2x2 Perspective Deck (Snappy Auto-Cycle + 3D Tilt) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
             className="lg:col-span-5 bg-ink/75 backdrop-blur-2xl border border-sand/30 rounded-3xl p-4 sm:p-5 space-y-3 shadow-2xl"
           >
             {/* Header */}
@@ -169,8 +181,8 @@ export function Hero() {
                 <Compass className="w-3.5 h-3.5 text-gold-light" />
                 <span>Multi-Angle Estate Views</span>
               </span>
-              <span className="text-[11px] text-sand-light/70 font-sans">
-                Click tile to switch view
+              <span className="text-[10px] text-sand-light/60 font-sans">
+                {isPaused ? 'Hover Paused' : 'Auto-Rotating'}
               </span>
             </div>
 
@@ -201,7 +213,10 @@ export function Hero() {
                     type="button"
                     onMouseMove={(e) => handleTileMouseMove(idx, e)}
                     onMouseLeave={handleTileMouseLeave}
-                    onClick={() => setActiveViewIndex(idx)}
+                    onClick={() => {
+                      setActiveViewIndex(idx)
+                      setIsPaused(true)
+                    }}
                     style={tiltStyle}
                     className={`group relative h-28 sm:h-32 rounded-2xl overflow-hidden border text-left transition-all duration-200 active:scale-95 flex flex-col justify-end p-3 ${
                       isActive
@@ -221,15 +236,32 @@ export function Hero() {
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent pointer-events-none" />
 
-                    {/* Clean Label & Subtitle (No Clutter Badge Pills) */}
+                    {/* Clean Label & Subtitle */}
                     <div className="relative z-10 space-y-0.5">
-                      <div className={`text-xs sm:text-sm font-bold leading-tight transition-colors ${isActive ? 'text-gold-light' : 'text-cream group-hover:text-gold-light'}`}>
+                      <div
+                        className={`text-xs sm:text-sm font-bold leading-tight transition-colors ${
+                          isActive ? 'text-gold-light' : 'text-cream group-hover:text-gold-light'
+                        }`}
+                      >
                         {view.label}
                       </div>
                       <div className="text-[10px] text-sand-light/85 truncate font-sans">
                         {view.badge}
                       </div>
                     </div>
+
+                    {/* Active Snappy Progress Timer Line */}
+                    {isActive && !isPaused && (
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden z-20">
+                        <motion.div
+                          key={`progress-${activeViewIndex}`}
+                          initial={{ width: '0%' }}
+                          animate={{ width: '100%' }}
+                          transition={{ duration: 3.8, ease: 'linear' }}
+                          className="h-full bg-gold"
+                        />
+                      </div>
+                    )}
                   </button>
                 )
               })}
