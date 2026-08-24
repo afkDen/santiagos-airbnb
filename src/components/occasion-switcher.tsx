@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import { getLocalImageUrl } from '@/content/gallery'
 import { buildWhatsAppLink } from '@/lib/whatsapp-link'
+import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
 import {
   PartyPopper,
   Gamepad2,
@@ -16,7 +17,6 @@ import {
   ArrowRight,
   CalendarCheck,
   Maximize2,
-  X,
 } from 'lucide-react'
 
 export function OccasionSwitcher() {
@@ -29,7 +29,6 @@ export function OccasionSwitcher() {
       label: 'Birthdays & Debuts',
       icon: PartyPopper,
       title: 'Milestone 18th, 25th, 30th & 50th Celebrations',
-      tagline: 'The Ultimate Party Venue in Alfonso',
       description:
         'Celebrate with no stranger interference. Gather around the 10-seater banquet dining table for celebratory toasts, transition seamlessly from an afternoon pool dip to late-night videoke, and cut your birthday cake with zero corkage fees.',
       image: getLocalImageUrl('din1'), // 379.2 KB High-Res Banquet Table
@@ -46,7 +45,6 @@ export function OccasionSwitcher() {
       label: 'Barkada Getaways',
       icon: Gamepad2,
       title: 'Competitive Gaming, Billiards & Night Swimming',
-      tagline: 'Engineered for Action & Zero Boredom',
       description:
         'The ultimate weekend escape for friend groups. Challenge each other on the Kangaroo pool table, battle on classic retro arcade machines, play pickup basketball on the half-court, and gather around the sunken bonfire pit under the stars.',
       image: getLocalImageUrl('bill2'),
@@ -63,7 +61,6 @@ export function OccasionSwitcher() {
       label: 'Family Reunions',
       icon: Users,
       title: 'Multi-Generational Vacations with Zero Queues',
-      tagline: 'Comfort for Grandparents to Toddlers',
       description:
         'Finally, a private resort where everyone has space. Elders relax in quiet air-conditioned VIP master suites, kids splash safely in the pool and arcade room, and 8 full bathrooms ensure morning routines are completely stress-free.',
       image: getLocalImageUrl('out1'),
@@ -80,7 +77,6 @@ export function OccasionSwitcher() {
       label: 'Corporate Team Retreats',
       icon: Briefcase,
       title: 'Executive Planning & High-Energy Team Outings',
-      tagline: '100% Exclusive Compound Privacy',
       description:
         'Bring your entire company or department together in an inspiring, secluded setting. Host strategic fireside sessions, pool relay games, and bonding tournaments in a private compound with high-speed Wi-Fi and ample parking.',
       image: getLocalImageUrl('bbl1'),
@@ -167,7 +163,7 @@ export function OccasionSwitcher() {
           transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-2"
         >
-          {/* Photo Container */}
+          {/* Photo Container (Clean without floating tag pills) */}
           <div
             onClick={() => setLightboxImage(current.image)}
             className="lg:col-span-6 relative h-72 sm:h-84 md:h-96 lg:h-[440px] rounded-3xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
@@ -179,9 +175,6 @@ export function OccasionSwitcher() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute top-4 left-4 px-3.5 py-1.5 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-xs font-bold shadow-sm">
-              {current.tagline}
-            </div>
             <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
               <Maximize2 className="w-4 h-4 text-gold-light" />
             </div>
@@ -235,36 +228,15 @@ export function OccasionSwitcher() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Lightbox Modal */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in-0 duration-200"
-          onClick={() => setLightboxImage(null)}
-        >
-          <div
-            className="relative max-w-5xl w-full bg-ink-soft rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-4 sm:p-6 space-y-3 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between text-cream px-2">
-              <h4 className="text-sm sm:text-base font-semibold">Occasion HD Photography</h4>
-              <button
-                type="button"
-                onClick={() => setLightboxImage(null)}
-                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="relative h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center">
-              <Image src={lightboxImage} alt="Occasion HD View" fill sizes="95vw" className="object-contain" />
-            </div>
-            <div className="px-2 text-xs text-sand-light/70 font-sans">
-              Press Escape to close
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Fullscreen Portal Lightbox (immune to stacking contexts) */}
+      <FullscreenLightbox
+        isOpen={!!lightboxImage}
+        onClose={() => setLightboxImage(null)}
+        src={lightboxImage}
+        title={current.title}
+        subtitle={`Recommended for ${current.suggestedHeadcount}`}
+        category={current.label}
+      />
     </div>
   )
 }

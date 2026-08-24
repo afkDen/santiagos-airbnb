@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
-import { GALLERY_REGISTRY, GalleryImage } from '@/content/gallery'
-import { MessageCircle, Play, Camera, Filter, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
+import { GALLERY_REGISTRY } from '@/content/gallery'
+import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
+import { Play, Camera, Maximize2 } from 'lucide-react'
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
@@ -42,26 +43,6 @@ export default function GalleryPage() {
       prev !== null && prev > 0 ? prev - 1 : filteredImages.length - 1
     )
   }, [activeImageIndex, filteredImages.length])
-
-  // Lock body scroll and handle keyboard navigation for Lightbox
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (activeImageIndex === null) return
-      if (e.key === 'Escape') setActiveImageIndex(null)
-      if (e.key === 'ArrowRight') handleNextImage()
-      if (e.key === 'ArrowLeft') handlePrevImage()
-    }
-    if (activeImageIndex !== null) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', handleKeyDown)
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [activeImageIndex, handleNextImage, handlePrevImage])
 
   const currentActiveImage =
     activeImageIndex !== null ? filteredImages[activeImageIndex] : null
@@ -131,7 +112,7 @@ export default function GalleryPage() {
         })}
       </div>
 
-      {/* Photo Grid with Clean Authentic Presentation (No Distracting Overlay Pills) */}
+      {/* Photo Grid */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedCategory}
@@ -210,78 +191,18 @@ export default function GalleryPage() {
         </div>
       </motion.div>
 
-      {/* Fullscreen Lightbox Modal (z-[100] ensures total coverage over navbar and body) */}
-      {currentActiveImage && activeImageIndex !== null && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-2 sm:p-6 animate-in fade-in-0 duration-200"
-          onClick={() => setActiveImageIndex(null)}
-        >
-          <div
-            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Top Header */}
-            <div className="flex items-center justify-between px-2 text-cream shrink-0">
-              <div className="space-y-0.5">
-                <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider">
-                  {currentActiveImage.category} • Photo {activeImageIndex + 1} of {filteredImages.length}
-                </span>
-                <h3 className="text-xs sm:text-base font-semibold truncate max-w-[240px] sm:max-w-none">
-                  {currentActiveImage.label}
-                </h3>
-              </div>
-              <button
-                onClick={() => setActiveImageIndex(null)}
-                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors active:scale-95"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Main Image Viewport with Previous/Next Arrows */}
-            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
-              <Image
-                src={currentActiveImage.url}
-                alt={currentActiveImage.label}
-                fill
-                sizes="95vw"
-                className="object-contain"
-                priority
-              />
-
-              {/* Prev Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handlePrevImage()
-                }}
-                className="absolute left-2 sm:left-4 p-2.5 sm:p-3 rounded-full bg-ink/75 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
-                aria-label="Previous Image"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              {/* Next Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleNextImage()
-                }}
-                className="absolute right-2 sm:right-4 p-2.5 sm:p-3 rounded-full bg-ink/75 hover:bg-ink text-white backdrop-blur-md border border-sand/30 shadow-lg active:scale-95 transition-all"
-                aria-label="Next Image"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="px-2 flex items-center justify-between text-[11px] sm:text-xs text-sand-light/70 font-sans shrink-0">
-              <span>Swipe or use Arrow keys to navigate</span>
-              <span className="text-gold-light">Tap outside or press Escape to close</span>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Fullscreen Portal Lightbox */}
+      <FullscreenLightbox
+        isOpen={currentActiveImage !== null && activeImageIndex !== null}
+        onClose={() => setActiveImageIndex(null)}
+        src={currentActiveImage ? currentActiveImage.url : null}
+        title={currentActiveImage?.label}
+        category={currentActiveImage?.category}
+        index={activeImageIndex !== null ? activeImageIndex : undefined}
+        total={filteredImages.length}
+        onPrev={handlePrevImage}
+        onNext={handleNextImage}
+      />
     </div>
   )
 }

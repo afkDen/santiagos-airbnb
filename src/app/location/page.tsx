@@ -7,6 +7,7 @@ import { DirectionsStepper } from '@/components/directions-stepper'
 import { TRANSIT_INFO } from '@/content/directions'
 import { NEARBY_ATTRACTIONS, LOCAL_TRAVEL_TIPS, MANILA_DISTANCES } from '@/content/attractions'
 import { PROPERTY_INFO } from '@/content/property'
+import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
 import {
   MapPin,
   Navigation,
@@ -19,7 +20,6 @@ import {
   Play,
   Car,
   Maximize2,
-  X,
 } from 'lucide-react'
 
 export default function LocationPage() {
@@ -343,36 +343,14 @@ export default function LocationPage() {
         ))}
       </motion.div>
 
-      {/* Fullscreen Lightbox Modal (z-[100] covers screen completely) */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
-          onClick={() => setLightboxImage(null)}
-        >
-          <div
-            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between text-cream px-2 shrink-0">
-              <h4 className="text-sm sm:text-base font-semibold truncate max-w-[240px] sm:max-w-none">{lightboxImage.label}</h4>
-              <button
-                type="button"
-                onClick={() => setLightboxImage(null)}
-                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors active:scale-95"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
-              <Image src={lightboxImage.src} alt={lightboxImage.label} fill sizes="95vw" className="object-contain" priority />
-            </div>
-            <div className="px-2 text-xs text-sand-light/70 font-sans shrink-0">
-              Tap outside or press Escape to close
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Fullscreen Portal Lightbox (immune to stacking contexts) */}
+      <FullscreenLightbox
+        isOpen={!!lightboxImage}
+        onClose={() => setLightboxImage(null)}
+        src={lightboxImage ? lightboxImage.src : null}
+        title={lightboxImage?.label}
+        category="Alfonso Tagaytay Location"
+      />
     </div>
   )
 }

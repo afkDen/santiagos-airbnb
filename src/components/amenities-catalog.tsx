@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { AMENITIES_CATALOG, Amenity } from '@/content/amenities'
 import { getLocalImageUrl } from '@/content/gallery'
+import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
 import {
   Waves,
   Mic,
@@ -20,7 +21,6 @@ import {
   Car,
   CheckCircle2,
   Maximize2,
-  X,
   ShieldCheck,
   Bed,
   Sparkles,
@@ -211,58 +211,20 @@ export function AmenitiesCatalog() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Fullscreen Lightbox Modal (z-[100] covers screen completely) */}
-      {lightboxAmenity && lightboxAmenity.imageKey && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in-0 duration-200"
-          onClick={() => setLightboxAmenity(null)}
-        >
-          <div
-            className="relative max-w-6xl w-full h-full flex flex-col justify-between bg-ink-soft rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-3 sm:p-5 space-y-2 animate-in zoom-in-95 ease-[cubic-bezier(0.23,1,0.32,1)] duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between text-cream px-2 shrink-0">
-              <div>
-                <span className="text-[11px] font-bold text-gold-light uppercase tracking-wider block">
-                  {lightboxAmenity.category} • Full HD Resolution
-                </span>
-                <h3 className="text-sm sm:text-lg font-bold truncate max-w-[240px] sm:max-w-none">{lightboxAmenity.name}</h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setLightboxAmenity(null)}
-                className="p-2 text-sand-light hover:text-white rounded-full bg-cream/10 hover:bg-cream/20 transition-colors active:scale-95"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Viewport */}
-            <div className="relative flex-1 w-full rounded-2xl overflow-hidden bg-black/70 flex items-center justify-center min-h-0">
-              <Image
-                src={getLocalImageUrl(lightboxAmenity.imageKey)}
-                alt={lightboxAmenity.name}
-                fill
-                sizes="95vw"
-                className="object-contain"
-                priority
-              />
-            </div>
-
-            {/* Specs & Description in Modal */}
-            <div className="px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-sand-light/80 font-sans border-t border-sand/20 pt-2 shrink-0">
-              <p className="line-clamp-1 sm:line-clamp-none">{lightboxAmenity.description}</p>
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="px-3 py-1 bg-forest/20 text-forest-light border border-forest/30 rounded-full font-bold text-xs">
-                  Included in Nightly Rate
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Fullscreen Portal Lightbox (immune to stacking contexts) */}
+      <FullscreenLightbox
+        isOpen={!!lightboxAmenity && !!lightboxAmenity.imageKey}
+        onClose={() => setLightboxAmenity(null)}
+        src={lightboxAmenity && lightboxAmenity.imageKey ? getLocalImageUrl(lightboxAmenity.imageKey) : null}
+        title={lightboxAmenity?.name}
+        subtitle={lightboxAmenity?.description}
+        category={lightboxAmenity?.category}
+        actionButton={
+          <span className="px-3 py-1 bg-forest/20 text-forest-light border border-forest/30 rounded-full font-bold text-xs">
+            Included in Nightly Rate
+          </span>
+        }
+      />
     </div>
   )
 }
