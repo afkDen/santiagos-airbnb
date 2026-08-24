@@ -11,11 +11,12 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     if (prefersReducedMotion) return
 
+    // Initialize Lenis for desktop wheel with native touch pass-through for 120Hz mobile
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.0,
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.0,
     })
 
     let rafId: number

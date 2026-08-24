@@ -15,7 +15,8 @@ export function Navbar() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 20)
+    const isScrolled = latest > 20
+    setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev))
   })
 
   const navLinks = [

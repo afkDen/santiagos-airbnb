@@ -11,11 +11,8 @@ export function StickyBookingBar() {
   useEffect(() => {
     const handleScroll = () => {
       // Show bar once scrolled past 400px
-      if (window.scrollY > 400) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      const nextVisible = window.scrollY > 400
+      setIsVisible((prev) => (prev !== nextVisible ? nextVisible : prev))
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
