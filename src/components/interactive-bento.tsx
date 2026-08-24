@@ -39,16 +39,16 @@ export function InteractiveBento() {
 
   const bentoCards = [
     {
-      title: '10-Seater Banquet Dining & Chef’s Kitchen',
+      title: 'Solid Acacia Banquet Dining & Chef’s Kitchen',
       subtitle: 'The Social Gathering Space',
       description:
-        'Dine together around the solid 10-seater glass table with fully equipped heavy-duty gas cooktops and zero corkage on outside food.',
+        'Dine together around the solid acacia live-edge hardwood banquet table with fully equipped chef’s kitchen and zero corkage on outside food.',
       badge: 'Group Feasts & Dining',
       image: getLocalImageUrl('din1'),
       icon: UtensilsCrossed,
       href: '/amenities',
       features: [
-        '10 comfortable rattan dining armchairs',
+        'Solid live-edge acacia hardwood slab table',
         'Heavy-duty gas cooktops & cookware included',
         'Large 2-door refrigerator for food & drinks',
         'Zero corkage fees on outside food & catering',

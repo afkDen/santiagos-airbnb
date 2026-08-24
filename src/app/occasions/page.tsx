@@ -22,7 +22,7 @@ export default function OccasionsPage() {
 
   const sampleItinerary = [
     { time: '3:00 PM', event: 'Check-in & Welcome Pool Dip', desc: 'Settle into air-conditioned quarters and cool off in the private swimming pool.' },
-    { time: '6:00 PM', event: 'Al Fresco Sunset Dinner', desc: 'Cook group dinner in the full chef kitchen and gather around the 10-seater banquet dining table.' },
+    { time: '6:00 PM', event: 'Al Fresco Sunset Dinner', desc: 'Cook group dinner in the full chef kitchen and gather around the solid acacia banquet dining table or covered al fresco veranda.' },
     { time: '8:00 PM', event: 'Videoke & Arcade Battles', desc: 'Sing in the soundproofed videoke lounge and play Kangaroo pool tournaments.' },
     { time: '10:30 PM', event: 'Fireside Bonfire & Cocktails', desc: 'Gather around the sunken bonfire pit in the crisp 18°C mountain air.' },
     { time: '9:00 AM Next Day', event: 'Morning Coffee & Basketball Shootouts', desc: 'Enjoy fresh Cavite coffee on the breezy veranda and shoot hoops on the half-court.' },

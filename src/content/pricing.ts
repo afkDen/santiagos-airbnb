@@ -42,7 +42,7 @@ export const PRICING_RULES = {
     'Enclosed basketball half-court',
     'Sunken outdoor circular bonfire pit area',
     'Fully equipped kitchen with heavy-duty cooktop & cookware (No corkage fees)',
-    'Long glass dining table with illuminated gold signature wall',
+    'Solid acacia live-edge banquet table with illuminated gold signature wall',
     '8 full bathrooms with hot/cold showers (Zero queues)',
     'High-speed Wi-Fi & Smart TV streaming',
     'Free secure on-premises parking for 3+ vehicles',

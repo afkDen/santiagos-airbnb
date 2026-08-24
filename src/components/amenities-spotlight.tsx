@@ -71,12 +71,12 @@ export function AmenitiesSpotlight() {
       ],
     },
     {
-      title: 'Chef’s Kitchen & Banquet Dining',
+      title: 'Chef’s Kitchen & Acacia Banquet Dining',
       tagline: 'Cook Together with Zero Corkage',
       image: getLocalImageUrl('din1'), // 379.2 KB High-Res
       icon: ChefHat,
       bullets: [
-        '10-seater solid glass-top dining table',
+        'Solid acacia live-edge hardwood banquet table',
         'Heavy-duty double burner gas stove (gas included)',
         'Large 2-door refrigerator & freezer',
         '₱0 Corkage on outside catering, lechon & drinks',

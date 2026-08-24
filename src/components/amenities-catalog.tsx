@@ -76,8 +76,8 @@ export function AmenitiesCatalog() {
     'Entertainment',
     'Water & Relaxation',
     'Sports & Fitness',
-    'Outdoor & Gathering',
-    'Dining & Kitchen',
+    'Outdoor Gathering',
+    'Dining & Cooking',
     'Connectivity & Utilities',
     'Accommodations',
   ]

@@ -30,8 +30,8 @@ export function Hero() {
     {
       id: 'dining',
       label: 'Banquet Hall',
-      badge: '10-Seater Glass Table',
-      fullName: '10-Seater Banquet Dining & Chef Kitchen',
+      badge: 'Acacia Banquet Table',
+      fullName: 'Acacia Live-Edge Banquet Dining & Chef Kitchen',
       src: getLocalImageUrl('din1'), // 379.2 KB High-Res
     },
     {

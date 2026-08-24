@@ -86,7 +86,7 @@ export function EstateZoneExplorer() {
       image: getLocalImageUrl('din1'), // 379.2 KB
       secondaryImage: getLocalImageUrl('din4'), // 328.9 KB Ambient Warm Evening Dining
       description:
-        'Designed for memorable group feasts. Features a 10-seater contemporary glass banquet table, full outdoor covered BBQ grill, commercial refrigerator, gas stove, microwave, rice cooker, and pure mineral water dispenser.',
+        'Designed for memorable group feasts. Features a solid acacia live-edge banquet table, covered al fresco dining patio, outdoor brick BBQ grill, commercial refrigerator, gas stove, microwave, rice cooker, and pure mineral water dispenser.',
       features: [
         '₱0 Corkage on all food, drinks, liquors, and celebration cakes',
         'Heavy-duty outdoor charcoal BBQ grill & preparation counter',
@@ -103,7 +103,7 @@ export function EstateZoneExplorer() {
       icon: Bed,
       capacity: 'Sleeps 40 Guests Comfortably',
       image: getLocalImageUrl('bed7'), // 554.5 KB High-Res VIP Suite
-      secondaryImage: getLocalImageUrl('bed9'), // 120.8 KB VIP Master Suite Detailed View
+      secondaryImage: getLocalImageUrl('bed3'), // 411.3 KB VIP Master Suite Queen Bed
       description:
         'Engineered to eliminate the usual group travel frustrations. 4 distinct air-conditioned bedroom zones (2 VIP master suites + 9 sturdy double-deck bunks + driver quarters) paired with 8 full bathrooms so morning routines flow effortlessly.',
       features: [

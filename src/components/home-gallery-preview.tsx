@@ -18,7 +18,7 @@ export function HomeGalleryPreview() {
     {
       key: 'din4',
       category: 'Dining',
-      label: '10-Seater Banquet Dining & Warm Evening Lighting',
+      label: 'Covered Al Fresco 10-Seater Glass Dining Patio',
       url: getLocalImageUrl('din4'),
     },
     {

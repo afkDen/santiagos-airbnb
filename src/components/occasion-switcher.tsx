@@ -30,10 +30,10 @@ export function OccasionSwitcher() {
       icon: PartyPopper,
       title: 'Milestone 18th, 25th, 30th & 50th Celebrations',
       description:
-        'Celebrate with no stranger interference. Gather around the 10-seater banquet dining table for celebratory toasts, transition seamlessly from an afternoon pool dip to late-night videoke, and cut your birthday cake with zero corkage fees.',
+        'Celebrate with no stranger interference. Gather around the solid acacia live-edge banquet dining table for celebratory toasts, transition seamlessly from an afternoon pool dip to late-night videoke, and cut your birthday cake with zero corkage fees.',
       image: getLocalImageUrl('din1'), // 379.2 KB High-Res Banquet Table
       features: [
-        '10-seater banquet dining table for milestone toasts',
+        'Solid acacia live-edge banquet dining table for toasts',
         'Air-conditioned soundproofed videoke lounge with no curfew',
         'No cake or food corkage — commercial kitchen included',
         'Evening bonfire pit for cake cutting & late cocktails',
