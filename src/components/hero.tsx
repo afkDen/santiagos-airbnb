@@ -109,7 +109,7 @@ export function Hero() {
       </div>
 
       {/* Main Hero Content (2-Column Desktop + Balanced Mobile Stack) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 md:pt-14 pb-6 sm:pb-8 flex-1 flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 md:pt-14 pb-4 sm:pb-6 flex-1 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column: Editorial Headline & Action CTAs */}
           <motion.div
@@ -280,83 +280,92 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Elevated Bento Spec Horizon (Clean, Uncluttered Luxury Stats Console) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-5 sm:pb-8">
+      {/* Ultra-Sleek Floating Frosted Glass Spec Capsule (Low-Profile, Zero Clutter) */}
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-          className="bg-ink/85 backdrop-blur-2xl border border-sand/30 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6"
+          transition={{ duration: 0.45, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          className="bg-ink/75 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-full shadow-2xl p-2.5 sm:px-6 sm:py-3"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
-            {/* Bento Card 1: 40 Guests */}
-            <div className="flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-sand/20 hover:border-gold/40 hover:bg-white/10 transition-all duration-300 group cursor-default shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-terra/25 border border-terra/40 flex items-center justify-center text-terra-light group-hover:scale-110 group-hover:bg-terra/35 transition-all mb-2.5">
-                <Users className="w-5 h-5" />
+          <div className="grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-2.5 lg:gap-0">
+            {/* Stat 1: 40 Guests */}
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Users className="w-4 h-4" />
               </div>
-              <div className="space-y-0.5">
-                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-gold-light leading-tight tabular-nums">
-                  <StatCounter value={40} /> Guests
+              <div className="min-w-0">
+                <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
+                  <span className="text-gold-light tabular-nums font-bold text-sm sm:text-base">
+                    <StatCounter value={40} />
+                  </span>{' '}
+                  Guests
                 </div>
-                <div className="text-xs sm:text-sm text-cream font-semibold">
-                  Base 20 • Max 40 Total
-                </div>
-                <div className="text-[11px] text-sand-light/75 font-sans">
-                  Whole-Estate (~₱1,250/head)
+                <div className="text-[10px] sm:text-[11px] text-sand-light/75 truncate font-sans">
+                  Base 20 • Max 40
                 </div>
               </div>
             </div>
 
-            {/* Bento Card 2: 8 Full Bathrooms */}
-            <div className="flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-sand/20 hover:border-gold/40 hover:bg-white/10 transition-all duration-300 group cursor-default shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-terra/25 border border-terra/40 flex items-center justify-center text-terra-light group-hover:scale-110 group-hover:bg-terra/35 transition-all mb-2.5">
-                <Droplets className="w-5 h-5" />
+            {/* Hairline Divider */}
+            <div className="hidden lg:block w-px h-7 bg-white/10" />
+
+            {/* Stat 2: 8 Full Baths */}
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Droplets className="w-4 h-4" />
               </div>
-              <div className="space-y-0.5">
-                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-gold-light leading-tight tabular-nums">
-                  <StatCounter value={8} /> Full Baths
+              <div className="min-w-0">
+                <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
+                  <span className="text-gold-light tabular-nums font-bold text-sm sm:text-base">
+                    <StatCounter value={8} />
+                  </span>{' '}
+                  Full Baths
                 </div>
-                <div className="text-xs sm:text-sm text-cream font-semibold">
+                <div className="text-[10px] sm:text-[11px] text-sand-light/75 truncate font-sans">
                   Zero-Queue Guarantee
                 </div>
-                <div className="text-[11px] text-sand-light/75 font-sans">
-                  2 Master Ensuite + 6 Compound
-                </div>
               </div>
             </div>
 
-            {/* Bento Card 3: 20 Real Beds */}
-            <div className="flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-sand/20 hover:border-gold/40 hover:bg-white/10 transition-all duration-300 group cursor-default shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-terra/25 border border-terra/40 flex items-center justify-center text-terra-light group-hover:scale-110 group-hover:bg-terra/35 transition-all mb-2.5">
-                <Bed className="w-5 h-5" />
+            {/* Hairline Divider */}
+            <div className="hidden lg:block w-px h-7 bg-white/10" />
+
+            {/* Stat 3: 20 Real Beds */}
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Bed className="w-4 h-4" />
               </div>
-              <div className="space-y-0.5">
-                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-gold-light leading-tight tabular-nums">
-                  <StatCounter value={20} /> Real Beds
+              <div className="min-w-0">
+                <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
+                  <span className="text-gold-light tabular-nums font-bold text-sm sm:text-base">
+                    <StatCounter value={20} />
+                  </span>{' '}
+                  Real Beds
                 </div>
-                <div className="text-xs sm:text-sm text-cream font-semibold">
+                <div className="text-[10px] sm:text-[11px] text-sand-light/75 truncate font-sans">
                   2 VIP + 9 Bunks + Driver
                 </div>
-                <div className="text-[11px] text-sand-light/75 font-sans">
-                  4 Air-Conditioned Zones
-                </div>
               </div>
             </div>
 
-            {/* Bento Card 4: 22+ Amenities */}
-            <div className="flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-sand/20 hover:border-gold/40 hover:bg-white/10 transition-all duration-300 group cursor-default shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-terra/25 border border-terra/40 flex items-center justify-center text-terra-light group-hover:scale-110 group-hover:bg-terra/35 transition-all mb-2.5">
-                <Gamepad2 className="w-5 h-5" />
+            {/* Hairline Divider */}
+            <div className="hidden lg:block w-px h-7 bg-white/10" />
+
+            {/* Stat 4: 22+ Amenities */}
+            <div className="flex items-center gap-2.5 sm:gap-3 py-1 px-2 sm:px-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+              <div className="w-8 h-8 rounded-xl bg-terra/20 border border-terra/30 flex items-center justify-center text-terra-light shrink-0">
+                <Gamepad2 className="w-4 h-4" />
               </div>
-              <div className="space-y-0.5">
-                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-gold-light leading-tight tabular-nums">
-                  <StatCounter value={22} suffix="+" /> Amenities
+              <div className="min-w-0">
+                <div className="text-xs sm:text-sm font-bold text-cream leading-tight">
+                  <span className="text-gold-light tabular-nums font-bold text-sm sm:text-base">
+                    <StatCounter value={22} suffix="+" />
+                  </span>{' '}
+                  Amenities
                 </div>
-                <div className="text-xs sm:text-sm text-cream font-semibold">
+                <div className="text-[10px] sm:text-[11px] text-sand-light/75 truncate font-sans">
                   Pool, Videoke, Arcades
-                </div>
-                <div className="text-[11px] text-sand-light/75 font-sans">
-                  ₱0 Corkage • Billiards, Grilling
                 </div>
               </div>
             </div>
