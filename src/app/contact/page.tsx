@@ -447,13 +447,13 @@ export default function ContactPage() {
 
           {/* Progress Indicator */}
           <div className="space-y-1 sm:text-right">
-            <div className="text-xs font-bold text-terra-dark">
+            <div className="text-xs font-bold text-terra-dark tabular-nums">
               {packedCount} of {checklist.length} Packed ({progressPercent}%)
             </div>
             <div className="w-44 h-2 bg-sand rounded-full overflow-hidden">
               <div
                 style={{ width: `${progressPercent}%` }}
-                className="h-full bg-forest transition-all duration-300 rounded-full"
+                className="h-full bg-forest transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-full"
               />
             </div>
           </div>
@@ -467,21 +467,22 @@ export default function ContactPage() {
           {checklist.map((item, index) => (
             <button
               key={item.label}
+              type="button"
               onClick={() => toggleChecklist(index)}
-              className={`p-3.5 rounded-xl border text-left flex items-start gap-3 transition-all active:scale-95 ${
+              className={`p-3.5 rounded-xl border text-left flex items-start gap-3 transition-all active:scale-[0.97] duration-200 ${
                 item.checked
-                  ? 'bg-forest/10 border-forest/30 text-forest'
-                  : 'bg-cream/40 border-sand text-ink hover:bg-cream'
+                  ? 'bg-forest/10 border-forest/30 text-forest shadow-sm'
+                  : 'bg-cream/40 border-sand text-ink hover:bg-cream hover:border-sand-dark'
               }`}
             >
-              <div className="shrink-0 mt-0.5">
+              <div className={`shrink-0 mt-0.5 transition-transform duration-200 ${item.checked ? 'scale-110' : 'scale-100'}`}>
                 {item.checked ? (
                   <CheckSquare className="w-4 h-4 text-forest" />
                 ) : (
                   <Square className="w-4 h-4 text-ink-muted" />
                 )}
               </div>
-              <span className={item.checked ? 'line-through opacity-80' : ''}>
+              <span className={`transition-opacity duration-200 ${item.checked ? 'line-through opacity-80 font-medium' : 'font-semibold'}`}>
                 {item.label}
               </span>
             </button>

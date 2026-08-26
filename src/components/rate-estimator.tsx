@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { calculateRate, MANDATORY_PRICE_DISCLAIMER } from '@/lib/calculate-rate'
 import { buildWhatsAppLink } from '@/lib/whatsapp-link'
+import { getUpcomingWeekendDefaults } from '@/lib/date-utils'
+import { AnimatedNumber } from '@/components/animated-number'
 import {
   Calendar,
   Users,
@@ -14,9 +16,10 @@ import {
 } from 'lucide-react'
 
 export function RateEstimator() {
+  const [dates] = useState(() => getUpcomingWeekendDefaults())
   const [guests, setGuests] = useState<number>(20)
-  const [checkInDate, setCheckInDate] = useState<string>('2026-09-11') // Friday
-  const [checkOutDate, setCheckOutDate] = useState<string>('2026-09-13') // Sunday
+  const [checkInDate, setCheckInDate] = useState<string>(dates.checkInString)
+  const [checkOutDate, setCheckOutDate] = useState<string>(dates.checkOutString)
   const [occasion, setOccasion] = useState<string>('Barkada Getaway')
 
   const checkIn = new Date(checkInDate)
@@ -108,7 +111,7 @@ export function RateEstimator() {
             max={40}
             value={guests}
             onChange={(e) => setGuests(parseInt(e.target.value))}
-            className="w-full accent-terra mt-2"
+            className="w-full accent-terra mt-2 cursor-pointer"
           />
 
           <div className="flex justify-between text-[10px] sm:text-[11px] text-ink-muted font-semibold pt-0.5">
@@ -152,7 +155,7 @@ export function RateEstimator() {
         </div>
       </div>
 
-      {/* Estimated Output Result Box */}
+      {/* Estimated Output Result Box with Animated Digits */}
       <div className="bg-cream-dark/60 p-6 sm:p-8 lg:p-10 rounded-2xl border border-sand flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center lg:text-left">
           <span className="text-xs font-bold uppercase tracking-wider text-terra-dark">
@@ -161,7 +164,7 @@ export function RateEstimator() {
 
           <div className="flex items-baseline justify-center lg:justify-start gap-2">
             <span className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-terra-dark transition-all duration-300 tabular-nums">
-              ₱{estimatedPrice.toLocaleString()}
+              <AnimatedNumber value={estimatedPrice} prefix="₱" />
             </span>
             <span className="text-xs sm:text-sm font-semibold text-ink-muted font-sans">
               total for {nights} {nights === 1 ? 'night' : 'nights'} ({guests} guests)
@@ -179,9 +182,9 @@ export function RateEstimator() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-all"
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-all group"
         >
-          <MessageCircle className="w-5 h-5 fill-white" />
+          <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
           <span>Inquire on WhatsApp (Pre-Filled)</span>
         </a>
       </div>

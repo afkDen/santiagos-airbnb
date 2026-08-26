@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { Hero } from '@/components/hero'
@@ -10,10 +11,11 @@ import { OccasionSwitcher } from '@/components/occasion-switcher'
 import { CostSplitter } from '@/components/cost-splitter'
 import { HomeGalleryPreview } from '@/components/home-gallery-preview'
 import { HomeFAQ } from '@/components/home-faq'
+import { EditorialTestimonials } from '@/components/editorial-testimonials'
 import { PROPERTY_INFO } from '@/content/property'
 import { AMENITIES_CATALOG } from '@/content/amenities'
-import { TESTIMONIALS } from '@/content/reviews'
 import { MANDATORY_PRICE_DISCLAIMER } from '@/lib/calculate-rate'
+import { getLocalImageUrl } from '@/content/gallery'
 import {
   Waves,
   Mic,
@@ -26,7 +28,6 @@ import {
   UtensilsCrossed,
   Coins,
   ArrowRight,
-  Star,
   MessageCircle,
   Phone,
   ChefHat,
@@ -37,6 +38,7 @@ import {
   Wifi,
   Car,
   Sparkles,
+  CheckCircle2,
 } from 'lucide-react'
 
 function getAmenityIcon(iconName: string) {
@@ -77,42 +79,9 @@ function getAmenityIcon(iconName: string) {
 export default function HomePage() {
   const featuredAmenities = AMENITIES_CATALOG.filter((a) => a.featured)
 
-  const whyReasons = [
-    {
-      title: '100% Whole-Property Privacy',
-      desc: 'No shared pool, no stranger noise. Your group enjoys exclusive access to the entire gated container estate.',
-      icon: ShieldCheck,
-    },
-    {
-      title: 'Cool 18–24°C Highland Breeze',
-      desc: 'Sitting at ~600m elevation in Alfonso, Cavite, enjoy refreshing mountain weather just 90 minutes from Metro Manila.',
-      icon: ThermometerSnowflake,
-    },
-    {
-      title: 'Engineered for 40 Guests',
-      desc: '20 comfortable beds across 4 dedicated room zones, plus 8 full bathrooms so morning rushes are completely eliminated.',
-      icon: Users,
-    },
-    {
-      title: '22+ Included Amenities',
-      desc: 'Private pool, air-conditioned videoke room, Kangaroo billiards, retro arcades, basketball court, and bonfire pit with zero extra usage fees.',
-      icon: Waves,
-    },
-    {
-      title: 'Full Kitchen & No Corkage',
-      desc: 'Bring your own food, drinks, and celebration cakes. Fully-equipped cooktop, refrigerator, cookware, and long dining table included.',
-      icon: UtensilsCrossed,
-    },
-    {
-      title: 'Smart Group Value',
-      desc: 'Starting at ₱25,000/night for up to 20 guests — split across a full group, that’s as low as ~₱1,250/person.',
-      icon: Coins,
-    },
-  ]
-
   return (
     <div className="space-y-20 sm:space-y-28 pb-20">
-      {/* 1. Hero Section with Interactive Multi-View Dock & Video Tour Trigger */}
+      {/* 1. Hero Section with Interactive Multi-View Dock */}
       <Hero />
 
       {/* 2. Continuous Marquee Ticker */}
@@ -127,9 +96,6 @@ export default function HomePage() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8"
       >
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-terra">
-            Authentic Container Architecture
-          </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
             Where Industrial Chic Meets <span className="text-terra">Highland Warmth</span>
           </h2>
@@ -227,83 +193,131 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* 9. The 6 Core Reasons */}
+      {/* 9. The Core Differentiators (Asymmetric 50/50 Anchor-and-River Layout) */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
       >
-        <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-terra">The Santiagos Difference</span>
+        <div className="text-center max-w-2xl mx-auto space-y-2">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
             Why Groups Choose Us for Their Big Days
           </h2>
+          <p className="text-sm sm:text-base text-ink-muted leading-relaxed font-sans">
+            Engineered from the ground up to eliminate the friction points of group vacations in the Philippines.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {whyReasons.map((item) => {
-            const Icon = item.icon
-            return (
-              <div
-                key={item.title}
-                className="bg-white p-7 sm:p-8 rounded-3xl border border-sand/70 shadow-warm-sm hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 space-y-4 group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-terra/15 text-terra-dark flex items-center justify-center group-hover:scale-110 group-hover:bg-terra group-hover:text-white transition-all duration-300">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-ink">{item.title}</h3>
-                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">{item.desc}</p>
+        {/* Asymmetric 50/50 Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Anchor: Cast-Iron Dark Hero Slab */}
+          <div className="lg:col-span-5 bg-[#1C130D] text-cream p-8 sm:p-10 rounded-3xl border border-sand/20 shadow-2xl flex flex-col justify-between space-y-8 relative overflow-hidden group">
+            <Image
+              src={getLocalImageUrl('out1')}
+              alt="Santiago Resort Compound Evening"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover opacity-35 group-hover:opacity-45 transition-opacity duration-700 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1C130D] via-[#1C130D]/70 to-transparent pointer-events-none" />
+
+            <div className="relative z-10 space-y-3">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-terra/25 border border-terra/40 text-gold-light text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-3.5 h-3.5 text-gold-light" />
+                <span>100% Whole-Property Privacy</span>
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-cream leading-tight">
+                Zero Shared Pools. Zero Stranger Interference.
+              </h3>
+            </div>
+
+            <div className="relative z-10 space-y-4 pt-6 border-t border-sand/20">
+              <p className="text-xs sm:text-sm text-sand-light/90 font-sans leading-relaxed">
+                When you book Santiagos, the entire gated estate belongs exclusively to your party. Your group gets private reign over all 20 beds, the swimming pool, videoke lounge, and dining hall.
+              </p>
+              <div className="flex items-center gap-2 text-xs font-bold text-gold-light">
+                <CheckCircle2 className="w-4 h-4 text-forest-light shrink-0" />
+                <span>Guaranteed single-party compound booking</span>
               </div>
-            )
-          })}
+            </div>
+          </div>
+
+          {/* Right River: Unboxed Feature Stack with Hairline Dividers */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-sand/70 shadow-warm-sm flex flex-col justify-between divide-y divide-sand/60">
+            {/* Item 1 */}
+            <div className="pb-6 flex items-start gap-4 sm:gap-5">
+              <div className="w-11 h-11 rounded-2xl bg-sand/50 text-terra flex items-center justify-center shrink-0 mt-0.5">
+                <ThermometerSnowflake className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-ink">
+                  Cool 18–24°C Highland Weather
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
+                  Located in Alfonso, Cavite at ~600 meters elevation, enjoy refreshing mountain temperatures just 15 minutes past Tagaytay Twin Lakes and 90 minutes from Metro Manila.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 2 */}
+            <div className="py-6 flex items-start gap-4 sm:gap-5">
+              <div className="w-11 h-11 rounded-2xl bg-sand/50 text-terra flex items-center justify-center shrink-0 mt-0.5">
+                <Users className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-ink">
+                  8 Full Bathrooms — Zero Morning Lines
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
+                  No waiting in line for showers. With 8 rainfall bathrooms spread across the Master Suites and bunk corridors, 40 guests can get ready simultaneously.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 3 */}
+            <div className="py-6 flex items-start gap-4 sm:gap-5">
+              <div className="w-11 h-11 rounded-2xl bg-sand/50 text-terra flex items-center justify-center shrink-0 mt-0.5">
+                <UtensilsCrossed className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-ink">
+                  Full Chef Kitchen & ₱0 Corkage Guarantee
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
+                  Bring your own food, drinks, outside catering, and birthday cakes with zero corkage fees. Heavy-duty gas cooktops, refrigerators, and cookware are all included.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 4 */}
+            <div className="pt-6 flex items-start gap-4 sm:gap-5">
+              <div className="w-11 h-11 rounded-2xl bg-sand/50 text-terra flex items-center justify-center shrink-0 mt-0.5">
+                <Coins className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-ink">
+                  Transparent Group Value (~₱1,250/Head)
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
+                  Starting at ₱25,000/night for up to 20 guests on weekdays. Split across a full group, that is less than a single hotel room in Tagaytay with 10x the space and amenities.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
-      {/* 10. Guest Reviews & Testimonials */}
-      <motion.section
+      {/* 10. Editorial Guest Reviews & Testimonials Showcase */}
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        className="bg-ink text-cream py-20"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-gold-light">
-              Verified Guest Experiences
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-cream">
-              Loved by Barkadas, Families & Teams
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {TESTIMONIALS.map((t) => (
-              <div
-                key={t.name}
-                className="bg-ink-soft/90 p-7 sm:p-8 rounded-3xl border border-sand/20 flex flex-col justify-between space-y-5 shadow-warm-lg hover:border-gold/40 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-1 text-gold">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <p className="text-sm sm:text-base italic text-sand-light/95 font-serif leading-relaxed">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-sand/15">
-                  <div className="font-bold text-sm text-gold-light">{t.name}</div>
-                  <div className="text-xs text-sand-light/70">{t.origin} • {t.event}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+        <EditorialTestimonials />
+      </motion.div>
 
       {/* 11. Landing Mini-FAQ Accordion */}
       <HomeFAQ />
@@ -322,7 +336,7 @@ export default function HomePage() {
               Ready to Secure Your Group&apos;s Dates?
             </h2>
             <p className="text-sm sm:text-base text-ink-muted leading-relaxed font-sans">
-              Dates for weekends and holidays fill quickly. Message us directly on WhatsApp to check real-time availability, request date holds, or ask questions.
+              Weekend and holiday dates fill up fast. Connect directly with our team on WhatsApp to check real-time calendar availability or place a temporary date hold.
             </p>
             <p className="text-xs text-ink-muted italic border-t border-sand/50 pt-4">
               {MANDATORY_PRICE_DISCLAIMER}
@@ -337,7 +351,7 @@ export default function HomePage() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-base rounded-full shadow-warm-lg hover:shadow-xl transition-all active:scale-95 group"
             >
               <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
-              <span>Chat Directly on WhatsApp (0922 830 5320)</span>
+              <span>Chat Directly on WhatsApp ({PROPERTY_INFO.contacts.phone2.display})</span>
             </a>
 
             <a
@@ -345,7 +359,7 @@ export default function HomePage() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-cream-dark hover:bg-sand text-ink font-bold text-base rounded-full border border-sand-dark transition-all active:scale-95"
             >
               <Phone className="w-4 h-4 text-terra" />
-              <span>Call 0917 800 5320</span>
+              <span>Call {PROPERTY_INFO.contacts.phone1.display}</span>
             </a>
           </div>
         </div>

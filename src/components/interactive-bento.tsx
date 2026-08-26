@@ -21,7 +21,6 @@ export function InteractiveBento() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const handleMouseMove = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
-    // Only apply 3D tilt on fine pointer (desktop mouse)
     if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return
     const card = cardRefs.current[index]
     if (!card) return
@@ -39,51 +38,51 @@ export function InteractiveBento() {
 
   const bentoCards = [
     {
-      title: 'Solid Acacia Banquet Dining & Chef’s Kitchen',
+      title: 'Solid Acacia Banquet Dining & Chef Kitchen',
       subtitle: 'The Social Gathering Space',
       description:
-        'Dine together around the solid acacia live-edge hardwood banquet table with fully equipped chef’s kitchen and zero corkage on outside food.',
-      badge: 'Group Feasts & Dining',
+        'Dine together around the solid acacia live-edge hardwood banquet table with a fully equipped chef kitchen, heavy-duty gas cooktops, refrigeration, and zero corkage on outside food, catering, or lechon.',
+      badge: 'Group Feasts & ₱0 Corkage',
       image: getLocalImageUrl('din1'),
       icon: UtensilsCrossed,
       href: '/amenities',
       features: [
-        'Solid live-edge acacia hardwood slab table',
+        'Solid live-edge acacia hardwood slab dining table',
         'Heavy-duty gas cooktops & cookware included',
-        'Large 2-door refrigerator for food & drinks',
-        'Zero corkage fees on outside food & catering',
+        'Large 2-door refrigerator for group groceries & drinks',
+        'Zero corkage fees on outside food, drinks, and catering',
       ],
     },
     {
       title: 'Acoustic Videoke Lounge',
-      subtitle: 'Soundproofed Entertainment Hub',
+      subtitle: 'Soundproofed Entertainment Wing',
       description:
-        'Sing without curfew in our air-conditioned videoke room with music poster walls, dual wireless mics, and deep sectional seating.',
+        'Sing without curfew in our air-conditioned videoke room with framed music poster gallery walls, dual wireless microphones, and deep sectional seating.',
       badge: 'Zero Curfew Singing',
       image: getLocalImageUrl('kara1'),
       icon: Mic,
       href: '/amenities',
       features: [
-        'Updated digital songbook (OPM & Global Hits)',
+        'Updated digital songbook with OPM and global hits',
         '2 professional wireless microphones',
-        'Framed music poster wall gallery',
-        'Air-conditioned with deep sectional sofa',
+        'Framed music poster wall gallery & mood lighting',
+        'Air-conditioned comfort with deep sectional sofa',
       ],
     },
     {
       title: 'Private Pool & Waterfall',
-      subtitle: '100% Whole-Property Privacy',
+      subtitle: '100% Exclusive Compound Swimming',
       description:
-        'Enjoy crystal clear swimming with natural stone waterfall sounds, underwater night lighting, and dedicated poolside loungers.',
-      badge: 'Exclusive Swimming',
+        'Pristine crystal-clear swimming with natural cascading stone waterfall soundscapes, ambient underwater night lighting, and dedicated poolside loungers.',
+      badge: '100% Private Swimming',
       image: getLocalImageUrl('pool1'),
       icon: Waves,
       href: '/amenities',
       features: [
-        'Depth: 4ft to 5.5ft gradual slope',
-        'Ambient underwater LED night illumination',
+        'Gradual slope from 4ft to 5.5ft depth',
+        'Ambient underwater LED night illumination for evening swims',
         'Cascading stone waterfall soundscape',
-        'Direct poolside garden shower & bathroom',
+        'Direct poolside garden shower & adjacent restroom',
       ],
     },
   ]
@@ -103,9 +102,7 @@ export function InteractiveBento() {
 
   return (
     <>
-      {/* ============================================================ */}
-      {/* 1. DESKTOP BENTO GRID (Perfect 8-Col + 4-Col Stacked Layout)  */}
-      {/* ============================================================ */}
+      {/* 1. DESKTOP BENTO GRID (8-Col + 4-Col Stacked Layout) */}
       <div className="hidden lg:grid grid-cols-12 gap-6 items-stretch">
         {/* Left Column (8 Cols): Large Banquet Dining */}
         {(() => {
@@ -142,7 +139,7 @@ export function InteractiveBento() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
 
               <div className="relative z-10 flex items-center justify-between gap-4">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold tracking-wide">
                   <Icon className="w-4 h-4 text-gold-light" />
                   <span>{card.badge}</span>
                 </span>
@@ -215,7 +212,7 @@ export function InteractiveBento() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
 
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold tracking-wide">
                     <Icon className="w-3.5 h-3.5 text-gold-light" />
                     <span>{card.badge}</span>
                   </span>
@@ -233,7 +230,7 @@ export function InteractiveBento() {
                   </h4>
                   <div className="pt-2 flex items-center justify-between gap-2 border-t border-sand/20 text-xs">
                     <span className="text-gold-light font-bold flex items-center gap-1">
-                      <span>Click to view details</span>
+                      <span>Click for specifications</span>
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>
                     <Link
@@ -251,9 +248,7 @@ export function InteractiveBento() {
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/* 2. MOBILE SNAP CAROUSEL (< lg Viewports)                      */}
-      {/* ============================================================ */}
+      {/* 2. MOBILE SNAP CAROUSEL (< lg Viewports) */}
       <div className="lg:hidden space-y-3">
         <div className="flex items-center justify-between text-xs text-ink-muted px-1">
           <span className="font-semibold">Featured Spaces</span>
@@ -291,7 +286,7 @@ export function InteractiveBento() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20 pointer-events-none" />
 
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-sand/30 text-gold-light text-xs font-bold tracking-wide">
                     <Icon className="w-3.5 h-3.5 text-gold-light" />
                     <span>{card.badge}</span>
                   </span>
