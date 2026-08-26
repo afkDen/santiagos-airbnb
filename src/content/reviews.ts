@@ -35,9 +35,9 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: '2 months ago',
     tenure: 'Google Local Guide',
-    headline: 'A very solid place for large groups — plenty to do and free s’mores & chips!',
+    headline: 'A very solid place for large groups — free s’mores, water & ice dispenser, really worth the drive!',
     quote:
-      'This is a very solid place for large groups! There’s plenty to do and the staff are very accommodating. They gave us free smores and chips!',
+      'This is a very solid place for large groups! There’s plenty to do and the staff are very accommodating. They gave us free smores and chips!\n\nThe place is also equipped with plates and cups. They have a water and ice dispenser.\n\nReally worth the drive.',
     highlight: 'Large Groups & Free S’mores',
     verifiedStay: true,
   },

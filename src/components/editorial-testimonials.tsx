@@ -13,7 +13,7 @@ function PlatformBadge({ platform, className = '' }: { platform: 'Airbnb' | 'Goo
         className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FF385C]/20 border border-[#FF385C]/40 text-[#FF5A5F] text-[10px] font-bold tracking-wide ${className}`}
       >
         <span className="text-[11px] leading-none">★</span>
-        <span>Airbnb Verified</span>
+        <span>Airbnb</span>
       </span>
     )
   }
