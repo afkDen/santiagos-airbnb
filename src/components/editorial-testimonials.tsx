@@ -4,7 +4,28 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { TESTIMONIALS, Testimonial } from '@/content/reviews'
 import { PROPERTY_INFO } from '@/content/property'
-import { Star, Quote, ExternalLink, ShieldCheck, CheckCircle2, ChevronRight } from 'lucide-react'
+import { Star, Quote, ExternalLink, CheckCircle2, ChevronRight, MessageSquareQuote } from 'lucide-react'
+
+function PlatformBadge({ platform, className = '' }: { platform: 'Airbnb' | 'Google'; className?: string }) {
+  if (platform === 'Airbnb') {
+    return (
+      <span
+        className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FF385C]/20 border border-[#FF385C]/40 text-[#FF5A5F] text-[10px] font-bold tracking-wide ${className}`}
+      >
+        <span className="text-[11px] leading-none">★</span>
+        <span>Airbnb Verified</span>
+      </span>
+    )
+  }
+  return (
+    <span
+      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#4285F4]/20 border border-[#4285F4]/40 text-[#6BA5FF] text-[10px] font-bold tracking-wide ${className}`}
+    >
+      <span className="font-bold text-[11px] leading-none">G</span>
+      <span>Google Review</span>
+    </span>
+  )
+}
 
 export function EditorialTestimonials() {
   const [activeIdx, setActiveIdx] = useState<number>(0)
@@ -20,11 +41,15 @@ export function EditorialTestimonials() {
         {/* Header with Verification Trust Badge */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-sand/15 pb-8">
           <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cream/10 border border-sand/20 text-xs font-semibold text-gold-light">
+              <MessageSquareQuote className="w-3.5 h-3.5 text-gold" />
+              <span>Real Verified Guest Reviews</span>
+            </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-cream">
               Loved by Barkadas, Families & Teams
             </h2>
             <p className="text-sm sm:text-base text-sand-light/80 font-sans max-w-xl">
-              Authentic experiences shared by guests who hosted their milestone celebrations, reunions, and retreats with us.
+              Authentic verified reviews from our Airbnb listing and Google Maps profile.
             </p>
           </div>
 
@@ -35,16 +60,26 @@ export function EditorialTestimonials() {
                   <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
                 ))}
               </div>
-              <span>5.0 Star Guest Rating</span>
+              <span>5.0 / 5.0 Star Guest Rating</span>
             </div>
 
             <a
               href={PROPERTY_INFO.contacts.airbnb}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-airbnb/20 border border-airbnb/40 text-airbnb-light hover:bg-airbnb/30 text-xs font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FF385C]/20 border border-[#FF385C]/40 text-cream hover:bg-[#FF385C]/30 text-xs font-bold transition-colors"
             >
-              <span>View Airbnb Listing</span>
+              <span>Airbnb Listing</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href={PROPERTY_INFO.contacts.googleReviews}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#4285F4]/20 border border-[#4285F4]/40 text-cream hover:bg-[#4285F4]/30 text-xs font-bold transition-colors"
+            >
+              <span>Google Reviews</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -53,7 +88,7 @@ export function EditorialTestimonials() {
         {/* 50/50 Editorial Spotlight Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Dominant Statement Quote */}
-          <div className="lg:col-span-7 bg-[#1C130D] p-8 sm:p-10 lg:p-12 rounded-3xl border border-sand/20 shadow-2xl flex flex-col justify-between space-y-8 relative">
+          <div className="lg:col-span-7 bg-[#1C130D] p-7 sm:p-10 lg:p-12 rounded-3xl border border-sand/20 shadow-2xl flex flex-col justify-between space-y-8 relative">
             <Quote className="w-16 h-16 text-gold/15 absolute top-6 right-6 pointer-events-none" />
 
             <AnimatePresence mode="wait">
@@ -66,11 +101,14 @@ export function EditorialTestimonials() {
                 className="space-y-6"
               >
                 {/* Rating & Highlight Pill */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-1 text-gold">
-                    {[...Array(current.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                    ))}
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 text-gold">
+                      {[...Array(current.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                      ))}
+                    </div>
+                    <PlatformBadge platform={current.platform} />
                   </div>
                   <span className="text-[11px] font-bold text-terra-light bg-terra/20 border border-terra/30 px-3 py-1 rounded-full uppercase tracking-wider">
                     {current.highlight}
@@ -82,22 +120,38 @@ export function EditorialTestimonials() {
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-cream leading-snug">
                     &ldquo;{current.headline}&rdquo;
                   </h3>
-                  <p className="text-sm sm:text-base text-sand-light/90 font-sans leading-relaxed">
+                  <div className="text-sm sm:text-base text-sand-light/90 font-sans leading-relaxed whitespace-pre-line space-y-2">
                     {current.quote}
-                  </p>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Host Footnote */}
+            {/* Reviewer Footnote */}
             <div className="pt-6 border-t border-sand/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div>
-                <div className="font-bold text-base text-gold-light">{current.name}</div>
-                <div className="text-sand-light/70">{current.origin} • {current.event}</div>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-base text-gold-light">{current.name}</span>
+                  {current.platformUrl && (
+                    <a
+                      href={current.platformUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] text-sand-light/60 hover:text-gold-light flex items-center gap-0.5 underline decoration-sand/40"
+                    >
+                      <span>View Profile</span>
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </a>
+                  )}
+                </div>
+                <div className="text-sand-light/70">
+                  {current.tenure ? `${current.tenure} • ` : ''}
+                  {current.date}
+                </div>
               </div>
               <div className="flex items-center gap-1.5 text-forest-light bg-forest/20 border border-forest/30 px-3 py-1.5 rounded-full self-start sm:self-auto font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Verified Stay ({current.groupSize})</span>
+                <span>Verified Stay</span>
               </div>
             </div>
           </div>
@@ -105,7 +159,7 @@ export function EditorialTestimonials() {
           {/* Right Column: Interactive Story Navigator */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-3">
             <span className="text-xs font-bold uppercase tracking-wider text-sand-light/60 px-1">
-              Select a guest experience:
+              Select verified review:
             </span>
 
             {TESTIMONIALS.map((t, idx) => {
@@ -132,11 +186,9 @@ export function EditorialTestimonials() {
                   <div className="relative z-10 space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="font-serif font-bold text-sm text-cream">{t.name}</span>
-                      <span className="text-[10px] font-semibold text-gold-light bg-gold/20 px-2 py-0.2 rounded-full">
-                        {t.groupSize}
-                      </span>
+                      <PlatformBadge platform={t.platform} />
                     </div>
-                    <p className="text-xs text-sand-light/70 line-clamp-1">{t.event}</p>
+                    <p className="text-xs text-sand-light/70 line-clamp-1">{t.headline}</p>
                   </div>
 
                   <ChevronRight

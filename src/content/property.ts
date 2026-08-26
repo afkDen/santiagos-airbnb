@@ -39,6 +39,8 @@ export const PROPERTY_INFO = {
     instagram: 'https://www.instagram.com/santiagos.to',
     airbnb: 'https://www.airbnb.com/rooms/1643466979772957530',
     googleMaps: 'https://www.google.com/maps/place/Santiagos+Private+Resort/@14.1093627,120.8199956,17z',
+    googleReviews:
+      'https://www.google.com/travel/search?q=santiago%27s+resort+tagaytay&ts=CAEaKwopEicyJTB4MzNiZDlkMDA1YjkzMTI1ZDoweDZjMGE5MDk0YTlkNDM5OWI&qs=CAEyE0Nnb0ltX1BRenNxU3BJVnNFQUU4Ag&ap=ugEHcmV2aWV3cw',
     waze: 'https://ul.waze.com/ul?place=ChIJXRLUWwCdvdMRm0nUqZSQCmw',
     googleMapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3866.5!2d120.8199956!3d14.1093627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd9d005b93125d%3A0x6c0a9094a9d4399b!2sSantiagos+Private+Resort!5e0!3m2!1sen!2sph!4v1712400000000!5m2!1sen!2sph',
   },

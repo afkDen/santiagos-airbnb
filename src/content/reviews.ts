@@ -1,11 +1,11 @@
 export interface Testimonial {
   id: string
   name: string
-  origin: string
+  platform: 'Airbnb' | 'Google'
+  platformUrl: string
   rating: number
-  event: string
   date: string
-  groupSize: string
+  tenure?: string
   headline: string
   quote: string
   highlight: string
@@ -14,59 +14,58 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'review-1',
-    name: 'Mark A.',
-    origin: 'Metro Manila',
+    id: 'review-airbnb-1',
+    name: 'Ma Rona',
+    platform: 'Airbnb',
+    platformUrl: 'https://www.airbnb.com/rooms/1643466979772957530',
     rating: 5,
-    event: 'Barkada Reunion & Overnight Stay',
-    date: 'Recent Guest',
-    groupSize: '28 Guests',
-    headline: 'Plenty of space, zero bathroom queues, and endless entertainment',
+    date: '3 weeks ago',
+    tenure: '1 year on Airbnb',
+    headline: 'Clean, comfortable, and exactly as described — the bonfire & marshmallows were a highlight!',
     quote:
-      'Santiagos Resort completely blew our expectations away! We were a group of 28 cousins and friends, and there was more than enough room for everyone to spread out comfortably. The Kangaroo billiards, pool with the waterfall, and the acoustic videoke kept us entertained until the early morning. Having 8 bathrooms meant nobody had to wait in line. 10/10 staycation!',
-    highlight: '8 Bathrooms & Videoke Lounge',
+      'Our group had a wonderful stay! The place was clean, comfortable, and exactly as described. We really enjoyed all the amenities—they were well-maintained and made our stay even more relaxing.\n\nA special thanks to our host Ms. Dianne, who was incredibly responsive and accommodating throughout our stay. We also appreciated the thoughtful welcome snacks, which made us feel right at home.\n\nOne of the highlights was the bonfire experience. The marshmallows provided were delicious and everyone in our group loved them! Overall, we had a fantastic time and would definitely recommend this place to anyone looking for a relaxing getaway. We would happily stay here again!',
+    highlight: 'Bonfire S’mores & Host Ms. Dianne',
     verifiedStay: true,
   },
   {
-    id: 'review-2',
-    name: 'Kyla C.',
-    origin: 'Cavite',
+    id: 'review-google-1',
+    name: 'Robin Marcelo',
+    platform: 'Google',
+    platformUrl: 'https://www.google.com/maps/contrib/102571268417706022703?hl=en-US',
     rating: 5,
-    event: 'Milestone 25th Birthday Celebration',
-    date: 'Recent Guest',
-    groupSize: '32 Guests',
-    headline: 'Magical container architecture and the gold signature neon wall',
+    date: '2 months ago',
+    tenure: 'Google Local Guide',
+    headline: 'A very solid place for large groups — plenty to do and free s’mores & chips!',
     quote:
-      'Celebrated my 25th birthday here and it was unforgettable. The solid acacia banquet table with the illuminated gold "Santiago\'s" neon sign made the absolute best backdrop for our cake cutting and photos. The zero corkage policy allowed us to bring all our favorite catering and drinks with no extra stress. Beautiful, photogenic, and extremely clean!',
-    highlight: 'Acacia Dining & ₱0 Corkage',
+      'This is a very solid place for large groups! There’s plenty to do and the staff are very accommodating. They gave us free smores and chips!',
+    highlight: 'Large Groups & Free S’mores',
     verifiedStay: true,
   },
   {
-    id: 'review-3',
-    name: 'Dave L.',
-    origin: 'Quezon City',
+    id: 'review-google-2',
+    name: '1OF1 MNL',
+    platform: 'Google',
+    platformUrl: 'https://www.google.com/maps/contrib/112175994195946311046?hl=en-US',
     rating: 5,
-    event: 'Corporate Department Team Retreat',
-    date: 'Recent Guest',
-    groupSize: '35 Team Members',
-    headline: 'The ideal private compound for team bonding and highland relaxation',
+    date: '4 months ago',
+    tenure: 'Google Verified Review',
+    headline: 'Best accommodation in Tagaytay! Highly recommended.',
     quote:
-      'Booked the entire resort for our company engineering team outing. The half-court basketball ring was a huge hit for afternoon tournaments, the Wi-Fi was reliable for presentations, and gathering around the stone fire pit in the 18°C evening air was the perfect way to unwind. Exceptional hospitality from the staff and seamless direct communication on WhatsApp.',
-    highlight: 'Compound Privacy & Bonfire Pit',
+      'Best accommodation in Tagaytay! Highly recommended. Thank you Santiagos Resort Tagaytay.',
+    highlight: 'Top Tagaytay Staycation',
     verifiedStay: true,
   },
   {
-    id: 'review-4',
-    name: 'Camille R.',
-    origin: 'Pasig City',
+    id: 'review-airbnb-2',
+    name: 'Ellen',
+    platform: 'Airbnb',
+    platformUrl: 'https://www.airbnb.com/rooms/1643466979772957530',
     rating: 5,
-    event: 'Multi-Generational Family Gathering (50th Birthday)',
-    date: 'Recent Guest',
-    groupSize: '38 Family Members',
-    headline: 'Perfect setup for elders and kids under one private roof',
-    quote:
-      'We hosted our mother\'s 50th milestone with 38 relatives. Our grandparents stayed comfortably in the ground-floor VIP Master Suites with private rainfall showers, while all the kids loved the bunk beds and arcade room. The mountain breeze in Alfonso was refreshing and Twin Lakes is only 15 minutes away.',
-    highlight: 'VIP Master Suites & Bunk Pods',
+    date: 'May 2026',
+    tenure: '10 years on Airbnb',
+    headline: 'Amazing place — thank you so much Dianne for hosting us!',
+    quote: 'Thank you so much, Dianne, for hosting us! Amazing place!',
+    highlight: '10-Year Airbnb Superguest',
     verifiedStay: true,
   },
 ]
