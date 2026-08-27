@@ -4,10 +4,9 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion/react'
-import { ArrowRight, Bed, Droplets, MapPin, MessageCircle, ShieldCheck, Users, Sparkles } from 'lucide-react'
+import { ArrowRight, Bed, Droplets, MapPin, MessageCircle, ShieldCheck, Users } from 'lucide-react'
 import { getLocalImageUrl } from '@/content/gallery'
 import { PROPERTY_INFO } from '@/content/property'
-import { AnimatedNumber } from '@/components/animated-number'
 
 const HERO_VIEWS = [
   {
@@ -37,16 +36,22 @@ const HERO_VIEWS = [
 ]
 
 const PROOF_POINTS = [
-  { numericValue: 40, suffix: '', label: 'guests', detail: 'One private booking', icon: Users },
-  { numericValue: 20, suffix: '', label: 'beds', detail: 'Across four zones', icon: Bed },
-  { numericValue: 8, suffix: '', label: 'bathrooms', detail: 'Built for groups', icon: Droplets },
-  { numericValue: 100, suffix: '%', label: 'private', detail: 'No shared spaces', icon: ShieldCheck },
+  { value: '40', label: 'guests', detail: 'One private booking', icon: Users },
+  { value: '20', label: 'beds', detail: 'Across four zones', icon: Bed },
+  { value: '8', label: 'bathrooms', detail: 'Built for groups', icon: Droplets },
+  { value: '100%', label: 'private', detail: 'No shared spaces', icon: ShieldCheck },
 ]
 
 export function Hero() {
-  const [activeView, setActiveView] = useState(0)
+  const [[activeView, direction], setViewState] = useState<[number, number]>([0, 0])
   const shouldReduceMotion = useReducedMotion()
   const currentView = HERO_VIEWS[activeView]
+
+  const handleSelectView = (newIdx: number) => {
+    if (newIdx === activeView) return
+    const dir = newIdx > activeView ? 1 : -1
+    setViewState([newIdx, dir])
+  }
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -72,6 +77,35 @@ export function Hero() {
         ease: [0.23, 1, 0.32, 1] as const,
       },
     },
+  }
+
+  const deckVariants: Variants = {
+    enter: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : dir >= 0 ? '5%' : '-5%',
+      scale: shouldReduceMotion ? 1 : 1.03,
+      opacity: 0,
+      filter: shouldReduceMotion ? 'none' : 'blur(4px)',
+    }),
+    center: {
+      x: '0%',
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.32,
+        ease: [0.23, 1, 0.32, 1] as const,
+      },
+    },
+    exit: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : dir >= 0 ? '-5%' : '5%',
+      scale: shouldReduceMotion ? 1 : 0.98,
+      opacity: 0,
+      filter: shouldReduceMotion ? 'none' : 'blur(4px)',
+      transition: {
+        duration: 0.26,
+        ease: [0.23, 1, 0.32, 1] as const,
+      },
+    }),
   }
 
   return (
@@ -133,22 +167,23 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Fluid Perspective Multi-View Image Deck */}
+        {/* Right Column: Fluid Directional Image Deck */}
         <div className="order-2 lg:col-span-7">
           <motion.div
             initial={{ opacity: 0, transform: shouldReduceMotion ? 'none' : 'scale(0.98) translateY(12px)' }}
             animate={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] as const }}
             className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-ink-soft shadow-2xl border border-sand/20 sm:aspect-[16/10]"
           >
-            <AnimatePresence initial={false} mode="sync">
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
                 key={currentView.id}
-                initial={{ opacity: 0, transform: shouldReduceMotion ? 'none' : 'scale(1.025)' }}
-                animate={{ opacity: 1, transform: 'scale(1)' }}
-                exit={{ opacity: 0, transform: shouldReduceMotion ? 'none' : 'scale(0.99)' }}
-                transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute inset-0"
+                custom={direction}
+                variants={deckVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="absolute inset-0 w-full h-full"
               >
                 <Image
                   src={currentView.src}
@@ -158,7 +193,7 @@ export function Hero() {
                   sizes="(max-width: 1024px) 100vw, 58vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent pointer-events-none" />
               </motion.div>
             </AnimatePresence>
 
@@ -172,7 +207,7 @@ export function Hero() {
                       key={view.id}
                       type="button"
                       aria-pressed={isActive}
-                      onClick={() => setActiveView(index)}
+                      onClick={() => handleSelectView(index)}
                       className={`relative min-h-11 overflow-hidden rounded-xl px-2 py-2 text-[11px] sm:text-xs font-bold transition-colors duration-150 active:scale-[0.98] ${
                         isActive
                           ? 'text-ink'
@@ -197,10 +232,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom Metric Stat Ribbon with Rolling Animated Numbers */}
+      {/* Bottom Metric Stat Ribbon with Static Clean Numbers */}
       <div className="border-t border-sand/15 bg-[#160f0b]">
         <div className="site-container grid grid-cols-2 lg:grid-cols-4">
-          {PROOF_POINTS.map(({ numericValue, suffix, label, detail, icon: Icon }, index) => (
+          {PROOF_POINTS.map(({ value, label, detail, icon: Icon }, index) => (
             <div
               key={label}
               className={`flex items-center gap-3.5 py-5 sm:py-6 ${
@@ -213,9 +248,8 @@ export function Hero() {
                 <Icon className="h-4 w-4" aria-hidden="true" />
               </div>
               <div>
-                <div className="font-display text-xl font-bold tabular-nums text-cream sm:text-2xl flex items-baseline gap-1">
-                  <AnimatedNumber value={numericValue} suffix={suffix} />
-                  <span className="font-sans text-sm font-semibold text-sand-light/80">{label}</span>
+                <div className="font-display text-xl font-bold tabular-nums text-cream sm:text-2xl">
+                  {value} <span className="font-sans text-sm font-semibold text-sand-light/80">{label}</span>
                 </div>
                 <p className="text-[11px] text-sand-light/60 sm:text-xs">{detail}</p>
               </div>
