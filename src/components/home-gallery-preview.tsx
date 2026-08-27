@@ -1,149 +1,100 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getLocalImageUrl } from '@/content/gallery'
+import { ArrowRight, Maximize2 } from 'lucide-react'
+import { motion } from 'motion/react'
 import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
-import { ArrowRight, Maximize2, Camera } from 'lucide-react'
+import { GALLERY_REGISTRY, getLocalImageUrl } from '@/content/gallery'
+
+const PREVIEW_IMAGES = [
+  { key: 'pool1', label: 'Private pool and waterfall', url: getLocalImageUrl('pool1') },
+  { key: 'din4', label: 'Covered group dining patio', url: getLocalImageUrl('din4') },
+  { key: 'kara4', label: 'Air-conditioned videoke lounge', url: getLocalImageUrl('kara4') },
+  { key: 'bill2', label: 'Billiards and games area', url: getLocalImageUrl('bill2') },
+  { key: 'bed3', label: 'VIP master bedroom', url: getLocalImageUrl('bed3') },
+  { key: 'arc4', label: 'Multiplayer arcade station', url: getLocalImageUrl('arc4') },
+]
 
 export function HomeGalleryPreview() {
-  const previewImages = [
-    {
-      key: 'pool1',
-      category: 'Pool',
-      label: 'Swimming Pool Main View & Waterfall',
-      url: getLocalImageUrl('pool1'),
-    },
-    {
-      key: 'din4',
-      category: 'Dining',
-      label: 'Covered Al Fresco 10-Seater Glass Dining Patio',
-      url: getLocalImageUrl('din4'),
-    },
-    {
-      key: 'kara4',
-      category: 'Videoke',
-      label: 'Air-Conditioned Videoke Lounge & Music Wall',
-      url: getLocalImageUrl('kara4'),
-    },
-    {
-      key: 'bill2',
-      category: 'Billiards',
-      label: 'Kangaroo Pool Table with Brick Accent Wall',
-      url: getLocalImageUrl('bill2'),
-    },
-    {
-      key: 'bed3',
-      category: 'Suites',
-      label: 'VIP Master Bedroom Suite with Queen Bed',
-      url: getLocalImageUrl('bed3'),
-    },
-    {
-      key: 'arc4',
-      category: 'Arcade',
-      label: 'Retro Multiplayer Arcade Tournament Station',
-      url: getLocalImageUrl('arc4'),
-    },
-  ]
-
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
 
   const handleNext = useCallback(() => {
-    if (activeImageIndex === null) return
-    setActiveImageIndex((prev) =>
-      prev !== null && prev < previewImages.length - 1 ? prev + 1 : 0
+    setActiveImageIndex((current) =>
+      current === null || current === PREVIEW_IMAGES.length - 1 ? 0 : current + 1
     )
-  }, [activeImageIndex, previewImages.length])
+  }, [])
 
   const handlePrev = useCallback(() => {
-    if (activeImageIndex === null) return
-    setActiveImageIndex((prev) =>
-      prev !== null && prev > 0 ? prev - 1 : previewImages.length - 1
+    setActiveImageIndex((current) =>
+      current === null || current === 0 ? PREVIEW_IMAGES.length - 1 : current - 1
     )
-  }, [activeImageIndex, previewImages.length])
+  }, [])
 
-  const currentActive =
-    activeImageIndex !== null ? previewImages[activeImageIndex] : null
+  const currentImage = activeImageIndex === null ? null : PREVIEW_IMAGES[activeImageIndex]
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-sand pb-6">
-        <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider mb-2">
-            <Camera className="w-3.5 h-3.5 text-terra" />
-            <span>High-Definition Photography</span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
-            A Glimpse into the Compound
-          </h2>
-          <p className="text-xs sm:text-sm text-ink-muted mt-1 font-sans">
-            Real, unfiltered photos of what awaits you in Alfonso.
-          </p>
+    <div className="site-container space-y-9">
+      <div className="flex flex-col gap-5 border-b border-sand-dark/70 pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="section-heading">
+          <h2 className="section-title">See the spaces your group will use.</h2>
+          <p className="section-copy">Real property photos, from the pool deck to the sleeping zones.</p>
         </div>
-
-        <Link
-          href="/gallery"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-terra hover:text-terra-dark transition-colors group self-start sm:self-auto"
-        >
-          <span>Explore all 70+ photos & video</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        <Link href="/gallery" className="inline-flex items-center gap-2 text-sm font-bold text-terra hover:text-terra-dark">
+          <span>View all {GALLERY_REGISTRY.length} photos</span>
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
 
-      {/* Grid with Generous Proportions & Mobile-Friendly Captions */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
-        {previewImages.map((img, index) => (
-          <div
-            key={img.key}
-            onClick={() => setActiveImageIndex(index)}
-            className="group relative h-40 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-warm-sm border border-sand bg-sand/20 cursor-pointer hover:shadow-warm-xl hover:-translate-y-1.5 transition-all duration-300 active:scale-[0.98]"
-          >
-            <Image
-              src={img.url}
-              alt={img.label}
-              fill
-              sizes="(max-width: 768px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            {/* Always-Visible Subtle Mobile Gradient + Hover Desktop Info */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent p-3 sm:p-5 flex flex-col justify-end">
-              <div className="flex items-center justify-between gap-1">
-                <div>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-gold-light uppercase tracking-wider block">
-                    {img.category}
-                  </span>
-                  <span className="text-[11px] sm:text-sm font-bold text-cream leading-tight mt-0.5 block line-clamp-1">
-                    {img.label}
-                  </span>
-                </div>
-                <div className="p-1.5 sm:p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md shrink-0">
-                  <Maximize2 className="w-3 h-3 sm:w-4 sm:h-4 text-gold-light" />
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="grid grid-cols-2 gap-x-3 gap-y-6 md:grid-cols-12 md:gap-x-5 md:gap-y-8">
+        {PREVIEW_IMAGES.map((image, index) => {
+          const span = index === 0 || index === 5 ? 'md:col-span-6' : 'md:col-span-3'
+          return (
+            <motion.figure
+              key={image.key}
+              initial={{ opacity: 0, transform: 'translateY(8px)' }}
+              whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.3, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+              className={span}
+              data-motion="spatial"
+            >
+              <button
+                type="button"
+                onClick={() => setActiveImageIndex(index)}
+                className={`media-button group block w-full bg-sand/30 ${
+                  index === 0 || index === 5 ? 'aspect-[16/10]' : 'aspect-[4/5]'
+                }`}
+                aria-label={`Open photo: ${image.label}`}
+              >
+                <Image
+                  src={image.url}
+                  alt={image.label}
+                  fill
+                  sizes={index === 0 || index === 5 ? '(max-width: 768px) 50vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                />
+                <span className="absolute bottom-3 right-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-ink/80 text-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <Maximize2 className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </button>
+              <figcaption className="mt-2 text-xs font-semibold text-ink-muted sm:text-sm">{image.label}</figcaption>
+            </motion.figure>
+          )
+        })}
       </div>
 
-      {/* Fullscreen Portal Lightbox (immune to stacking contexts) */}
       <FullscreenLightbox
-        isOpen={currentActive !== null && activeImageIndex !== null}
+        isOpen={currentImage !== null}
         onClose={() => setActiveImageIndex(null)}
-        src={currentActive ? currentActive.url : null}
-        title={currentActive?.label}
-        category={currentActive?.category}
-        index={activeImageIndex !== null ? activeImageIndex : undefined}
-        total={previewImages.length}
+        src={currentImage?.url ?? null}
+        title={currentImage?.label}
+        index={activeImageIndex ?? undefined}
+        total={PREVIEW_IMAGES.length}
         onPrev={handlePrev}
         onNext={handleNext}
-        actionButton={
-          <Link href="/gallery" className="text-gold-light hover:underline font-bold text-xs">
-            View all 70 property photos →
-          </Link>
-        }
       />
-    </section>
+    </div>
   )
 }

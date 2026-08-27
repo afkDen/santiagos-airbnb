@@ -28,13 +28,13 @@ export function CostSplitter() {
     <div className="bg-sand/30 border border-sand-dark/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 shadow-warm-md space-y-6 sm:space-y-8">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand pb-4">
-        <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider mb-1">
-            <Coins className="w-3.5 h-3.5 text-terra" />
-            <span>Group Value Calculator</span>
-          </div>
-          <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-            See How Affordable Exclusive Private Booking Is
+        <div className="space-y-1">
+          <p className="flex items-center gap-2 text-sm font-bold text-terra-dark">
+            <Coins className="h-4 w-4 text-terra" aria-hidden="true" />
+            Group cost estimate
+          </p>
+          <h3 className="text-xl font-bold text-ink sm:text-2xl">
+            Split one private booking across your group
           </h3>
         </div>
 
@@ -43,7 +43,7 @@ export function CostSplitter() {
           <button
             type="button"
             onClick={() => setIsWeekend(false)}
-            className={`relative isolate overflow-hidden px-4 py-2 min-h-[44px] rounded-full text-xs font-bold transition-all active:scale-95 flex-1 sm:flex-initial text-center ${
+            className={`relative isolate overflow-hidden px-4 py-2 min-h-[44px] rounded-full text-xs font-bold transition-[color,background-color,transform] duration-200 active:scale-95 flex-1 sm:flex-initial text-center ${
               !isWeekend ? 'text-white' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -59,7 +59,7 @@ export function CostSplitter() {
           <button
             type="button"
             onClick={() => setIsWeekend(true)}
-            className={`relative isolate overflow-hidden px-4 py-2 min-h-[44px] rounded-full text-xs font-bold transition-all active:scale-95 flex-1 sm:flex-initial text-center ${
+            className={`relative isolate overflow-hidden px-4 py-2 min-h-[44px] rounded-full text-xs font-bold transition-[color,background-color,transform] duration-200 active:scale-95 flex-1 sm:flex-initial text-center ${
               isWeekend ? 'text-white' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -80,7 +80,7 @@ export function CostSplitter() {
         {/* Left Slider Control with Stepper */}
         <div className="lg:col-span-6 space-y-4 sm:space-y-5">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-2">
+            <label className="text-xs font-bold text-ink tracking-normal flex items-center gap-2">
               <Users className="w-4 h-4 text-terra" />
               <span>Group Size</span>
             </label>
@@ -89,7 +89,7 @@ export function CostSplitter() {
                 type="button"
                 onClick={() => setHeadcount((prev) => Math.max(10, prev - 1))}
                 disabled={headcount <= 10}
-                className="w-8 h-8 rounded-full bg-white border border-sand text-ink disabled:opacity-30 flex items-center justify-center active:scale-90 transition-all hover:bg-cream"
+                className="w-8 h-8 rounded-full bg-white border border-sand text-ink disabled:opacity-30 flex items-center justify-center active:scale-90 transition-[background-color,opacity,transform] duration-200 hover:bg-cream"
                 aria-label="Decrease headcount"
               >
                 <Minus className="w-3.5 h-3.5" />
@@ -101,7 +101,7 @@ export function CostSplitter() {
                 type="button"
                 onClick={() => setHeadcount((prev) => Math.min(40, prev + 1))}
                 disabled={headcount >= 40}
-                className="w-8 h-8 rounded-full bg-white border border-sand text-ink disabled:opacity-30 flex items-center justify-center active:scale-90 transition-all hover:bg-cream"
+                className="w-8 h-8 rounded-full bg-white border border-sand text-ink disabled:opacity-30 flex items-center justify-center active:scale-90 transition-[background-color,opacity,transform] duration-200 hover:bg-cream"
                 aria-label="Increase headcount"
               >
                 <Plus className="w-3.5 h-3.5" />
@@ -141,7 +141,7 @@ export function CostSplitter() {
         <div className="lg:col-span-6 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-sand shadow-warm-sm space-y-4 sm:space-y-5">
           <div className="grid grid-cols-2 gap-3 sm:gap-4 divide-x divide-sand">
             <div>
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-ink-muted">
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-normal text-ink-muted">
                 Per Person / Night
               </span>
               <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-terra mt-1 tabular-nums">
@@ -154,7 +154,7 @@ export function CostSplitter() {
             </div>
 
             <div className="pl-3 sm:pl-6">
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-ink-muted">
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-normal text-ink-muted">
                 Total Nightly Rate
               </span>
               <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-ink mt-1 tabular-nums">
@@ -171,7 +171,7 @@ export function CostSplitter() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center min-h-[44px] gap-2 px-6 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-all group"
+              className="w-full sm:w-auto inline-flex items-center justify-center min-h-[44px] gap-2 px-6 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-[background-color,box-shadow,transform] duration-200 group"
             >
               <MessageCircle className="w-4 h-4 fill-white group-hover:scale-110 transition-transform" />
               <span>Inquire for {headcount} Guests</span>

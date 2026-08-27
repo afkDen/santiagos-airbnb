@@ -57,10 +57,10 @@ const config: Config = {
       },
       borderRadius: {
         sm: '6px',
-        md: '12px',
-        lg: '16px',
-        xl: '20px',
-        '2xl': '24px',
+        md: '10px',
+        lg: '12px',
+        xl: '16px',
+        '2xl': '16px',
       },
       boxShadow: {
         'warm-sm': '0 2px 8px rgba(28, 19, 13, 0.05)',

@@ -8,10 +8,10 @@ import { TRANSIT_INFO } from '@/content/directions'
 import { NEARBY_ATTRACTIONS, LOCAL_TRAVEL_TIPS, MANILA_DISTANCES } from '@/content/attractions'
 import { PROPERTY_INFO } from '@/content/property'
 import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
+import { PageIntro } from '@/components/page-intro'
 import {
   MapPin,
   Navigation,
-  Compass,
   Bus,
   Clock,
   ExternalLink,
@@ -27,26 +27,11 @@ export default function LocationPage() {
 
   return (
     <div className="py-12 md:py-16 space-y-12 sm:space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <Compass className="w-4 h-4 text-terra" />
-          <span>Alfonso, Cavite • 15 Mins Past Twin Lakes Tagaytay</span>
-        </div>
-
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
-          Getting to <span className="text-terra">Santiagos Resort</span>
-        </h1>
-
-        <p className="text-xs sm:text-lg text-ink-muted leading-relaxed font-sans">
-          Conveniently located in the cool highlands of Alfonso, Cavite — approximately 90 minutes from Metro Manila via SLEX / CAVITEX and STAR Tollway.
-        </p>
-      </motion.div>
+      <PageIntro
+        meta="Kaytitinga II, Alfonso, Cavite"
+        title="Plan the drive with confidence."
+        description="Check estimated travel times, open the exact map pin, and follow the route guidance for your group."
+      />
 
       {/* Manila Distance & Drive Times Grid */}
       <motion.div
@@ -99,10 +84,10 @@ export default function LocationPage() {
         {/* Quick Route Actions */}
         <div className="lg:col-span-4 bg-white p-5 sm:p-8 rounded-3xl border border-sand shadow-warm-md space-y-4 sm:space-y-6">
           <div className="space-y-1.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-terra">Address & Navigation</span>
+            <span className="text-xs font-bold tracking-normal text-terra">Address & Navigation</span>
             <h3 className="font-serif text-lg sm:text-xl font-bold text-ink">{PROPERTY_INFO.address.full}</h3>
             <p className="text-xs text-ink-muted leading-relaxed font-sans">
-              Elevation ~600m above sea level (18–24°C year-round cool breeze).
+              Elevation ~600m above sea level (18-24°C year-round cool breeze).
             </p>
           </div>
 
@@ -111,7 +96,7 @@ export default function LocationPage() {
               href={PROPERTY_INFO.contacts.waze}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#33CCFF] hover:bg-[#2bb8e6] text-white font-bold text-xs sm:text-sm rounded-full shadow-sm active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#33CCFF] hover:bg-[#2bb8e6] text-white font-bold text-xs sm:text-sm rounded-full shadow-sm active:scale-95 transition-[background-color,border-color,color,box-shadow,opacity,transform]"
             >
               <Navigation className="w-4 h-4 fill-white" />
               <span>Open in Waze App</span>
@@ -121,7 +106,7 @@ export default function LocationPage() {
               href={PROPERTY_INFO.contacts.googleMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink font-bold text-xs sm:text-sm rounded-full active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink font-bold text-xs sm:text-sm rounded-full active:scale-95 transition-[background-color,border-color,color,box-shadow,opacity,transform]"
             >
               <MapPin className="w-4 h-4 text-terra" />
               <span>Open Google Maps Pin</span>
@@ -155,7 +140,7 @@ export default function LocationPage() {
         className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-5 sm:p-10 space-y-6 sm:space-y-8 shadow-warm-sm"
       >
         <div className="max-w-2xl space-y-1">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-normal text-terra">
             <Play className="w-3.5 h-3.5 fill-terra text-terra" />
             <span>Visual Navigation Aids</span>
           </div>
@@ -207,14 +192,16 @@ export default function LocationPage() {
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
-            <div
+            <button
+              type="button"
               onClick={() =>
                 setLightboxImage({
                   src: 'https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600',
                   label: 'Official Directions Map Poster & Road Landmarks',
                 })
               }
-              className="relative h-56 sm:h-72 rounded-xl overflow-hidden bg-sand/20 border border-sand/50 shadow-inner cursor-pointer group"
+              className="media-button relative h-56 sm:h-72 w-full bg-sand/20 border border-sand/50 shadow-inner group"
+              aria-label="Open official directions map poster"
             >
               <Image
                 src="https://drive.google.com/thumbnail?id=1B2SaOx-mvjyO2kjkGr1hmQe4HeiiV-OH&sz=w1600"
@@ -226,7 +213,7 @@ export default function LocationPage() {
               <div className="absolute bottom-2.5 right-2.5 p-1.5 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
               </div>
-            </div>
+            </button>
             <p className="text-xs text-ink-muted font-sans">
               Save or screenshot this official road poster on your phone for offline navigation.
             </p>
@@ -267,7 +254,7 @@ export default function LocationPage() {
         className="space-y-6 sm:space-y-8"
       >
         <div className="text-center max-w-2xl mx-auto space-y-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-terra">Explore Alfonso & Tagaytay</span>
+          <span className="text-xs font-bold tracking-normal text-terra">Explore Alfonso & Tagaytay</span>
           <h2 className="font-serif text-2xl sm:text-4xl font-bold text-ink">
             Popular Nearby Attractions
           </h2>
@@ -275,10 +262,12 @@ export default function LocationPage() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {NEARBY_ATTRACTIONS.map((attraction) => (
-            <div
+            <button
               key={attraction.name}
+              type="button"
               onClick={() => setLightboxImage({ src: attraction.fallbackImage, label: attraction.name })}
-              className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              aria-label={`Open photo: ${attraction.name}`}
+              className="media-button bg-white border border-sand shadow-warm-sm flex flex-col justify-between group"
             >
               <div className="relative h-32 sm:h-48 w-full bg-sand/20 overflow-hidden">
                 <Image
@@ -313,7 +302,7 @@ export default function LocationPage() {
                   ))}
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </motion.div>

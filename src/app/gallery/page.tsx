@@ -5,34 +5,27 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { GALLERY_REGISTRY } from '@/content/gallery'
 import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
-import { Play, Camera, Maximize2 } from 'lucide-react'
+import { PageIntro } from '@/components/page-intro'
+import { Play, Maximize2 } from 'lucide-react'
+
+const FILTER_GROUPS = [
+  { label: 'All', categories: [] },
+  { label: 'Sleep', categories: ['Bedroom', 'Bathroom'] },
+  { label: 'Gather', categories: ['Dining', 'Kitchen', 'Living', 'Bonfire'] },
+  { label: 'Play', categories: ['Pool', 'Videoke', 'Billiards', 'Arcade', 'Gym', 'Basketball'] },
+  { label: 'Outdoors', categories: ['Exterior', 'Outdoor'] },
+]
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
 
-  const filterCategories = [
-    'All',
-    'Exterior',
-    'Pool',
-    'Videoke',
-    'Billiards',
-    'Arcade',
-    'Dining',
-    'Kitchen',
-    'Living',
-    'Bedroom',
-    'Bathroom',
-    'Gym',
-    'Bonfire',
-    'Basketball',
-    'Outdoor',
-  ]
+  const activeGroup = FILTER_GROUPS.find((group) => group.label === selectedCategory) ?? FILTER_GROUPS[0]
 
   const filteredImages =
     selectedCategory === 'All'
       ? GALLERY_REGISTRY
-      : GALLERY_REGISTRY.filter((img) => img.category === selectedCategory)
+      : GALLERY_REGISTRY.filter((img) => activeGroup.categories.includes(img.category))
 
   const handleNextImage = useCallback(() => {
     if (activeImageIndex === null) return
@@ -53,44 +46,28 @@ export default function GalleryPage() {
 
   return (
     <div className="py-12 md:py-16 space-y-10 sm:space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <Camera className="w-4 h-4 text-terra" />
-          <span>Real Unfiltered Photography • {GALLERY_REGISTRY.length} High-Res Photos</span>
-        </div>
-
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
-          Visual Tour of <span className="text-terra">Santiagos Resort</span>
-        </h1>
-
-        <p className="text-xs sm:text-lg text-ink-muted leading-relaxed font-sans">
-          Browse all authentic photographs of the container architecture, pool deck, private suites, game areas, and outdoor gathering spaces.
-        </p>
-      </motion.div>
+      <PageIntro
+        meta={`${GALLERY_REGISTRY.length} real property photos`}
+        title="See the resort before you book."
+        description="Browse the pool, sleeping areas, dining spaces, games, and container architecture your group will use."
+      />
 
       {/* Interactive Category Filter Tabs with Morphing Spring Pill */}
       <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto pt-2">
-        {filterCategories.map((cat) => {
-          const count =
-            cat === 'All'
-              ? GALLERY_REGISTRY.length
-              : GALLERY_REGISTRY.filter((img) => img.category === cat).length
-          const isActive = selectedCategory === cat
+        {FILTER_GROUPS.map((group) => {
+          const count = group.label === 'All'
+            ? GALLERY_REGISTRY.length
+            : GALLERY_REGISTRY.filter((img) => group.categories.includes(img.category)).length
+          const isActive = selectedCategory === group.label
 
           return (
             <button
-              key={cat}
+              key={group.label}
               onClick={() => {
-                setSelectedCategory(cat)
+                setSelectedCategory(group.label)
                 setActiveImageIndex(null)
               }}
-              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'
@@ -103,7 +80,7 @@ export default function GalleryPage() {
                   transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
                 />
               )}
-              <span className="relative z-10">{cat}</span>
+              <span className="relative z-10">{group.label}</span>
               <span
                 className={`relative z-10 text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums ${
                   isActive ? 'bg-white/20 text-white' : 'bg-sand text-ink-muted'
@@ -127,32 +104,31 @@ export default function GalleryPage() {
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"
         >
           {filteredImages.map((img, idx) => (
-            <div
-              key={img.key}
-              onClick={() => setActiveImageIndex(idx)}
-              className="bg-white rounded-2xl overflow-hidden border border-sand/80 shadow-warm-sm hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group flex flex-col justify-between"
-            >
-              {/* Photo Viewport */}
-              <div className="relative h-36 sm:h-64 w-full bg-sand/20 overflow-hidden">
+            <figure key={img.key} className="group">
+              <button
+                type="button"
+                onClick={() => setActiveImageIndex(idx)}
+                className="media-button relative h-40 w-full bg-sand/20 sm:h-64"
+                aria-label={`Open photo: ${img.label}`}
+              >
                 <Image
                   src={img.url}
                   alt={img.label}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                 />
-                <div className="absolute bottom-2 right-2 p-1.5 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="absolute bottom-2 right-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink/80 text-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
                   <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
-                </div>
-              </div>
+                </span>
+              </button>
 
-              {/* Caption */}
-              <div className="p-2.5 sm:p-3.5 border-t border-sand/30">
-                <h4 className="font-serif text-[11px] sm:text-sm font-bold text-ink leading-snug line-clamp-2">
+              <figcaption className="pt-2">
+                <h3 className="text-[11px] font-bold leading-snug text-ink sm:text-sm">
                   {img.label}
-                </h4>
-              </div>
-            </div>
+                </h3>
+              </figcaption>
+            </figure>
           ))}
         </motion.div>
       </AnimatePresence>
@@ -167,7 +143,7 @@ export default function GalleryPage() {
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-normal text-terra">
               <Play className="w-3.5 h-3.5 fill-terra text-terra" />
               <span>Video Walkthrough</span>
             </div>

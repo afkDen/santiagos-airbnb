@@ -16,7 +16,7 @@ export const PROPERTY_INFO = {
     lat: 14.1093627,
     lng: 120.8199956,
   },
-  climate: '18–24°C year-round cool highland breeze',
+  climate: '18-24°C year-round cool highland breeze',
   elevation: '~600m above sea level',
   capacity: {
     base: 20,

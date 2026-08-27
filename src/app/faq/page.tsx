@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { FAQ_ITEMS } from '@/content/faq'
 import { PROPERTY_INFO } from '@/content/property'
+import { PageIntro } from '@/components/page-intro'
 import {
-  HelpCircle,
   ChevronDown,
   MessageCircle,
   Phone,
@@ -28,40 +28,30 @@ export default function FAQPage() {
 
   return (
     <div className="py-12 md:py-16 space-y-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <HelpCircle className="w-4 h-4 text-terra" />
-          <span>Frequently Asked Questions</span>
-        </div>
-
-        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-ink leading-tight">
-          Everything You Need to Know Before <span className="text-terra">Booking</span>
-        </h1>
-
-        <p className="text-base sm:text-lg text-ink-muted leading-relaxed font-sans">
-          Answers to common questions regarding guest capacity, included amenities, check-in schedules, policies, and booking channels.
-        </p>
+      <div className="space-y-8">
+        <PageIntro
+          meta={`${FAQ_ITEMS.length} booking questions answered`}
+          title="Answers before you book."
+          description="Find details about guest capacity, amenities, schedules, house rules, and direct booking."
+        />
 
         {/* Live Search Input */}
-        <div className="max-w-md mx-auto pt-2">
+        <div className="max-w-xl">
+          <label htmlFor="faq-search" className="mb-2 block text-sm font-bold text-ink">Search the FAQs</label>
           <div className="relative">
             <Search className="w-4 h-4 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2" />
             <input
+              id="faq-search"
+              name="faq-search"
               type="text"
-              placeholder="Search questions (e.g. pets, curfew, pool, kitchen)..."
+              placeholder="Try pets, curfew, pool, or kitchen"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-11 pr-4 py-3 bg-white border border-sand rounded-full text-xs sm:text-sm text-ink focus:outline-none focus:ring-2 focus:ring-terra shadow-warm-sm"
             />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Accordion List with Motion */}
       <div className="space-y-4">
@@ -81,21 +71,21 @@ export default function FAQPage() {
         ) : (
           filteredItems.map((item, idx) => {
             const isOpen = openIndex === idx
+            const panelId = `faq-panel-${item.id}`
 
             return (
-              <motion.div
+              <div
                 key={item.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.03, ease: [0.23, 1, 0.32, 1] }}
-                className={`bg-white rounded-2xl border transition-all overflow-hidden ${
+                className={`bg-white rounded-2xl border transition-[background-color,border-color,color,box-shadow,opacity,transform] overflow-hidden ${
                   isOpen ? 'border-terra/40 shadow-warm-md' : 'border-sand shadow-warm-sm'
                 }`}
               >
                 <button
+                  type="button"
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-serif text-lg sm:text-xl font-bold text-ink hover:text-terra transition-colors focus:outline-none"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 text-lg sm:text-xl font-bold text-ink hover:text-terra transition-colors focus:outline-none"
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                 >
                   <span>{item.question}</span>
                   <div
@@ -110,6 +100,7 @@ export default function FAQPage() {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={panelId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -122,7 +113,7 @@ export default function FAQPage() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             )
           })
         )}
@@ -137,7 +128,7 @@ export default function FAQPage() {
         className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-8 sm:p-10 text-center space-y-6"
       >
         <div className="max-w-md mx-auto space-y-2">
-          <h3 className="font-serif text-2xl font-bold text-ink">Still Have a Question?</h3>
+          <h3 className="text-2xl font-bold text-ink">Still have a question?</h3>
           <p className="text-sm text-ink-muted font-sans">
             Our team responds directly on WhatsApp to answer special requests, date availability, and headcount planning.
           </p>
@@ -148,7 +139,7 @@ export default function FAQPage() {
             href={PROPERTY_INFO.contacts.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm rounded-full shadow-warm-sm active:scale-95 transition-all group"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm rounded-full shadow-warm-sm active:scale-95 transition-[background-color,border-color,color,box-shadow,opacity,transform] group"
           >
             <MessageCircle className="w-4 h-4 fill-white group-hover:scale-110 transition-transform" />
             <span>Chat on WhatsApp</span>
@@ -156,7 +147,7 @@ export default function FAQPage() {
 
           <a
             href={PROPERTY_INFO.contacts.phone1.tel}
-            className="inline-flex items-center gap-2 px-6 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink font-bold text-sm rounded-full active:scale-95 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink font-bold text-sm rounded-full active:scale-95 transition-[background-color,border-color,color,box-shadow,opacity,transform]"
           >
             <Phone className="w-4 h-4 text-terra" />
             <span>Call 0917 800 5320</span>

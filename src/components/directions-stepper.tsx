@@ -20,7 +20,7 @@ export function DirectionsStepper() {
     <div className="bg-white border border-sand rounded-3xl p-5 sm:p-10 shadow-warm-md space-y-6 sm:space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-sand pb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sand/60 text-terra-dark text-xs font-bold tracking-normal mb-1">
             <Compass className="w-3.5 h-3.5 text-terra" />
             <span>Interactive Driving Stepper • ~15 Minutes</span>
           </div>
@@ -33,7 +33,7 @@ export function DirectionsStepper() {
             href={PROPERTY_INFO.contacts.waze}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#33CCFF] hover:bg-[#2bb8e6] text-white text-xs font-bold rounded-full transition-all active:scale-95 flex items-center gap-1.5 shadow-xs"
+            className="px-4 py-2 bg-[#33CCFF] hover:bg-[#2bb8e6] text-white text-xs font-bold rounded-full transition-[background-color,border-color,color,box-shadow,opacity,transform] active:scale-95 flex items-center gap-1.5 shadow-xs"
           >
             <Navigation className="w-3.5 h-3.5 fill-white" />
             <span>Open in Waze</span>
@@ -42,7 +42,7 @@ export function DirectionsStepper() {
             href={PROPERTY_INFO.contacts.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-cream hover:bg-cream-dark border border-sand text-ink text-xs font-bold rounded-full transition-all active:scale-95 flex items-center gap-1.5 shadow-xs"
+            className="px-4 py-2 bg-cream hover:bg-cream-dark border border-sand text-ink text-xs font-bold rounded-full transition-[background-color,border-color,color,box-shadow,opacity,transform] active:scale-95 flex items-center gap-1.5 shadow-xs"
           >
             <MapPin className="w-3.5 h-3.5 text-terra" />
             <span>Google Maps</span>
@@ -56,14 +56,16 @@ export function DirectionsStepper() {
           const isActive = activeStep === step.step
 
           return (
-            <div
+            <button
               key={step.step}
+              type="button"
               onClick={() => setActiveStep(step.step)}
-              className="relative z-10 flex items-start gap-4 sm:gap-6 cursor-pointer group transition-all"
+              aria-pressed={isActive}
+              className="relative z-10 flex w-full items-start gap-4 text-left sm:gap-6 group transition-[background-color,border-color,color,box-shadow,opacity,transform]"
             >
               {/* Step Number Circle */}
               <div
-                className={`w-10 h-10 rounded-full font-display font-bold text-sm flex items-center justify-center shrink-0 transition-all duration-300 ${
+                className={`w-10 h-10 rounded-full font-display font-bold text-sm flex items-center justify-center shrink-0 transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 ${
                   isActive
                     ? 'bg-terra text-white shadow-warm-md scale-110 ring-4 ring-terra/20'
                     : 'bg-cream text-ink-muted border border-sand group-hover:border-terra group-hover:text-terra'
@@ -74,7 +76,7 @@ export function DirectionsStepper() {
 
               {/* Step Content Card with Animated Spring Border & Highlight */}
               <div
-                className={`relative isolate overflow-hidden p-4 sm:p-5 rounded-2xl border flex-1 space-y-1.5 transition-all duration-200 ${
+                className={`relative isolate overflow-hidden p-4 sm:p-5 rounded-2xl border flex-1 space-y-1.5 transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-200 ${
                   isActive
                     ? 'bg-cream border-terra/50 shadow-warm-sm scale-[1.01]'
                     : 'bg-cream/30 border-sand hover:bg-cream/60'
@@ -96,7 +98,7 @@ export function DirectionsStepper() {
                   {step.detail}
                 </p>
               </div>
-            </div>
+            </button>
           )
         })}
       </div>

@@ -43,7 +43,7 @@ export function RateEstimator() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-sand pb-4 sm:pb-5">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-terra/10 text-terra-dark text-xs font-bold tracking-normal">
             <Coins className="w-3.5 h-3.5 text-terra" />
             <span>Direct Booking Rate Engine</span>
           </div>
@@ -60,7 +60,7 @@ export function RateEstimator() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Check-In */}
         <div className="space-y-2">
-          <label className="text-xs font-bold text-ink uppercase tracking-wider flex items-center justify-between">
+          <label className="text-xs font-bold text-ink tracking-normal flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-terra" />
               <span>Check-in Date</span>
@@ -80,7 +80,7 @@ export function RateEstimator() {
 
         {/* Check-Out */}
         <div className="space-y-2">
-          <label className="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+          <label className="text-xs font-bold text-ink tracking-normal flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5 text-terra" />
             <span>Check-out Date</span>
           </label>
@@ -95,7 +95,7 @@ export function RateEstimator() {
 
         {/* Headcount Slider */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-bold text-ink uppercase tracking-wider">
+          <div className="flex items-center justify-between text-xs font-bold text-ink tracking-normal">
             <span className="flex items-center gap-1.5">
               <Users className="w-3.5 h-3.5 text-terra" />
               <span>Declared Guests</span>
@@ -115,16 +115,16 @@ export function RateEstimator() {
           />
 
           <div className="flex justify-between text-[10px] sm:text-[11px] text-ink-muted font-semibold pt-0.5">
-            <span className={guests <= 20 ? 'text-terra-dark font-bold' : ''}>Base (1–20)</span>
-            <span className={guests > 20 && guests <= 30 ? 'text-terra-dark font-bold' : ''}>Tier 2 (21–30)</span>
-            <span className={guests > 30 ? 'text-terra-dark font-bold' : ''}>Max (31–40)</span>
+            <span className={guests <= 20 ? 'text-terra-dark font-bold' : ''}>Base (1-20)</span>
+            <span className={guests > 20 && guests <= 30 ? 'text-terra-dark font-bold' : ''}>Tier 2 (21-30)</span>
+            <span className={guests > 30 ? 'text-terra-dark font-bold' : ''}>Max (31-40)</span>
           </div>
         </div>
       </div>
 
       {/* Occasion Selector with Spring layoutId */}
       <div className="space-y-2">
-        <label className="text-xs font-bold text-ink uppercase tracking-wider">
+        <label className="text-xs font-bold text-ink tracking-normal">
           Trip Type / Occasion
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -135,7 +135,7 @@ export function RateEstimator() {
                 key={occ}
                 type="button"
                 onClick={() => setOccasion(occ)}
-                className={`relative isolate overflow-hidden p-3 rounded-xl border text-xs font-bold text-center transition-all active:scale-95 ${
+                className={`relative isolate overflow-hidden p-3 rounded-xl border text-xs font-bold text-center transition-[background-color,border-color,color,box-shadow,opacity,transform] active:scale-95 ${
                   isSelected
                     ? 'text-white border-transparent shadow-sm scale-[1.02]'
                     : 'bg-cream/40 border-sand text-ink hover:bg-cream'
@@ -158,12 +158,12 @@ export function RateEstimator() {
       {/* Estimated Output Result Box with Animated Digits */}
       <div className="bg-cream-dark/60 p-6 sm:p-8 lg:p-10 rounded-2xl border border-sand flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center lg:text-left">
-          <span className="text-xs font-bold uppercase tracking-wider text-terra-dark">
+          <span className="text-xs font-bold tracking-normal text-terra-dark">
             Direct Booking Rate (No Hidden Usage Fees)
           </span>
 
           <div className="flex items-baseline justify-center lg:justify-start gap-2">
-            <span className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-terra-dark transition-all duration-300 tabular-nums">
+            <span className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-terra-dark transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 tabular-nums">
               <AnimatedNumber value={estimatedPrice} prefix="₱" />
             </span>
             <span className="text-xs sm:text-sm font-semibold text-ink-muted font-sans">
@@ -182,7 +182,7 @@ export function RateEstimator() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-all group"
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-[background-color,border-color,color,box-shadow,opacity,transform] group"
         >
           <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
           <span>Inquire on WhatsApp (Pre-Filled)</span>

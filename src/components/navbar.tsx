@@ -1,206 +1,175 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useScroll, useMotionValueEvent, motion, AnimatePresence } from 'motion/react'
-import { MessageCircle, Menu, X, Phone, ChevronRight, Mountain } from 'lucide-react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { ArrowRight, Menu, MessageCircle, Phone, X } from 'lucide-react'
 import { PROPERTY_INFO } from '@/content/property'
+
+const NAV_LINKS = [
+  { label: 'Amenities', href: '/amenities' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Rooms & Baths', href: '/rooms' },
+  { label: 'Rates & Pricing', href: '/rates' },
+  { label: 'Occasions', href: '/occasions' },
+  { label: 'Location & Map', href: '/location' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+]
 
 export function Navbar() {
   const pathname = usePathname()
+  const reduceMotion = useReducedMotion()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [hoveredPath, setHoveredPath] = useState<string | null>(null)
-  const { scrollY } = useScroll()
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const firstLinkRef = useRef<HTMLAnchorElement>(null)
 
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    const isScrolled = latest > 20
-    setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev))
-  })
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
 
-  const navLinks = [
-    { label: 'Amenities', href: '/amenities' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Rooms & Baths', href: '/rooms' },
-    { label: 'Rates & Pricing', href: '/rates' },
-    { label: 'Occasions', href: '/occasions' },
-    { label: 'Location & Map', href: '/location' },
-    { label: 'FAQ', href: '/faq' },
-    { label: 'Contact', href: '/contact' },
-  ]
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    firstLinkRef.current?.focus()
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setMobileMenuOpen(false)
+      toggleRef.current?.focus()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [mobileMenuOpen])
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        scrolled
-          ? 'bg-cream/98 backdrop-blur-xl border-b border-sand shadow-warm-md py-3'
-          : 'bg-cream/90 backdrop-blur-md border-b border-sand/60 py-3.5 sm:py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo with Script & Subtitle */}
-        <Link
-          href="/"
-          className="flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-2.5 group focus:outline-none"
-          aria-label="Santiagos Resort Homepage"
-        >
-          <span className="font-script text-2xl sm:text-4xl text-terra-dark group-hover:text-terra transition-colors drop-shadow-xs leading-tight">
-            Santiago&apos;s
-          </span>
-          <span className="text-[9px] sm:text-[11px] font-sans font-bold tracking-wider sm:tracking-widest text-ink-muted uppercase sm:border-l sm:border-sand-dark/40 sm:pl-2.5 leading-none">
-            Private Resort • Alfonso
+    <header className="sticky top-0 z-40 h-[72px] border-b border-sand/80 bg-cream/95 backdrop-blur-lg">
+      <div className="site-container flex h-full items-center justify-between gap-4">
+        <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Santiagos Resort home">
+          <span className="font-script text-3xl leading-none text-terra-dark sm:text-4xl">Santiago&apos;s</span>
+          <span className="hidden border-l border-sand-dark/60 pl-3 text-[10px] font-bold uppercase tracking-[0.16em] text-ink-muted sm:block">
+            Private Resort<br />Alfonso
           </span>
         </Link>
 
-        {/* Desktop Navigation Links with Seamless Floating Active Pill */}
-        <nav
-          className="hidden lg:flex items-center gap-1 bg-sand/30 p-1.5 rounded-full border border-sand/70"
-          aria-label="Main Navigation"
-          onMouseLeave={() => setHoveredPath(null)}
-        >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href
-            const isHovered = hoveredPath === link.href
-
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Main navigation">
+          {NAV_LINKS.map((link) => {
+            const active = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                onMouseEnter={() => setHoveredPath(link.href)}
-                className={`relative isolate px-3.5 py-1.5 text-xs font-bold rounded-full transition-colors duration-200 select-none ${
-                  isActive
-                    ? 'text-terra-dark font-extrabold'
-                    : 'text-ink/80 hover:text-ink'
+                aria-current={active ? 'page' : undefined}
+                className={`rounded-lg px-2.5 py-2 text-[11px] font-bold transition-[background-color,color,transform] duration-200 ${
+                  active ? 'bg-sand/70 text-terra-dark' : 'text-ink-muted hover:bg-sand/40 hover:text-ink'
                 }`}
               >
-                {/* Active Indicator Spring Pill */}
-                {isActive && (
-                  <motion.div
-                    layoutId="navbar-active-pill"
-                    className="absolute inset-0 bg-white rounded-full shadow-warm-sm border border-sand/50 z-0"
-                    transition={{ type: 'spring', duration: 0.45, bounce: 0.15 }}
-                  />
-                )}
-
-                {/* Hover Indicator */}
-                {isHovered && !isActive && (
-                  <motion.div
-                    layoutId="navbar-hover-pill"
-                    className="absolute inset-0 bg-sand/40 rounded-full z-0"
-                    transition={{ type: 'spring', duration: 0.35, bounce: 0.1 }}
-                  />
-                )}
-
-                <span className="relative z-10">{link.label}</span>
+                {link.label}
               </Link>
             )
           })}
         </nav>
 
-        {/* Desktop Header Actions */}
-        <div className="hidden sm:flex items-center gap-2.5">
-          {/* Direct Airbnb Link */}
-          <a
-            href={PROPERTY_INFO.contacts.airbnb}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-ink-muted hover:text-[#FF385C] hover:bg-sand/40 rounded-full transition-all group"
-            title="View Official Airbnb Listing"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FF385C] inline-block group-hover:scale-125 transition-transform" />
-            <span>Airbnb Listing</span>
-          </a>
-
-          {/* Animated WhatsApp Button */}
+        <div className="flex items-center gap-2">
           <a
             href={PROPERTY_INFO.contacts.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-2 px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-xs font-bold rounded-full shadow-warm-sm hover:shadow-warm-md active:scale-95 transition-all duration-200 group overflow-hidden"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-whatsapp px-4 py-2 text-xs font-bold text-white transition-[background-color,box-shadow,transform] duration-200 hover:bg-whatsapp-hover hover:shadow-warm-md sm:px-5"
           >
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            <MessageCircle className="w-4 h-4 fill-white group-hover:scale-110 transition-transform" />
-            <span>Inquire Dates</span>
-          </a>
-        </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href={PROPERTY_INFO.contacts.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sm:hidden px-3.5 py-2 bg-whatsapp hover:bg-whatsapp-hover text-white text-xs font-bold rounded-full flex items-center gap-1.5 shadow-xs active:scale-95 transition-all"
-          >
-            <MessageCircle className="w-3.5 h-3.5 fill-white" />
-            <span>Inquire</span>
+            <MessageCircle className="h-4 w-4 fill-current" aria-hidden="true" />
+            <span className="hidden sm:inline">Check dates</span>
+            <span className="sm:hidden">WhatsApp</span>
           </a>
 
           <button
+            ref={toggleRef}
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 text-ink hover:text-terra rounded-xl bg-sand/40 hover:bg-sand/60 focus:outline-none transition-colors active:scale-95"
-            aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-sand bg-cream text-ink transition-[background-color,color,transform] duration-200 hover:bg-sand/40 hover:text-terra xl:hidden"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-            className="lg:hidden bg-cream border-b border-sand px-4 py-6 space-y-4 overflow-hidden"
-          >
-            <div className="flex items-center gap-2 px-3.5 py-2.5 bg-sand/40 rounded-xl text-xs text-terra-dark font-semibold">
-              <Mountain className="w-4 h-4 text-terra shrink-0" />
-              <span>Alfonso, Tagaytay Highlands • 40 Max Guests</span>
-            </div>
+          <>
+            <motion.button
+              type="button"
+              aria-label="Close navigation menu"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-x-0 bottom-0 top-[72px] z-40 bg-ink/45 xl:hidden"
+            />
+            <motion.div
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateX(100%)' }}
+              animate={{ opacity: 1, transform: 'translateX(0)' }}
+              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateX(100%)' }}
+              transition={{ duration: reduceMotion ? 0.18 : 0.28, ease: [0.32, 0.72, 0, 1] }}
+              className="fixed bottom-0 right-0 top-[72px] z-50 flex w-[min(92vw,420px)] flex-col overflow-y-auto border-l border-sand bg-cream p-5 shadow-warm-xl xl:hidden"
+              data-motion="spatial"
+            >
+              <nav className="grid gap-1" aria-label="Mobile navigation links">
+                {NAV_LINKS.map((link, index) => {
+                  const active = pathname === link.href
+                  return (
+                    <Link
+                      key={link.href}
+                      ref={index === 0 ? firstLinkRef : undefined}
+                      href={link.href}
+                      aria-current={active ? 'page' : undefined}
+                      className={`flex min-h-12 items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-[background-color,color,transform] duration-200 ${
+                        active ? 'bg-terra text-white' : 'text-ink hover:bg-sand/50'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  )
+                })}
+              </nav>
 
-            <nav className="space-y-1" aria-label="Mobile Navigation">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-colors active:scale-98 ${
-                      isActive
-                        ? 'bg-terra text-white font-bold shadow-xs'
-                        : 'text-ink hover:bg-sand/40 hover:text-terra'
-                    }`}
+              <div className="mt-auto space-y-4 border-t border-sand pt-5">
+                <p className="text-sm leading-6 text-ink-muted">
+                  Planning for a large group? Call or message us directly for date availability.
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  <a href={PROPERTY_INFO.contacts.phone1.tel} className="button-secondary px-4 text-xs">
+                    <Phone className="h-4 w-4 text-terra" aria-hidden="true" />
+                    Call
+                  </a>
+                  <a
+                    href={PROPERTY_INFO.contacts.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-whatsapp px-4 py-3 text-xs font-bold text-white"
                   >
-                    <span>{link.label}</span>
-                    <ChevronRight className="w-4 h-4 opacity-70" />
-                  </Link>
-                )
-              })}
-            </nav>
-
-            <div className="pt-2 border-t border-sand grid grid-cols-2 gap-2 text-xs font-bold">
-              <a
-                href={PROPERTY_INFO.contacts.phone1.tel}
-                className="p-3 bg-sand/40 hover:bg-sand/60 rounded-xl text-ink flex items-center justify-center gap-1.5 transition-colors active:scale-95"
-              >
-                <Phone className="w-3.5 h-3.5 text-terra" />
-                <span>Call Smart</span>
-              </a>
-              <a
-                href={PROPERTY_INFO.contacts.phone2.tel}
-                className="p-3 bg-sand/40 hover:bg-sand/60 rounded-xl text-ink flex items-center justify-center gap-1.5 transition-colors active:scale-95"
-              >
-                <Phone className="w-3.5 h-3.5 text-terra" />
-                <span>Call Globe</span>
-              </a>
-            </div>
-          </motion.div>
+                    <MessageCircle className="h-4 w-4 fill-current" aria-hidden="true" />
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

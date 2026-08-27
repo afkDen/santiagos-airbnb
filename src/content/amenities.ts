@@ -75,7 +75,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
       'Custom standalone arcade cabinets loaded with classic 90s fighting and cooperative tournament games.',
     featured: true,
     imageKey: 'arc4',
-    specs: ['1000+ retro arcade classics', '2-player dual joystick controls', 'Free play enabled — zero tokens required'],
+    specs: ['1000+ retro arcade classics', '2-player dual joystick controls', 'Free play enabled - zero tokens required'],
   },
   {
     name: 'Smart TVs with Streaming Apps',

@@ -8,8 +8,8 @@ import { OCCASIONS_DATA } from '@/content/occasions'
 import { getLocalImageUrl } from '@/content/gallery'
 import { buildWhatsAppLink } from '@/lib/whatsapp-link'
 import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
+import { PageIntro } from '@/components/page-intro'
 import {
-  PartyPopper,
   CheckCircle2,
   MessageCircle,
   ArrowRight,
@@ -30,26 +30,11 @@ export default function OccasionsPage() {
 
   return (
     <div className="py-12 md:py-16 space-y-12 sm:space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <PartyPopper className="w-4 h-4 text-terra" />
-          <span>Tailored Setups for Every Group Event</span>
-        </div>
-
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
-          Celebrate Big Moments at <span className="text-terra">Santiagos</span>
-        </h1>
-
-        <p className="text-xs sm:text-lg text-ink-muted leading-relaxed font-sans">
-          From milestone 25th and 50th birthdays to all-night barkada gaming sessions and executive team retreats, discover why Santiagos Resort is the premier event venue in Alfonso.
-        </p>
-      </motion.div>
+      <PageIntro
+        meta="Families, barkadas, celebrations, and team stays"
+        title="A private place for your people."
+        description="Choose the kind of gathering you are planning and see which spaces, activities, and setup will help."
+      />
 
       {/* Occasion Cards */}
       <div className="space-y-8 sm:space-y-12">
@@ -77,9 +62,11 @@ export default function OccasionsPage() {
               }`}
             >
               {/* Photo Showcase with Lightbox Trigger */}
-              <div
+              <button
+                type="button"
                 onClick={() => setLightboxImage({ src: getLocalImageUrl(photoKey), label: pkg.title })}
-                className={`lg:col-span-6 relative h-56 sm:h-96 rounded-2xl overflow-hidden shadow-sm border border-sand bg-sand/20 cursor-pointer group ${
+                aria-label={`Open photo for ${pkg.title}`}
+                className={`media-button lg:col-span-6 relative h-56 sm:h-96 bg-sand/20 group ${
                   isReversed ? 'lg:col-start-7' : ''
                 }`}
               >
@@ -88,12 +75,12 @@ export default function OccasionsPage() {
                   alt={pkg.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                 />
                 <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-gold-light" />
                 </div>
-              </div>
+              </button>
 
               {/* Text Description & Bullets */}
               <div
@@ -101,13 +88,11 @@ export default function OccasionsPage() {
                   isReversed ? 'lg:col-start-1' : ''
                 }`}
               >
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-terra">
-                    {pkg.subtitle}
-                  </span>
+                <div className="space-y-2">
                   <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mt-0.5">
                     {pkg.title}
                   </h2>
+                  <p className="text-sm font-semibold text-terra-dark">{pkg.subtitle}</p>
                 </div>
 
                 <p className="text-xs sm:text-base text-ink-muted leading-relaxed font-sans">
@@ -115,7 +100,7 @@ export default function OccasionsPage() {
                 </p>
 
                 <div className="space-y-2 pt-2 border-t border-sand/60">
-                  <h4 className="text-xs font-bold text-ink uppercase tracking-wider">
+                  <h4 className="text-xs font-bold text-ink tracking-normal">
                     Why It Works For This Occasion:
                   </h4>
                   {pkg.highlights.map((hl) => (
@@ -131,14 +116,14 @@ export default function OccasionsPage() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-all group"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-xs sm:text-sm rounded-full shadow-warm-sm active:scale-95 transition-[background-color,box-shadow,transform] duration-200 group"
                   >
                     <MessageCircle className="w-4 h-4 fill-white group-hover:scale-110 transition-transform" />
                     <span>Inquire for {pkg.title.split('&')[0].trim()}</span>
                   </a>
                   <Link
                     href="/rates"
-                    className="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink text-xs sm:text-sm font-semibold rounded-full active:scale-95 transition-all"
+                    className="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 bg-cream hover:bg-cream-dark border border-sand text-ink text-xs sm:text-sm font-semibold rounded-full active:scale-95 transition-[background-color,border-color,transform] duration-200"
                   >
                     <span>Check Pricing</span>
                     <ArrowRight className="w-3.5 h-3.5 text-terra" />
@@ -159,7 +144,7 @@ export default function OccasionsPage() {
         className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-5 sm:p-10 space-y-6"
       >
         <div className="max-w-xl space-y-1">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-normal text-terra">
             <Clock className="w-3.5 h-3.5 text-terra" />
             <span>Curated Group Schedule</span>
           </div>

@@ -4,8 +4,8 @@ import './globals.css'
 import { Navbar } from '@/components/navbar'
 import { StickyBookingBar } from '@/components/sticky-booking-bar'
 import { Footer } from '@/components/footer'
-import { SmoothScrollProvider } from '@/lib/smooth-scroll'
 import { LodgingStructuredData } from '@/components/structured-data'
+import { MotionProvider } from '@/components/motion-provider'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     canonical: 'https://santiagosresort.com',
   },
   openGraph: {
-    title: "Santiagos Resort — Whole-Property Industrial Container Resort",
+    title: "Santiagos Resort - Whole-Property Industrial Container Resort",
     description:
       "Private pool, videoke lounge, billiards, 8 bathrooms, and 20 beds for 40 guests in Alfonso, Tagaytay highlands.",
     url: 'https://santiagosresort.com',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Santiagos Resort — 40-Guest Private Industrial Container Resort",
+    title: "Santiagos Resort - 40-Guest Private Industrial Container Resort",
     description: "Private pool, 8 bathrooms, videoke lounge, billiards, and 20 beds in Alfonso, Tagaytay.",
     images: ['https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/b800534f-c860-4d16-a179-fb2c4a90a4b8.jpeg?im_w=1920'],
   },
@@ -92,12 +92,12 @@ export default function RootLayout({
         <LodgingStructuredData />
       </head>
       <body className="min-h-screen bg-cream text-ink antialiased flex flex-col selection:bg-terra/20 selection:text-terra-dark pb-24 md:pb-0">
-        <SmoothScrollProvider>
+        <MotionProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
           <StickyBookingBar />
-        </SmoothScrollProvider>
+        </MotionProvider>
       </body>
     </html>
   )

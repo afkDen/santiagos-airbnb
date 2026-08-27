@@ -51,7 +51,7 @@ export const DRIVING_STEPS: DirectionStep[] = [
 export const TRANSIT_INFO = {
   title: 'Public Commute Route from Metro Manila',
   steps: [
-    'Board a Tagaytay/Nasugbu-bound bus from PITX or Buendia Terminal in Metro Manila (approx. 1.5–2 hours).',
+    'Board a Tagaytay/Nasugbu-bound bus from PITX or Buendia Terminal in Metro Manila (approx. 1.5-2 hours).',
     'Request the bus conductor to drop you off at Twin Lakes Tagaytay or the Amuyong junction.',
     'Hire a local tricycle at the junction and instruct the driver to take you directly to "Santiagos Resort, Kaytitinga II, Alfonso".',
   ],

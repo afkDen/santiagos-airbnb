@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { PROPERTY_INFO } from '@/content/property'
 import { buildWhatsAppLink } from '@/lib/whatsapp-link'
+import { PageIntro } from '@/components/page-intro'
 import {
   MessageCircle,
   Phone,
@@ -14,12 +15,10 @@ import {
   ShieldCheck,
   CheckSquare,
   Square,
-  Send,
   ExternalLink,
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Luggage,
 } from 'lucide-react'
 
 export default function ContactPage() {
@@ -35,6 +34,7 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   // Pre-Arrival Packing Checklist Items from §9
   const initialChecklist = [
@@ -66,17 +66,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    const checkIn = formData.checkIn ? new Date(formData.checkIn) : undefined
-    const checkOut = formData.checkOut ? new Date(formData.checkOut) : undefined
-    const guests = parseInt(formData.guests) || 20
-
-    const whatsappUrl = buildWhatsAppLink({
-      checkIn,
-      checkOut,
-      guestCount: guests,
-      occasion: formData.occasion,
-    })
+    setSubmitError('')
 
     try {
       const response = await fetch('/api/contact', {
@@ -87,37 +77,24 @@ export default function ContactPage() {
 
       if (response.ok) {
         setIsSuccess(true)
+      } else {
+        setSubmitError('We could not save your inquiry. Your details are still here, so you can try again or open WhatsApp directly.')
       }
     } catch (err) {
       console.error('Error submitting form to API:', err)
+      setSubmitError('We could not connect to the inquiry service. Your details are still here, so you can try again or open WhatsApp directly.')
     } finally {
       setIsSubmitting(false)
-      window.open(whatsappUrl, '_blank')
     }
   }
 
   return (
     <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <MessageCircle className="w-4 h-4 text-whatsapp" />
-          <span>Direct Inquiries & Fast Response</span>
-        </div>
-
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
-          Get in Touch with <span className="text-terra">Santiagos</span>
-        </h1>
-
-        <p className="text-base sm:text-lg text-ink-muted leading-relaxed font-sans">
-          Message us directly on WhatsApp for instant date availability checks, direct-booking rate confirmations, or special requests.
-        </p>
-      </motion.div>
+      <PageIntro
+        meta="Direct booking with the Santiagos team"
+        title="Check your dates directly."
+        description="Message us now on WhatsApp or send the details your group already knows. We will confirm availability and next steps."
+      />
 
       {/* Main Grid: Form + Direct Channels */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -131,10 +108,10 @@ export default function ContactPage() {
         >
           <div className="space-y-1 border-b border-sand pb-4">
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
-              Send a Booking Inquiry
+              Send a booking inquiry
             </h2>
-            <p className="text-xs text-ink-muted font-sans">
-              Fill in your details to generate a pre-filled WhatsApp message.
+            <p className="text-sm leading-6 text-ink-muted">
+              Share the details that will help us answer your availability question.
             </p>
           </div>
 
@@ -142,10 +119,10 @@ export default function ContactPage() {
             <div className="p-6 bg-forest/10 border border-forest/30 rounded-2xl space-y-3">
               <div className="flex items-center gap-2 text-forest font-bold">
                 <CheckCircle2 className="w-5 h-5" />
-                <span>Inquiry Prepared & WhatsApp Opened!</span>
+                <span>Inquiry received</span>
               </div>
-              <p className="text-xs text-ink-muted leading-relaxed font-sans">
-                Your details have been registered. If WhatsApp did not open automatically, click the button below to connect with our reservations team.
+              <p className="text-sm leading-6 text-ink-muted">
+                Your details were saved. Open WhatsApp when you are ready to continue with the reservations team.
               </p>
               <button
                 type="button"
@@ -155,7 +132,7 @@ export default function ContactPage() {
                   const guests = parseInt(formData.guests) || 20
                   window.open(buildWhatsAppLink({ checkIn, checkOut, guestCount: guests, occasion: formData.occasion }), '_blank')
                 }}
-                className="px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-xs font-bold rounded-full flex items-center gap-2 active:scale-95 transition-all"
+                className="px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-xs font-bold rounded-full flex items-center gap-2 active:scale-95 transition-[background-color,transform] duration-200"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Open WhatsApp Chat</span>
@@ -163,14 +140,24 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 font-sans text-sm">
+              {submitError ? (
+                <div role="alert" className="flex gap-3 rounded-xl border border-terra/30 bg-terra/10 p-4 text-sm leading-6 text-ink">
+                  <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-terra" aria-hidden="true" />
+                  <p>{submitError}</p>
+                </div>
+              ) : null}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                    Your Name *
+                  <label htmlFor="contact-name" className="text-sm font-bold text-ink">
+                    Your name <span aria-hidden="true">*</span>
                   </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
                     required
+                    autoComplete="name"
                     placeholder="e.g. Maria Santos"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -179,11 +166,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                    Email Address (Optional)
+                  <label htmlFor="contact-email" className="text-sm font-bold text-ink">
+                    Email address <span className="font-normal text-ink-muted">(optional)</span>
                   </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     placeholder="maria@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -194,10 +184,12 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                    Check-in Date
+                  <label htmlFor="contact-check-in" className="text-sm font-bold text-ink">
+                    Check-in date
                   </label>
                   <input
+                    id="contact-check-in"
+                    name="checkIn"
                     type="date"
                     value={formData.checkIn}
                     onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
@@ -206,10 +198,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                    Check-out Date
+                  <label htmlFor="contact-check-out" className="text-sm font-bold text-ink">
+                    Check-out date
                   </label>
                   <input
+                    id="contact-check-out"
+                    name="checkOut"
                     type="date"
                     value={formData.checkOut}
                     onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
@@ -218,10 +212,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                    Estimated Headcount
+                  <label htmlFor="contact-guests" className="text-sm font-bold text-ink">
+                    Estimated guests
                   </label>
                   <input
+                    id="contact-guests"
+                    name="guests"
                     type="number"
                     min={1}
                     max={40}
@@ -233,10 +229,12 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                  Occasion / Trip Type
+                <label htmlFor="contact-occasion" className="text-sm font-bold text-ink">
+                  Occasion or trip type
                 </label>
                 <select
+                  id="contact-occasion"
+                  name="occasion"
                   value={formData.occasion}
                   onChange={(e) => setFormData({ ...formData, occasion: e.target.value })}
                   className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-sm"
@@ -250,12 +248,14 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-ink uppercase tracking-wider">
-                  Special Requests or Questions
+                <label htmlFor="contact-message" className="text-sm font-bold text-ink">
+                  Questions or requests
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={3}
-                  placeholder="Any special requests, early check-in inquiries, etc..."
+                  placeholder="Tell us what your group needs"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 bg-cream/40 border border-sand rounded-xl text-ink focus:outline-none focus:ring-2 focus:ring-terra text-sm resize-none"
@@ -265,14 +265,14 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2.5 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-all disabled:opacity-75 group"
+                className="w-full flex items-center justify-center gap-2.5 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm sm:text-base rounded-full shadow-warm-md hover:shadow-warm-lg active:scale-95 transition-[background-color,box-shadow,opacity,transform] duration-200 disabled:opacity-75 group"
               >
                 {isSubmitting ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                   <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
                 )}
-                <span>{isSubmitting ? 'Preparing Inquiry...' : 'Submit & Open in WhatsApp'}</span>
+                <span>{isSubmitting ? 'Sending inquiry...' : 'Send inquiry details'}</span>
               </button>
             </form>
           )}
@@ -398,10 +398,10 @@ export default function ContactPage() {
           </div>
 
           {/* House Rules & Policies Summary from §5 */}
-          <div className="bg-sand/30 p-6 sm:p-8 rounded-3xl border border-sand-dark/40 space-y-4 font-sans text-xs sm:text-sm">
+          <div className="space-y-4 rounded-2xl border border-sand-dark/40 bg-sand/30 p-6 text-sm leading-6 sm:p-8">
             <h4 className="font-serif text-lg font-bold text-ink flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-forest" />
-              <span>House Rules & Key Policies</span>
+              <span>House rules and key policies</span>
             </h4>
 
             <ul className="space-y-2.5 text-ink-muted">
@@ -436,12 +436,8 @@ export default function ContactPage() {
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sand pb-4">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-terra">
-              <Luggage className="w-3.5 h-3.5 text-terra" />
-              <span>Interactive Guest Helper</span>
-            </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
-              Pre-Arrival Packing Checklist
+              Pre-arrival packing checklist
             </h2>
           </div>
 
@@ -453,13 +449,13 @@ export default function ContactPage() {
             <div className="w-44 h-2 bg-sand rounded-full overflow-hidden">
               <div
                 style={{ width: `${progressPercent}%` }}
-                className="h-full bg-forest transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-full"
+                className="h-full bg-forest transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-full"
               />
             </div>
           </div>
         </div>
 
-        <p className="text-xs sm:text-sm text-ink-muted font-sans">
+        <p className="max-w-[65ch] text-base leading-7 text-ink-muted">
           The resort provides all major appliances, kitchenware, and entertainment facilities. Tap items as you pack them:
         </p>
 
@@ -469,7 +465,7 @@ export default function ContactPage() {
               key={item.label}
               type="button"
               onClick={() => toggleChecklist(index)}
-              className={`p-3.5 rounded-xl border text-left flex items-start gap-3 transition-all active:scale-[0.97] duration-200 ${
+              className={`p-3.5 rounded-xl border text-left flex items-start gap-3 transition-[background-color,border-color,color,box-shadow,opacity,transform] active:scale-[0.97] duration-200 ${
                 item.checked
                   ? 'bg-forest/10 border-forest/30 text-forest shadow-sm'
                   : 'bg-cream/40 border-sand text-ink hover:bg-cream hover:border-sand-dark'

@@ -24,7 +24,7 @@ export function AmenitiesChecklist() {
   return (
     <section className="bg-sand/30 rounded-3xl p-6 sm:p-10 lg:p-12 border border-sand-dark/50 space-y-8">
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-terra">
+        <span className="text-xs font-bold tracking-normal text-terra">
           Pre-Arrival Packing Transparency
         </span>
         <h2 className="font-serif text-3xl sm:text-4xl font-bold text-ink">

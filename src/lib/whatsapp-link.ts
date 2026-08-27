@@ -15,7 +15,7 @@ export function buildWhatsAppLink({
   let text = "Hi! I'm interested in booking Santiagos Resort Tagaytay."
   
   if (checkIn && checkOut) {
-    text += ` We're looking at ${format(checkIn, 'MMM d')}–${format(checkOut, 'MMM d, yyyy')}`
+    text += ` We're looking at ${format(checkIn, 'MMM d')}-${format(checkOut, 'MMM d, yyyy')}`
   }
   if (guestCount) {
     text += ` for around ${guestCount} guests.`

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { getLocalImageUrl } from '@/content/gallery'
 import { PROPERTY_INFO } from '@/content/property'
 import { FullscreenLightbox } from '@/components/fullscreen-lightbox'
+import { PageIntro } from '@/components/page-intro'
 import {
   Bed,
   Droplets,
@@ -14,7 +15,6 @@ import {
   Users,
   Wind,
   Maximize2,
-  Layers,
   Sparkles,
 } from 'lucide-react'
 
@@ -66,7 +66,7 @@ export default function RoomsPage() {
       beds: '8 Heavy-Duty Double-Deck Bunk Pods (16 Single Beds)',
       bathrooms: '4 Dedicated Full Bathrooms on Same Floor',
       features: [
-        'Sturdy steel-and-wood frame bunk beds — zero squeaks or wobbles',
+        'Sturdy steel-and-wood frame bunk beds - zero squeaks or wobbles',
         'Individual reading lights and charging outlets per bed pod',
         'Multi-unit high-capacity split air conditioners keep the room 18°C',
         '4 full bathrooms immediately adjacent to prevent morning lines',
@@ -94,16 +94,16 @@ export default function RoomsPage() {
 
   // Verified Sleeping Perspectives Registry
   const allBedrooms = [
-    { key: 'bed3', label: 'VIP Room 1 — Queen Bed Master Suite with Ensuite Bath', tag: 'VIP Suite 1' },
-    { key: 'bed7', label: 'VIP Room 2 — Second Queen Bed Master Suite', tag: 'VIP Suite 2' },
+    { key: 'bed3', label: 'VIP Room 1 - Queen Bed Master Suite with Ensuite Bath', tag: 'VIP Suite 1' },
+    { key: 'bed7', label: 'VIP Room 2 - Second Queen Bed Master Suite', tag: 'VIP Suite 2' },
     { key: 'bed4', label: 'VIP Suite Smart TV on Slatted Wood Accent Wall', tag: 'VIP Suite 1' },
     { key: 'bed8', label: 'VIP Suite Bedside Nightstand & Headboard Close-Up', tag: 'VIP Suite 2' },
-    { key: 'bed1', label: 'Bunk Zone Hallway — Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
-    { key: 'bed2', label: 'Bunk Room Ante-Room — Glass Sliding Door to Gym', tag: 'Bunk Zone' },
-    { key: 'bed5', label: 'Bunk Pods — Crisp White Linens & Slatted Headboards', tag: 'Bunk Zone' },
-    { key: 'bed6', label: 'Bunk Room Entryway — 4 Built-In Bunk Pods', tag: 'Bunk Zone' },
-    { key: 'bed9', label: 'Spacious Group Bunk Room — High Capacity Pods', tag: 'Bunk Zone' },
-    { key: 'lou1', label: 'VIP Bedroom Suite — 4K Smart TV & Plush Bedding', tag: 'VIP Suite' },
+    { key: 'bed1', label: 'Bunk Zone Hallway - Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
+    { key: 'bed2', label: 'Bunk Room Ante-Room - Glass Sliding Door to Gym', tag: 'Bunk Zone' },
+    { key: 'bed5', label: 'Bunk Pods - Crisp White Linens & Slatted Headboards', tag: 'Bunk Zone' },
+    { key: 'bed6', label: 'Bunk Room Entryway - 4 Built-In Bunk Pods', tag: 'Bunk Zone' },
+    { key: 'bed9', label: 'Spacious Group Bunk Room - High Capacity Pods', tag: 'Bunk Zone' },
+    { key: 'lou1', label: 'VIP Bedroom Suite - 4K Smart TV & Plush Bedding', tag: 'VIP Suite' },
   ]
 
   const bathroomDetails = [
@@ -141,26 +141,11 @@ export default function RoomsPage() {
 
   return (
     <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider">
-          <Bed className="w-4 h-4 text-terra" />
-          <span>4 Room Zones • 20 Beds Total • 40 Max Guests</span>
-        </div>
-
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
-          Rest Comfortably with <span className="text-terra">Zero Queues</span>
-        </h1>
-
-        <p className="text-base sm:text-lg text-ink-muted leading-relaxed font-sans">
-          Built specifically to eliminate the usual pain points of large group vacations: cramped bedrooms and long bathroom lines.
-        </p>
-      </motion.div>
+      <PageIntro
+        meta="4 sleeping zones, 20 beds, 8 bathrooms"
+        title="See where everyone sleeps."
+        description="Compare each sleeping zone, bed setup, bathroom access, and the type of guest it suits best."
+      />
 
       {/* Interactive Room Zone Showcase */}
       <motion.div
@@ -172,9 +157,8 @@ export default function RoomsPage() {
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand pb-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-terra">Interactive Floor Navigator</span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mt-0.5">
-              Explore the 4 Sleeping Zones
+              Choose a sleeping zone
             </h2>
           </div>
           <div className="text-xs text-ink-muted font-medium bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">
@@ -191,7 +175,7 @@ export default function RoomsPage() {
                 key={zone.id}
                 type="button"
                 onClick={() => setSelectedZone(idx)}
-                className={`relative isolate p-3 sm:p-4 text-left rounded-2xl sm:rounded-full transition-all duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 overflow-hidden ${
+                className={`relative isolate p-3 sm:p-4 text-left rounded-2xl sm:rounded-full transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 overflow-hidden ${
                   isActive
                     ? 'text-cream shadow-warm-sm border border-transparent'
                     : 'bg-cream/40 border border-sand text-ink hover:bg-sand/40'
@@ -232,9 +216,11 @@ export default function RoomsPage() {
             transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center pt-2"
           >
-            <div
+            <button
+              type="button"
               onClick={() => setLightboxImage({ src: currentZone.image, label: currentZone.name })}
-              className="lg:col-span-6 relative h-56 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-warm-md border border-sand bg-sand/20 cursor-pointer group"
+              aria-label={`Open photo: ${currentZone.name}`}
+              className="media-button lg:col-span-6 relative h-56 sm:h-80 md:h-96 bg-sand/20 group"
             >
               <Image
                 src={currentZone.image}
@@ -249,14 +235,11 @@ export default function RoomsPage() {
               <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-4 h-4 text-gold-light" />
               </div>
-            </div>
+            </button>
 
             <div className="lg:col-span-6 space-y-4">
               <div>
-                <span className="text-xs font-bold text-terra uppercase tracking-wider">
-                  Zone Details & Layout
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-ink mt-0.5">
+                <h3 className="text-xl font-bold leading-tight text-ink sm:text-2xl lg:text-3xl">
                   {currentZone.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-ink-muted mt-1 font-sans">
@@ -266,14 +249,14 @@ export default function RoomsPage() {
 
               <div className="grid grid-cols-2 gap-3 py-2 border-y border-sand">
                 <div className="space-y-1">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">Bed Configuration</div>
+                  <div className="text-sm font-bold text-ink-muted">Beds</div>
                   <div className="text-xs sm:text-sm font-semibold text-ink flex items-center gap-1.5">
                     <Bed className="w-4 h-4 text-terra shrink-0" />
                     <span>{currentZone.beds}</span>
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">Bath Access</div>
+                  <div className="text-sm font-bold text-ink-muted">Bathroom access</div>
                   <div className="text-xs sm:text-sm font-semibold text-ink flex items-center gap-1.5">
                     <Droplets className="w-4 h-4 text-terra shrink-0" />
                     <span>{currentZone.bathrooms}</span>
@@ -282,8 +265,8 @@ export default function RoomsPage() {
               </div>
 
               <div className="space-y-2">
-                <div className="text-xs font-bold text-ink uppercase tracking-wider">Key Room Features:</div>
-                <ul className="space-y-1.5 font-sans text-xs sm:text-sm text-ink-muted">
+                <div className="text-sm font-bold text-ink">What this room includes</div>
+                <ul className="space-y-2 text-sm leading-6 text-ink-muted">
                   {currentZone.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
@@ -307,25 +290,23 @@ export default function RoomsPage() {
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sand/60 text-terra-dark text-xs font-bold uppercase tracking-wider mb-1">
-              <Layers className="w-3.5 h-3.5 text-terra" />
-              <span>Full Sleeping Configuration</span>
-            </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-              All 10 Bedroom Views & Pod Perspectives
+              All bedroom views
             </h2>
           </div>
           <span className="text-xs font-bold text-ink-muted bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">
-            Click any bedroom to enlarge
+            Open any photo to enlarge
           </span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {allBedrooms.map((bed) => (
-            <div
+            <button
               key={bed.key}
+              type="button"
               onClick={() => setLightboxImage({ src: getLocalImageUrl(bed.key), label: bed.label })}
-              className="bg-white rounded-2xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group flex flex-col justify-between"
+              aria-label={`Open photo: ${bed.label}`}
+              className="media-button bg-white border border-sand shadow-warm-sm group flex flex-col justify-between"
             >
               <div className="relative h-36 sm:h-52 w-full bg-sand/20 overflow-hidden">
                 <Image
@@ -343,11 +324,11 @@ export default function RoomsPage() {
                 </div>
               </div>
               <div className="p-2.5 sm:p-3.5">
-                <h4 className="font-serif text-xs sm:text-sm font-bold text-ink leading-snug line-clamp-2">
+                <h3 className="line-clamp-2 text-sm font-bold leading-snug text-ink">
                   {bed.label}
-                </h4>
+                </h3>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </motion.div>
@@ -361,15 +342,11 @@ export default function RoomsPage() {
         className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-5 sm:p-12 space-y-6 sm:space-y-8"
       >
         <div className="max-w-2xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terra/15 text-terra-dark text-xs font-bold uppercase tracking-wider">
-            <Droplets className="w-3.5 h-3.5 text-terra" />
-            <span>The 8-Bathroom Advantage</span>
-          </div>
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-            8 Full Bathrooms — Zero Queues
+            Eight bathrooms across the compound.
           </h2>
-          <p className="text-xs sm:text-base text-ink-muted leading-relaxed font-sans">
-            Nothing ruins a big group trip faster than 40 people fighting over 2 bathrooms. Santiagos Resort provides 8 fully-equipped bathrooms throughout the property.
+          <p className="max-w-[65ch] text-base leading-7 text-ink-muted">
+            Bathrooms are distributed near the VIP suites, bunk zone, main hall, and pool so large groups can get ready more efficiently.
           </p>
         </div>
 
@@ -379,13 +356,13 @@ export default function RoomsPage() {
             return (
               <div
                 key={b.title}
-                className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-sand/70 shadow-warm-sm space-y-2.5 hover:shadow-warm-md hover:-translate-y-1.5 transition-all duration-300 group"
+                className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-sand/70 shadow-warm-sm space-y-2.5 hover:shadow-warm-md hover:-translate-y-1.5 transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 group"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-terra/15 text-terra-dark flex items-center justify-center group-hover:scale-110 group-hover:bg-terra group-hover:text-white transition-all duration-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-terra/15 text-terra-dark flex items-center justify-center group-hover:scale-110 group-hover:bg-terra group-hover:text-white transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300">
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <h4 className="font-serif text-base sm:text-lg font-bold text-ink">{b.title}</h4>
-                <p className="text-xs text-ink-muted leading-relaxed font-sans">{b.desc}</p>
+                <h3 className="text-base font-bold text-ink sm:text-lg">{b.title}</h3>
+                <p className="text-sm leading-6 text-ink-muted">{b.desc}</p>
               </div>
             )
           })}
@@ -394,10 +371,12 @@ export default function RoomsPage() {
         {/* Bathroom Photos Preview with Lightbox Trigger (2-Column Mobile) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 pt-2">
           {bathroomPhotos.map((bp) => (
-            <div
+            <button
               key={bp.key}
+              type="button"
               onClick={() => setLightboxImage({ src: getLocalImageUrl(bp.key), label: bp.label })}
-              className="relative h-40 sm:h-64 rounded-2xl overflow-hidden border border-sand shadow-sm bg-sand/20 cursor-pointer group"
+              aria-label={`Open photo: ${bp.label}`}
+              className="media-button relative h-40 sm:h-64 border border-sand shadow-sm bg-sand/20 group"
             >
               <Image
                 src={getLocalImageUrl(bp.key)}
@@ -412,7 +391,7 @@ export default function RoomsPage() {
               <div className="absolute top-2 right-2 p-1.5 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </motion.div>

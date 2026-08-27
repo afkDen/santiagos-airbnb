@@ -103,7 +103,7 @@ export function AmenitiesCatalog() {
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
+              className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
                   : 'bg-white border border-sand text-ink hover:bg-sand/40'
@@ -149,13 +149,15 @@ export function AmenitiesCatalog() {
                 delay: (idx % 6) * 0.04,
                 ease: [0.23, 1, 0.32, 1],
               }}
-              className="bg-white rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-md transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-md transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 flex flex-col justify-between group"
             >
               {/* Photo Preview Container */}
               {item.imageKey && (
-                <div
+                <button
+                  type="button"
                   onClick={() => setLightboxAmenity(item)}
-                  className="relative h-44 sm:h-56 w-full bg-sand/20 overflow-hidden cursor-pointer"
+                  aria-label={`Open photo: ${item.name}`}
+                  className="relative h-44 sm:h-56 w-full bg-sand/20 overflow-hidden text-left"
                 >
                   <Image
                     src={getLocalImageUrl(item.imageKey)}
@@ -173,7 +175,7 @@ export function AmenitiesCatalog() {
                       {item.category}
                     </span>
                   </div>
-                </div>
+                </button>
               )}
 
               {/* Amenity Details */}
@@ -183,7 +185,7 @@ export function AmenitiesCatalog() {
                     <div className="w-10 h-10 rounded-2xl bg-sand/60 text-terra flex items-center justify-center shrink-0">
                       {getIcon(item.iconName)}
                     </div>
-                    <span className="text-[11px] font-bold text-terra-dark bg-terra/10 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    <span className="text-[11px] font-bold text-terra-dark bg-terra/10 px-2.5 py-1 rounded-full tracking-normal">
                       Included 100% Free
                     </span>
                   </div>
