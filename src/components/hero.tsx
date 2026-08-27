@@ -43,15 +43,8 @@ const PROOF_POINTS = [
 ]
 
 export function Hero() {
-  const [[activeView, direction], setViewState] = useState<[number, number]>([0, 0])
+  const [activeView, setActiveView] = useState(0)
   const shouldReduceMotion = useReducedMotion()
-  const currentView = HERO_VIEWS[activeView]
-
-  const handleSelectView = (newIdx: number) => {
-    if (newIdx === activeView) return
-    const dir = newIdx > activeView ? 1 : -1
-    setViewState([newIdx, dir])
-  }
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -77,35 +70,6 @@ export function Hero() {
         ease: [0.23, 1, 0.32, 1] as const,
       },
     },
-  }
-
-  const deckVariants: Variants = {
-    enter: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir >= 0 ? '5%' : '-5%',
-      scale: shouldReduceMotion ? 1 : 1.03,
-      opacity: 0,
-      filter: shouldReduceMotion ? 'none' : 'blur(4px)',
-    }),
-    center: {
-      x: '0%',
-      scale: 1,
-      opacity: 1,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 0.32,
-        ease: [0.23, 1, 0.32, 1] as const,
-      },
-    },
-    exit: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir >= 0 ? '-5%' : '5%',
-      scale: shouldReduceMotion ? 1 : 0.98,
-      opacity: 0,
-      filter: shouldReduceMotion ? 'none' : 'blur(4px)',
-      transition: {
-        duration: 0.26,
-        ease: [0.23, 1, 0.32, 1] as const,
-      },
-    }),
   }
 
   return (
@@ -167,35 +131,40 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Fluid Directional Image Deck */}
+        {/* Right Column: Cinematic Multi-Layer Perspective Image Deck */}
         <div className="order-2 lg:col-span-7">
-          <motion.div
-            initial={{ opacity: 0, transform: shouldReduceMotion ? 'none' : 'scale(0.98) translateY(12px)' }}
-            animate={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] as const }}
-            className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-ink-soft shadow-2xl border border-sand/20 sm:aspect-[16/10]"
-          >
-            <AnimatePresence initial={false} custom={direction} mode="popLayout">
-              <motion.div
-                key={currentView.id}
-                custom={direction}
-                variants={deckVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="absolute inset-0 w-full h-full"
-              >
-                <Image
-                  src={currentView.src}
-                  alt={currentView.alt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent pointer-events-none" />
-              </motion.div>
-            </AnimatePresence>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-ink-soft shadow-2xl border border-sand/20 sm:aspect-[16/10]">
+            {HERO_VIEWS.map((view, index) => {
+              const isActive = activeView === index
+
+              return (
+                <motion.div
+                  key={view.id}
+                  initial={false}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    scale: isActive ? 1 : 1.04,
+                    filter: shouldReduceMotion ? 'none' : isActive ? 'blur(0px)' : 'blur(4px)',
+                  }}
+                  transition={{
+                    duration: 0.38,
+                    ease: [0.23, 1, 0.32, 1],
+                  }}
+                  className={`absolute inset-0 ${isActive ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'}`}
+                  aria-hidden={!isActive}
+                >
+                  <Image
+                    src={view.src}
+                    alt={isActive ? view.alt : ''}
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent pointer-events-none" />
+                </motion.div>
+              )
+            })}
 
             {/* Apple-Style Glassmorphic View Selector */}
             <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5 z-20">
@@ -207,7 +176,7 @@ export function Hero() {
                       key={view.id}
                       type="button"
                       aria-pressed={isActive}
-                      onClick={() => handleSelectView(index)}
+                      onClick={() => setActiveView(index)}
                       className={`relative min-h-11 overflow-hidden rounded-xl px-2 py-2 text-[11px] sm:text-xs font-bold transition-colors duration-150 active:scale-[0.98] ${
                         isActive
                           ? 'text-ink'
@@ -228,7 +197,7 @@ export function Hero() {
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
