@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, type KeyboardEvent } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { GALLERY_REGISTRY } from '@/content/gallery'
@@ -19,6 +19,7 @@ const FILTER_GROUPS = [
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
+  const filterRefs = useRef<Array<HTMLButtonElement | null>>([])
 
   const activeGroup = FILTER_GROUPS.find((group) => group.label === selectedCategory) ?? FILTER_GROUPS[0]
 
@@ -44,8 +45,25 @@ export default function GalleryPage() {
   const currentActiveImage =
     activeImageIndex !== null ? filteredImages[activeImageIndex] : null
 
+  const selectFilter = (index: number) => {
+    setSelectedCategory(FILTER_GROUPS[index].label)
+    setActiveImageIndex(null)
+    filterRefs.current[index]?.focus()
+  }
+
+  const handleFilterKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | null = null
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % FILTER_GROUPS.length
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + FILTER_GROUPS.length) % FILTER_GROUPS.length
+    if (event.key === 'Home') nextIndex = 0
+    if (event.key === 'End') nextIndex = FILTER_GROUPS.length - 1
+    if (nextIndex === null) return
+    event.preventDefault()
+    selectFilter(nextIndex)
+  }
+
   return (
-    <div className="py-12 md:py-16 space-y-10 sm:space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta={`${GALLERY_REGISTRY.length} real property photos`}
         title="See the resort before you book."
@@ -53,8 +71,8 @@ export default function GalleryPage() {
       />
 
       {/* Interactive Category Filter Tabs with Morphing Spring Pill */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto pt-2">
-        {FILTER_GROUPS.map((group) => {
+      <div role="tablist" aria-label="Gallery categories" className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto">
+        {FILTER_GROUPS.map((group, index) => {
           const count = group.label === 'All'
             ? GALLERY_REGISTRY.length
             : GALLERY_REGISTRY.filter((img) => group.categories.includes(img.category)).length
@@ -63,10 +81,15 @@ export default function GalleryPage() {
           return (
             <button
               key={group.label}
-              onClick={() => {
-                setSelectedCategory(group.label)
-                setActiveImageIndex(null)
-              }}
+              ref={(element) => { filterRefs.current[index] = element }}
+              type="button"
+              role="tab"
+              id={`gallery-filter-${index}`}
+              aria-selected={isActive}
+              aria-controls="gallery-grid"
+              tabIndex={isActive ? 0 : -1}
+              onClick={() => selectFilter(index)}
+              onKeyDown={(event) => handleFilterKeyDown(event, index)}
               className={`relative isolate overflow-hidden px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200 active:scale-95 flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? 'text-white shadow-warm-sm border border-transparent'
@@ -77,7 +100,7 @@ export default function GalleryPage() {
                 <motion.div
                   layoutId="active-gallery-filter"
                   className="absolute inset-0 bg-terra rounded-full z-0 shadow-warm-sm"
-                  transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
+                  transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
                 />
               )}
               <span className="relative z-10">{group.label}</span>
@@ -97,10 +120,13 @@ export default function GalleryPage() {
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedCategory}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+          id="gallery-grid"
+          role="tabpanel"
+          aria-labelledby={`gallery-filter-${FILTER_GROUPS.findIndex((group) => group.label === selectedCategory)}`}
+          initial={{ opacity: 0, transform: 'translateY(8px)' }}
+          animate={{ opacity: 1, transform: 'translateY(0)' }}
+          exit={{ opacity: 0, transform: 'translateY(-6px)' }}
+          transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"
         >
           {filteredImages.map((img, idx) => (
@@ -116,7 +142,7 @@ export default function GalleryPage() {
                   alt={img.label}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                  className="media-image object-cover"
                 />
                 <span className="absolute bottom-2 right-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink/80 text-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
                   <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
@@ -139,17 +165,17 @@ export default function GalleryPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        className="bg-sand/30 border border-sand-dark/40 rounded-3xl p-5 sm:p-10 space-y-4 sm:space-y-6"
+        className="rounded-3xl border border-sand-dark/40 bg-sand/30 p-5 sm:p-10 space-y-4 sm:space-y-6"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-normal text-terra">
-              <Play className="w-3.5 h-3.5 fill-terra text-terra" />
-              <span>Video Walkthrough</span>
-            </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink mt-1">
-              Official Resort Video Tour
-            </h3>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
+              Walk through the resort on video.
+            </h2>
+            <p className="mt-2 flex items-center gap-2 text-sm text-ink-muted">
+              <Play className="h-3.5 w-3.5 fill-terra text-terra" aria-hidden="true" />
+              See the rooms and shared spaces in sequence.
+            </p>
           </div>
           <a
             href="https://drive.google.com/file/d/1f1u_JuPgRRNEjmTNMZfvg9KpugSRYgEO/preview"

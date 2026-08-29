@@ -11,7 +11,7 @@ import { MessageCircle, ArrowRight, Sparkles, UtensilsCrossed } from 'lucide-rea
 
 export default function AmenitiesPage() {
   return (
-    <div className="py-12 md:py-16 space-y-16 sm:space-y-24">
+    <div className="space-y-12 py-10 sm:space-y-16 sm:py-12 lg:py-14">
       <div className="site-container">
         <PageIntro
           meta="22+ included amenities"
@@ -32,22 +32,19 @@ export default function AmenitiesPage() {
       </motion.div>
 
       {/* 4. Full 22+ Categorized Amenity Catalog with Specs & Lightboxes */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
+      <div className="mx-auto max-w-7xl space-y-12 px-4 sm:space-y-16 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-          className="space-y-2 text-center max-w-2xl mx-auto"
+          className="max-w-2xl space-y-3"
         >
-          <span className="text-xs font-bold tracking-normal text-terra">
-            Complete Compound Equipment & Features
-          </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-ink">
-            Browse All 22+ Amenities by Category
+            Everything included, sorted by how you&apos;ll use it.
           </h2>
-          <p className="text-xs sm:text-sm text-ink-muted font-sans">
-            Filter below to view equipment specifications, photos, and inclusions.
+          <p className="max-w-[65ch] text-sm leading-6 text-ink-muted sm:text-base sm:leading-7">
+            Choose a category to compare the spaces, equipment, and practical details that matter to your group.
           </p>
         </motion.div>
 
@@ -69,7 +66,7 @@ export default function AmenitiesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="bg-sand/30 border border-sand-dark/50 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-warm-md transition-shadow"
+          className="interactive-card flex flex-col items-start justify-between gap-6 rounded-3xl border border-sand-dark/50 bg-sand/30 p-6 sm:p-10 md:flex-row md:items-center"
         >
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-terra text-white flex items-center justify-center shrink-0 shadow-warm-sm">
@@ -77,7 +74,7 @@ export default function AmenitiesPage() {
             </div>
             <div>
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
-                ₱0 Corkage Policy on Food & Drinks
+                Bring food and drinks—no corkage.
               </h3>
               <p className="text-xs sm:text-sm text-ink-muted font-sans mt-0.5">
                 Bring your own food, beverages, liquor, outside catering, and celebration cakes with zero surcharge.
@@ -105,7 +102,7 @@ export default function AmenitiesPage() {
         >
           <div className="max-w-xl mx-auto space-y-3">
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-cream">
-              Ready to Experience Santiagos Resort?
+              Planning your group stay?
             </h2>
             <p className="text-sm text-sand-light/80 font-sans">
               Reserve whole-property privacy for your group today. Check real-time weekend and holiday availability directly on WhatsApp.

@@ -29,7 +29,7 @@ export default function OccasionsPage() {
   ]
 
   return (
-    <div className="py-12 md:py-16 space-y-12 sm:space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta="Families, barkadas, celebrations, and team stays"
         title="A private place for your people."
@@ -75,7 +75,7 @@ export default function OccasionsPage() {
                   alt={pkg.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                  className="media-image object-cover"
                 />
                 <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-gold-light" />

@@ -23,15 +23,12 @@ export function AmenitiesChecklist() {
 
   return (
     <section className="bg-sand/30 rounded-3xl p-6 sm:p-10 lg:p-12 border border-sand-dark/50 space-y-8">
-      <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-bold tracking-normal text-terra">
-          Pre-Arrival Packing Transparency
-        </span>
+      <div className="max-w-2xl space-y-3">
         <h2 className="font-serif text-3xl sm:text-4xl font-bold text-ink">
-          What&apos;s Provided vs. What to Bring
+          Pack the things the resort doesn&apos;t provide.
         </h2>
-        <p className="text-xs sm:text-sm text-ink-muted font-sans">
-          We believe in 100% upfront clarity so your group arrives fully prepared with zero surprise shortages.
+        <p className="text-sm leading-6 text-ink-muted sm:text-base sm:leading-7">
+          Use this checklist before you leave so towels, toiletries, charcoal, and group supplies are accounted for.
         </p>
       </div>
 
@@ -41,7 +38,7 @@ export function AmenitiesChecklist() {
           <div className="flex items-center gap-2.5 text-forest border-b border-sand pb-4">
             <CheckCircle2 className="w-5 h-5 shrink-0" />
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
-              Provided by Santiagos (Free of Charge)
+              Already provided
             </h3>
           </div>
 
@@ -63,7 +60,7 @@ export function AmenitiesChecklist() {
           <div className="flex items-center gap-2.5 text-terra-dark border-b border-sand pb-4">
             <ShoppingBag className="w-5 h-5 shrink-0 text-terra" />
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
-              Recommended for Your Group to Bring
+              Bring for your group
             </h3>
           </div>
 

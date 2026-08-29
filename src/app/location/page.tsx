@@ -26,7 +26,7 @@ export default function LocationPage() {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; label: string } | null>(null)
 
   return (
-    <div className="py-12 md:py-16 space-y-12 sm:space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta="Kaytitinga II, Alfonso, Cavite"
         title="Plan the drive with confidence."
@@ -208,7 +208,7 @@ export default function LocationPage() {
                 alt="Santiagos Resort Official Directions Poster and Landmark Map"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="media-image object-cover"
               />
               <div className="absolute bottom-2.5 right-2.5 p-1.5 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-gold-light" />
@@ -253,11 +253,13 @@ export default function LocationPage() {
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
         className="space-y-6 sm:space-y-8"
       >
-        <div className="text-center max-w-2xl mx-auto space-y-1">
-          <span className="text-xs font-bold tracking-normal text-terra">Explore Alfonso & Tagaytay</span>
+        <div className="max-w-2xl space-y-2">
           <h2 className="font-serif text-2xl sm:text-4xl font-bold text-ink">
-            Popular Nearby Attractions
+            Nearby stops for the drive home.
           </h2>
+          <p className="text-sm leading-6 text-ink-muted sm:text-base">
+            Save a few well-known Alfonso and Tagaytay stops if your group wants to extend the trip.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
@@ -275,7 +277,7 @@ export default function LocationPage() {
                   alt={attraction.name}
                   fill
                   sizes="(max-width: 640px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="media-image object-cover"
                 />
                 <div className="absolute top-2 left-2 px-2 py-0.5 bg-ink/80 backdrop-blur-md rounded-full text-gold-light text-[9px] sm:text-[11px] font-bold flex items-center gap-1">
                   <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" />

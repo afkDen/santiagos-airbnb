@@ -40,14 +40,23 @@ export function FullscreenLightbox({
   const [mounted, setMounted] = useState(false)
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const onCloseRef = useRef(onClose)
+  const onNextRef = useRef(onNext)
+  const onPrevRef = useRef(onPrev)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  useEffect(() => {
+    onCloseRef.current = onClose
+    onNextRef.current = onNext
+    onPrevRef.current = onPrev
+  }, [onClose, onNext, onPrev])
+
   // Lock body scroll and listen for Escape and Arrow keys
   useEffect(() => {
-    if (!isOpen || !src) return
+    if (!isOpen) return
 
     const originalOverflow = document.body.style.overflow
     const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null
@@ -55,9 +64,9 @@ export function FullscreenLightbox({
     closeButtonRef.current?.focus()
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowRight' && onNext) onNext()
-      if (e.key === 'ArrowLeft' && onPrev) onPrev()
+      if (e.key === 'Escape') onCloseRef.current()
+      if (e.key === 'ArrowRight') onNextRef.current?.()
+      if (e.key === 'ArrowLeft') onPrevRef.current?.()
       if (e.key === 'Tab' && dialogRef.current) {
         const focusable = Array.from(
           dialogRef.current.querySelectorAll<HTMLElement>('button, a[href], [tabindex]:not([tabindex="-1"])')
@@ -81,7 +90,7 @@ export function FullscreenLightbox({
       window.removeEventListener('keydown', handleKeyDown)
       previouslyFocused?.focus()
     }
-  }, [isOpen, src, onClose, onNext, onPrev])
+  }, [isOpen])
 
   if (!mounted) return null
 
@@ -97,7 +106,7 @@ export function FullscreenLightbox({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-        className="fixed inset-0 z-[9999] bg-[#0b0705]/95 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 select-none"
+        className="fixed inset-0 z-[9999] flex items-center justify-center overscroll-contain bg-[#0b0705]/95 p-3 [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))] [padding-left:max(0.75rem,env(safe-area-inset-left))] [padding-right:max(0.75rem,env(safe-area-inset-right))] [padding-top:max(0.75rem,env(safe-area-inset-top))] select-none backdrop-blur-xl sm:p-6"
         data-motion="feedback"
       >
       <motion.div

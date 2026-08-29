@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Plus_Jakarta_Sans, Great_Vibes, Outfit } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { Navbar } from '@/components/navbar'
 import { StickyBookingBar } from '@/components/sticky-booking-bar'
@@ -7,29 +7,32 @@ import { Footer } from '@/components/footer'
 import { LodgingStructuredData } from '@/components/structured-data'
 import { MotionProvider } from '@/components/motion-provider'
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
+const playfair = localFont({
+  src: './fonts/PlayfairDisplay-wght.ttf',
   variable: '--font-playfair',
   display: 'swap',
+  weight: '400 900',
 })
 
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
+const plusJakarta = localFont({
+  src: './fonts/PlusJakartaSans-wght.ttf',
   variable: '--font-jakarta',
   display: 'swap',
+  weight: '200 800',
 })
 
-const greatVibes = Great_Vibes({
-  weight: '400',
-  subsets: ['latin'],
+const greatVibes = localFont({
+  src: './fonts/GreatVibes-Regular.ttf',
   variable: '--font-great-vibes',
   display: 'swap',
+  weight: '400',
 })
 
-const outfit = Outfit({
-  subsets: ['latin'],
+const outfit = localFont({
+  src: './fonts/Outfit-wght.ttf',
   variable: '--font-outfit',
   display: 'swap',
+  weight: '100 900',
 })
 
 export const metadata: Metadata = {

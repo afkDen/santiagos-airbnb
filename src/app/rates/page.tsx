@@ -12,7 +12,7 @@ import {
 
 export default function RatesPage() {
   return (
-    <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta="Whole-property pricing for up to 40 guests"
         title="Know the cost before you inquire."

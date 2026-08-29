@@ -45,3 +45,4 @@ skills-lock.json
 # Ignore all internal spec and planning markdown files (keep only README.md)
 *.md
 !README.md
+!HANDOFF.md

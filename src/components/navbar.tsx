@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
 import { ArrowRight, Menu, MessageCircle, Phone, X } from 'lucide-react'
 import { PROPERTY_INFO } from '@/content/property'
 
@@ -21,6 +21,12 @@ const NAV_LINKS = [
 export function Navbar() {
   const pathname = usePathname()
   const reduceMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll()
+  const smoothScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 30,
+    mass: 0.35,
+  })
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const firstLinkRef = useRef<HTMLAnchorElement>(null)
@@ -37,9 +43,28 @@ export function Navbar() {
     firstLinkRef.current?.focus()
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return
-      setMobileMenuOpen(false)
-      toggleRef.current?.focus()
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false)
+        toggleRef.current?.focus()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+      const menu = document.getElementById('mobile-navigation')
+      const focusable = menu?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusable?.length) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -50,8 +75,9 @@ export function Navbar() {
   }, [mobileMenuOpen])
 
   return (
-    <header className="sticky top-0 z-40 h-[72px] border-b border-sand/80 bg-cream/95 backdrop-blur-lg">
-      <div className="site-container flex h-full items-center justify-between gap-4">
+    <>
+      <header className="sticky top-0 z-40 h-[72px] border-b border-sand/80 bg-cream/95 backdrop-blur-lg">
+        <div className="site-container flex h-full items-center justify-between gap-4">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Santiagos Resort home">
           <span className="font-script text-3xl leading-none text-terra-dark sm:text-4xl">Santiago&apos;s</span>
           <span className="hidden border-l border-sand-dark/60 pl-3 text-[10px] font-bold uppercase tracking-[0.16em] text-ink-muted sm:block">
@@ -101,7 +127,15 @@ export function Navbar() {
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
-      </div>
+        </div>
+
+        <motion.div
+          className="absolute inset-x-0 -bottom-px h-0.5 origin-left bg-terra motion-reduce:hidden"
+          style={{ scaleX: smoothScrollProgress }}
+          aria-hidden="true"
+          data-motion="feedback"
+        />
+      </header>
 
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -172,6 +206,6 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

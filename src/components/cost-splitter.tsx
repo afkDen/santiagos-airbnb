@@ -51,7 +51,7 @@ export function CostSplitter() {
               <motion.div
                 layoutId="cost-splitter-day-pill"
                 className="absolute inset-0 bg-terra rounded-full z-0 shadow-sm"
-                transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
+                transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
               />
             )}
             <span className="relative z-10">Weekday</span>
@@ -67,7 +67,7 @@ export function CostSplitter() {
               <motion.div
                 layoutId="cost-splitter-day-pill"
                 className="absolute inset-0 bg-terra rounded-full z-0 shadow-sm"
-                transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
+                transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
               />
             )}
             <span className="relative z-10">Weekend</span>

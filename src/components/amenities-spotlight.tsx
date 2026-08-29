@@ -88,15 +88,12 @@ export function AmenitiesSpotlight() {
     <section className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-sand pb-6">
         <div>
-          <span className="text-xs font-bold tracking-normal text-terra">
-            Flagship Facility Spotlight
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mt-1">
-            The 4 Signature Group Experiences
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
+            Four spaces that shape the stay.
           </h2>
         </div>
-        <p className="text-xs sm:text-sm text-ink-muted max-w-md font-sans">
-          Every booking reserves the entire private compound with unlimited access to all 4 flagship facilities.
+        <p className="max-w-md text-sm leading-6 text-ink-muted">
+          Every booking reserves the entire private compound, including the pool, games, videoke, kitchen, and dining spaces.
         </p>
       </div>
 
@@ -107,7 +104,7 @@ export function AmenitiesSpotlight() {
           return (
             <div
               key={spot.title}
-              className="bg-white rounded-3xl overflow-hidden border border-sand shadow-warm-sm hover:shadow-warm-lg hover:-translate-y-1.5 transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 flex flex-col group"
+              className="interactive-card group flex flex-col overflow-hidden rounded-3xl border border-sand bg-white shadow-warm-sm"
             >
               {/* Photo Viewport with Zoom Lightbox Trigger (Clean, No Overlay Pill) */}
               <button
@@ -121,7 +118,7 @@ export function AmenitiesSpotlight() {
                   alt={spot.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="media-image object-cover"
                 />
                 <div className="absolute bottom-3 right-3 p-2 rounded-full bg-ink/70 text-cream backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-gold-light" />

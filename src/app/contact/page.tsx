@@ -89,7 +89,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta="Direct booking with the Santiagos team"
         title="Check your dates directly."

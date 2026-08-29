@@ -27,7 +27,7 @@ export default function FAQPage() {
   }
 
   return (
-    <div className="py-12 md:py-16 space-y-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell-narrow">
       <div className="space-y-8">
         <PageIntro
           meta={`${FAQ_ITEMS.length} booking questions answered`}

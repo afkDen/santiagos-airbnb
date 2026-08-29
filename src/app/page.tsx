@@ -9,6 +9,7 @@ import { EditorialTestimonials } from '@/components/editorial-testimonials'
 import { StayEssentials } from '@/components/stay-essentials'
 import { AmenityMosaic } from '@/components/amenity-mosaic'
 import { BookingCallout } from '@/components/booking-callout'
+import { CompoundExplorer } from '@/components/compound-explorer'
 
 const AMENITY_GROUPS = [
   {
@@ -35,10 +36,12 @@ const AMENITY_GROUPS = [
 
 export default function HomePage() {
   return (
-    <div className="pb-20">
+    <div className="pb-12 sm:pb-16 lg:pb-20">
       <Hero />
 
       <PropertyStory />
+
+      <CompoundExplorer />
 
       <section className="section-space bg-cream-dark/70">
         <div className="site-container grid gap-8 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-8">
@@ -92,7 +95,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="pb-16 sm:pb-20 lg:pb-24">
+      <section className="pb-12 sm:pb-16 lg:pb-20">
         <StayEssentials />
       </section>
 

@@ -145,7 +145,7 @@ export function RateEstimator() {
                   <motion.div
                     layoutId="active-estimator-occasion"
                     className="absolute inset-0 bg-terra rounded-xl z-0 shadow-sm"
-                    transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
                   />
                 )}
                 <span className="relative z-10">{occ}</span>

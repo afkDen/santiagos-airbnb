@@ -35,21 +35,22 @@ export function HomeGalleryPreview() {
   const currentImage = activeImageIndex === null ? null : PREVIEW_IMAGES[activeImageIndex]
 
   return (
-    <div className="site-container space-y-9">
+    <div className="site-container space-y-7 sm:space-y-9">
       <div className="flex flex-col gap-5 border-b border-sand-dark/70 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="section-heading">
           <h2 className="section-title">See the spaces your group will use.</h2>
           <p className="section-copy">Real property photos, from the pool deck to the sleeping zones.</p>
         </div>
-        <Link href="/gallery" className="inline-flex items-center gap-2 text-sm font-bold text-terra hover:text-terra-dark">
+        <Link href="/gallery" className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-terra hover:text-terra-dark">
           <span>View all {GALLERY_REGISTRY.length} photos</span>
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-3 gap-y-6 md:grid-cols-12 md:gap-x-5 md:gap-y-8">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-6 min-[600px]:grid-cols-12 min-[600px]:gap-x-5 min-[600px]:gap-y-8">
         {PREVIEW_IMAGES.map((image, index) => {
-          const span = index === 0 || index === 5 ? 'md:col-span-6' : 'md:col-span-3'
+          const isFeatured = index === 0 || index === 5
+          const span = isFeatured ? 'col-span-2 min-[600px]:col-span-6' : 'col-span-1 min-[600px]:col-span-3'
           return (
             <motion.figure
               key={image.key}
@@ -64,7 +65,7 @@ export function HomeGalleryPreview() {
                 type="button"
                 onClick={() => setActiveImageIndex(index)}
                 className={`media-button group block w-full bg-sand/30 ${
-                  index === 0 || index === 5 ? 'aspect-[16/10]' : 'aspect-[4/5]'
+                  isFeatured ? 'aspect-[2/1] min-[600px]:aspect-[16/10]' : 'aspect-square min-[600px]:aspect-[4/5]'
                 }`}
                 aria-label={`Open photo: ${image.label}`}
               >
@@ -72,10 +73,10 @@ export function HomeGalleryPreview() {
                   src={image.url}
                   alt={image.label}
                   fill
-                  sizes={index === 0 || index === 5 ? '(max-width: 768px) 50vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                  sizes={isFeatured ? '(max-width: 767px) calc(100vw - 2rem), 50vw' : '(max-width: 767px) 50vw, 25vw'}
+                  className="media-image object-cover"
                 />
-                <span className="absolute bottom-3 right-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-ink/80 text-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <span className="absolute bottom-3 right-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-ink/80 text-cream opacity-100 transition-opacity duration-200 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">
                   <Maximize2 className="h-4 w-4" aria-hidden="true" />
                 </span>
               </button>

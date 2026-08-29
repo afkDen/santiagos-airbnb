@@ -50,6 +50,11 @@
     text-rendering: optimizeLegibility;
   }
 
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
   h1, h2 {
     font-family: var(--font-playfair), Georgia, serif;
     text-wrap: balance;
@@ -124,6 +129,39 @@ button:active, a:active {
   transition: transform var(--duration-press) var(--ease-out);
 }
 
+@keyframes hero-media-reveal {
+  from {
+    clip-path: inset(0 0 0 12%);
+    transform: scale(1.025);
+  }
+
+  to {
+    clip-path: inset(0);
+    transform: scale(1);
+  }
+}
+
+.hero-media-reveal {
+  animation: hero-media-reveal 720ms var(--ease-out) both;
+  transform-origin: center;
+}
+
+.hero-scene {
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.008);
+  transition:
+    opacity 420ms var(--ease-out),
+    transform 580ms var(--ease-out);
+}
+
+.hero-scene[data-active="true"] {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: 580ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
@@ -143,6 +181,18 @@ button:active, a:active {
   [data-motion="feedback"] {
     transition-duration: 180ms !important;
   }
+
+  .hero-media-reveal {
+    animation: none;
+    clip-path: none;
+    transform: none;
+  }
+
+  .hero-scene,
+  .hero-scene[data-active="true"] {
+    transform: none;
+    transition: opacity 180ms linear;
+  }
 }
 
 @layer components {
@@ -151,7 +201,15 @@ button:active, a:active {
   }
 
   .section-space {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-10 sm:py-14 lg:py-16;
+  }
+
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl space-y-12 px-4 py-10 sm:space-y-16 sm:px-6 sm:py-12 lg:px-8 lg:py-14;
+  }
+
+  .page-shell-narrow {
+    @apply mx-auto w-full max-w-4xl space-y-12 px-4 py-10 sm:space-y-16 sm:px-6 sm:py-12 lg:px-8 lg:py-14;
   }
 
   .section-heading {
@@ -200,11 +258,35 @@ button:active, a:active {
   .media-button:focus-visible {
     @apply ring-2 ring-terra ring-offset-4 ring-offset-cream;
   }
+
+  .media-image {
+    transform: scale(1);
+    transition: transform var(--duration-marketing) var(--ease-out);
+  }
+
+  .interactive-card {
+    transition:
+      border-color var(--duration-hover) ease,
+      box-shadow var(--duration-hover) ease,
+      transform var(--duration-hover) var(--ease-out);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .media-button:hover {
     transform: translateY(-3px);
     @apply shadow-warm-lg;
+  }
+
+  .media-button:hover .media-image,
+  .media-button:focus-visible .media-image,
+  .group:hover .media-image,
+  .group:focus-within .media-image {
+    transform: scale(1.035);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-3px);
+    @apply border-terra/20 shadow-warm-md;
   }
 }

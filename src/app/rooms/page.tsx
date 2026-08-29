@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { getLocalImageUrl } from '@/content/gallery'
@@ -21,6 +21,7 @@ import {
 export default function RoomsPage() {
   const [selectedZone, setSelectedZone] = useState<number>(0)
   const [lightboxImage, setLightboxImage] = useState<{ src: string; label: string } | null>(null)
+  const zoneRefs = useRef<Array<HTMLButtonElement | null>>([])
 
   const roomZones = [
     {
@@ -139,8 +140,24 @@ export default function RoomsPage() {
 
   const currentZone = roomZones[selectedZone]
 
+  const selectZone = (index: number) => {
+    setSelectedZone(index)
+    zoneRefs.current[index]?.focus()
+  }
+
+  const handleZoneKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | null = null
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % roomZones.length
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + roomZones.length) % roomZones.length
+    if (event.key === 'Home') nextIndex = 0
+    if (event.key === 'End') nextIndex = roomZones.length - 1
+    if (nextIndex === null) return
+    event.preventDefault()
+    selectZone(nextIndex)
+  }
+
   return (
-    <div className="py-12 md:py-16 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <PageIntro
         meta="4 sleeping zones, 20 beds, 8 bathrooms"
         title="See where everyone sleeps."
@@ -162,19 +179,26 @@ export default function RoomsPage() {
             </h2>
           </div>
           <div className="text-xs text-ink-muted font-medium bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">
-            All Bedrooms Air-Conditioned
+            All bedrooms are air-conditioned
           </div>
         </div>
 
         {/* Zone Selector Buttons with Clear Mobile Layout */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
+        <div role="tablist" aria-label="Sleeping zones" className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {roomZones.map((zone, idx) => {
             const isActive = selectedZone === idx
             return (
               <button
                 key={zone.id}
+                ref={(element) => { zoneRefs.current[idx] = element }}
                 type="button"
-                onClick={() => setSelectedZone(idx)}
+                role="tab"
+                id={`room-zone-tab-${zone.id}`}
+                aria-selected={isActive}
+                aria-controls="room-zone-panel"
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => selectZone(idx)}
+                onKeyDown={(event) => handleZoneKeyDown(event, idx)}
                 className={`relative isolate p-3 sm:p-4 text-left rounded-2xl sm:rounded-full transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-200 active:scale-95 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 overflow-hidden ${
                   isActive
                     ? 'text-cream shadow-warm-sm border border-transparent'
@@ -185,7 +209,7 @@ export default function RoomsPage() {
                   <motion.div
                     layoutId="active-room-zone"
                     className="absolute inset-0 bg-ink rounded-2xl sm:rounded-full z-0 shadow-warm-sm"
-                    transition={{ type: 'spring', duration: 0.45, bounce: 0.15 }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
                   />
                 )}
                 <div className="relative z-10 space-y-0.5">
@@ -210,10 +234,13 @@ export default function RoomsPage() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentZone.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+            id="room-zone-panel"
+            role="tabpanel"
+            aria-labelledby={`room-zone-tab-${currentZone.id}`}
+            initial={{ opacity: 0, transform: 'translateY(8px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0)' }}
+            exit={{ opacity: 0, transform: 'translateY(-6px)' }}
+            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center pt-2"
           >
             <button
@@ -227,7 +254,7 @@ export default function RoomsPage() {
                 alt={currentZone.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="media-image object-cover"
               />
               <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-ink/80 backdrop-blur-md text-gold-light text-xs font-bold">
                 {currentZone.badge}
@@ -314,7 +341,7 @@ export default function RoomsPage() {
                   alt={bed.label}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="media-image object-cover"
                 />
                 <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-ink/75 backdrop-blur-md text-gold-light text-[9px] sm:text-[10px] font-bold">
                   {bed.tag}
@@ -356,7 +383,7 @@ export default function RoomsPage() {
             return (
               <div
                 key={b.title}
-                className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-sand/70 shadow-warm-sm space-y-2.5 hover:shadow-warm-md hover:-translate-y-1.5 transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300 group"
+                className="interactive-card group space-y-2.5 rounded-2xl border border-sand/70 bg-white p-5 shadow-warm-sm sm:rounded-3xl sm:p-6"
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-terra/15 text-terra-dark flex items-center justify-center group-hover:scale-110 group-hover:bg-terra group-hover:text-white transition-[background-color,border-color,color,box-shadow,opacity,transform] duration-300">
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -383,7 +410,7 @@ export default function RoomsPage() {
                 alt={bp.label}
                 fill
                 sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="media-image object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent p-3 sm:p-4 flex flex-col justify-end">
                 <span className="text-[11px] sm:text-sm font-bold text-cream block line-clamp-2">{bp.label}</span>
