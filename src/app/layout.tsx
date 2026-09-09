@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Navbar } from '@/components/navbar'
 import { StickyBookingBar } from '@/components/sticky-booking-bar'
@@ -101,6 +102,7 @@ export default function RootLayout({
           <Footer />
           <StickyBookingBar />
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   )
