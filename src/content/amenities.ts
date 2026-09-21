@@ -41,7 +41,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     category: 'Water & Relaxation',
     iconName: 'Waves',
     description:
-      'Direct outdoor garden shower and full bathroom so swimmers can rinse off before entering living quarters.',
+      'Direct outdoor garden shower and full bathroom so swimmers can rinse off before entering indoor living spaces.',
     imageKey: 'bat7',
     specs: ['Direct pool deck access', 'Full toilet and shower facilities'],
   },
@@ -220,9 +220,9 @@ export const AMENITIES_CATALOG: Amenity[] = [
     category: 'Accommodations',
     iconName: 'Bed',
     description:
-      'VIP 1 & VIP 2 with double beds and private bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests.',
+      'VIP 1 & VIP 2 with double beds and private bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests. (1 additional non-airconditioned bedroom with 1 bed is also available for personal staff or driver).',
     imageKey: 'bed7',
-    specs: ['20 comfortable beds with spring mattresses', 'Individual air-conditioning split units', 'Fresh linens and pillows provided'],
+    specs: ['20 comfortable beds with spring mattresses', 'Individual air-conditioning in main guest zones', 'Fresh linens and pillows provided'],
   },
   {
     name: '8 Full Bathrooms (Zero-Queue Guarantee)',

@@ -93,8 +93,8 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
   { key: 'liv4', category: 'Living', uuid: '23917df0-e296-4188-a79f-c688a679c56e', label: 'Ground Floor Atrium Lounge with Gold Santiago Crest & Floating Stairs', url: getLocalImageUrl('liv4') },
   { key: 'gal_int1', category: 'Living', uuid: 'c5099b93-dc0b-4082-ab4e-66d7c6229024', label: '2nd Floor Stair Landing Atrium with Tree Foliage Picture Windows', url: getLocalImageUrl('gal_int1') },
 
-  // 9. Bedrooms & Sleeping Quarters
-  { key: 'bed1', category: 'Bedroom', uuid: '1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c', label: 'Group Bunk Bed Quarter Central Hallway with Multi-Deck Pods', url: getLocalImageUrl('bed1') },
+  // 9. Bedrooms & Sleeping Zones
+  { key: 'bed1', category: 'Bedroom', uuid: '1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c', label: 'Group Bunk Bed Central Hallway with Multi-Deck Pods', url: getLocalImageUrl('bed1') },
   { key: 'bed2', category: 'Bedroom', uuid: '1eea7c15-e6bc-480f-9049-7a7ca831306a', label: 'Bunk Bedroom Ante-Room with Fluted Slats & Glass Sliding Door to Gym', url: getLocalImageUrl('bed2') },
   { key: 'bed3', category: 'Bedroom', uuid: '7fdad08c-cd56-4bd8-9913-df31206d2a71', label: 'VIP 1 Bedroom with Double Bed, Fluted Headboard & Draped Windows', url: getLocalImageUrl('bed3') },
   { key: 'bed4', category: 'Bedroom', uuid: '231f8e62-c8af-4ab9-ab7b-749426418278', label: 'VIP 1 Wall-Mounted Smart TV on Fluted Wood Accent Wall', url: getLocalImageUrl('bed4') },

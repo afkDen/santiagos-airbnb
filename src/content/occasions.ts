@@ -69,7 +69,7 @@ export const OCCASIONS_DATA: OccasionPackage[] = [
       'Exclusive compound reservation guaranteeing complete company privacy and confidentiality',
       'Poolside relay races, basketball tournaments, and group games',
       'Evening team alignment and fireside strategy sessions around the sunken bonfire circle',
-      'Dedicated Driver’s Room and high-speed Wi-Fi across indoor and outdoor work zones',
+      'High-speed Wi-Fi and flexible work & lounge zones across indoor and outdoor spaces',
     ],
     recommendedAmenities: ['Basketball Half-Court', 'High-Speed Wi-Fi', 'Bonfire Pit Area', 'Private Swimming Pool'],
     imageKey: 'bbl1',

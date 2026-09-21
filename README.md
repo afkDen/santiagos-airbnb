@@ -27,7 +27,7 @@ This repository contains the Next.js 15 web application with hardware-accelerate
 
 ## 🏠 Property Truths & Capacity
 
-- **Accommodations**: 4 Air-Conditioned Room Zones • 20 Beds (2 VIP Master Suites + 9 Double-Deck Bunks + Staff Room)
+- **Accommodations**: 3 Air-Conditioned Room Zones • 20 Beds (VIP 1 & 2 + Double-Deck Bunk Zone) + 1 non-AC staff/driver bedroom
 - **Bathrooms**: 8 Full Bathrooms with Rainfall Showerheads & Hot Water (*The Zero-Queue Guarantee*)
 - **Max Capacity**: 40 Guests (Base tier covers up to 20 declared guests)
 - **Corkage**: **₱0 Corkage** on all outside food, alcoholic beverages, and celebration cakes

@@ -201,7 +201,7 @@ export default function LocationPage() {
             <p className="text-xs text-ink-muted font-sans">
               {activeVideo === 'dashcam'
                 ? 'Shows all key turns: Amuyong-Kaytitinga Road, 7-Eleven, and the Cell Repair Shop access turn.'
-                : 'Full compound walkthrough: private pool & waterfall deck, acoustic videoke lounge, billiards, dining hall, and sleeping suites.'}
+                : 'Full compound walkthrough: private pool & waterfall deck, acoustic videoke lounge, billiards, dining hall, and bedrooms.'}
             </p>
           </div>
 

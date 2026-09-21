@@ -21,7 +21,7 @@ export default function OccasionsPage() {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; label: string } | null>(null)
 
   const sampleItinerary = [
-    { time: '3:00 PM', event: 'Check-in & Welcome Pool Dip', desc: 'Settle into air-conditioned quarters and cool off in the private swimming pool.' },
+    { time: '3:00 PM', event: 'Check-in & Welcome Pool Dip', desc: 'Settle into air-conditioned rooms and cool off in the private swimming pool.' },
     { time: '6:00 PM', event: 'Al Fresco Sunset Dinner', desc: 'Cook group dinner in the full chef kitchen and gather around the solid acacia banquet dining table or covered al fresco veranda.' },
     { time: '8:00 PM', event: 'Videoke & Arcade Battles', desc: 'Sing in the soundproofed videoke lounge and play Kangaroo pool tournaments.' },
     { time: '10:30 PM', event: 'Fireside Bonfire & Cocktails', desc: 'Gather around the sunken bonfire pit in the crisp 18°C mountain air.' },

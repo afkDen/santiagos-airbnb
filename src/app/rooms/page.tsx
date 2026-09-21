@@ -60,7 +60,7 @@ export default function RoomsPage() {
     },
     {
       id: 'bunks',
-      name: 'Double-Deck Bunk Zone (Main Sleeping Quarters)',
+      name: 'Double-Deck Bunk Zone',
       tabLabel: 'Bunk Zone',
       tabSub: '16 Beds • 4 Baths',
       capacity: 'Sleeps up to 16+ cousins, barkada, and friends',
@@ -163,7 +163,7 @@ export default function RoomsPage() {
             </h2>
           </div>
           <div className="text-xs text-ink-muted font-medium bg-sand/40 px-3 py-1.5 rounded-full self-start sm:self-auto">
-            All bedrooms are air-conditioned
+            3 Air-Conditioned Main Guest Zones
           </div>
         </div>
 
@@ -291,6 +291,17 @@ export default function RoomsPage() {
         </AnimatePresence>
       </motion.div>
 
+      {/* Staff & Driver Non-Airconditioned Bedroom Notice */}
+      <div className="flex items-start gap-3 p-4 sm:p-5 rounded-2xl bg-sand/30 border border-sand shadow-warm-sm text-xs sm:text-sm text-ink-muted">
+        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-terra shrink-0 mt-0.5" />
+        <div className="space-y-0.5">
+          <span className="font-bold text-ink">Staff &amp; Driver Accommodation:</span>
+          <p className="text-xs sm:text-sm leading-relaxed text-ink-muted">
+            1 separate non-airconditioned bedroom with 1 bed is also available on the property for an accompanying family driver or personal assistant.
+          </p>
+        </div>
+      </div>
+
       {/* Complete 8-Bedroom Photo Catalog with Balanced 2-Column Mobile Grid */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -413,7 +424,7 @@ export default function RoomsPage() {
         onClose={() => setLightboxImage(null)}
         src={lightboxImage ? lightboxImage.src : null}
         title={lightboxImage?.label}
-        category="Resort Suite & Pods"
+        category="Resort Rooms & Pods"
       />
     </div>
   )
