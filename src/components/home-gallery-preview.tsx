@@ -13,7 +13,7 @@ const PREVIEW_IMAGES = [
   { key: 'din4', label: 'Covered group dining patio', url: getLocalImageUrl('din4') },
   { key: 'kara4', label: 'Air-conditioned videoke lounge', url: getLocalImageUrl('kara4') },
   { key: 'bill2', label: 'Billiards and games area', url: getLocalImageUrl('bill2') },
-  { key: 'bed3', label: 'VIP master bedroom', url: getLocalImageUrl('bed3') },
+  { key: 'bed3', label: 'VIP 1 bedroom', url: getLocalImageUrl('bed3') },
   { key: 'arc4', label: 'Multiplayer arcade station', url: getLocalImageUrl('arc4') },
 ]
 

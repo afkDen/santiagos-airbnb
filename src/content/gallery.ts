@@ -96,14 +96,14 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
   // 9. Bedrooms & Sleeping Quarters
   { key: 'bed1', category: 'Bedroom', uuid: '1dfafeed-b7d8-4ee2-9685-f4b21ee2ac0c', label: 'Group Bunk Bed Quarter Central Hallway with Multi-Deck Pods', url: getLocalImageUrl('bed1') },
   { key: 'bed2', category: 'Bedroom', uuid: '1eea7c15-e6bc-480f-9049-7a7ca831306a', label: 'Bunk Bedroom Ante-Room with Fluted Slats & Glass Sliding Door to Gym', url: getLocalImageUrl('bed2') },
-  { key: 'bed3', category: 'Bedroom', uuid: '7fdad08c-cd56-4bd8-9913-df31206d2a71', label: 'VIP Master Bedroom Suite with Queen Bed, Fluted Headboard & Draped Windows', url: getLocalImageUrl('bed3') },
-  { key: 'bed4', category: 'Bedroom', uuid: '231f8e62-c8af-4ab9-ab7b-749426418278', label: 'VIP Master Suite Wall-Mounted Smart TV on Fluted Wood Accent Wall', url: getLocalImageUrl('bed4') },
+  { key: 'bed3', category: 'Bedroom', uuid: '7fdad08c-cd56-4bd8-9913-df31206d2a71', label: 'VIP 1 Bedroom with Double Bed, Fluted Headboard & Draped Windows', url: getLocalImageUrl('bed3') },
+  { key: 'bed4', category: 'Bedroom', uuid: '231f8e62-c8af-4ab9-ab7b-749426418278', label: 'VIP 1 Wall-Mounted Smart TV on Fluted Wood Accent Wall', url: getLocalImageUrl('bed4') },
   { key: 'bed5', category: 'Bedroom', uuid: '412ac041-c128-4dcb-be95-9613525155ac', label: 'Lower Bunk Bed Pods with Crisp White Linens & Slatted Headboards', url: getLocalImageUrl('bed5') },
   { key: 'bed6', category: 'Bedroom', uuid: 'a7a5da0a-0cca-4155-a690-85d8a35d5073', label: 'Bunk Room 2 Doorway Flanked by 4 Built-In Double-Deck Bunk Pods', url: getLocalImageUrl('bed6') },
-  { key: 'bed7', category: 'Bedroom', uuid: 'a416db78-e791-485f-99cd-681dfc37c943', label: 'VIP Master Suite Queen Bed Perspective with Sunlit Window & Lounge Chair', url: getLocalImageUrl('bed7') },
-  { key: 'bed8', category: 'Bedroom', uuid: 'c7314967-2138-4874-bf9c-036713e1e84f', label: 'VIP Master Suite Bedside Nightstand & Fluted Headboard Close-Up', url: getLocalImageUrl('bed8') },
+  { key: 'bed7', category: 'Bedroom', uuid: 'a416db78-e791-485f-99cd-681dfc37c943', label: 'VIP 2 Double Bed Perspective with Sunlit Window & Lounge Chair', url: getLocalImageUrl('bed7') },
+  { key: 'bed8', category: 'Bedroom', uuid: 'c7314967-2138-4874-bf9c-036713e1e84f', label: 'VIP 2 Bedside Nightstand & Fluted Headboard Close-Up', url: getLocalImageUrl('bed8') },
   { key: 'bed9', category: 'Bedroom', uuid: 'ac7d1d93-69dd-4f83-9f5e-199ae922012f', label: 'Spacious Group Bunk Room with Multiple Double-Deck Pods', url: getLocalImageUrl('bed9') },
-  { key: 'lou1', category: 'Bedroom', uuid: '34ce9446-3458-48de-8f19-4f6dee8d8ae1', label: 'VIP Bedroom Suite Smart TV on Fluted Wall with Bed Duvet View', url: getLocalImageUrl('lou1') },
+  { key: 'lou1', category: 'Bedroom', uuid: '34ce9446-3458-48de-8f19-4f6dee8d8ae1', label: 'VIP Bedroom Smart TV on Fluted Wall with Bed Duvet View', url: getLocalImageUrl('lou1') },
 
   // 10. Modern Bathrooms
   { key: 'bat1', category: 'Bathroom', uuid: '6a64f515-0249-440e-937b-73fe1cc63898', label: 'Matte Black Rainfall Shower Head, Wand & Digital Water Heater on Marble Tile', url: getLocalImageUrl('bat1') },

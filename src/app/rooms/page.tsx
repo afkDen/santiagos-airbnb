@@ -26,11 +26,11 @@ export default function RoomsPage() {
   const roomZones = [
     {
       id: 'vip1',
-      name: 'VIP Room 1 (Master Suite)',
-      tabLabel: 'VIP Suite 1',
-      tabSub: '1 Queen • Ensuite',
+      name: 'VIP 1',
+      tabLabel: 'VIP 1',
+      tabSub: '1 Double • Ensuite',
       capacity: 'Ideal for parents, elders, or couple hosts',
-      beds: '1 Queen Bed',
+      beds: '1 Double Bed',
       bathrooms: 'Private Ensuite Rainfall Bathroom',
       features: [
         'Dedicated split-type air conditioner with quiet night mode',
@@ -38,16 +38,16 @@ export default function RoomsPage() {
         'Large window overlooking the compound courtyard',
         'Hotel-grade cotton linens, pillows, and acoustic privacy',
       ],
-      image: getLocalImageUrl('bed3'), // 411.3 KB High-Res VIP Suite Queen Bed
+      image: getLocalImageUrl('bed3'), // 411.3 KB High-Res VIP 1 Double Bed
       badge: 'VIP Bedroom',
     },
     {
       id: 'vip2',
-      name: 'VIP Room 2 (Second Master Bedroom)',
-      tabLabel: 'VIP Suite 2',
-      tabSub: '1 Queen • Ensuite',
+      name: 'VIP 2',
+      tabLabel: 'VIP 2',
+      tabSub: '1 Double • Ensuite',
       capacity: 'Ideal for parents, elders, or VIP couples',
-      beds: '1 Queen Bed',
+      beds: '1 Double Bed',
       bathrooms: 'Private Ensuite Bathroom',
       features: [
         'Dedicated split-type air conditioning',
@@ -55,7 +55,7 @@ export default function RoomsPage() {
         'Wood-paneled accent walls & warm ambient lighting',
         'Plush mattress with fresh sanitized sheets & duvet',
       ],
-      image: getLocalImageUrl('bed7'), // 554.5 KB High-Res VIP Suite
+      image: getLocalImageUrl('bed7'), // 554.5 KB High-Res VIP 2
       badge: 'VIP Bedroom',
     },
     {
@@ -79,22 +79,22 @@ export default function RoomsPage() {
 
   // Verified Sleeping Perspectives Registry
   const allBedrooms = [
-    { key: 'bed3', label: 'VIP Room 1 - Queen Bed Master Suite with Ensuite Bath', tag: 'VIP Suite 1' },
-    { key: 'bed7', label: 'VIP Room 2 - Second Queen Bed Master Suite', tag: 'VIP Suite 2' },
-    { key: 'bed4', label: 'VIP Suite Smart TV on Slatted Wood Accent Wall', tag: 'VIP Suite 1' },
-    { key: 'bed8', label: 'VIP Suite Bedside Nightstand & Headboard Close-Up', tag: 'VIP Suite 2' },
+    { key: 'bed3', label: 'VIP 1 - Double Bed with Ensuite Bath', tag: 'VIP 1' },
+    { key: 'bed7', label: 'VIP 2 - Double Bed with Ensuite Bath', tag: 'VIP 2' },
+    { key: 'bed4', label: 'VIP 1 Smart TV on Slatted Wood Accent Wall', tag: 'VIP 1' },
+    { key: 'bed8', label: 'VIP 2 Bedside Nightstand & Headboard Close-Up', tag: 'VIP 2' },
     { key: 'bed1', label: 'Bunk Zone Hallway - Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
     { key: 'bed2', label: 'Bunk Room Ante-Room - Glass Sliding Door to Gym', tag: 'Bunk Zone' },
     { key: 'bed5', label: 'Bunk Pods - Crisp White Linens & Slatted Headboards', tag: 'Bunk Zone' },
     { key: 'bed6', label: 'Bunk Room Entryway - 4 Built-In Bunk Pods', tag: 'Bunk Zone' },
     { key: 'bed9', label: 'Spacious Group Bunk Room - High Capacity Pods', tag: 'Bunk Zone' },
-    { key: 'lou1', label: 'VIP Bedroom Suite - 4K Smart TV & Plush Bedding', tag: 'VIP Suite' },
+    { key: 'lou1', label: 'VIP Bedroom - 4K Smart TV & Plush Bedding', tag: 'VIP 1' },
   ]
 
   const bathroomDetails = [
     {
       title: '2 VIP Ensuite Bathrooms',
-      desc: 'Located inside VIP Suites 1 & 2 for total privacy and immediate access.',
+      desc: 'Located inside VIP 1 & 2 for total privacy and immediate access.',
       icon: Droplets,
     },
     {
@@ -357,7 +357,7 @@ export default function RoomsPage() {
             Eight bathrooms across the compound.
           </h2>
           <p className="max-w-[65ch] text-base leading-7 text-ink-muted">
-            Bathrooms are distributed near the VIP suites, bunk zone, main hall, and pool so large groups can get ready more efficiently.
+            Bathrooms are distributed near VIP 1 & 2, the bunk zone, main hall, and pool so large groups can get ready more efficiently.
           </p>
         </div>
 

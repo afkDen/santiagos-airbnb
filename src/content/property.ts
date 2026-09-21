@@ -53,7 +53,7 @@ export const PROPERTY_INFO = {
   stats: [
     { value: 40, label: 'Max Guests', sub: 'Entire Private Resort' },
     { value: 8, label: 'Full Bathrooms', sub: 'Zero-Queue Guarantee' },
-    { value: 20, label: 'Beds (3 Zones)', sub: '2 VIP Suites + Bunk Zone' },
+    { value: 20, label: 'Beds (3 Zones)', sub: 'VIP 1 & 2 + Bunk Zone' },
     { value: 22, suffix: '+', label: 'Free Amenities', sub: 'Pool, Videoke, Arcades' },
   ],
   roomsSummary: {

@@ -43,8 +43,8 @@ const ZONES: ExplorerZone[] = [
     compactPosition: { x: 35.3, y: 18.7 },
     facts: ['VIP room wing', 'Upper-floor hall', 'Full-height windows'],
     photos: [
-      { src: getLocalImageUrl('bed7'), alt: 'VIP bedroom with a queen bed and full-height windows' },
-      { src: getLocalImageUrl('bed3'), alt: 'VIP master bedroom with a fluted headboard and draped windows' },
+      { src: getLocalImageUrl('bed7'), alt: 'VIP 2 bedroom with a double bed and full-height windows' },
+      { src: getLocalImageUrl('bed3'), alt: 'VIP 1 bedroom with a double bed, fluted headboard and draped windows' },
       { src: getLocalImageUrl('gal_int1'), alt: 'Upper-floor hall and stair landing with picture windows' },
     ],
   },

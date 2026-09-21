@@ -53,7 +53,7 @@ export const OCCASIONS_DATA: OccasionPackage[] = [
       'Multi-generational entertainment: Arcades for kids, videoke & pool for adults, veranda for elders',
       'Full kitchen with heavy-duty gas cooktops to prepare heirloom family recipes without corkage',
       '8 full bathrooms eliminating morning queues for families with 20 to 40 members',
-      'Private 2 VIP master suites for elders or parents + 9 bunk beds for cousins and kids',
+      'Private VIP 1 & VIP 2 rooms with double beds for elders or parents + 9 bunk beds for cousins and kids',
     ],
     recommendedAmenities: ['Full Kitchen', 'Outdoor Veranda & Chill Deck', 'Videoke Lounge', 'Private Swimming Pool'],
     imageKey: 'out1',
