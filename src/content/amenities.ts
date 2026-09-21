@@ -220,7 +220,7 @@ export const AMENITIES_CATALOG: Amenity[] = [
     category: 'Accommodations',
     iconName: 'Bed',
     description:
-      'VIP 1 & VIP 2 with double beds and private ensuite bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests.',
+      'VIP 1 & VIP 2 with double beds and private bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests.',
     imageKey: 'bed7',
     specs: ['20 comfortable beds with spring mattresses', 'Individual air-conditioning split units', 'Fresh linens and pillows provided'],
   },

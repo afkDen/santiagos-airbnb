@@ -107,10 +107,10 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
 
   // 10. Modern Bathrooms
   { key: 'bat1', category: 'Bathroom', uuid: '6a64f515-0249-440e-937b-73fe1cc63898', label: 'Matte Black Rainfall Shower Head, Wand & Digital Water Heater on Marble Tile', url: getLocalImageUrl('bat1') },
-  { key: 'bat2', category: 'Bathroom', uuid: '7bd29da9-1398-456e-81ab-7f3f06a8b10f', label: 'Modern Ensuite Vanity Sink with Matte Black Faucet & LED Backlit Mirror', url: getLocalImageUrl('bat2') },
-  { key: 'bat3', category: 'Bathroom', uuid: '73e7dd06-2f9b-479e-8925-0a24bf769a9c', label: 'Full Ensuite Bathroom Layout with Vanity, Bidet Toilet & Shower Stall', url: getLocalImageUrl('bat3') },
+  { key: 'bat2', category: 'Bathroom', uuid: '7bd29da9-1398-456e-81ab-7f3f06a8b10f', label: 'Modern Private Vanity Sink with Matte Black Faucet & LED Backlit Mirror', url: getLocalImageUrl('bat2') },
+  { key: 'bat3', category: 'Bathroom', uuid: '73e7dd06-2f9b-479e-8925-0a24bf769a9c', label: 'Full Private Bathroom Layout with Vanity, Bidet Toilet & Shower Stall', url: getLocalImageUrl('bat3') },
   { key: 'bat7', category: 'Bathroom', uuid: 'edf6c0b7-2c0d-416a-895b-ae85e5455368', label: 'Guest Restroom & Shower Corridor with Dedicated Stalls & Signage', url: getLocalImageUrl('bat7') },
-  { key: 'bat8', category: 'Bathroom', uuid: '81d13019-e81c-4497-950d-32dd698989e4', label: 'Modern Ensuite Bathroom with LED Mirror & Glass Shower Cubicle', url: getLocalImageUrl('bat8') },
+  { key: 'bat8', category: 'Bathroom', uuid: '81d13019-e81c-4497-950d-32dd698989e4', label: 'Modern Private Bathroom with LED Mirror & Glass Shower Cubicle', url: getLocalImageUrl('bat8') },
 
   // 11. Indoor Fitness Gym
   { key: 'gym1', category: 'Gym', uuid: '7b8c51d9-24b2-4846-b173-6d2459c53981', label: 'Indoor Fitness Gym with Turf Flooring, Dip Station & Mirror Wall', url: getLocalImageUrl('gym1') },

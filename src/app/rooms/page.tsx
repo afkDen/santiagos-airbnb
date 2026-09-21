@@ -28,13 +28,13 @@ export default function RoomsPage() {
       id: 'vip1',
       name: 'VIP 1',
       tabLabel: 'VIP 1',
-      tabSub: '1 Double • Ensuite',
+      tabSub: '1 Double • Private Bath',
       capacity: 'Ideal for parents, elders, or couple hosts',
       beds: '1 Double Bed',
-      bathrooms: 'Private Ensuite Rainfall Bathroom',
+      bathrooms: 'Private Bathroom with Rainfall Shower',
       features: [
         'Dedicated split-type air conditioner with quiet night mode',
-        'Direct ensuite private bathroom with hot rainfall shower',
+        'Direct private bathroom with hot rainfall shower',
         'Large window overlooking the compound courtyard',
         'Hotel-grade cotton linens, pillows, and acoustic privacy',
       ],
@@ -45,13 +45,13 @@ export default function RoomsPage() {
       id: 'vip2',
       name: 'VIP 2',
       tabLabel: 'VIP 2',
-      tabSub: '1 Double • Ensuite',
+      tabSub: '1 Double • Private Bath',
       capacity: 'Ideal for parents, elders, or VIP couples',
       beds: '1 Double Bed',
-      bathrooms: 'Private Ensuite Bathroom',
+      bathrooms: 'Private Bathroom',
       features: [
         'Dedicated split-type air conditioning',
-        'Ensuite full bathroom with modern tiling and vanity',
+        'Full private bathroom with modern tiling and vanity',
         'Wood-paneled accent walls & warm ambient lighting',
         'Plush mattress with fresh sanitized sheets & duvet',
       ],
@@ -79,8 +79,8 @@ export default function RoomsPage() {
 
   // Verified Sleeping Perspectives Registry
   const allBedrooms = [
-    { key: 'bed3', label: 'VIP 1 - Double Bed with Ensuite Bath', tag: 'VIP 1' },
-    { key: 'bed7', label: 'VIP 2 - Double Bed with Ensuite Bath', tag: 'VIP 2' },
+    { key: 'bed3', label: 'VIP 1 - Double Bed with Private Bathroom', tag: 'VIP 1' },
+    { key: 'bed7', label: 'VIP 2 - Double Bed with Private Bathroom', tag: 'VIP 2' },
     { key: 'bed4', label: 'VIP 1 Smart TV on Slatted Wood Accent Wall', tag: 'VIP 1' },
     { key: 'bed8', label: 'VIP 2 Bedside Nightstand & Headboard Close-Up', tag: 'VIP 2' },
     { key: 'bed1', label: 'Bunk Zone Hallway - Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
@@ -93,7 +93,7 @@ export default function RoomsPage() {
 
   const bathroomDetails = [
     {
-      title: '2 VIP Ensuite Bathrooms',
+      title: '2 VIP Private Bathrooms',
       desc: 'Located inside VIP 1 & 2 for total privacy and immediate access.',
       icon: Droplets,
     },
@@ -115,10 +115,10 @@ export default function RoomsPage() {
   ]
 
   const bathroomPhotos = [
-    { key: 'bat1', label: 'VIP Ensuite Rainfall Shower with Hot Water System' },
-    { key: 'bat2', label: 'Modern Ensuite Ceramic Vanity & LED Backlit Mirror' },
-    { key: 'bat3', label: 'Full Ensuite Bathroom with Glass Shower & Bidet Toilet' },
-    { key: 'bat8', label: 'Ensuite Bathroom with LED Mirror & Rainfall Shower Stall' },
+    { key: 'bat1', label: 'VIP Private Bathroom Rainfall Shower with Hot Water System' },
+    { key: 'bat2', label: 'Modern Private Ceramic Vanity & LED Backlit Mirror' },
+    { key: 'bat3', label: 'Full Private Bathroom with Glass Shower & Bidet Toilet' },
+    { key: 'bat8', label: 'Private Bathroom with LED Mirror & Rainfall Shower Stall' },
     { key: 'bat7', label: 'Common Restroom & Shower Corridor with Dedicated Stalls' },
   ]
 
