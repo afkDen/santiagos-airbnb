@@ -53,15 +53,14 @@ export const PROPERTY_INFO = {
   stats: [
     { value: 40, label: 'Max Guests', sub: 'Entire Private Resort' },
     { value: 8, label: 'Full Bathrooms', sub: 'Zero-Queue Guarantee' },
-    { value: 20, label: 'Beds (4 Zones)', sub: '2 VIP + 9 Bunks + Driver' },
+    { value: 20, label: 'Beds (3 Zones)', sub: '2 VIP Suites + Bunk Zone' },
     { value: 22, suffix: '+', label: 'Free Amenities', sub: 'Pool, Videoke, Arcades' },
   ],
   roomsSummary: {
-    totalRooms: 4,
+    totalRooms: 3,
     totalBeds: 20,
     vipRooms: 2,
     bunkBeds: 9, // double decks = 18 sleeping spots
-    driverRoom: 1,
     bathrooms: 8,
   },
 }

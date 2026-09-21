@@ -176,14 +176,14 @@ export const AMENITIES_CATALOG: Amenity[] = [
 
   // 5. Dining & Cooking
   {
-    name: '10-Seater Banquet Dining Table',
+    name: '12-Seater Banquet Dining Table',
     category: 'Dining & Cooking',
     iconName: 'ChefHat',
     description:
       'Large solid glass-top dining table with rattan armchairs for memorable family feasts and celebratory dinners.',
     featured: true,
     imageKey: 'din4',
-    specs: ['10 comfortable dining armchairs', 'Centerpiece serving setup', 'Adjacent to indoor prep kitchen'],
+    specs: ['12 comfortable dining armchairs', 'Centerpiece serving setup', 'Adjacent to indoor prep kitchen'],
   },
   {
     name: 'Fully Equipped Commercial Chef’s Kitchen',
@@ -216,11 +216,11 @@ export const AMENITIES_CATALOG: Amenity[] = [
 
   // 6. Accommodations & Rest
   {
-    name: '4 Air-Conditioned Bedroom Zones',
+    name: '3 Air-Conditioned Bedroom Zones',
     category: 'Accommodations',
     iconName: 'Bed',
     description:
-      '2 VIP Master Suites with private ensuite bathrooms, plus 9 double-deck bunks and driver quarters for 40 guests.',
+      '2 VIP Master Suites with private ensuite bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests.',
     imageKey: 'bed7',
     specs: ['20 comfortable beds with spring mattresses', 'Individual air-conditioning split units', 'Fresh linens and pillows provided'],
   },
@@ -245,12 +245,12 @@ export const AMENITIES_CATALOG: Amenity[] = [
     specs: ['Whole-estate coverage', 'Fast upload/download speeds for group use'],
   },
   {
-    name: 'Mineral Water Dispenser (Hot & Cold)',
+    name: 'Unlimited Filtered Water Dispenser',
     category: 'Connectivity & Utilities',
     iconName: 'Droplets',
     description:
-      'Complimentary hot and cold water dispenser with initial 5-gallon purified mineral water container provided.',
+      'Uses a reverse osmosis water filter, advanced home purification system that pushes water through a tiny, semi-permeable membrane to remove up to 99% of dissolved salts, heavy metals, chemicals, and microscopic impurities.',
     imageKey: 'kit1',
-    specs: ['Instant hot water for coffee & tea', 'Chilled drinking water', 'Complimentary initial 5-gal container'],
+    specs: ['Reverse osmosis multi-stage filtration', 'Hot & cold instant water dispensing', 'Unlimited pure drinking water'],
   },
 ]

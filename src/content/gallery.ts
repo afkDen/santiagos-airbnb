@@ -73,9 +73,9 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
 
   // 6. Banquet Dining
   { key: 'din1', category: 'Dining', uuid: '7ab52115-9626-4fee-94c1-31776317887f', label: 'Acacia Live-Edge Natural Hardwood Slab Dining Table', url: getLocalImageUrl('din1') },
-  { key: 'din2', category: 'Dining', uuid: '97ca24a6-4a16-4fdf-8e34-18f5f6d50574', label: 'Air-Conditioned VIP Banquet Room with 10-Seater Live-Edge Table', url: getLocalImageUrl('din2') },
+  { key: 'din2', category: 'Dining', uuid: '97ca24a6-4a16-4fdf-8e34-18f5f6d50574', label: 'Air-Conditioned VIP Banquet Room with 12-Seater Live-Edge Table', url: getLocalImageUrl('din2') },
   { key: 'din3', category: 'Dining', uuid: '422ade24-d533-4620-94ef-2f2311c99066', label: 'Indoor Dining & Entertainment Hall with Kitchen Island Bar', url: getLocalImageUrl('din3') },
-  { key: 'din4', category: 'Dining', uuid: '35e0e064-7569-460f-93e7-3b198feda5d2', label: 'Covered Al Fresco 10-Seater Glass Dining Patio with Rattan Chairs', url: getLocalImageUrl('din4') },
+  { key: 'din4', category: 'Dining', uuid: '35e0e064-7569-460f-93e7-3b198feda5d2', label: 'Covered Al Fresco 12-Seater Glass Dining Patio with Rattan Chairs', url: getLocalImageUrl('din4') },
   { key: 'lou3', category: 'Dining', uuid: '53089b73-cb81-40b3-b94e-011048c96502', label: 'Indoor Dining Area with Round Glass Table & Commercial AC', url: getLocalImageUrl('lou3') },
 
   // 7. Chef’s Kitchen & Prep Bar
@@ -127,7 +127,7 @@ export const GALLERY_REGISTRY: GalleryImage[] = [
   { key: 'bbl2', category: 'Basketball', uuid: 'ff9e2cfe-96b7-4992-8cd8-81499c84335f', label: 'Outdoor Basketball Half-Court with Fenced Perimeter & Mountain Backdrop', url: getLocalImageUrl('bbl2') },
 
   // 14. Outdoor Grounds & Al Fresco Patio
-  { key: 'out1', category: 'Outdoor', uuid: '58004ff1-df45-4949-ad63-6316ab7abe96', label: 'Covered Al Fresco Dining Patio with 10-Seater Glass Table & Bar Counter', url: getLocalImageUrl('out1') },
+  { key: 'out1', category: 'Outdoor', uuid: '58004ff1-df45-4949-ad63-6316ab7abe96', label: 'Covered Al Fresco Dining Patio with 12-Seater Glass Table & Bar Counter', url: getLocalImageUrl('out1') },
   { key: 'out2', category: 'Outdoor', uuid: '77973507-5528-471c-b8ac-e6d0c1968e2b', label: 'Night Al Fresco Dining, Bonfire Pit & BBQ Grill Station', url: getLocalImageUrl('out2') },
   { key: 'out6', category: 'Outdoor', uuid: 'e7b07cde-5fc2-4104-bc75-d55b0feeefbd', label: 'Poolside Sun Loungers, Rattan Daybed & Private Gated Parking', url: getLocalImageUrl('out6') },
   { key: 'out7', category: 'Outdoor', uuid: 'ee1d6f90-bc3c-486b-a8ad-cbdfa2484e5a', label: 'Night Bonfire Pit with Blue LED Illuminated Swimming Pool', url: getLocalImageUrl('out7') },

@@ -5,7 +5,7 @@ export function AmenitiesChecklist() {
     { title: 'Heavy-duty 2-burner gas stove', sub: 'LPG cooking gas included with zero fuel fees', icon: Utensils },
     { title: 'Kitchen cookware, pots & pans', sub: 'Woks, frying pans, ladles, knives & chopping boards', icon: Utensils },
     { title: '2-door refrigerator & microwave', sub: 'Ample cold storage for drinks, cakes & food prep', icon: Utensils },
-    { title: 'Hot & cold water dispenser', sub: 'Includes initial 5-gallon purified mineral water container', icon: Waves },
+    { title: 'Unlimited filtered water dispenser', sub: 'Reverse osmosis purification system (hot & cold)', icon: Waves },
     { title: 'Bed pillows & fresh bed linens', sub: 'Fitted sheets and pillows on all 20 beds', icon: Bed },
     { title: 'Billiards & arcade equipment', sub: 'Pool balls, cue sticks, chalk, triangle & free-play arcade', icon: Sparkles },
     { title: 'Soundproofed videoke & microphones', sub: 'Updated digital songbook and 2 wireless microphones', icon: Sparkles },
@@ -17,7 +17,7 @@ export function AmenitiesChecklist() {
     { title: 'Charcoal for the outdoor BBQ grill', sub: 'Charcoal briquettes and fire starter for grilling' },
     { title: 'Paper plates, cups & disposable utensils', sub: 'Disposable tableware for easy group cleanup (or bring own)' },
     { title: 'Food ingredients, condiments & cooking oil', sub: 'All groceries, seasoning, spices & outside catering' },
-    { title: 'Extra drinking water containers', sub: 'Additional 5-gal mineral water if your group consumes >5 gallons' },
+    { title: 'Tumblers & refillable water bottles', sub: 'For convenient refills from the reverse osmosis dispenser' },
     { title: 'Swimwear & poolside footwear', sub: 'Proper swimming attire and non-slip slippers for pool deck' },
   ]
 

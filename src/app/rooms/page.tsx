@@ -75,22 +75,6 @@ export default function RoomsPage() {
       image: getLocalImageUrl('bed1'), // 387.8 KB High-Res Bunk Pods Hallway
       badge: '16-Bed Capacity',
     },
-    {
-      id: 'staff',
-      name: 'Staff & Driver Air-Conditioned Quarters',
-      tabLabel: 'Staff Room',
-      tabSub: '2 Beds • 1 Bath',
-      capacity: 'Dedicated space for family drivers, assistants, or extra guests',
-      beds: '1 Double-Deck Bunk Bed (2 Beds)',
-      bathrooms: 'Dedicated Bathroom on Ground Floor',
-      features: [
-        'Separate air-conditioned room ensuring support staff rest comfortably',
-        'Private access door near the compound driveway and parking area',
-        'Direct access to ground floor guest bathroom',
-      ],
-      image: getLocalImageUrl('bed8'), // 534.5 KB High-Res VIP Nightstand / Quarters
-      badge: 'Staff Quarters',
-    },
   ]
 
   // Verified Sleeping Perspectives Registry
@@ -159,7 +143,7 @@ export default function RoomsPage() {
   return (
     <div className="page-shell">
       <PageIntro
-        meta="4 sleeping zones, 20 beds, 8 bathrooms"
+        meta="3 sleeping zones, 20 beds, 8 bathrooms"
         title="See where everyone sleeps."
         description="Compare each sleeping zone, bed setup, bathroom access, and the type of guest it suits best."
       />
@@ -184,7 +168,7 @@ export default function RoomsPage() {
         </div>
 
         {/* Zone Selector Buttons with Clear Mobile Layout */}
-        <div role="tablist" aria-label="Sleeping zones" className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
+        <div role="tablist" aria-label="Sleeping zones" className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
           {roomZones.map((zone, idx) => {
             const isActive = selectedZone === idx
             return (

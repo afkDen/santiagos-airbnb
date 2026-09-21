@@ -24,6 +24,7 @@ import {
 
 export default function LocationPage() {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; label: string } | null>(null)
+  const [activeVideo, setActiveVideo] = useState<'dashcam' | 'tour'>('dashcam')
 
   return (
     <div className="page-shell">
@@ -148,31 +149,59 @@ export default function LocationPage() {
             Watch the Route & Property Video Guides
           </h2>
           <p className="text-xs sm:text-sm text-ink-muted font-sans">
-            Follow our recorded dashcam navigation drive from Twin Lakes Tagaytay directly to the resort gate.
+            Follow our recorded dashcam navigation drive from Twin Lakes Tagaytay directly to the resort gate, or preview the complete resort property walkthrough.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Navigation Drive Video */}
+          {/* Navigation & Resort Video Guide */}
           <div className="bg-white p-4 rounded-2xl border border-sand shadow-sm space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h4 className="font-serif text-sm sm:text-base font-bold text-ink">
-                Dashcam Navigation Drive Video
+                {activeVideo === 'dashcam' ? 'Dashcam Navigation Drive Video' : 'Full Resort Property Video Tour'}
               </h4>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-terra bg-terra/10 px-2 py-0.5 rounded-full">
-                Twin Lakes → Resort Gate
-              </span>
+              <div className="inline-flex rounded-full bg-sand/35 p-1 border border-sand/60 shrink-0 self-start sm:self-auto">
+                <button
+                  type="button"
+                  onClick={() => setActiveVideo('dashcam')}
+                  className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all ${
+                    activeVideo === 'dashcam'
+                      ? 'bg-ink text-cream shadow-sm'
+                      : 'text-ink-muted hover:text-ink'
+                  }`}
+                >
+                  Route Drive
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveVideo('tour')}
+                  className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all ${
+                    activeVideo === 'tour'
+                      ? 'bg-ink text-cream shadow-sm'
+                      : 'text-ink-muted hover:text-ink'
+                  }`}
+                >
+                  Resort Tour
+                </button>
+              </div>
             </div>
             <div className="relative h-56 sm:h-72 rounded-xl overflow-hidden bg-black shadow-inner">
               <iframe
-                src="https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview"
-                title="Santiagos Resort Navigation Drive Video"
+                key={activeVideo}
+                src={
+                  activeVideo === 'dashcam'
+                    ? 'https://drive.google.com/file/d/1ZWg_wszkmugcqoqiRSygm-rgKSxudyLm/preview'
+                    : 'https://drive.google.com/file/d/1f1u_JuPgRRNEjmTNMZfvg9KpugSRYgEO/preview'
+                }
+                title={activeVideo === 'dashcam' ? 'Santiagos Resort Navigation Drive Video' : 'Santiagos Resort Full Video Tour'}
                 className="w-full h-full border-0"
                 allow="autoplay"
               />
             </div>
             <p className="text-xs text-ink-muted font-sans">
-              Shows all key turns: Amuyong-Kaytitinga Road, 7-Eleven, and the Cell Repair Shop access turn.
+              {activeVideo === 'dashcam'
+                ? 'Shows all key turns: Amuyong-Kaytitinga Road, 7-Eleven, and the Cell Repair Shop access turn.'
+                : 'Full compound walkthrough: private pool & waterfall deck, acoustic videoke lounge, billiards, dining hall, and sleeping suites.'}
             </p>
           </div>
 
