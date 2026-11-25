@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Santiagos Resort - Whole-Property Industrial Container Resort",
     description:
-      "Private pool, videoke lounge, billiards, 8 bathrooms, and 20 beds for 40 guests in Alfonso, Tagaytay highlands.",
+      "Private pool, videoke lounge, billiards, 8 bathrooms, and 20 double beds for 40 guests in Alfonso, Tagaytay highlands.",
     url: 'https://santiagosresort.com',
     siteName: "Santiagos Resort",
     images: [
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Santiagos Resort - 40-Guest Private Industrial Container Resort",
-    description: "Private pool, 8 bathrooms, videoke lounge, billiards, and 20 beds in Alfonso, Tagaytay.",
+    description: "Private pool, 8 bathrooms, videoke lounge, billiards, and 20 double beds in Alfonso, Tagaytay.",
     images: ['https://a0.muscache.com/im/pictures/hosting/Hosting-1643466979772957530/original/b800534f-c860-4d16-a179-fb2c4a90a4b8.jpeg?im_w=1920'],
   },
   icons: {

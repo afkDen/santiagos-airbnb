@@ -60,20 +60,20 @@ export default function RoomsPage() {
     },
     {
       id: 'bunks',
-      name: 'Double-Deck Bunk Zone',
-      tabLabel: 'Bunk Zone',
-      tabSub: '16 Beds • 4 Baths',
-      capacity: 'Sleeps up to 16+ cousins, barkada, and friends',
-      beds: '8 Heavy-Duty Double-Deck Bunk Pods (16 Single Beds)',
+      name: 'Double-Deck Zone',
+      tabLabel: 'Double-Deck Zone',
+      tabSub: '9 Double Decks • 4 Baths',
+      capacity: 'Sleeps up to 36 cousins, barkada, and friends (2 guests per bed)',
+      beds: '9 Double Decks (18 Double Beds — Double Bed Stacks)',
       bathrooms: '4 Dedicated Full Bathrooms on Same Floor',
       features: [
-        'Sturdy steel-and-wood frame bunk beds - zero squeaks or wobbles',
-        'Individual reading lights and charging outlets per bed pod',
+        '9 sturdy steel-and-wood double-deck stacks (2 double beds per deck, fits 2 per bed)',
+        'Individual reading lights and charging outlets per double-deck bed',
         'Multi-unit high-capacity split air conditioners keep the room 18°C',
         '4 full bathrooms immediately adjacent to prevent morning lines',
       ],
-      image: getLocalImageUrl('bed1'), // 387.8 KB High-Res Bunk Pods Hallway
-      badge: '16-Bed Capacity',
+      image: getLocalImageUrl('bed1'), // 387.8 KB High-Res Double-Deck Zone Hallway
+      badge: '18-Bed Capacity',
     },
   ]
 
@@ -83,11 +83,11 @@ export default function RoomsPage() {
     { key: 'bed7', label: 'VIP 2 - Double Bed with Private Bathroom', tag: 'VIP 2' },
     { key: 'bed4', label: 'VIP 1 Smart TV on Slatted Wood Accent Wall', tag: 'VIP 1' },
     { key: 'bed8', label: 'VIP 2 Bedside Nightstand & Headboard Close-Up', tag: 'VIP 2' },
-    { key: 'bed1', label: 'Bunk Zone Hallway - Multi-Deck Heavy Duty Pods', tag: 'Bunk Zone' },
-    { key: 'bed2', label: 'Bunk Room Ante-Room - Glass Sliding Door to Gym', tag: 'Bunk Zone' },
-    { key: 'bed5', label: 'Bunk Pods - Crisp White Linens & Slatted Headboards', tag: 'Bunk Zone' },
-    { key: 'bed6', label: 'Bunk Room Entryway - 4 Built-In Bunk Pods', tag: 'Bunk Zone' },
-    { key: 'bed9', label: 'Spacious Group Bunk Room - High Capacity Pods', tag: 'Bunk Zone' },
+    { key: 'bed1', label: 'Double-Deck Zone Hallway - Heavy-Duty Double Bed Stacks', tag: 'Double-Deck Zone' },
+    { key: 'bed2', label: 'Double-Deck Zone Ante-Room - Glass Sliding Door to Gym', tag: 'Double-Deck Zone' },
+    { key: 'bed5', label: 'Double-Deck Beds - Crisp White Linens & Slatted Headboards', tag: 'Double-Deck Zone' },
+    { key: 'bed6', label: 'Double-Deck Zone Entryway - Built-In Double Bed Stacks', tag: 'Double-Deck Zone' },
+    { key: 'bed9', label: 'Spacious Group Double-Deck Room - Stacked Double Beds', tag: 'Double-Deck Zone' },
     { key: 'lou1', label: 'VIP Bedroom - 4K Smart TV & Plush Bedding', tag: 'VIP 1' },
   ]
 
@@ -98,8 +98,8 @@ export default function RoomsPage() {
       icon: Droplets,
     },
     {
-      title: '4 Bunk Zone Bathrooms',
-      desc: 'Placed along the main bunk corridor so large groups get ready simultaneously.',
+      title: '4 Double-Deck Zone Bathrooms',
+      desc: 'Placed along the main double-deck corridor so large groups get ready simultaneously.',
       icon: Droplets,
     },
     {
@@ -143,7 +143,7 @@ export default function RoomsPage() {
   return (
     <div className="page-shell">
       <PageIntro
-        meta="3 sleeping zones, 20 beds, 8 bathrooms"
+        meta="3 sleeping zones, 20 double beds, 8 bathrooms"
         title="See where everyone sleeps."
         description="Compare each sleeping zone, bed setup, bathroom access, and the type of guest it suits best."
       />
@@ -368,7 +368,7 @@ export default function RoomsPage() {
             Eight bathrooms across the compound.
           </h2>
           <p className="max-w-[65ch] text-base leading-7 text-ink-muted">
-            Bathrooms are distributed near VIP 1 & 2, the bunk zone, main hall, and pool so large groups can get ready more efficiently.
+            Bathrooms are distributed near VIP 1 & 2, the double-deck zone, main hall, and pool so large groups can get ready more efficiently.
           </p>
         </div>
 
@@ -424,7 +424,7 @@ export default function RoomsPage() {
         onClose={() => setLightboxImage(null)}
         src={lightboxImage ? lightboxImage.src : null}
         title={lightboxImage?.label}
-        category="Resort Rooms & Pods"
+        category="Resort Rooms & Double Decks"
       />
     </div>
   )

@@ -32,9 +32,9 @@ const CHAPTERS = [
   {
     id: 'rest',
     title: 'Sleep comfortably',
-    copy: 'Twenty beds across three primary sleeping zones and eight bathrooms keep overnight stays practical for large groups.',
+    copy: 'Twenty double beds across three primary sleeping zones (VIP 1 & 2 plus 9 double decks) and eight bathrooms keep overnight stays practical for up to 40 guests.',
     image: getLocalImageUrl('bed1'),
-    alt: 'Main bunk sleeping zone at Santiagos Resort',
+    alt: 'Double-deck sleeping zone at Santiagos Resort',
   },
 ]
 

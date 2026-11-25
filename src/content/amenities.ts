@@ -220,9 +220,9 @@ export const AMENITIES_CATALOG: Amenity[] = [
     category: 'Accommodations',
     iconName: 'Bed',
     description:
-      'VIP 1 & VIP 2 with double beds and private bathrooms, plus heavy-duty double-deck bunk zone for up to 40 guests. (1 additional non-airconditioned bedroom with 1 bed is also available for personal staff or driver).',
+      'VIP 1 & VIP 2 with double beds and private bathrooms, plus 9 double decks (18 double beds — double-bed stacks fitting 2 guests per bed) for up to 40 guests total. (1 additional non-airconditioned bedroom with 1 bed is also available for personal staff or driver).',
     imageKey: 'bed7',
-    specs: ['20 comfortable beds with spring mattresses', 'Individual air-conditioning in main guest zones', 'Fresh linens and pillows provided'],
+    specs: ['20 double beds with spring mattresses (VIP 1 & 2 + 9 double decks)', 'Individual air-conditioning in main guest zones', 'Fresh linens and pillows provided'],
   },
   {
     name: '8 Full Bathrooms (Zero-Queue Guarantee)',

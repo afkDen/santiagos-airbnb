@@ -6,7 +6,7 @@ export function AmenitiesChecklist() {
     { title: 'Kitchen cookware, pots & pans', sub: 'Woks, frying pans, ladles, knives & chopping boards', icon: Utensils },
     { title: '2-door refrigerator & microwave', sub: 'Ample cold storage for drinks, cakes & food prep', icon: Utensils },
     { title: 'Unlimited filtered water dispenser', sub: 'Reverse osmosis purification system (hot & cold)', icon: Waves },
-    { title: 'Bed pillows & fresh bed linens', sub: 'Fitted sheets and pillows on all 20 beds', icon: Bed },
+    { title: 'Bed pillows & fresh bed linens', sub: 'Fitted sheets and pillows on all 20 double beds', icon: Bed },
     { title: 'Billiards & arcade equipment', sub: 'Pool balls, cue sticks, chalk, triangle & free-play arcade', icon: Sparkles },
     { title: 'Soundproofed videoke & microphones', sub: 'Updated digital songbook and 2 wireless microphones', icon: Sparkles },
     { title: 'Basketball & half-court lighting', sub: 'Size 7 basketballs and evening court floodlights', icon: Sparkles },

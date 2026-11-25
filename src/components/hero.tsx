@@ -41,7 +41,7 @@ const HERO_VIEWS = [
 
 const PROOF_POINTS = [
   { value: '40', label: 'guests', detail: 'One private booking' },
-  { value: '20', label: 'beds', detail: 'Across three zones' },
+  { value: '20', label: 'double beds', detail: '2 VIP + 9 double decks' },
   { value: '8', label: 'bathrooms', detail: 'Built for groups' },
   { value: '100%', label: 'private', detail: 'No shared spaces' },
 ] as const

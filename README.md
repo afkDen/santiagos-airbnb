@@ -1,7 +1,7 @@
 # Santiagos Resort Rebuild (`santiagosresort.com`)
 
 > **The Whole-Property Container Resort Built for 40**  
-> *Industrial Chic Container Architecture • Private Pool • 8 Full Bathrooms • 20 Beds • Air-Conditioned Videoke • Alfonso, Cavite (15 Mins past Twin Lakes Tagaytay)*
+> *Industrial Chic Container Architecture • Private Pool • 8 Full Bathrooms • 20 Double Beds • Air-Conditioned Videoke • Alfonso, Cavite (15 Mins past Twin Lakes Tagaytay)*
 
 ---
 
@@ -27,7 +27,7 @@ This repository contains the Next.js 15 web application with hardware-accelerate
 
 ## 🏠 Property Truths & Capacity
 
-- **Accommodations**: 3 Air-Conditioned Room Zones • 20 Beds (VIP 1 & 2 + Double-Deck Bunk Zone) + 1 non-AC staff/driver bedroom
+- **Accommodations**: 3 Air-Conditioned Room Zones • 20 Double Beds (VIP 1 & 2 + 9 Double Decks / 18 Double Beds) + 1 non-AC staff/driver bedroom
 - **Bathrooms**: 8 Full Bathrooms with Rainfall Showerheads & Hot Water (*The Zero-Queue Guarantee*)
 - **Max Capacity**: 40 Guests (Base tier covers up to 20 declared guests)
 - **Corkage**: **₱0 Corkage** on all outside food, alcoholic beverages, and celebration cakes

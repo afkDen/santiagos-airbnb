@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  ArrowUpRight, BedDouble, BedSingle, CircleDot, CookingPot, Dumbbell, Flame, Gamepad2, Images,
+  ArrowUpRight, BedDouble, CircleDot, CookingPot, Dumbbell, Flame, Gamepad2, Images,
   Maximize2, Mic2, TableProperties, Waves, type LucideIcon,
 } from 'lucide-react'
 import {
@@ -51,7 +51,7 @@ const ZONES: ExplorerZone[] = [
   {
     id: 'gym', title: 'Private gym', mapLabel: 'Private gym', locationHint: 'Upper floor · center', icon: Dumbbell,
     kind: 'indoor',
-    description: 'The glass-enclosed gym sits at the center of the upper floor, between the VIP side and the group bunk room.',
+    description: 'The glass-enclosed gym sits at the center of the upper floor, between the VIP side and the double-deck zone.',
     position: { x: 44.6, y: 22.2 },
     compactPosition: { x: 43.4, y: 20.5 },
     facts: ['Turf flooring', 'Free weights', 'Cardio equipment'],
@@ -62,16 +62,16 @@ const ZONES: ExplorerZone[] = [
     ],
   },
   {
-    id: 'bunks', title: 'Bunk room', mapLabel: 'Group bunk room', locationHint: 'Upper floor · right', icon: BedSingle,
+    id: 'bunks', title: 'Double-deck zone', mapLabel: 'Double-deck zone', locationHint: 'Upper floor · right', icon: BedDouble,
     kind: 'indoor',
-    description: 'The group bunk room occupies the right side of the upper floor, past the gym and toward the covered dining wing.',
+    description: 'The double-deck zone occupies the right side of the upper floor, past the gym and toward the covered dining wing, with 9 double decks (18 double beds).',
     position: { x: 56.8, y: 24.2 },
     compactPosition: { x: 58.4, y: 22.3 },
-    facts: ['Double-deck beds', 'Built for groups', 'Upper-floor right wing'],
+    facts: ['9 double decks (18 double beds)', 'Fits 2 guests per bed', 'Upper-floor right wing'],
     photos: [
-      { src: getLocalImageUrl('bed9'), alt: 'Group bunk room with multiple double-deck beds' },
-      { src: getLocalImageUrl('bed6'), alt: 'Bunk-room doorway flanked by built-in double-deck beds' },
-      { src: getLocalImageUrl('bed5'), alt: 'Lower bunk pods with white linens and wood slat details' },
+      { src: getLocalImageUrl('bed9'), alt: 'Double-deck zone with stacked double beds' },
+      { src: getLocalImageUrl('bed6'), alt: 'Double-deck room doorway flanked by built-in double-bed stacks' },
+      { src: getLocalImageUrl('bed5'), alt: 'Lower double-deck beds with white linens and wood slat details' },
     ],
   },
   {
